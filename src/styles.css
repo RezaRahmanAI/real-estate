@@ -22,7 +22,14 @@ body {
   @apply bg-light text-dark overflow-x-hidden;
 }
 
-.visible {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+section {
+  @apply min-h-screen flex flex-col justify-center items-center p-8 text-center opacity-0 translate-y-16 transition-all duration-1000 ease-in-out;
+}
+
+section.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+.btn {
+  @apply bg-accent text-light px-4 py-2 rounded-md font-semibold hover:bg-accent-light transition-colors duration-300;
 }
