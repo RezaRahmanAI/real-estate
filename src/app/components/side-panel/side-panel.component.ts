@@ -1,4 +1,3 @@
-// src/app/components/side-panel/side-panel.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SidePanelService } from '../../services/sidepanel.service';

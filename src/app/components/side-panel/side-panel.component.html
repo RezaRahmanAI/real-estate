@@ -1,7 +1,6 @@
-<!-- src/app/components/side-panel/side-panel.component.html -->
-<div [class.open]="sidePanel.open$()" class="side-panel">
+<div class="side-panel" [class.open]="sidePanel.open$()">
   <div class="side-panel-header">
-    <button (click)="sidePanel.close()" id="close-panel">&times;</button>
+    <button (click)="sidePanel.close()">&times;</button>
   </div>
   <ul class="side-panel-links">
     <li><a href="#home" (click)="sidePanel.close()">Home</a></li>
