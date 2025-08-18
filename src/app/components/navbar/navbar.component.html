@@ -1,27 +1,27 @@
-<nav appNavbarScroll  class="fixed top-0 w-full z-50 flex justify-between items-center p-4 bg-black bg-opacity-50 backdrop-blur-md text-white">
-  <div class="flex gap-4">
+<!-- src/app/components/navbar/navbar.component.html -->
+<nav appNavbarScroll class="transparent">
+  <!-- Left links -->
+  <div class="nav-left">
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#properties">Properties</a>
   </div>
-  <div>
-    <img src="https://via.placeholder.com/120x40?text=Logo" alt="Logo" class="h-10" />
+
+  <!-- Center logo -->
+  <div class="nav-center">
+    <img src="https://via.placeholder.com/120x40?text=Logo" class="logo" alt="Logo" />
   </div>
-  <div class="flex gap-4 items-center relative">
+
+  <!-- Right links -->
+  <div class="nav-right">
     <a href="#contact">Contact</a>
-    <button (click)="toggleMenu()" class="border p-2 rounded">Menu</button>
+    <div class="menu-btn-wrapper" (click)="sidePanel.toggle()">
+      <span class="menu-text">Menu</span>
+      <div class="menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
   </div>
 </nav>
-
-<div [class.translate-x-0]="menuOpen"
-     class="fixed right-0 top-0 w-72 h-full bg-black text-white transform translate-x-full transition-transform duration-500 z-50">
-  <div class="flex justify-end p-4">
-    <button (click)="toggleMenu()" class="text-3xl">&times;</button>
-  </div>
-  <ul class="flex flex-col gap-4 p-4">
-    <li><a href="#home" (click)="toggleMenu()">Home</a></li>
-    <li><a href="#about" (click)="toggleMenu()">About</a></li>
-    <li><a href="#properties" (click)="toggleMenu()">Properties</a></li>
-    <li><a href="#contact" (click)="toggleMenu()">Contact</a></li>
-  </ul>
-</div>

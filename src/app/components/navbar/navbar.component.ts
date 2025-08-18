@@ -1,5 +1,7 @@
+// src/app/components/navbar/navbar.component.ts
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SidePanelService } from '../../services/sidepanel.service';
 import { NavbarScrollDirective } from '../../directives/navbar-scroll.directive';
 
 @Component({
@@ -10,8 +12,5 @@ import { NavbarScrollDirective } from '../../directives/navbar-scroll.directive'
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  menuOpen = false;
-  toggleMenu() {
-    this.menuOpen = !this.menuOpen;
-  }
+  constructor(public sidePanel: SidePanelService) {}
 }

@@ -54,10 +54,40 @@ nav.transparent {
 nav.glass {
   background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 nav.hide {
   transform: translateY(-100%);
   opacity: 0;
+}
+
+.menu-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1100;
+}
+
+.menu-btn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+}
+
+.menu-btn span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
 }
