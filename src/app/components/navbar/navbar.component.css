@@ -1,94 +1,15 @@
-/* src/app/components/navbar/navbar.component.css */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.6s ease;
-}
-
-.nav-left, .nav-center, .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-
-.nav-center {
-  justify-content: center;
-  flex: 1;
-}
-
-.nav-left {
-  justify-content: flex-start;
-}
-
-.nav-right {
-  justify-content: flex-end;
-}
-
-.logo {
-  max-height: 40px;
-  object-fit: contain;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #ff9800;
-}
-
 nav.transparent {
   background: transparent;
-  -webkit-backdrop-filter: none;           /* standard */
-  backdrop-filter: none;   /* Safari/iOS */
 }
 
 nav.glass {
-  background: rgba(0, 0, 0, 0.4);
-  -webkit-backdrop-filter: blur(12px);          /* standard */
-  backdrop-filter: blur(12px);  /* Safari/iOS */
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(64, 81, 59, 0.9);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 nav.hide {
   transform: translateY(-100%);
   opacity: 0;
-}
-
-.menu-btn-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  border: 2px solid white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 1100;
-}
-
-.menu-btn {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 24px;
-  height: 18px;
-}
-
-.menu-btn span {
-  display: block;
-  height: 3px;
-  width: 100%;
-  background: white;
-  border-radius: 2px;
-  transition: all 0.3s ease;
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LenisService } from '../../services/lenis.service';
 import { SidePanelService } from '../../services/sidepanel.service';
 
 @Component({
@@ -10,5 +11,13 @@ import { SidePanelService } from '../../services/sidepanel.service';
   styleUrls: ['./side-panel.component.css'],
 })
 export class SidePanelComponent {
-  constructor(public sidePanel: SidePanelService) {}
+  constructor(
+    public sidePanel: SidePanelService,
+    private lenisService: LenisService
+  ) {}
+
+  scrollToSection(sectionId: string) {
+    this.lenisService.lenis.scrollTo(`#${sectionId}`, { duration: 0.8 });
+    this.sidePanel.close();
+  }
 }

@@ -1,5 +1,7 @@
+
 import { Directive, ElementRef, OnInit } from '@angular/core';
-import Lenis from '@studio-freight/lenis';
+import { LenisService } from '../services/lenis.service';
+
 
 @Directive({
   selector: '[appNavbarScroll]',
@@ -11,32 +13,13 @@ export class NavbarScrollDirective implements OnInit {
   private scrollDownDelta = 0;
   private revealThreshold = 80;
   private hideThreshold = 80;
-  private lenis!: Lenis;
 
-  constructor(private el: ElementRef) {}
+  constructor(private el: ElementRef, private lenisService: LenisService) {}
 
   ngOnInit(): void {
     const nav = this.el.nativeElement;
 
-    // Initialize Lenis
-    this.lenis = new Lenis({
-      duration: 0.8,
-      easing: (t: number) => 1 - Math.pow(1 - t, 3),
-      lerp: 0.1,
-      // direction: 'vertical',
-      // gestureDirection: 'vertical',
-    });
-
-    const animate = (time: number) => {
-      this.lenis.raf(time);
-      requestAnimationFrame(animate);
-    };
-    requestAnimationFrame(animate);
-
-    // Listen to scroll events
-    this.lenis.on('scroll', (event: any) => {
-      const scroll = event.scroll;
-
+    this.lenisService.onScroll((scroll: number) => {
       if (scroll <= 20) {
         nav.classList.remove('glass', 'hide');
         nav.classList.add('transparent');
@@ -44,7 +27,6 @@ export class NavbarScrollDirective implements OnInit {
         this.scrollDownDelta = 0;
       } else {
         if (scroll > this.lastScroll) {
-          // Scrolling down
           this.scrollDownDelta += scroll - this.lastScroll;
           this.scrollUpDelta = 0;
 
@@ -54,7 +36,6 @@ export class NavbarScrollDirective implements OnInit {
             this.scrollDownDelta = 0;
           }
         } else {
-          // Scrolling up
           this.scrollUpDelta += this.lastScroll - scroll;
           this.scrollDownDelta = 0;
 
@@ -70,3 +51,4 @@ export class NavbarScrollDirective implements OnInit {
     });
   }
 }
+

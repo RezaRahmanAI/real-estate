@@ -1,28 +1,23 @@
-<nav appNavbarScroll class="transparent">
-  <!-- Left links -->
-  <div class="nav-left">
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#properties">Properties</a>
-  </div>
 
-  <!-- Center logo -->
-  <div class="nav-center">
-    <img src="https://via.placeholder.com/120x40?text=Logo" class="logo" alt="Logo" />
+<nav appNavbarScroll class="transparent flex justify-between items-center px-8 py-4 fixed top-0 w-full z-[1000]">
+  <div class="nav-left flex items-center gap-8">
+    <a (click)="scrollToSection('home')" href="#home" class="text-light font-semibold hover:text-accent-light transition-colors duration-300">Home</a>
+    <a (click)="scrollToSection('about')" href="#about" class="text-light font-semibold hover:text-accent-light transition-colors duration-300">About</a>
+    <a (click)="scrollToSection('properties')" href="#properties" class="text-light font-semibold hover:text-accent-light transition-colors duration-300">Properties</a>
   </div>
-
-  <!-- Right links -->
-  <div class="nav-right">
-    <a href="#contact">Contact</a>
-    <div class="menu-btn-wrapper" (click)="sidePanel.toggle()">
-      <span class="menu-text">Menu</span>
-      <div class="menu-btn">
-        <span></span>
-        <span></span>
-        <span></span>
+  <div class="nav-center flex justify-center flex-1">
+    <img src="https://via.placeholder.com/120x40?text=Logo" class="max-h-10 object-contain" alt="Logo" />
+  </div>
+  <div class="nav-right flex items-center gap-8">
+    <a (click)="scrollToSection('contact')" href="#contact" class="text-light font-semibold hover:text-accent-light transition-colors duration-300">Contact</a>
+    <div class="menu-btn-wrapper absolute right-8 top-4 flex items-center gap-2 border-2 border-light px-3 py-2 rounded-lg cursor-pointer transition-all duration-300 z-[1100]" (click)="sidePanel.toggle()">
+      <span class="menu-text text-light">Menu</span>
+      <div class="menu-btn flex flex-col justify-between w-6 h-[18px]">
+        <span class="block h-[3px] w-full bg-light rounded-sm transition-all duration-300"></span>
+        <span class="block h-[3px] w-full bg-light rounded-sm transition-all duration-300"></span>
+        <span class="block h-[3px] w-full bg-light rounded-sm transition-all duration-300"></span>
       </div>
     </div>
   </div>
 </nav>
-
-<app-side-panel></app-side-panel>
+<app-side-panel />

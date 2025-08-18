@@ -1,5 +1,7 @@
+
 import { Directive, ElementRef, OnInit } from '@angular/core';
 import { LenisService } from '../services/lenis.service';
+
 
 @Directive({
   selector: '[appHeroParallax]',
@@ -10,7 +12,8 @@ export class HeroParallaxDirective implements OnInit {
 
   ngOnInit(): void {
     this.lenisService.onScroll((scroll: number) => {
-      this.el.nativeElement.style.backgroundPositionY = `${scroll * 0.3}px`;
+      const position = Math.max(-100, Math.min(-scroll * 0.2, 100));
+      this.el.nativeElement.style.backgroundPositionY = `${position}px`;
     });
   }
 }

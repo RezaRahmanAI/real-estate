@@ -1,25 +1,25 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
+import { HeroComponent } from './components/hero/hero.component';
 import { AboutComponent } from './components/about/about.component';
 import { PropertiesComponent } from './components/properties/properties.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { RouterOutlet } from '@angular/router';
-import { HeroComponent } from './components/hero/hero.component';
-// import { SidePanelComponent } from './components/side-panel/side-panel.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
+    CommonModule,
     RouterOutlet,
     NavbarComponent,
     HeroComponent,
-    HomeComponent,
     AboutComponent,
     PropertiesComponent,
     ContactComponent,
-    // SidePanelComponent,
+    FooterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

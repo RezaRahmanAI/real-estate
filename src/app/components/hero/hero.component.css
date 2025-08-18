@@ -1,38 +1,3 @@
-.hero-section {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 4rem 2rem;
-  text-align: center;
-  background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80')
-    center/cover no-repeat;
-  color: white;
+.hero-content {
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-  transition: all 1.2s ease;
-}
-
-.hero-content h1 {
-  font-size: 4rem;
-  margin-bottom: 1rem;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  max-width: 600px;
-}
-
-/* Tailwind-like utility classes used by FadeInDirective */
-.opacity-0 {
-  opacity: 0;
-}
-.opacity-100 {
-  opacity: 1;
-}
-.translate-y-12 {
-  transform: translateY(3rem);
-}
-.translate-y-0 {
-  transform: translateY(0);
 }
