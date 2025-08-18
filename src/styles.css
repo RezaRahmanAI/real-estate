@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  @apply bg-gray-50 text-gray-900 font-sans overflow-x-hidden;
+}
+
+a {
+  @apply transition-colors duration-300;
+}
+
+a:hover {
+  @apply text-orange-500;
+}
+
+nav {
+  @apply fixed top-0 w-full flex justify-between items-center px-8 py-4 z-50 transition-all duration-500;
+}
+
+nav.transparent {
+  @apply bg-transparent;
+}
+
+nav.glass {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+.menu-btn-wrapper {
+  @apply absolute right-8 top-4 flex items-center gap-2 border-2 border-white p-1.5 rounded-lg cursor-pointer z-50;
+}
