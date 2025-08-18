@@ -7,6 +7,8 @@ import { PropertiesComponent } from './components/properties/properties.componen
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { VisionBannerComponent } from "./components/vision-banner/vision-banner.component";
+import { TestimonialCarouselComponent } from "./components/testimonial/testimonial.component";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,9 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     PropertiesComponent,
     ContactComponent,
     FooterComponent,
-  ],
+    VisionBannerComponent,
+    TestimonialCarouselComponent
+],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

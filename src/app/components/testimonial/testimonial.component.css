@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.testimonial_section {
+  overflow: hidden;
+}
+
+.font-heading {
+  font-family: var(--heading);
+}
+
+.star {
+  font-size: 1rem;
+}

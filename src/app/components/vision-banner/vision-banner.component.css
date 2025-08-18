@@ -1,0 +1,126 @@
+.vision_banner {
+  background: url("/images/banner/banner-3.png") no-repeat center center / cover;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  z-index: 1;
+}
+.vision_banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+@media (min-width: 768px) {
+  .vision_banner {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vision_banner {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .vision_banner {
+    padding-top: 270px;
+    padding-bottom: 270px;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.vision_banner h1 {
+  font-family: var(--heading);
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 2.25rem;
+  color: #f8fafc;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .vision_banner h1 {
+    font-size: 3.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .vision_banner h1 {
+    text-align: left;
+  }
+}
+
+.vision_banner h1 span:first-child {
+  margin-bottom: 1.25rem;
+  display: inline-block;
+}
+
+@media (min-width: 768px) {
+  .vision_banner h1 span:last-child {
+    margin-left: 4rem;
+  }
+}
+
+.vision_banner p {
+  font-family: var(--body);
+  font-size: 1.125rem;
+  color: #f8fafc;
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .vision_banner p {
+    margin-left: 10rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .vision_banner p {
+    text-align: left;
+  }
+}
+
+@media (min-width: 768px) {
+  .vision_banner a {
+    bottom: -10rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .vision_banner a {
+    bottom: -12rem;
+    left: 0;
+    /* padding: 3rem 0.75rem; */
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .vision_banner a {
+    bottom: -340px;
+    /* padding: 4rem 1.5rem; */
+    font-size: 1.5rem;
+  }
+}

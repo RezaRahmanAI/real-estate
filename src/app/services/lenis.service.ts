@@ -10,7 +10,7 @@ export class LenisService {
     this.init();
   }
 
-  private init() {
+  public init() {
     this.lenis = new Lenis({
       duration: 0.8,
       easing: (t: number) => 1 - Math.pow(1 - t, 3),

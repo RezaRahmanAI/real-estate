@@ -1,3 +1,4 @@
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 @tailwind base;
@@ -9,6 +10,8 @@
   --accent-light: #9DC08B;
   --accent: #609966;
   --dark: #40513B;
+  --heading: 'Poppins', sans-serif;
+  --body: 'Poppins', sans-serif;
 }
 
 * {
