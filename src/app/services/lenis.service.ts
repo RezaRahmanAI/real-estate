@@ -11,7 +11,7 @@ export class LenisService {
 
   private init() {
     this.lenis = new Lenis({
-      duration: 0.8,
+      duration: 1,
       easing: (t: number) => 1 - Math.pow(1 - t, 3),
       smoothWheel: true,
     });

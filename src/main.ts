@@ -3,8 +3,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideHttpClient } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { AppComponent } from './app/app.component';
-import { ScrollService } from './app/services/scroll.service';
 import { appConfig } from './app/app.config';
+import { LenisService } from './app/services/lenis.service';
 
 bootstrapApplication(AppComponent, {
   ...appConfig,
@@ -13,6 +13,6 @@ bootstrapApplication(AppComponent, {
     provideAnimations(),
     provideHttpClient(),
     provideToastr(),
-    ScrollService,
+    LenisService
   ],
 }).catch((err) => console.error(err));
