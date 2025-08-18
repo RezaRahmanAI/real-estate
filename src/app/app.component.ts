@@ -5,6 +5,7 @@ import { AboutComponent } from './components/about/about.component';
 import { PropertiesComponent } from './components/properties/properties.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { RouterOutlet } from '@angular/router';
+import { HeroComponent } from './components/hero/hero.component';
 // import { SidePanelComponent } from './components/side-panel/side-panel.component';
 
 @Component({
@@ -13,6 +14,7 @@ import { RouterOutlet } from '@angular/router';
   imports: [
     RouterOutlet,
     NavbarComponent,
+    HeroComponent,
     HomeComponent,
     AboutComponent,
     PropertiesComponent,
