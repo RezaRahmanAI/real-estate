@@ -3,7 +3,7 @@
 }
 
 .testimonial_section {
-  @apply  p-4 md:p-8 rounded-2xl;
+  @apply p-4 md:p-8 rounded-2xl;
   position: relative;
 }
 
@@ -15,30 +15,17 @@
   font-size: 1rem;
 }
 
-.heading { 
-  gap: 1rem;
-}
-
-.heading h1 {
-  font-family: var(--heading);
-  @apply text-dark text-4xl md:text-5xl font-bold m-0;
-}
-
-.heading h1:last-child {
-  @apply pl-6 md:pl-6;
-}
-
 .content-card {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  @apply  p-6 rounded-2xl shadow-lg relative;
+  @apply p-6 rounded-2xl shadow-lg relative;
   box-shadow: 0 25px 60px -10px rgba(96, 153, 102, 0.08);
 }
 
 .image-wrapper {
   flex: 1 1 280px;
-  @apply mt-20 md:mt-24;
+  @apply mt-20 md:mt-36;
 }
 
 .text-wrapper {
@@ -70,7 +57,7 @@
 }
 
 .box {
-  @apply  p-4 rounded-xl relative;
+  @apply p-4 rounded-xl relative;
 }
 
 .stars {
@@ -85,12 +72,7 @@
   @apply font-bold text-dark;
 }
 
-.nav {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-}
+
 
 .nav button {
   @apply bg-accent text-light px-4 py-2 rounded-full font-semibold hover:bg-accent-light transition duration-300;
