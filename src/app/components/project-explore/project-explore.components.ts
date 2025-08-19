@@ -18,7 +18,7 @@ export interface ExploreItem {
   templateUrl: './project-explore.component.html',
   styleUrl: './project-explore.component.css',
 })
-export class ProjectExploreComponent implements OnInit {
+export class ProjectExploreComponent {
   projects: ExploreItem[] = [
     {
       id: 1,
@@ -40,12 +40,12 @@ export class ProjectExploreComponent implements OnInit {
     },
   ];
 
-  constructor(private lenisService: LenisService) {}
+  // constructor(private lenisService: LenisService) {}
 
-  ngOnInit() {
-    this.lenisService.init();
-    this.lenisService.onScroll((scroll) => {
-      console.log('Scroll position:', scroll);
-    });
-  }
+  // ngOnInit() {
+  //   this.lenisService.init();
+  //   this.lenisService.onScroll((scroll) => {
+  //     console.log('Scroll position:', scroll);
+  //   });
+  // }
 }
