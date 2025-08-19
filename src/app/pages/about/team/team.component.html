@@ -1,0 +1,81 @@
+<section appFadeIn class="our_team py-16 bg-light px-4" [@cardAnimation]>
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl font-poppins font-bold text-dark mb-12 text-center" [@headingAnimation]>Our Team</h2>
+    <div class="team_grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div
+        *ngFor="let teamitem of team"
+        (click)="onToggle(teamitem)"
+        (mouseenter)="onCardHover(teamitem.id, 'active')"
+        (mouseleave)="onCardHover(teamitem.id, 'inactive')"
+        [@cardHover]="hoverStates[teamitem.id].card || 'inactive'"
+        class="team_card group relative p-6 border border-accent-light/20 rounded-2xl shadow-md bg-light cursor-pointer"
+      >
+        <div class="flex flex-col items-center">
+          <div class="team_image mb-6 overflow-hidden rounded-full w-36 h-36">
+            <img
+              *ngIf="teamitem && teamitem['image']; else noImage"
+              [src]="teamitem['image']"
+              [alt]="teamitem['name']"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              loading="lazy"
+            />
+            <ng-template #noImage>
+              <div class="w-full h-full bg-accent-light/20 flex items-center justify-center text-dark">
+                No image
+              </div>
+            </ng-template>
+          </div>
+          <div class="text-center">
+            <h3 class="team_name text-xl font-semibold text-dark mb-1">
+              {{ teamitem['name'] }}
+            </h3>
+            <p class="team_designation text-accent font-medium mb-3">
+              {{ teamitem['designation'] }}
+            </p>
+            <p *ngIf="teamitem && teamitem['description']" class="team_description text-sm text-accent-light mb-4">
+              {{ teamitem['description'] }}
+            </p>
+            <div class="flex justify-center gap-4">
+              <a
+                *ngIf="teamitem && teamitem['facebook']"
+                [href]="teamitem['facebook']"
+                [attr.aria-label]="'Facebook of ' + teamitem['name']"
+                target="_blank"
+                class="text-white bg-accent p-3 rounded-full text-lg"
+                (mouseenter)="onLinkHover(teamitem.id, 'facebook', 'active')"
+                (mouseleave)="onLinkHover(teamitem.id, 'facebook', 'inactive')"
+                [@linkHover]="hoverStates[teamitem.id].facebook || 'inactive'"
+              >
+                <i class="ri-facebook-circle-line"></i>
+              </a>
+              <a
+                *ngIf="teamitem && teamitem['twitter']"
+                [href]="teamitem['twitter']"
+                [attr.aria-label]="'Twitter of ' + teamitem['name']"
+                target="_blank"
+                class="text-white bg-accent p-3 rounded-full text-lg"
+                (mouseenter)="onLinkHover(teamitem.id, 'twitter', 'active')"
+                (mouseleave)="onLinkHover(teamitem.id, 'twitter', 'inactive')"
+                [@linkHover]="hoverStates[teamitem.id].twitter || 'inactive'"
+              >
+                <i class="ri-twitter-line"></i>
+              </a>
+              <a
+                *ngIf="teamitem && teamitem['linkedin']"
+                [href]="teamitem['linkedin']"
+                [attr.aria-label]="'LinkedIn of ' + teamitem['name']"
+                target="_blank"
+                class="text-white bg-accent p-3 rounded-full text-lg"
+                (mouseenter)="onLinkHover(teamitem.id, 'linkedin', 'active')"
+                (mouseleave)="onLinkHover(teamitem.id, 'linkedin', 'inactive')"
+                [@linkHover]="hoverStates[teamitem.id].linkedin || 'inactive'"
+              >
+                <i class="ri-linkedin-box-line"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

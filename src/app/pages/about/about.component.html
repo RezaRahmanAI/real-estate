@@ -1,0 +1,25 @@
+<div class="relative overflow-hidden">
+  <app-hero></app-hero>
+  <app-history [history]="state.about.history"></app-history>
+  <app-owner-speech
+    [ownerName]="state.about.ownerName"
+    [ownerDesignation]="state.about.ownerDesignation"
+    [ownerSpeech]="state.about.ownerSpeech"
+    [ownerImage]="state.about.ownerImage"
+    (imageError)="onImageError($event)"
+  ></app-owner-speech>
+  <app-mission-vision
+    [mission]="state.about.mission"
+    [missionImage]="state.about.missionImage"
+    [vision]="state.about.vision"
+    [visionImage]="state.about.visionImage"
+    (imageError)="onImageError($event)"
+  ></app-mission-vision>
+  <app-team [team]="state.team" (toggle)="onToggle($event)"></app-team>
+  <app-team-modal
+    *ngIf="isModalVisible"
+    [selectedTeamMember]="state.selectedTeamMember"
+    (toggle)="onToggle()"
+    (imageError)="onImageError($event)"
+  ></app-team-modal>
+</div>

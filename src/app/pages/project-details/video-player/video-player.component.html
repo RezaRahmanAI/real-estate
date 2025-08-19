@@ -1,0 +1,18 @@
+<section class="video-player py-12" id="videoPlayer">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-text mb-8 text-center">Project Video</h2>
+    <div class="relative" style="padding-bottom: 56.25%;">
+      <iframe
+        *ngIf="safeYoutubeUrl"
+        [src]="safeYoutubeUrl"
+        class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <div *ngIf="!safeYoutubeUrl" class=" rounded-lg flex items-center justify-center h-full">
+        <p class="text-text text-lg">No video available</p>
+      </div>
+    </div>
+  </div>
+</section>

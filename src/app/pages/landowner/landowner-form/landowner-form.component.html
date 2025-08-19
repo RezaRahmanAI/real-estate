@@ -1,0 +1,199 @@
+<section class="connect_form py-14 px-4">
+  <div class="container mx-auto max-w-2xl">
+    <h2 class="text-4xl font-bold text-slate-800 mb-4">Want to Form a Great Partnership?</h2>
+    <p class="text-gray-600 mb-6">Fill in your details and we'll reach out to you soon. No obligation.</p>
+
+    <!-- Success message -->
+    <div *ngIf="!submitting && landownerData.name === '' && lastSubmitted" class="feedback success mb-4" role="status">
+      Thank you! Your request has been received.
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="createData()" novalidate class="grid gap-6" aria-label="Landowner partnership form">
+      <!-- Row 1: Name / Phone -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="field">
+          <label for="name" class="block mb-1 font-semibold">
+            Full Name <span aria-hidden="true" class="text-red-500">*</span>
+          </label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            [(ngModel)]="landownerData.name"
+            required
+            #nameModel="ngModel"
+            placeholder="Your name"
+            aria-required="true"
+            [attr.aria-invalid]="nameModel.invalid && nameModel.touched"
+          />
+          <div *ngIf="nameModel.invalid && nameModel.touched" class="text-sm text-red-600 mt-1">
+            Name is required.
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="phone" class="block mb-1 font-semibold">
+            Phone Number <span aria-hidden="true" class="text-red-500">*</span>
+          </label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            [(ngModel)]="landownerData.phone"
+            required
+            #phoneModel="ngModel"
+            placeholder="01329-638961"
+            aria-required="true"
+            [attr.aria-invalid]="phoneModel.invalid && phoneModel.touched"
+          />
+          <div *ngIf="phoneModel.invalid && phoneModel.touched" class="text-sm text-red-600 mt-1">
+            Phone is required.
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: Email / Locality -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="field">
+          <label for="email" class="block mb-1 font-semibold">
+            Email address <span aria-hidden="true" class="text-red-500">*</span>
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            [(ngModel)]="landownerData.email"
+            required
+            #emailModel="ngModel"
+            placeholder="you@example.com"
+            aria-required="true"
+            [attr.aria-invalid]="emailModel.invalid && emailModel.touched"
+          />
+          <div *ngIf="emailModel.invalid && emailModel.touched" class="text-sm text-red-600 mt-1">
+            Valid email is required.
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="locality" class="block mb-1 font-semibold">
+            Locality <span aria-hidden="true" class="text-red-500">*</span>
+          </label>
+          <input
+            id="locality"
+            name="locality"
+            type="text"
+            [(ngModel)]="landownerData.locality"
+            required
+            #localityModel="ngModel"
+            placeholder="Area or neighborhood"
+            aria-required="true"
+            [attr.aria-invalid]="localityModel.invalid && localityModel.touched"
+          />
+          <div *ngIf="localityModel.invalid && localityModel.touched" class="text-sm text-red-600 mt-1">
+            Locality is required.
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3: Category / Front Road -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="field">
+          <label for="landCategory" class="block mb-1 font-semibold">
+            Land Category <span aria-hidden="true" class="text-red-500">*</span>
+          </label>
+          <select
+            id="landCategory"
+            name="landCategory"
+            [(ngModel)]="landownerData.landCategory"
+            required
+            #categoryModel="ngModel"
+            aria-required="true"
+            [attr.aria-invalid]="categoryModel.invalid && categoryModel.touched"
+          >
+            <option value="" disabled selected>Choose</option>
+            <option value="Freehold">Freehold</option>
+            <option value="Leasehold">Leasehold</option>
+          </select>
+          <div *ngIf="categoryModel.invalid && categoryModel.touched" class="text-sm text-red-600 mt-1">
+            Land category is required.
+          </div>
+        </div>
+        <div class="field">
+          <label for="frontRoadWidth" class="block mb-1 font-semibold">Front Road Width</label>
+          <input
+            id="frontRoadWidth"
+            name="frontRoadWidth"
+            type="text"
+            [(ngModel)]="landownerData.frontRoadWidth"
+            placeholder="e.g. 30 ft"
+          />
+        </div>
+      </div>
+
+      <!-- Row 4: Facing / Address -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="field">
+          <label for="facing" class="block mb-1 font-semibold">Facing</label>
+          <input
+            id="facing"
+            name="facing"
+            type="text"
+            [(ngModel)]="landownerData.facing"
+            placeholder="East / West"
+          />
+        </div>
+        <div class="field">
+          <label for="address" class="block mb-1 font-semibold">
+            Land Address <span aria-hidden="true" class="text-red-500">*</span>
+          </label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            [(ngModel)]="landownerData.address"
+            required
+            #addressModel="ngModel"
+            placeholder="Full address"
+            aria-required="true"
+            [attr.aria-invalid]="addressModel.invalid && addressModel.touched"
+          />
+          <div *ngIf="addressModel.invalid && addressModel.touched" class="text-sm text-red-600 mt-1">
+            Address is required.
+          </div>
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div class="field">
+        <label for="message" class="block mb-1 font-semibold">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          [(ngModel)]="landownerData.message"
+          placeholder="Any additional details"
+        ></textarea>
+      </div>
+
+      <!-- Consent / Disclaimer -->
+      <div class="text-xs text-gray-600">
+        By submitting, you agree to our <span class="font-semibold">privacy policy</span>. We’ll never share your information.
+      </div>
+
+      <!-- Submit -->
+      <div>
+        <button
+          type="submit"
+          [disabled]="submitting || f.invalid"
+          class="btn-modern btn-primary w-full flex justify-center items-center gap-2"
+          aria-live="polite"
+        >
+          <span *ngIf="!submitting">Submit</span>
+          <span *ngIf="submitting" class="flex items-center gap-2">
+            <span class="spinner" aria-hidden="true"></span> Sending...
+          </span>
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

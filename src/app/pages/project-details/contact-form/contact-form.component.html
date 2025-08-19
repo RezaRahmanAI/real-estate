@@ -1,0 +1,30 @@
+<div class="contact_form py-14" id="contacting">
+  <div class="container">
+    <h1 class="text-center">Contact Us</h1>
+    <div>
+      <form class="max-w-md mx-auto" (ngSubmit)="onSubmit()">
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="text" id="name" class="form-input peer" placeholder=" " required />
+          <label for="name" class="form-label">Full Name</label>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="tel" id="phone" class="form-input peer" placeholder=" " required />
+          <label for="phone" class="form-label">Phone Number</label>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="email" id="email" class="form-input peer" placeholder=" " required />
+          <label for="email" class="form-label">Email</label>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <textarea id="subject" class="form-input peer" placeholder=" "></textarea>
+          <label for="subject" class="form-label">Subject</label>
+        </div>
+        <div class="relative z-0 w-full mb-5 group">
+          <textarea id="message" class="form-input peer" placeholder=" "></textarea>
+          <label for="message" class="form-label">Message</label>
+        </div>
+        <button type="submit" class="btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>

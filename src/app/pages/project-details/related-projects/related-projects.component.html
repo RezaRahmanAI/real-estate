@@ -1,0 +1,38 @@
+<div class="related_projects py-14 px-2" id="relatedProjects">
+  <div class="container">
+    <h1 class="text-center">Related Projects</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-16">
+      <div *ngFor="let item of projects" class="project_card">
+        <a (click)="onProjectSelect(item.id)">
+          <div class="project_card_img">
+            <img
+              class="w-full rounded-t-2xl"
+              [src]="baseUrl + '/api/attachment/get/' + item.thumbnail"
+              alt="Project thumbnail"
+              (error)="onImageError($event)"
+            />
+          </div>
+          <div class="project_card_details">
+            <h1>{{ item.name }}</h1>
+            <p>
+              <span>{{ item.category }}</span>
+              <span class="dot"></span>
+              <span>{{ item.type }}</span>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="adds">
+      <div class="px-4 flex items-center gap-3">
+        <i class="ri-bookmark-3-fill"></i>
+      </div>
+      <div>
+        <a routerLink="/contact" class="btn-primary">Booking Now</a>
+      </div>
+      <div class="px-4 flex items-center gap-3">
+        <i class="ri-bookmark-3-fill"></i>
+      </div>
+    </div>
+  </div>
+</div>

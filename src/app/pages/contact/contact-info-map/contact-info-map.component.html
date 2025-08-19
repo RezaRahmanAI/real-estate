@@ -1,0 +1,80 @@
+<!-- Contact Info + Map -->
+  <section appReveal class="contact_page py-16">
+    <div class="container">
+      <div class="grid two-col gap-10">
+        <div class="info-panel animate-entrance">
+          <h2 class="section-title">Office & Support</h2>
+          <p class="lead">
+            Whether you're buying, selling, or scheduling a visit—our team is here to help. Fill the form and we'll reach out within 2 business hours.
+          </p>
+          <address class="address-block">
+            <div class="item">
+              <div class="icon"><i class="ri-map-pin-fill"></i></div>
+              <div>
+                <p class="label">Corporate Office</p>
+                <p>Alokar More, Rajshahi, Bangladesh.</p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="icon"><i class="ri-mail-send-line"></i></div>
+              <div>
+                <p class="label">Email</p>
+                <p><a href="mailto:triconproperties21@gmail.com">triconproperties21&#64;gmail.com</a></p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="icon"><i class="ri-phone-fill"></i></div>
+              <div>
+                <p class="label">Sales Enquiry</p>
+                <p><a href="tel:01329638961">01329-638961</a></p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="icon"><i class="ri-phone-fill"></i></div>
+              <div>
+                <p class="label">General Enquiry</p>
+                <p><a href="tel:01739703426">01739-703426</a></p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="icon"><i class="ri-whatsapp-fill"></i></div>
+              <div>
+                <p class="label">WhatsApp</p>
+                <p><a href="https://wa.me/8801739703426" target="_blank" rel="noopener">01739-703426</a></p>
+              </div>
+            </div>
+          </address>
+        </div>
+
+        <div class="map-wrapper shimmer-container animate-entrance" style="position: relative; min-height: 300px;">
+  <!-- shimmer placeholder; hidden when map loaded -->
+  <div
+    class="shimmer-wrapper"
+    [class.loaded]="isMapLoaded"
+    style="border-radius: .75rem;"
+  ></div>
+
+  <iframe
+    title="Office location on map"
+    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19412.96407524426!2d90.36601795!3d23.7963304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1742033667355!5m2!1sen!2sbd"
+    width="100%"
+    height="100%"
+    style="border:0;"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    (load)="onMapLoad()"
+  ></iframe>
+
+  <!-- fallback if needed -->
+  <div
+    *ngIf="!isMapLoaded"
+    aria-hidden="true"
+    class="map-fallback"
+    style="display:none;"
+  ></div>
+</div>
+
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,86 @@
+<div>
+  <!-- Banner -->
+
+<div class="relative bg-cover bg-center h-[320px] sm:h-[400px] lg:h-[500px] flex items-center justify-center" style="background-image:url('/images/banner/banner-3.png')">
+  <div class="absolute inset-0  mix-blend-normal"></div>
+  <div class="relative z-10 text-center px-5 py-28 sm:py-40 max-w-3xl animate-entrance">
+    <div class="inline-flex items-baseline gap-2 bg-[rgba(0,0,0,0.3)] backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg max-w-[90%] sm:max-w-2xl">
+      <span class="text-[var(--accent)] font-mono text-lg select-none">/</span>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+        Blogs & Updates
+      </h1>
+    </div>
+    </div>
+  </div>
+
+
+
+  <!-- Blog List -->
+  <div
+    class="offer_projects py-14 bg-slate-50 px-4 sm:px-2 md:px-6 lg:px-10"
+    data-animate
+  >
+    <div class="lg:container mx-auto">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8 sm:gap-3 md:gap-8"
+      >
+        <div
+          *ngFor="let item of list(); let i = index"
+          class="blog_card_box border rounded-3xl cursor-pointer hover:border-blue-500 hover:-translate-y-2 duration-500 ease-in-out shadow-xl"
+          [routerLink]="['/blogDetails', item.id]"
+          data-animate
+        >
+          <!-- Image -->
+          <div class="blog_image rounded-t-3xl overflow-hidden">
+            <img
+              class="w-full h-80 sm:h-72 md:h-80 rounded-t-3xl"
+              [src]="baseURL + '/api/attachment/get/' + item.image"
+              alt=""
+            />
+          </div>
+
+          <!-- Title -->
+          <div class="blog_title p-5 sm:p-2 md:p-5 mt-3">
+            <h2 class="text-2xl font-semibold mb-8 sm:mb-5 md:mb-8">
+              {{ item.title }}
+            </h2>
+            <hr />
+            <div class="flex items-center justify-between">
+              <!-- Author -->
+              <div
+                class="who_post_blog mt-8 sm:mt-5 md:mt-8 flex items-center gap-5"
+              >
+                <div class="who_post_blog_img">
+                  <img
+                    *ngIf="item.picture"
+                    class="w-14 h-14 rounded-full"
+                    [src]="baseURL + '/api/attachment/get/' + item.picture"
+                    alt=""
+                  />
+                </div>
+                <div class="who_post_blog_title">
+                  <h4 class="font-semibold text-lg" *ngIf="item.name">
+                    {{ item.name }}
+                  </h4>
+                  <span class="text-sm text-gray-500">
+                    {{ item.postedDate | date : 'MMMM d, y' }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Countdown -->
+              <div class="mt-10" *ngIf="item.offerDate">
+                <h2 class="font-semibold text-blue-500 text-lg">
+                  Offer Time :
+                </h2>
+                <span class="text-2xl text-red-500">
+                  {{ countdowns()[i] || 'Loading...' }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

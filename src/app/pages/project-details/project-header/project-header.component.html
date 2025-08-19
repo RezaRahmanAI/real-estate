@@ -1,0 +1,15 @@
+<div
+  class="hero mb-14 py-20 md:py-28 lg:py-36 xl:py-[270px]"
+  [style.backgroundImage]="project?.content ? 'url(' + baseUrl + '/api/attachment/get/' + project.content + ')' : 'url(/images/fallback.png)'"
+  (error)="onImageError($event)"
+>
+  <div class="container mx-auto relative hero-text">
+    <h1 class="text-4xl lg:text-6xl text-white font-semibold mb-8 text-center md:text-left">
+      <span class="mb-5 inline-block">{{ project?.name || 'Project Details' }}</span>
+    </h1>
+    <p class="lg:ms-40 text-slate-50 text-lg text-center md:text-left">
+      {{ project?.address || 'No address available' }}
+    </p>
+    
+  </div>
+</div>

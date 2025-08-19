@@ -1,0 +1,78 @@
+<div class="project_details_section py-16" id="atGlance">
+  <div class="lg:container mx-auto">
+    <div class="md:flex md:flex-row mb-16">
+      <div class="w-full md:w-[50%] p-4">
+        <div class="projects_content">
+          <div *ngIf="project?.contentType === 'Image'" class="porects_image mt-5">
+            <img
+              class="w-full rounded"
+              [src]="baseUrl + '/api/attachment/get/' + project?.content"
+              alt="Project image"
+              (error)="onImageError($event)"
+            />
+          </div>
+          <div *ngIf="project?.contentType === 'Video'" class="porects_video mt-5">
+            <video class="w-full rounded-lg" controls>
+              <source [src]="baseUrl + '/api/attachment/get/' + project?.content" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+      <div class="w-full md:w-[50%] p-4">
+        <div class="projects_text">
+          <h1 class="title">At a Glance</h1>
+          <div class="porijecDetails">
+            <table class="w-full">
+              <tbody>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-2 w-36"><strong>Address:</strong></td>
+                  <td class="py-4 px-2">{{ project?.address || 'None' }}</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-2 w-36"><strong>Land Area:</strong></td>
+                  <td class="py-4 px-2">{{ project?.landArea || 'None' }}</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-2 w-36"><strong>Height:</strong></td>
+                  <td class="py-4 px-2">{{ project?.height || 'None' }}</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-2 w-36"><strong>Building Type:</strong></td>
+                  <td class="py-4 px-2">{{ project?.type || 'None' }}</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-2 w-36"><strong>Number Of Apartments:</strong></td>
+                  <td class="py-4 px-2">{{ project?.numberOfApartments || 'None' }}</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-2 w-36"><strong>Number Of Car Parking:</strong></td>
+                  <td class="py-4 px-2">{{ project?.numberOfParking || 'None' }}</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-2 w-36"><strong>Units Per Floor:</strong></td>
+                  <td class="py-4 px-2">{{ project?.unitPerFloors || 'None' }}</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 px-2 w-36"><strong>Size Of Each Apartment:</strong></td>
+                  <td class="py-4 px-2">{{ project?.sizeOfEachApartment || 'None' }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="adds">
+      <div class="px-4 flex items-center gap-3">
+        <i class="ri-bookmark-3-fill"></i>
+      </div>
+      <div>
+        <a routerLink="/contact" class="btn-primary">Booking Now</a>
+      </div>
+      <div class="px-4 flex items-center gap-3">
+        <i class="ri-bookmark-3-fill"></i>
+      </div>
+    </div> -->
+  </div>
+</div>

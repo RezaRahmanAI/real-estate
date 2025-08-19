@@ -1,0 +1,65 @@
+<section appFadeIn class="our_vision_mission py-16 px-4 bg-light">
+  <div class="max-w-6xl mx-auto mission_vision_container gap-16">
+    <!-- Mission -->
+    <div class="mission flex flex-col lg:flex-row gap-10 items-center">
+      <div class="lg:w-1/2">
+        <div class="overflow-hidden rounded-xl shadow">
+          <img
+            *ngIf="missionImage; else missionPlaceholder"
+            [src]="missionImage"
+            alt="Mission image"
+            class="w-full object-cover h-60"
+            loading="lazy"
+            (error)="onImageError($event)"
+            [@imageAnimation]
+          />
+          <ng-template #missionPlaceholder>
+            <div class="w-full h-60 bg-accent-light/20 flex items-center justify-center text-dark" [@imageAnimation]>
+              No image
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="lg:w-1/2">
+        <h2 class="text-3xl font-poppins font-bold text-dark mb-3" [@textAnimation]>Mission</h2>
+        <div class="text-dark">
+          <p *ngIf="mission; else noMission" [@textAnimation]>{{ mission }}</p>
+          <ng-template #noMission>
+            <p class="text-accent-light" [@textAnimation]>No mission available.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vision -->
+    <div class="vision flex flex-col lg:flex-row-reverse gap-10 items-center">
+      <div class="lg:w-1/2">
+        <div class="overflow-hidden rounded-xl shadow">
+          <img
+            *ngIf="visionImage; else visionPlaceholder"
+            [src]="visionImage"
+            alt="Vision image"
+            class="w-full object-cover h-60"
+            loading="lazy"
+            (error)="onImageError($event)"
+            [@visionImageAnimation]
+          />
+          <ng-template #visionPlaceholder>
+            <div class="w-full h-60 bg-accent-light/20 flex items-center justify-center text-dark" [@visionImageAnimation]>
+              No image
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="lg:w-1/2">
+        <h2 class="text-3xl font-poppins font-bold text-dark mb-3" [@visionTextAnimation]>Vision</h2>
+        <div class="text-dark">
+          <p *ngIf="vision; else noVision" [@visionTextAnimation]>{{ vision }}</p>
+          <ng-template #noVision>
+            <p class="text-accent-light" [@visionTextAnimation]>No vision available.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

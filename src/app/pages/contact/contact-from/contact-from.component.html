@@ -1,0 +1,83 @@
+  <!-- Lead Capture Form -->
+  <section appReveal class="connect_form">
+    <div class="container max-w-form">
+      <div class="form-wrapper">
+        <h2 class="form-title">Request Your Consultation</h2>
+        <p class="form-sub">No obligation. One of our property experts will contact you within 2 business hours.</p>
+
+        <div *ngIf="errorMessage" class="feedback error">{{ errorMessage }}</div>
+        <div *ngIf="submitted" class="feedback success">Thank you! We’ll be in touch shortly.</div>
+
+        <form #contactForm="ngForm" (ngSubmit)="createData(contactForm)" novalidate class="form-grid animate-entrance" >
+          
+          <div class="field-group">
+            <label for="name">Full Name *</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              [(ngModel)]="contactData.name"
+              required
+              class="input"
+              placeholder="Your name"
+            />
+          </div>
+          <div class="field-group">
+            <label for="phone">Phone Number *</label>
+            <input
+              type="tel"
+              name="phone"
+              id="phone"
+              [(ngModel)]="contactData.phone"
+              required
+              class="input"
+              placeholder="e.g. 01329-638961"
+            />
+          </div>
+
+          <div class="field-group full-width">
+            <label for="email">Email *</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              [(ngModel)]="contactData.email"
+              required
+              class="input"
+              placeholder="you@example.com"
+            />
+          </div>
+
+          <div class="field-group full-width">
+            <label for="message">Details</label>
+            <textarea
+              name="message"
+              id="message"
+              rows="3"
+              [(ngModel)]="contactData.message"
+              class="input"
+              placeholder="Preferred area, special requests, best time to call..."
+            ></textarea>
+          </div>
+
+          
+          <div class="consent full-width">
+            <p class="text-xs">
+              By submitting, you agree to our <span class="font-semibold">privacy policy</span>. We’ll never share your information.
+            </p>
+          </div>
+
+          <div class="submit-wrapper full-width">
+            <button
+              type="submit"
+              [disabled]="submitting || contactForm.invalid"
+              class="btn large"
+            >
+              <span *ngIf="!submitting">Request Consultation</span>
+              <span *ngIf="submitting">Sending...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>

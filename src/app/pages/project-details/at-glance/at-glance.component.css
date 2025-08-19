@@ -1,0 +1,45 @@
+.project_details_section .title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2d46;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .project_details_section .title {
+    font-size: 3.5rem;
+  }
+}
+
+.porects_image img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 640px) { .porects_image img { height: 500px; } }
+@media (min-width: 768px) { .porects_image img { height: 600px; } }
+@media (min-width: 1280px) { .porects_image img { height: 700px; } }
+@media (min-width: 1536px) { .porects_image img { height: 800px; } }
+
+.porects_video video {
+  width: 100%;
+  height: 300px;
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 640px) { .porects_video video { height: 100%; } }
+
+.porijecDetails table {
+  font-family: "Inter", sans-serif;
+  color: #1f2d46;
+}
+
+.porijecDetails td {
+  font-size: 1rem;
+}
+
+
+

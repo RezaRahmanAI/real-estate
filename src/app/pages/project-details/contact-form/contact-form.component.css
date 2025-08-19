@@ -1,0 +1,53 @@
+
+
+.contact_form h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1f2d46;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .contact_form h1 {
+    font-size: 3.5rem;
+  }
+}
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 0.625rem 0;
+  font-size: 0.875rem;
+  color: #1f2d46;
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid #d1d5db;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+}
+
+.form-label {
+  position: absolute;
+  top: 0.75rem;
+  left: 0;
+  font-size: 0.875rem;
+  color: #fff;
+  transform-origin: 0 0;
+  transition: all 0.3s;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  transform: translateY(-1.5rem) scale(0.75);
+  color: #3b82f6;
+}
+
+.form-input:placeholder-shown + .form-label {
+  transform: translateY(0) scale(1);
+}

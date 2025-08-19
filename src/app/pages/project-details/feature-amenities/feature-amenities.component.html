@@ -1,0 +1,31 @@
+<div class="feature_and_amenities py-10 px-2" id="featureAndAmenities">
+  <div class="container">
+    <h1 class="text-center">Feature & Amenities</h1>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 mb-16">
+      <div *ngFor="let item of features" class="featureCard">
+        <div class="cardIcon">
+          <img
+            class="w-2/6 rounded-t-2xl"
+            [src]="baseUrl + '/api/attachment/get/' + item.icon"
+            alt="Feature icon"
+            (error)="onImageError($event)"
+          />
+        </div>
+        <div class="cardText">
+          <span>{{ item.title }}</span>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="adds">
+      <div class="px-4 flex items-center gap-3">
+        <i class="ri-bookmark-3-fill"></i>
+      </div>
+      <div>
+        <a routerLink="/contact" class="btn-primary">Enroll Now</a>
+      </div>
+      <div class="px-4 flex items-center gap-3">
+        <i class="ri-bookmark-3-fill"></i>
+      </div>
+    </div> -->
+  </div>
+</div>

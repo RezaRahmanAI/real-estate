@@ -1,0 +1,11 @@
+<section appFadeIn class="history py-16 px-4 bg-light">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-4xl lg:text-6xl font-poppins font-bold text-dark mb-6" [@headingAnimation]>Our History</h2>
+    <div class="text-dark">
+      <p *ngIf="history; else noHistory" [@textAnimation]>{{ history }}</p>
+      <ng-template #noHistory>
+        <p class="text-accent-light" [@textAnimation]>No history available.</p>
+      </ng-template>
+    </div>
+  </div>
+</section>

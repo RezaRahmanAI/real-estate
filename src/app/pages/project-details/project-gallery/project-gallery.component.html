@@ -1,0 +1,22 @@
+<section class="project-gallery py-12" id="projectGallery">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl font-heading font-bold text-text mb-8 text-center">Project Gallery</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
+      <div *ngFor="let item of gallery" class="relative">
+        <img
+          *ngIf="item.contentType === 'Image'"
+          [src]="baseUrl + '/api/attachment/get/' + item.content"
+          alt="Gallery Image"
+          class="w-full h-64 object-cover rounded-lg shadow-lg"
+          
+        />
+        <video
+          *ngIf="item.contentType === 'Video'"
+          [src]="baseUrl + '/api/attachment/get/' + item.content"
+          controls
+          class="w-full h-64 object-cover rounded-lg shadow-lg"
+        ></video>
+      </div>
+    </div>
+  </div>
+</section>
