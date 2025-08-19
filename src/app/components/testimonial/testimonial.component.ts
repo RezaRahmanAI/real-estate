@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FadeInDirective } from '../../directives/fade-in.directive';
 
@@ -15,9 +15,10 @@ export interface Testimonial {
   templateUrl: './testimonial.component.html',
   styleUrls: ['./testimonial.component.css'],
 })
-export class TestimonialCarouselComponent implements OnInit {
+export class TestimonialCarouselComponent implements OnInit, OnDestroy {
   @Input() testimonials: Testimonial[] = [];
   currentIndex = 0;
+  autoSlideInterval: any;
 
   defaultImage = 'https://via.placeholder.com/400x300?text=Testimonial+Image';
 
@@ -45,6 +46,17 @@ export class TestimonialCarouselComponent implements OnInit {
         },
       ];
     }
+
+    // 🔄 Auto-slide every 4 seconds
+    this.autoSlideInterval = setInterval(() => {
+      this.next();
+    }, 4000);
+  }
+
+  ngOnDestroy() {
+    if (this.autoSlideInterval) {
+      clearInterval(this.autoSlideInterval);
+    }
   }
 
   prev() {
@@ -64,10 +76,6 @@ export class TestimonialCarouselComponent implements OnInit {
   onImageError(event: Event) {
     const imgElement = event.target as HTMLImageElement;
     if (imgElement.src !== this.defaultImage) {
-      console.warn(
-        'Testimonial image failed to load, switching to fallback:',
-        imgElement.src
-      );
       imgElement.src = this.defaultImage;
     }
   }
