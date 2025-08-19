@@ -15,10 +15,9 @@ export interface Testimonial {
   templateUrl: './testimonial.component.html',
   styleUrls: ['./testimonial.component.css'],
 })
-export class TestimonialCarouselComponent implements OnInit, OnDestroy {
+export class TestimonialCarouselComponent implements OnInit {
   @Input() testimonials: Testimonial[] = [];
   currentIndex = 0;
-  autoSlideInterval: any;
 
   defaultImage = 'https://via.placeholder.com/400x300?text=Testimonial+Image';
 
@@ -47,17 +46,9 @@ export class TestimonialCarouselComponent implements OnInit, OnDestroy {
       ];
     }
 
-    // 🔄 Auto-slide every 4 seconds
-    this.autoSlideInterval = setInterval(() => {
-      this.next();
-    }, 4000);
+    
   }
 
-  ngOnDestroy() {
-    if (this.autoSlideInterval) {
-      clearInterval(this.autoSlideInterval);
-    }
-  }
 
   prev() {
     this.currentIndex =
