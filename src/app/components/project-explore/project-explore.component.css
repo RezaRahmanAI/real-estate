@@ -1,0 +1,64 @@
+
+:host {
+  display: block;
+}
+
+.projects_explore {
+  @apply bg-light py-24 px-4 md:px-8 rounded-2xl;
+  position: relative;
+}
+
+
+.container {
+  @apply mx-auto mt-24 md:mt-28;
+}
+
+.grid {
+  display: grid;
+  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-10 md:p-5 lg:p-2 xl:p-0;
+}
+
+.explore_item {
+  @apply relative w-full h-[300px] md:h-[400px] lg:h-[500px] rounded-2xl overflow-hidden cursor-pointer;
+  box-shadow: 0 25px 60px -10px rgba(96, 153, 102, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.explore_item:hover {
+  @apply translate-y-[-4px];
+  box-shadow: 0 35px 80px -10px rgba(96, 153, 102, 0.2);
+}
+
+.project_card_img {
+  @apply absolute inset-0; /* make image fill full parent */
+}
+
+.project_card_img img {
+  @apply w-full h-full object-cover rounded-2xl;
+  filter: brightness(0.5);
+  transition: filter 0.7s ease;
+}
+
+.explore_item:hover .project_card_img img {
+  filter: brightness(1);
+}
+
+.explore_item_text {
+  @apply absolute inset-0 flex flex-col items-center justify-center;
+  text-align: center;
+  pointer-events: none; /* so only card is clickable */
+}
+
+.explore_item_text h2 {
+  @apply text-3xl text-white font-poppins font-semibold mb-5;
+}
+
+.explore_item_text p {
+  @apply text-lg text-white opacity-0 translate-y-8 transition duration-700;
+}
+
+.explore_item:hover .explore_item_text p {
+  @apply opacity-100 translate-y-0;
+}
+
+

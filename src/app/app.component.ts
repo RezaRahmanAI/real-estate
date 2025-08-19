@@ -9,6 +9,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { VisionBannerComponent } from "./components/vision-banner/vision-banner.component";
 import { TestimonialCarouselComponent } from "./components/testimonial/testimonial.component";
+import { ProjectExploreComponent } from "./components/project-explore/project-explore.components";
 
 @Component({
   selector: 'app-root',
@@ -23,7 +24,8 @@ import { TestimonialCarouselComponent } from "./components/testimonial/testimoni
     ContactComponent,
     FooterComponent,
     VisionBannerComponent,
-    TestimonialCarouselComponent
+    TestimonialCarouselComponent,
+    ProjectExploreComponent
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
