@@ -1,3 +1,135 @@
-<footer class="text-center p-8 bg-dark text-light">
-  <p>&copy; 2025 Real Estate Co. All rights reserved.</p>
+<footer appFadeIn class="footer bg-dark text-light">
+  <div class="container mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
+    <!-- Brand & Trust -->
+    <div class="brand-trust space-y-4 relative">      
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-r from-accent to-accent-light rounded-full flex items-center justify-center text-white font-bold">R</div>
+        <div>
+          <h2 class="text-2xl font-bold font-poppins">Real Estate Ltd.</h2>
+          <p class="text-sm text-accent-light">Local experts in Rajshahi. Trusted since 2015.</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-2 mt-2">
+        <div class="text-xs bg-accent px-3 py-1 rounded-full text-white">500+ Properties Sold</div>
+        <div class="text-xs bg-accent px-3 py-1 rounded-full text-white">Verified Listings</div>
+        <div class="text-xs bg-accent px-3 py-1 rounded-full text-white">4.9 ★ Customer Rating</div>
+      </div>
+      <div class="mt-4">
+        <h3 class="font-semibold font-poppins mb-2 text-dark">Subscribe for Market Updates</h3>
+        <div class="flex flex-col sm:flex-row gap-3" aria-label="Newsletter subscription">
+          <input
+            type="email"
+            placeholder="Your email"
+            aria-label="Email for newsletter"
+            class="flex-1 px-4 py-2 rounded-2xl border border-transparent focus:outline-none focus:ring-2 focus:ring-accent text-dark bg-white"
+          />
+          <button
+            type="button"
+            class="bg-accent hover:bg-accent-light rounded-2xl px-5 py-2 font-semibold text-white transition"
+          >
+            Subscribe
+          </button>
+        </div>
+        <p class="text-xs text-accent-light mt-2">
+          We respect your privacy. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+
+    <!-- Navigation / Quick Links -->
+    <div class="nav-links grid grid-cols-2 gap-8">
+      <div>
+        <h4 class="text-lg font-semibold font-poppins flex items-center gap-2 text-light">
+          Navigation
+          <i class="ri-arrow-right-line"></i>
+        </h4>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a [routerLink]="['/']" class="text-accent-light hover:text-light transition">Home</a></li>
+          <li><a [routerLink]="['/about']" class="text-accent-light hover:text-light transition">About Us</a></li>
+          <li><a [routerLink]="['/projects']" class="text-accent-light hover:text-light transition">Projects</a></li>
+          <li><a [routerLink]="['/contact']" class="text-accent-light hover:text-light transition">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold font-poppins flex items-center gap-2 text-light">
+          Resources
+          <i class="ri-arrow-right-line"></i>
+        </h4>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li><a href="#" class="text-accent-light hover:text-light transition">Buyers Guide</a></li>
+          <li><a href="#" class="text-accent-light hover:text-light transition">Sell with Us</a></li>
+          <li><a href="#" class="text-accent-light hover:text-light transition">FAQ</a></li>
+          <li><a href="#" class="text-accent-light hover:text-light transition">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contact & Social -->
+    <div class="contact-social space-y-5">
+      <div>
+        <h4 class="text-lg font-semibold font-poppins flex items-center gap-2 text-light">
+          Get in Touch
+          <i class="ri-arrow-right-line"></i>
+        </h4>
+        <div class="mt-4 space-y-3 text-sm">
+          <div class="flex items-start gap-3">
+            <i class="ri-map-pin-line text-2xl text-accent flex-shrink-0" aria-hidden="true"></i>
+            <div>
+              <p class="font-semibold text-dark">Office</p>
+              <p class="text-accent-light">Alokar More, Rajshahi, Bangladesh.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="ri-phone-line text-2xl text-accent" aria-hidden="true"></i>
+            <a href="tel:01329638961" class="text-accent-light hover:text-light transition">01329-638961</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="ri-smartphone-line text-2xl text-accent" aria-hidden="true"></i>
+            <a href="tel:01739703426" class="text-accent-light hover:text-light transition">01739-703426</a>
+          </div>
+          <div class="flex items-center gap-3">
+            <i class="ri-mail-send-line text-2xl text-accent" aria-hidden="true"></i>
+            <a href="mailto:triconproperties21@gmail.com" class="text-accent-light hover:text-light transition">triconproperties21&#64;gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-lg font-semibold font-poppins flex items-center gap-2 text-light">
+          Follow Us
+          <i class="ri-arrow-right-line"></i>
+        </h4>
+        <div class="mt-3 flex gap-4">
+          <a href="https://www.facebook.com/share/19SHqBnNcY/?mibextid=qi2Omg" target="_blank" aria-label="Facebook" class="text-accent-light hover:text-light transition text-2xl">
+            <i class="ri-facebook-circle-line"></i>
+          </a>
+          <a href="https://www.instagram.com/triconproperties" target="_blank" aria-label="Instagram" class="text-accent-light hover:text-light transition text-2xl">
+            <i class="ri-instagram-line"></i>
+          </a>
+          <a href="https://bd.linkedin.com/company/triconproperties" target="_blank" aria-label="LinkedIn" class="text-accent-light hover:text-light transition text-2xl">
+            <i class="ri-linkedin-box-fill"></i>
+          </a>
+          <a href="https://wa.me/8801739703426" target="_blank" aria-label="WhatsApp" class="text-accent-light hover:text-light transition text-2xl">
+            <i class="ri-whatsapp-fill"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-accent-light mt-8">
+    <div class="container mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm gap-4">
+      <div class="flex flex-col sm:flex-row items-center gap-3">
+        <p class="text-accent-light">&copy; 2025 Real Estate Ltd. All rights reserved.</p>
+        <span class="text-accent-light">|</span>
+        <a href="#" class="text-accent-light hover:text-light transition">Privacy Policy</a>
+        <span class="text-accent-light">|</span>
+        <a href="#" class="text-accent-light hover:text-light transition">Terms of Service</a>
+      </div>
+      <div class="flex gap-4">
+        <div class="text-accent-light text-xs">Powered by YourBrand</div>
+      </div>
+    </div>
+  </div>
 </footer>
+```
