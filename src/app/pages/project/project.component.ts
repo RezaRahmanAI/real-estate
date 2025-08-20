@@ -1,8 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { ToastrService } from 'ngx-toastr';
+import { FadeInDirective } from '../../directives/fade-in.directive';
+import { LenisService } from '../../services/lenis.service';
 
 interface ProjectItem {
   id: number | string;
@@ -17,11 +20,11 @@ interface ProjectItem {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, RouterModule, HttpClientModule],
+  imports: [CommonModule, RouterModule, FadeInDirective],
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css'],
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent implements  AfterViewInit {
   @ViewChild('categorySelect') categorySelect!: ElementRef<HTMLSelectElement>;
   @ViewChild('typeSelect') typeSelect!: ElementRef<HTMLSelectElement>;
 
@@ -30,9 +33,14 @@ export class ProjectsComponent implements OnInit {
     list: [] as ProjectItem[],
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private lenisService: LenisService,
+    private toastr: ToastrService
+  ) {}
 
-  ngOnInit(): void {
+
+  ngAfterViewInit(): void {
     this.getProject();
   }
 
@@ -51,10 +59,14 @@ export class ProjectsComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.state.list = data;
+          if (!data.length) {
+            this.toastr.info('No projects match your filters. Try adjusting criteria.', 'No Results');
+          }
         },
         error: (err) => {
           console.error('Error fetching projects:', err);
           this.state.list = [];
+          this.toastr.error('Failed to load projects. Please try again.', 'Error');
         },
       });
   }

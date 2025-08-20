@@ -1,0 +1,80 @@
+<div class="p-4 bg-gray-100 dark:bg-gray-900 min-h-screen">
+  <div class="flex items-center mb-4">
+    <h6 class="text-lg font-bold text-gray-900 dark:text-white flex-grow">List of Projects</h6>
+    <div class="flex-shrink-0">
+      <button (click)="openCreateModal()" class="px-5 py-1 text-white bg-cyan-600 border border-cyan-500 hover:bg-cyan-700 hover:border-cyan-600 focus:ring-2 focus:ring-cyan-200 dark:focus:ring-cyan-400/20 rounded-lg text-sm font-medium transition-all duration-200">
+        <span class="align-middle">Create Project</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Create Modal -->
+  <div *ngIf="showCreateModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 transition-opacity duration-300">
+    <app-project-form [project]="null" mode="create" (close)="closeModal()" (saved)="onProjectSaved()"></app-project-form>
+  </div>
+
+  <!-- Edit Modal -->
+  <div *ngIf="showEditModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 transition-opacity duration-300">
+    <app-project-form [project]="selectedProject" mode="edit" (close)="closeModal()" (saved)="onProjectSaved()"></app-project-form>
+  </div>
+
+  <div class="relative overflow-x-auto shadow-md bg-white dark:bg-gray-800 rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-4 py-3 min-w-[120px]">Name</th>
+          <th scope="col" class="px-4 py-3 min-w-[150px] hidden md:table-cell">Description</th>
+          <th scope="col" class="px-4 py-3 min-w-[150px] hidden lg:table-cell">Address</th>
+          <th scope="col" class="px-4 py-3 min-w-[80px]">Thumbnail</th>
+          <th scope="col" class="px-4 py-3 min-w-[80px] hidden sm:table-cell">Category</th>
+          <th scope="col" class="px-4 py-3 min-w-[80px] hidden sm:table-cell">Type</th>
+          <th scope="col" class="px-4 py-3 min-w-[80px] hidden md:table-cell">Content</th>
+          <th scope="col" class="px-4 py-3 min-w-[120px] hidden lg:table-cell">Offer Title</th>
+          <th scope="col" class="px-4 py-3 min-w-[100px] hidden md:table-cell">Offer Date</th>
+          <th scope="col" class="px-4 py-3 min-w-[80px]">Status</th>
+          <th scope="col" class="px-4 py-3 min-w-[220px]">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of projects; let i = index" class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-200" [ngClass]="{'bg-white dark:bg-gray-800': i % 2 === 0, 'bg-gray-50 dark:bg-gray-700': i % 2 !== 0}">
+          <th scope="row" class="px-4 py-3 font-medium text-gray-900 dark:text-white max-w-[120px] truncate">{{ item.name }}</th>
+          <td class="px-4 py-3 max-w-[150px] truncate hidden md:table-cell">{{ item.description }}</td>
+          <td class="px-4 py-3 max-w-[150px] truncate hidden lg:table-cell">{{ item.address }}</td>
+          <td class="px-4 py-3">
+            <img class="w-10 h-10 object-cover rounded" [src]="apiBaseUrl + '/api/attachment/get/' + item.thumbnail" alt="Thumbnail" />
+          </td>
+          <td class="px-4 py-3 hidden sm:table-cell">{{ item.category }}</td>
+          <td class="px-4 py-3 hidden sm:table-cell">{{ item.type }}</td>
+          <td class="px-4 py-3 hidden md:table-cell">
+            <ng-container *ngIf="item.contentType === 'Image'">
+              <img class="w-10 h-10 object-cover rounded" [src]="apiBaseUrl + '/api/attachment/get/' + item.content" alt="Content" />
+            </ng-container>
+            <ng-container *ngIf="item.contentType === 'Video'">
+              <video class="w-10 h-10 object-cover rounded" controls>
+                <source [src]="apiBaseUrl + '/api/attachment/get/' + item.content" type="video/mp4" />
+              </video>
+            </ng-container>
+          </td>
+          <td class="px-4 py-3 max-w-[120px] truncate hidden lg:table-cell">{{ item.offerTitle }}</td>
+          <td class="px-4 py-3 hidden md:table-cell">{{ item.offerDateTime | date:'short' }}</td>
+          <td class="px-4 py-3">
+            <span *ngIf="item.isActive" class="px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-500 dark:bg-green-500/20 inline-flex items-center">
+              <i class="fas fa-check-circle mr-1"></i> Active
+            </span>
+            <span *ngIf="!item.isActive" class="px-2 py-0.5 text-xs font-medium rounded bg-red-100 text-red-500 dark:bg-red-500/20 inline-flex items-center">
+              <i class="fas fa-times-circle mr-1"></i> Inactive
+            </span>
+          </td>
+          <td class="px-4 py-3 text-right space-x-2">
+            <button (click)="openEditModal(item)" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-3 py-1 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 transition-all duration-200">Edit</button>
+            <button *ngIf="item.isActive" (click)="toggleProjectActive(item.id, false)" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-3 py-1 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 transition-all duration-200">Deactivate</button>
+            <button *ngIf="!item.isActive" (click)="toggleProjectActive(item.id, true)" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-2 focus:outline-none focus:ring-green-300 rounded-lg text-sm px-3 py-1 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 transition-all duration-200">Activate</button>
+            <button (click)="deleteProject(item.id)" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-3 py-1 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 transition-all duration-200">Delete</button>
+            <a [routerLink]="[ item.id, 'gallery']" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-3 py-1 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 transition-all duration-200">Gallery</a>
+            <a [routerLink]="[ item.id, 'features']" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-3 py-1 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 transition-all duration-200">Features</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

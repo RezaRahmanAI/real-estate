@@ -6,18 +6,16 @@ import {
   signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { environment } from '../../../environments/environment';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { environment } from '../../environments/environment';
 
-gsap.registerPlugin(ScrollTrigger);
+
 
 @Component({
   selector: 'app-blog-details',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './blog-details.component.html',
   styleUrls: ['./blog-details.component.css'],
 })
@@ -45,7 +43,7 @@ export class BlogDetailsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.animateOnScroll();
+    //this.animateOnScroll();
 
     const blogRow = this.el.nativeElement.querySelector('#blogRow');
     const image = this.el.nativeElement.querySelector('#blogImage');
@@ -103,7 +101,6 @@ export class BlogDetailsComponent implements OnInit {
           }))
         );
         this.startCountdown();
-        setTimeout(() => this.animateOnScroll(), 100);
       },
       error: (error) => {
         console.error('Error fetching blogs:', error);
@@ -173,24 +170,5 @@ export class BlogDetailsComponent implements OnInit {
     }
   }
 
-  private animateOnScroll() {
-    const sections = this.el.nativeElement.querySelectorAll('[data-animate]');
-    sections.forEach((section: HTMLElement) => {
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    });
-  }
+  
 }

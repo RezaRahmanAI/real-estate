@@ -15,8 +15,9 @@ import { ProjectGalleryComponent } from './project-gallery/project-gallery.compo
 import { LocationMapComponent } from './location-map/location-map.component';
 import { RelatedProjectsComponent } from './related-projects/related-projects.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { environment } from '../../environments/environment';
 import { SafeUrlPipe } from '../../pipes/safe-url.pipe';
-import { environment } from '../../../environments/environment';
+
 
 interface Project {
   id: number | string;

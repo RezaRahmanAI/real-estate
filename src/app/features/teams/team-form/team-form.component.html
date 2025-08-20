@@ -1,0 +1,172 @@
+<div
+  class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+>
+  <div
+    class="relative w-full max-w-2xl bg-white dark:bg-gray-800 rounded-xl shadow-2xl p-6 sm:p-8 transform transition-all duration-300 scale-100"
+  >
+    <!-- Header -->
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-xl font-bold text-gray-900 dark:text-white">
+        {{ mode === 'create' ? 'Add New Team Member' : 'Edit Team Member' }}
+      </h3>
+      <button
+        type="button"
+        (click)="close.emit()"
+        class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full p-2 transition-colors duration-200"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+        <span class="sr-only">Close modal</span>
+      </button>
+    </div>
+
+    <!-- Form -->
+    <form (ngSubmit)="saveTeam()" enctype="multipart/form-data" class="space-y-6">
+      <div class="grid gap-6 sm:grid-cols-2">
+        <!-- Name -->
+        <div class="sm:col-span-2">
+          <label for="name" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <i class="fas fa-user mr-2"></i>Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            [(ngModel)]="_team.name"
+            type="text"
+            class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+            placeholder="Enter team member name"
+            required
+          />
+          <input
+            *ngIf="mode === 'edit'"
+            id="editid"
+            name="editid"
+            [(ngModel)]="_team.id"
+            type="text"
+            class="hidden"
+          />
+        </div>
+
+        <!-- Designation -->
+        <div class="sm:col-span-2">
+          <label for="designation" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <i class="fas fa-briefcase mr-2"></i>Designation
+          </label>
+          <textarea
+            id="designation"
+            name="designation"
+            [(ngModel)]="_team.designation"
+            rows="3"
+            class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+            placeholder="Enter designation (e.g., Real Estate Agent)"
+          ></textarea>
+        </div>
+
+        <!-- Description -->
+        <div class="sm:col-span-2">
+          <label for="description" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <i class="fas fa-info-circle mr-2"></i>Description
+          </label>
+          <textarea
+            id="description"
+            name="description"
+            [(ngModel)]="_team.description"
+            rows="4"
+            class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+            placeholder="Describe the team member's role or bio"
+          ></textarea>
+        </div>
+
+        <!-- Social Media Links -->
+        <div>
+          <label for="facebook" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <i class="fab fa-facebook-f mr-2"></i>Facebook
+          </label>
+          <input
+            id="facebook"
+            name="facebook"
+            [(ngModel)]="_team.facebook"
+            type="text"
+            class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+            placeholder="https://facebook.com/username"
+            required
+          />
+        </div>
+        <div>
+          <label for="twitter" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <i class="fab fa-twitter mr-2"></i>Twitter
+          </label>
+          <input
+            id="twitter"
+            name="twitter"
+            [(ngModel)]="_team.twitter"
+            type="text"
+            class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+            placeholder="https://twitter.com/username"
+            required
+          />
+        </div>
+        <div>
+          <label for="linkedin" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <i class="fab fa-linkedin-in mr-2"></i>LinkedIn
+          </label>
+          <input
+            id="linkedin"
+            name="linkedin"
+            [(ngModel)]="_team.linkedin"
+            type="text"
+            class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+            placeholder="https://linkedin.com/in/username"
+            required
+          />
+        </div>
+
+        <!-- Image -->
+        <div>
+          <label for="image" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <i class="fas fa-image mr-2"></i>Profile Image
+          </label>
+          <input
+            id="image"
+            name="image"
+            type="file"
+            (change)="onFileChange($event)"
+            class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 dark:file:bg-gray-600 dark:file:text-gray-300"
+          />
+        </div>
+
+        <!-- Order -->
+        <div>
+          <label for="order" class="block mb-2 text-sm font-medium text-gray-700 dark:text-gray-300">
+            <i class="fas fa-sort-numeric-up mr-2"></i>Order
+          </label>
+          <input
+            id="order"
+            name="order"
+            [(ngModel)]="_team.order"
+            type="number"
+            class="w-full p-3 bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg text-gray-900 dark:text-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-200"
+            placeholder="Enter display order"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="flex justify-end">
+        <button
+          type="submit"
+          class="inline-flex items-center px-6 py-3 text-white bg-gradient-to-r from-indigo-600 to-indigo-800 hover:from-indigo-700 hover:to-indigo-900 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm transition-all duration-200 dark:focus:ring-indigo-800"
+        >
+          <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+          </svg>
+          {{ mode === 'create' ? 'Create Team Member' : 'Update Team Member' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -2,128 +2,99 @@
   display: block;
 }
 
-.page_title h1 {
-  margin: 0;
+.container {
+  @apply mx-auto px-4;
 }
 
+
 .project_section {
-  background: #f9f9fb;
-  padding: 3rem 0;
+  @apply py-12 bg-light;
+}
+
+.grid {
+  display: grid;
+  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
 }
 
 .project_card {
-  border-radius: 1rem;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  @apply relative overflow-hidden rounded-2xl shadow-lg bg-white flex flex-col;
   min-height: 500px;
-  display: flex;
-  flex-direction: column;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project_card:hover {
-  transform: translateY(-4px);
+  @apply translate-y-[-4px];
+  box-shadow: 0 12px 30px -5px rgba(96, 153, 102, 0.3);
 }
 
 .project_card_img img {
-  display: block;
-  width: 100%;
-  height: 320px;
-  object-fit: cover;
+  @apply w-full h-[320px] object-cover;
   transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
 }
 
-.project_card:hover .project_card_img img {
-  transform: scale(1.05);
-  filter: brightness(0.8);
-}
+/* .project_card:hover .project_card_img img {
+  @apply scale-105 brightness-80;
+} */
 
 .project_card_details {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
+  @apply p-5 text-center flex flex-col flex-grow;
 }
 
 .project_card_details h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 1.25rem;
-  font-weight: 600;
-  transition: color 0.35s ease;
+  @apply text-xl font-bold font-poppins mb-1 transition;
 }
 
 .project_card:hover .project_card_details h2 {
-  color: var(--primary);
+  @apply text-accent;
+}
+
+/* .project_card_details .text-sm {
+  @apply text-accent-light flex justify-center items-center gap-2 mb-3;
+} */
+
+.project_card_details .w-2 {
+  @apply bg-accent rounded-full;
+}
+
+.project_card_details .mt-auto {
+  @apply flex justify-center gap-3;
 }
 
 .project_card_details button {
-  font-size: 0.875rem;
-  letter-spacing: 0.5px;
-  font-weight: 600;
+  @apply text-sm px-6 py-2.5 rounded-full font-semibold;
 }
 
-.project_card_details .view-details {
-  background: linear-gradient(135deg, var(--primary) 0%, #3fa67d 100%);
-  box-shadow: 0 8px 20px -5px rgba(46, 139, 87, 0.4);
-  padding: 0.75rem 2rem;
-  border-radius: 0.75rem;
-  color: #fff;
+.btn-primary {
+  @apply bg-accent text-white;
 }
 
-.project_card_details .view-details:hover {
-  background: var(--accent);
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 12px 30px -5px rgba(255, 215, 0, 0.5);
+.btn-primary:hover {
+  @apply bg-accent-light transform translate-y-[-2px] scale-105;
+  box-shadow: 0 12px 30px -5px rgba(96, 153, 102, 0.5);
 }
 
-.projects_search_bar button {
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.75rem;
-  font-weight: 600;
-  font-size: 0.875rem;
+.btn-secondary {
+  @apply bg-transparent text-dark border-2 border-accent-light;
 }
 
-.projects_search_bar .btn-primary {
-  background: linear-gradient(135deg, var(--primary) 0%, #3fa67d 100%);
-  color: #fff;
-  box-shadow: 0 8px 20px -5px rgba(46, 139, 87, 0.4);
+.btn-secondary:hover {
+  @apply bg-white text-accent transform translate-y-[-2px];
+  box-shadow: 0 8px 20px -5px rgba(96, 153, 102, 0.2);
 }
 
-.projects_search_bar .btn-primary:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 12px 30px -5px rgba(46, 139, 87, 0.5);
-}
-
-.projects_search_bar .btn-secondary {
-  background: transparent;
-  color: var(--text);
-  border: 2px solid #d1d5db;
-}
-
-.projects_search_bar .btn-secondary:hover {
-  background: #fff;
-  color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px -5px rgba(46, 139, 87, 0.2);
-}
-
-/* Badge styling (categories) */
 .badge {
-  font-size: 0.55rem;
-  font-weight: 600;
-  padding: 0.4em 0.75em;
-  border-radius: 9999px;
+  @apply text-xs font-semibold px-3 py-1 rounded-full;
 }
 
-/* Utility focus for accessibility */
-a:focus-visible,
+select {
+  @apply w-full rounded-2xl border border-accent-light px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent text-dark bg-white;
+}
+
+label {
+  @apply block text-xs font-medium text-dark font-poppins mb-1;
+}
+
+/* a:focus-visible,
 button:focus-visible {
-  outline: 3px solid rgba(46, 139, 87, 0.6);
-  outline-offset: 2px;
-}
-
-/* Responsive tweaks */
-@media (min-width: 1024px) {
-  .project_card_details h2 {
-    font-size: 1.25rem;
-  }
-}
+  @apply outline outline-3 outline-accent outline-offset-2;
+} */

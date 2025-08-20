@@ -1,0 +1,101 @@
+<div class="p-6 bg-gray-100 dark:bg-gray-900 min-h-screen">
+  <div class="flex items-center mb-6">
+    <h6 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400 flex-grow">Project Gallery</h6>
+    <div class="flex-shrink-0 space-x-2">
+      <button (click)="openCreateModal()" class="px-6 py-2 text-white bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 rounded-lg text-sm font-medium transition-all duration-200">
+        <span class="align-middle">Add Gallery Item</span>
+      </button>
+      <a [routerLink]="['/dashboard/projects']" class="px-6 py-2 text-white bg-gradient-to-r from-gray-600 to-gray-500 hover:from-gray-700 hover:to-gray-600 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-sm font-medium transition-all duration-200">
+        <span class="align-middle">Back</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Create Modal -->
+  <div *ngIf="showCreateModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 transition-opacity duration-300">
+    <div class="relative p-6 w-full max-w-3xl mx-auto">
+      <div class="relative p-6 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 rounded-xl shadow-2xl dark:shadow-none transition-all duration-300 transform animate-slideIn">
+        <div class="flex justify-between items-center pb-4 mb-6 border-b border-gray-200 dark:border-gray-700">
+          <h3 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400">Add Gallery Item</h3>
+          <button type="button" (click)="closeModal()" class="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white rounded-lg p-2 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors duration-200">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="sr-only">Close modal</span>
+          </button>
+        </div>
+        <form (ngSubmit)="saveGalleryItem()" enctype="multipart/form-data">
+          <div class="grid gap-6 sm:grid-cols-2">
+            <div class="sm:col-span-2">
+              <label for="contentType" class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">Content Type</label>
+              <select id="contentType" [(ngModel)]="newGalleryItem.contentType" name="contentType" class="block w-full p-3 text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition-all duration-200">
+                <option value="">Select content type</option>
+                <option value="Image">Image</option>
+                <option value="Video">Video</option>
+              </select>
+            </div>
+            <div class="sm:col-span-2">
+              <label for="content" class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">{{ newGalleryItem.contentType === 'Video' ? 'Content (Video max 15MB)' : 'Content' }}</label>
+              <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400 focus:outline-none dark:placeholder-gray-400 transition-all duration-200" id="content" name="content" type="file" (change)="onContentChange($event)" />
+            </div>
+            <div class="sm:col-span-2">
+              <label for="order" class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">Order</label>
+              <input id="order" [(ngModel)]="newGalleryItem.order" name="order" type="number" class="block w-full p-3 text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition-all duration-200" placeholder="Enter order" />
+            </div>
+          </div>
+          <div class="mt-6">
+            <button type="submit" class="inline-flex items-center px-6 py-3 text-white bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 font-medium rounded-lg text-sm text-center dark:focus:ring-indigo-800 transition-all duration-200">
+              <svg class="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+              </svg>
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative overflow-x-auto rounded-xl shadow-lg dark:shadow-none bg-white dark:bg-gray-800">
+    <table class="w-full text-sm text-left text-gray-600 dark:text-gray-300">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-4">Content Type</th>
+          <th scope="col" class="px-6 py-4">Content</th>
+          <th scope="col" class="px-6 py-4">Order</th>
+          <th scope="col" class="px-6 py-4">Status</th>
+          <th scope="col" class="px-6 py-4">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of galleryItems; let i = index" class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-200" [ngClass]="{'bg-gray-50 dark:bg-gray-700': i % 2 === 0, 'bg-white dark:bg-gray-800': i % 2 !== 0}">
+          <td class="px-6 py-4">{{ item.contentType }}</td>
+          <td class="px-6 py-4">
+            <ng-container *ngIf="item.contentType === 'Image'">
+              <img class="w-20 h-12 object-cover rounded-md shadow-sm" [src]="apiBaseUrl + '/api/attachment/get/' + item.content" alt="Content" />
+            </ng-container>
+            <ng-container *ngIf="item.contentType === 'Video'">
+              <video class="w-20 h-12 rounded-md shadow-sm" controls>
+                <source [src]="apiBaseUrl + '/api/attachment/get/' + item.content" type="video/mp4" />
+              </video>
+            </ng-container>
+          </td>
+          <td class="px-6 py-4">{{ item.order }}</td>
+          <td class="px-6 py-4">
+            <span *ngIf="item.isActive" class="px-2.5 py-0.5 text-xs font-medium rounded border bg-green-100 text-green-500 dark:bg-green-500/20 inline-flex items-center">
+              <i class="fas fa-check-circle text-green-500 mr-1.5"></i> Active
+            </span>
+            <span *ngIf="!item.isActive" class="px-2.5 py-0.5 text-xs font-medium rounded border bg-red-100 text-red-500 dark:bg-red-500/20 inline-flex items-center">
+              <i class="fas fa-times-circle text-red-400 mr-1.5"></i> Inactive
+            </span>
+          </td>
+          <td class="px-6 py-4 text-right space-x-2">
+            <button *ngIf="item.isActive" (click)="toggleGalleryActive(item.id, false)" class="px-4 py-1 text-red-600 hover:text-white border border-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm font-medium transition-all duration-200 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Deactivate</button>
+            <button *ngIf="!item.isActive" (click)="toggleGalleryActive(item.id, true)" class="px-4 py-1 text-green-600 hover:text-white border border-green-600 hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300 rounded-lg text-sm font-medium transition-all duration-200 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">Activate</button>
+            <button (click)="deleteGalleryItem(item.id)" class="px-4 py-1 text-red-600 hover:text-white border border-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm font-medium transition-all duration-200 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -6,22 +6,18 @@ import {
   ElementRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { environment } from '../../../environments/environment';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-blog-list',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './blog-list.component.html',
   styleUrls: ['./blog-list.component.css'],
 })
-export class BlogListComponent implements OnInit, AfterViewInit {
+export class BlogListComponent implements OnInit {
   baseURL = environment.baseUrl;
   list = signal<any[]>([]);
   countdowns = signal<string[]>([]);
@@ -32,9 +28,7 @@ export class BlogListComponent implements OnInit, AfterViewInit {
     this.getBlogs();
   }
 
-  ngAfterViewInit() {
-    this.animateOnScroll();
-  }
+
 
   getBlogs() {
     this.http
@@ -43,7 +37,7 @@ export class BlogListComponent implements OnInit, AfterViewInit {
         this.list.set(res);
         this.startCountdown();
         // Animate again once blogs are loaded
-        setTimeout(() => this.animateOnScroll(), 100);
+        
       });
   }
 
@@ -77,24 +71,5 @@ export class BlogListComponent implements OnInit, AfterViewInit {
     return String(n).padStart(2, '0');
   }
 
-  private animateOnScroll() {
-    const sections = this.el.nativeElement.querySelectorAll('[data-animate]');
-    sections.forEach((section: HTMLElement) => {
-      gsap.fromTo(
-        section,
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    });
-  }
+  
 }
