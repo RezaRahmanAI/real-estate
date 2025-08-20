@@ -12,7 +12,7 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ContactHeroComponent, ContactInfoMapComponent, ContactFromComponent, FadeInDirective],
+  imports: [CommonModule, ContactHeroComponent, ContactInfoMapComponent, ContactFromComponent,],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
