@@ -1,116 +1,76 @@
-.related_projects h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 2.25rem;
-  font-weight: 700;
-  color: #1f2d46;
-  margin-bottom: 4rem;
+:host {
+  display: block;
 }
 
-@media (min-width: 1024px) {
-  .related_projects h1 {
-    font-size: 3.5rem;
-  }
+.related_projects {
+  @apply py-14 bg-light;
+}
+
+.container {
+  @apply mx-auto px-4;
+}
+
+h1 {
+  @apply text-3xl md:text-4xl font-poppins font-bold text-dark mb-8 text-center;
+}
+
+.grid {
+  display: grid;
+  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
 }
 
 .project_card {
-  background: #fff;
-  border-radius: 1rem;
-  overflow: hidden;
-  height: 450px;
-  box-shadow: 0 25px 60px -10px rgba(46,139,87,0.08);
-  transition: transform .4s ease, box-shadow .4s ease;
+  @apply relative overflow-hidden rounded-2xl shadow-lg bg-white;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .project_card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 35px 80px -10px rgba(46,139,87,0.2);
+  @apply translate-y-[-4px];
+  box-shadow: 0 12px 30px -5px rgba(96, 153, 102, 0.3);
 }
 
 .project_card_img img {
-  width: 100%;
-  height: 350px;
-  object-fit: cover;
-  transition: transform .5s ease, filter .5s ease;
-  filter: brightness(0.85);
+  @apply w-full h-80 object-cover rounded-t-2xl;
+  transition: transform 0.5s ease;
 }
 
-/* @media (min-width: 1024px) { .project_card_img img { height: 380px; } }
-@media (min-width: 1280px) { .project_card_img img { height: 450px; } } */
-
 .project_card:hover .project_card_img img {
-  transform: scale(1.05);
-  filter: brightness(1);
+  @apply scale-105;
 }
 
 .project_card_details {
-  padding: 1rem;
-  text-align: center;
+  @apply p-4 text-center;
 }
 
 .project_card_details h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  transition: color 0.5s ease-in-out;
+  @apply text-xl font-poppins font-bold text-dark mb-2;
+  transition: color 0.3s ease;
 }
 
 .project_card:hover .project_card_details h1 {
-  color: var(--primary);
+  @apply text-accent;
 }
 
 .project_card_details p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-family: "Inter", sans-serif;
-  font-weight: 600;
-  color: #6b7280;
+  @apply flex items-center justify-center gap-2 text-sm text-accent-light;
 }
 
 .project_card_details .dot {
-  width: 0.75rem;
-  height: 0.75rem;
-  background: #6b7280;
-  border-radius: 50%;
+  @apply w-2 h-2 bg-accent rounded-full;
 }
 
 .adds {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 80%;
-  height: 4rem;
-  padding: 0.75rem;
-  background: #3b82f6;
-  border-radius: 9999px;
-  margin: 0 auto;
-  box-shadow: 0 8px 20px -5px rgba(59, 130, 246, 0.4);
-  border: 2px solid #3b82f6;
-}
-
-@media (min-width: 640px) { .adds { width: 75%; height: 5rem; } }
-@media (min-width: 768px) { .adds { width: 66.67%; } }
-@media (min-width: 1024px) { .adds { width: 50%; } }
-@media (min-width: 1280px) { .adds { width: 25%; } }
-
-.adds .btn-primary {
-  background: #fff;
-  color: #3b82f6;
-  padding: 0.625rem 1.25rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 9999px;
-}
-
-.adds .btn-primary:hover {
-  background: #f1f5f9;
+  @apply flex items-center justify-between w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/4 mx-auto mt-8 p-4 bg-accent rounded-full shadow-lg;
 }
 
 .adds i {
-  font-size: 1.5rem;
-  color: #fff;
+  @apply text-xl md:text-2xl text-white;
 }
 
-@media (min-width: 640px) { .adds i { font-size: 2rem; } }
+.btn-primary {
+  @apply px-4 py-2 text-sm font-semibold bg-white text-accent rounded-full;
+}
+
+.btn-primary:hover {
+  @apply bg-accent-light;
+}

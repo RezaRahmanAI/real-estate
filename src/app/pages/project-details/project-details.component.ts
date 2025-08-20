@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { LenisService } from '../../services/lenis.service';
+import { FadeInDirective } from '../../directives/fade-in.directive';
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { OfferTimerComponent } from './offer-timer/offer-timer.component';
 import { MarqueeComponent } from './marquee/marquee.component';
@@ -18,7 +20,6 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { environment } from '../../environments/environment';
 import { SafeUrlPipe } from '../../pipes/safe-url.pipe';
 
-
 interface Project {
   id: number | string;
   name?: string;
@@ -32,8 +33,8 @@ interface Project {
   sizeOfEachApartment?: string;
   contentType?: 'Image' | 'Video';
   content?: string;
-  youtube?: string; // Added for YouTube video
-  offerTile?: string;
+  youtube?: string;
+  offerTitle?: string;
   offerDateTime?: string;
   latitude?: string;
   longitude?: string;
@@ -66,6 +67,7 @@ interface RelatedProject {
     RouterModule,
     HttpClientModule,
     SafeUrlPipe,
+    FadeInDirective,
     ProjectHeaderComponent,
     OfferTimerComponent,
     MarqueeComponent,
@@ -102,11 +104,16 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private lenisService: LenisService
   ) {}
 
   ngOnInit(): void {
     this.projectId = this.route.snapshot.paramMap.get('id');
+    this.lenisService.init();
+    this.lenisService.onScroll((scroll) => {
+      console.log('Scroll position:', scroll);
+    });
     this.getProject();
     this.getFeatures();
     this.getGallery();
@@ -122,6 +129,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   startOfferTimer(): void {
     if (!this.state.data || !this.state.data.offerDateTime) {
       this.state.offerActive = false;
+      this.toastr.info('No active offer for this project.', 'Info');
       return;
     }
 
@@ -138,6 +146,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         this.state.timer.seconds = '00';
         this.state.offerActive = false;
         clearInterval(this.timerInterval);
+        this.toastr.info('Offer has expired.', 'Info');
         return;
       }
 
@@ -160,7 +169,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   }
 
   getProject(): void {
-    if (!this.projectId) return;
+    if (!this.projectId) {
+      this.toastr.error('Invalid project ID.', 'Error');
+      return;
+    }
     this.http
       .get<Project>(
         `${this.baseUrl}/api/website/getsingleproject?projectId=${this.projectId}`
@@ -170,7 +182,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
           this.state.data = data;
           this.startOfferTimer();
         },
-        error: (err) => console.error('Error fetching project:', err),
+        error: (err) => {
+          console.error('Error fetching project:', err);
+          this.toastr.error('Failed to load project details.', 'Error');
+        },
       });
   }
 
@@ -182,7 +197,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (data) => (this.state.list = data),
-        error: (err) => console.error('Error fetching features:', err),
+        error: (err) => {
+          console.error('Error fetching features:', err);
+          this.toastr.error('Failed to load project features.', 'Error');
+        },
       });
   }
 
@@ -193,8 +211,21 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         `${this.baseUrl}/api/website/getgalleries?projectId=${this.projectId}`
       )
       .subscribe({
-        next: (data) => (this.state.gallery = data),
-        error: (err) => console.error('Error fetching gallery:', err),
+        next: (data) => {
+          console.log('Gallery data:', data);
+          this.state.gallery = data;
+          if (!data.length) {
+            this.toastr.info('No gallery items available for this project.', 'Info');
+          } else {
+            this.state.gallery.forEach((item) => {
+              console.log('Gallery item URL:', `${this.baseUrl}/api/attachment/get/${item.content}`);
+            });
+          }
+        },
+        error: (err) => {
+          console.error('Error fetching gallery:', err);
+          this.toastr.error('Failed to load gallery. Please try again.', 'Error');
+        },
       });
   }
 
@@ -206,7 +237,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
           this.state.projects = data;
           console.log('Related projects fetched:', this.state.projects);
         },
-        error: (err) => console.error('Error fetching projects:', err),
+        error: (err) => {
+          console.error('Error fetching projects:', err);
+          this.toastr.error('Failed to load related projects.', 'Error');
+        },
       });
   }
 
@@ -229,18 +263,11 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
         next: (response: any) => {
           this.toastr.success(
             response.message || 'Form submitted successfully!',
-            '',
-            {
-              positionClass: 'toast-top-right',
-              timeOut: 5000,
-            }
+            'Success'
           );
         },
         error: (err) => {
-          this.toastr.error('Error submitting form', '', {
-            positionClass: 'toast-top-right',
-            timeOut: 5000,
-          });
+          this.toastr.error('Error submitting form.', 'Error');
           console.error('Error submitting form:', err);
         },
       });
@@ -250,6 +277,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     const img = event.target as HTMLImageElement;
     if (img.src !== '/images/fallback.png') {
       img.src = '/images/fallback.png';
+      console.log('Image error, using fallback:', img.src);
     }
   }
 }

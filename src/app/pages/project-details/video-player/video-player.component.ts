@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FadeInDirective } from "../../../directives/fade-in.directive";
 
 @Component({
   selector: 'app-video-player',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FadeInDirective],
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.css'],
 })
