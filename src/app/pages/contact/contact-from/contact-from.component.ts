@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { ContactData } from '../../../models/ContactData';
+import { ContactData } from '../../../models/model';
+import { FadeInDirective } from '../../../directives/fade-in.directive';
 
 @Component({
   selector: 'app-contact-from',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, FadeInDirective],
   templateUrl: './contact-from.component.html',
   styleUrl: './contact-from.component.css',
 })

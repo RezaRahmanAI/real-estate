@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LenisService } from '../../services/lenis.service';
 import { FadeInDirective } from '../../directives/fade-in.directive';
@@ -100,6 +100,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   };
   projectId: string | null = null;
   private timerInterval: any;
+  private paramSubscription: any;
 
   constructor(
     private http: HttpClient,
@@ -109,20 +110,29 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.projectId = this.route.snapshot.paramMap.get('id');
     this.lenisService.init();
     this.lenisService.onScroll((scroll) => {
       console.log('Scroll position:', scroll);
     });
-    this.getProject();
-    this.getFeatures();
-    this.getGallery();
-    this.getProjects();
+    this.paramSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
+      this.projectId = params.get('id');
+      if (this.projectId) {
+        this.getProject();
+        this.getFeatures();
+        this.getGallery();
+        this.getProjects();
+      } else {
+        this.toastr.error('Invalid project ID.', 'Error');
+      }
+    });
   }
 
   ngOnDestroy(): void {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
+    }
+    if (this.paramSubscription) {
+      this.paramSubscription.unsubscribe();
     }
   }
 

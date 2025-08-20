@@ -13,6 +13,7 @@ import { ProjectsIndexComponent } from './features/projects/projects-index/proje
 import { ProjectEditComponent } from './features/projects/project-edit/project-edit.component';
 import { ProjectFeaturesComponent } from './features/projects/project-features/project-features.component';
 import { ProjectGalleryComponent } from './features/projects/project-gallery/project-gallery.component';
+import { ContactComponent } from './pages/contact/contact.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,7 +21,7 @@ export const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'projectdetails/:id', component: ProjectDetailsComponent },
-  // { path: 'contact', component: ContactComponent },
+  { path: 'contact', component: ContactComponent },
   // { path: 'gallery', component: GalleryComponent },
   // { path: 'landowner', component: LandownerComponent },
   // { path: 'blogs-events', component: BlogsEventsComponent },

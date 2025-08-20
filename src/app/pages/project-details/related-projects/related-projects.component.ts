@@ -34,10 +34,11 @@ export class RelatedProjectsComponent implements OnChanges {
   onProjectSelect(projectId: number): void {
     this.router
       .navigate(['/projectdetails', projectId], {
-        onSameUrlNavigation: 'reload',
+        onSameUrlNavigation: 'reload', 
       })
       .then(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+        window.scrollTo({ top: 0, behavior: 'smooth' }); 
+      })
+      .catch((err) => console.error('Navigation error:', err));
   }
 }

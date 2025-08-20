@@ -1,80 +1,103 @@
 <!-- Contact Info + Map -->
-  <section appReveal class="contact_page py-16">
-    <div class="container">
-      <div class="grid two-col gap-10">
-        <div class="info-panel animate-entrance">
-          <h2 class="section-title">Office & Support</h2>
-          <p class="lead">
-            Whether you're buying, selling, or scheduling a visit—our team is here to help. Fill the form and we'll reach out within 2 business hours.
-          </p>
-          <address class="address-block">
-            <div class="item">
-              <div class="icon"><i class="ri-map-pin-fill"></i></div>
-              <div>
-                <p class="label">Corporate Office</p>
-                <p>Alokar More, Rajshahi, Bangladesh.</p>
-              </div>
-            </div>
-            <div class="item">
-              <div class="icon"><i class="ri-mail-send-line"></i></div>
-              <div>
-                <p class="label">Email</p>
-                <p><a href="mailto:triconproperties21@gmail.com">triconproperties21&#64;gmail.com</a></p>
-              </div>
-            </div>
-            <div class="item">
-              <div class="icon"><i class="ri-phone-fill"></i></div>
-              <div>
-                <p class="label">Sales Enquiry</p>
-                <p><a href="tel:01329638961">01329-638961</a></p>
-              </div>
-            </div>
-            <div class="item">
-              <div class="icon"><i class="ri-phone-fill"></i></div>
-              <div>
-                <p class="label">General Enquiry</p>
-                <p><a href="tel:01739703426">01739-703426</a></p>
-              </div>
-            </div>
-            <div class="item">
-              <div class="icon"><i class="ri-whatsapp-fill"></i></div>
-              <div>
-                <p class="label">WhatsApp</p>
-                <p><a href="https://wa.me/8801739703426" target="_blank" rel="noopener">01739-703426</a></p>
-              </div>
-            </div>
-          </address>
-        </div>
+<div appFadeIn class="contact_page py-16">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- Grid layout: 2 cols on md+, stack on mobile -->
+    <div class="grid md:grid-cols-5 gap-10 items-start">
+      <!-- Info Panel (2/5 width on desktop) -->
+      <div class="md:col-span-2 animate-entrance">
+        <h2 class="section-title text-2xl font-bold text-primary">
+          Office & Support
+        </h2>
+        <p class="lead text-gray-600 mt-2">
+          Whether you're buying, selling, or scheduling a visit—our team is here
+          to help. Fill the form and we'll reach out within 2 business hours.
+        </p>
 
-        <div class="map-wrapper shimmer-container animate-entrance" style="position: relative; min-height: 300px;">
-  <!-- shimmer placeholder; hidden when map loaded -->
-  <div
-    class="shimmer-wrapper"
-    [class.loaded]="isMapLoaded"
-    style="border-radius: .75rem;"
-  ></div>
+        <address class="mt-4 flex flex-col gap-4">
+          <div class="flex gap-3 items-start">
+            <i class="ri-map-pin-fill text-2xl text-primary"></i>
+            <div>
+              <p class="font-semibold">Corporate Office</p>
+              <p>Alokar More, Rajshahi, Bangladesh.</p>
+            </div>
+          </div>
 
-  <iframe
-    title="Office location on map"
-    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19412.96407524426!2d90.36601795!3d23.7963304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1742033667355!5m2!1sen!2sbd"
-    width="100%"
-    height="100%"
-    style="border:0;"
-    allowfullscreen
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade"
-    (load)="onMapLoad()"
-  ></iframe>
+          <div class="flex gap-3 items-start">
+            <i class="ri-mail-send-line text-2xl text-primary"></i>
+            <div>
+              <p class="font-semibold">Email</p>
+              <p>
+                <a
+                  href="mailto:triconproperties21@gmail.com"
+                  class="text-primary hover:underline"
+                  >triconproperties21&#64;gmail.com</a
+                >
+              </p>
+            </div>
+          </div>
 
-  <!-- fallback if needed -->
-  <div
-    *ngIf="!isMapLoaded"
-    aria-hidden="true"
-    class="map-fallback"
-    style="display:none;"
-  ></div>
-</div>
+          <div class="flex gap-3 items-start">
+            <i class="ri-phone-fill text-2xl text-primary"></i>
+            <div>
+              <p class="font-semibold">Sales Enquiry</p>
+              <p>
+                <a href="tel:01329638961" class="text-primary hover:underline"
+                  >01329-638961</a
+                >
+              </p>
+            </div>
+          </div>
 
+          <div class="flex gap-3 items-start">
+            <i class="ri-phone-fill text-2xl text-primary"></i>
+            <div>
+              <p class="font-semibold">General Enquiry</p>
+              <p>
+                <a href="tel:01739703426" class="text-primary hover:underline"
+                  >01739-703426</a
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-3 items-start">
+            <i class="ri-whatsapp-fill text-2xl text-primary"></i>
+            <div>
+              <p class="font-semibold">WhatsApp</p>
+              <p>
+                <a
+                  href="https://wa.me/8801739703426"
+                  target="_blank"
+                  rel="noopener"
+                  class="text-primary hover:underline"
+                  >01739-703426</a
+                >
+              </p>
+            </div>
+          </div>
+        </address>
+      </div>
+
+      <!-- Map (3/5 width on desktop) -->
+      <div
+        class="md:col-span-3 rounded-xl overflow-hidden shadow-lg relative min-h-[300px] h-full animate-entrance"
+      >
+        <!-- shimmer placeholder -->
+        <div
+          class="absolute inset-0 bg-gray-200 animate-pulse"
+          [class.hidden]="isMapLoaded"
+        ></div>
+
+        <iframe
+          title="Office location on map"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19412.96407524426!2d90.36601795!3d23.7963304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1742033667355!5m2!1sen!2sbd"
+          class="absolute inset-0 w-full h-full border-0"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          (load)="onMapLoad()"
+        ></iframe>
       </div>
     </div>
-  </section>
+  </div>
+</div>

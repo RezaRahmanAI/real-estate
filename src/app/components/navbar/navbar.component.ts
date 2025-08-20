@@ -5,11 +5,12 @@ import { LenisService } from '../../services/lenis.service';
 import { NavbarScrollDirective } from '../../directives/navbar-scroll.directive';
 import { SidePanelComponent } from "../side-panel/side-panel.component";
 import { SidePanelService } from '../../services/sidepanel.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, NavbarScrollDirective, SidePanelComponent],
+  imports: [CommonModule, NavbarScrollDirective, SidePanelComponent, RouterLink],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })

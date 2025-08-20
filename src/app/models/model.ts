@@ -57,3 +57,10 @@ export interface AboutUs {
   ownerSpeech: string;
   ownerImage: string;
 }
+
+export interface ContactData {
+  name: string;
+  phone: string;
+  email: string;
+  message?: string;
+}

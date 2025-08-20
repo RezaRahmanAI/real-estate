@@ -5,13 +5,14 @@ import { RouterModule } from '@angular/router';
 import { ContactHeroComponent } from "./contact-hero/contact-hero.component";
 import { ContactInfoMapComponent } from "./contact-info-map/contact-info-map.component";
 import { ContactFromComponent } from "./contact-from/contact-from.component";
+import { FadeInDirective } from '../../directives/fade-in.directive';
 
 
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ContactHeroComponent, ContactInfoMapComponent, ContactFromComponent],
+  imports: [CommonModule, ContactHeroComponent, ContactInfoMapComponent, ContactFromComponent, FadeInDirective],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

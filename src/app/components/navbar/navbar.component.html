@@ -1,17 +1,54 @@
+<nav
+  appNavbarScroll
+  class="transparent flex justify-between items-center px-8 py-4 fixed top-0 w-full z-[1000]"
+>
+  <!-- LEFT NAV LINKS (hidden on mobile) -->
+  <div class="nav-left hidden md:flex items-center gap-8">
+    <a
+      (click)="scrollToSection('home')"
+      routerLink="home"
+      class="text-light font-semibold hover:text-accent-light transition-colors duration-300"
+      >Home</a
+    >
+    <a
+      (click)="scrollToSection('about')"
+      routerLink="about"
+      class="text-light font-semibold hover:text-accent-light transition-colors duration-300"
+      >About</a
+    >
+    <a
+      (click)="scrollToSection('properties')"
+      routerLink="projects"
+      class="text-light font-semibold hover:text-accent-light transition-colors duration-300"
+      >Properties</a
+    >
+  </div>
 
-<nav appNavbarScroll class="transparent flex justify-between items-center px-8 py-4 fixed top-0 w-full z-[1000]">
-  <div class="nav-left flex items-center gap-8">
-    <a (click)="scrollToSection('home')" href="#home" class="text-light font-semibold hover:text-accent-light transition-colors duration-300">Home</a>
-    <a (click)="scrollToSection('about')" href="#about" class="text-light font-semibold hover:text-accent-light transition-colors duration-300">About</a>
-    <a (click)="scrollToSection('properties')" href="#properties" class="text-light font-semibold hover:text-accent-light transition-colors duration-300">Properties</a>
-  </div>
-  <div class="nav-center flex justify-center flex-1">
-    <img src="images/Logo.png" class="max-h-10 object-contain" alt="Logo" />
-  </div>
-  <div class="nav-right flex items-center gap-8">
-    <a (click)="scrollToSection('contact')" href="#contact" class="text-light font-semibold hover:text-accent-light transition-colors duration-300">Contact</a>
-    <div class="menu-btn-wrapper absolute right-8 top-4 flex items-center gap-2 border-2 border-light px-3 py-2 rounded-lg cursor-pointer transition-all duration-300 z-[1100]" (click)="sidePanel.toggle()">
-      <span class="menu-text text-light">Menu</span>
+  <!-- LOGO (always visible, centered on desktop, left on mobile) -->
+  <a routerLink="home" class="nav-center flex-1 flex justify-center md:justify-center">
+    <img
+      src="images/Logo.png"
+      class="max-h-10 object-contain"
+      alt="Logo"
+    />
+  </a>
+
+  <!-- RIGHT SIDE (contact + menu button) -->
+  <div class="nav-right flex items-center gap-6">
+    <!-- Contact (hidden on mobile) -->
+    <a
+      (click)="scrollToSection('contact')"
+      routerLink="contact"
+      class="hidden md:block text-light font-semibold hover:text-accent-light transition-colors duration-300"
+      >Contact</a
+    >
+
+    <!-- Menu Button (always visible) -->
+    <div
+      class="menu-btn-wrapper flex items-center gap-2 border-2 border-light px-3 py-2 rounded-lg cursor-pointer transition-all duration-300 z-[1100]"
+      (click)="sidePanel.toggle()"
+    >
+      <span class="menu-text text-light hidden md:block">Menu</span>
       <div class="menu-btn flex flex-col justify-between w-6 h-[18px]">
         <span class="block h-[3px] w-full bg-light rounded-sm transition-all duration-300"></span>
         <span class="block h-[3px] w-full bg-light rounded-sm transition-all duration-300"></span>
@@ -20,4 +57,5 @@
     </div>
   </div>
 </nav>
+
 <app-side-panel />
