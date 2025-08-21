@@ -97,7 +97,7 @@ export class AboutComponent implements OnInit {
   fetchAboutData(): void {
     this.aboutUsService.getAboutUs().subscribe({
       next: (data: AboutUs[]) => {
-        const about = data[0] || this.state.about; // Use first item or fallback to empty
+        const about = data[0] || this.state.about; 
         this.state.about = {
           history: about.history || '',
           ownerName: about.ownerName || '',

@@ -110,10 +110,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.lenisService.init();
-    this.lenisService.onScroll((scroll) => {
-      console.log('Scroll position:', scroll);
-    });
+    // this.lenisService.init();
+    // this.lenisService.onScroll((scroll) => {
+    //   console.log('Scroll position:', scroll);
+    // });
     this.paramSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
       this.projectId = params.get('id');
       if (this.projectId) {

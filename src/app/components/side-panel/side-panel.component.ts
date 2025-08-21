@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LenisService } from '../../services/lenis.service';
 import { SidePanelService } from '../../services/sidepanel.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-side-panel',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './side-panel.component.html',
   styleUrls: ['./side-panel.component.css'],
 })

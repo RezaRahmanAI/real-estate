@@ -1,7 +1,12 @@
-import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  AfterViewInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { FadeInDirective } from '../../../directives/fade-in.directive';
+import { gsap } from 'gsap';
 
 interface TeamMember {
   id: number;
@@ -17,43 +22,53 @@ interface TeamMember {
 @Component({
   selector: 'app-team-modal',
   standalone: true,
-  imports: [CommonModule, FadeInDirective],
+  imports: [CommonModule],
   templateUrl: './team-modal.component.html',
   styleUrls: ['./team-modal.component.css'],
-  animations: [
-    trigger('modalBackdrop', [
-      state('void', style({ opacity: 0 })),
-      state('*', style({ opacity: 1 })),
-      transition('void => *', [animate('0.6s ease-out')]),
-    ]),
-    trigger('modalContent', [
-      state('void', style({ opacity: 0, transform: 'scale(0.9)' })),
-      state('*', style({ opacity: 1, transform: 'scale(1)' })),
-      transition('void => *', [animate('0.6s 0.3s ease-out')]),
-    ]),
-    trigger('modalElements', [
-      state('void', style({ opacity: 0, transform: 'translateY(20px)' })),
-      state('*', style({ opacity: 1, transform: 'translateY(0)' })),
-      transition('void => *', [animate('0.6s 0.5s ease-out')]),
-    ]),
-    trigger('linkHover', [
-      state('inactive', style({ transform: 'translateY(0) scale(1)' })),
-      state('active', style({ transform: 'translateY(-2px) scale(1.1)' })),
-      transition('inactive <=> active', [animate('0.4s ease-out')]),
-    ]),
-  ],
 })
-export class TeamModalComponent {
+export class TeamModalComponent implements AfterViewInit {
   @Input() selectedTeamMember: TeamMember | null = null;
   @Output() toggle = new EventEmitter<void>();
   @Output() imageError = new EventEmitter<Event>();
-  
-  hoverStates: { [key: string]: 'active' | 'inactive' } = {
-    facebook: 'inactive',
-    twitter: 'inactive',
-    linkedin: 'inactive',
-  };
 
+  ngAfterViewInit() {
+    gsap.from('.modal-backdrop', {
+      opacity: 0,
+      duration: 1.2,
+      ease: 'power2.out',
+    });
+    gsap.from('.modal-content', {
+      opacity: 0,
+      scale: 0.9,
+      duration: 1.2,
+      ease: 'power2.out',
+      delay: 0.3,
+    });
+    gsap.from(
+      '.modal-content img, .modal-content h3, .modal-content p, .modal-content a',
+      {
+        opacity: 0,
+        y: 20,
+        duration: 1.2,
+        stagger: 0.2,
+        ease: 'power2.out',
+        delay: 0.5,
+      }
+    );
+    gsap.utils.toArray('.modal-content a').forEach((link: any) => {
+      gsap.to(link, {
+        y: -2,
+        scale: 1.1,
+        duration: 0.4,
+        ease: 'power1.out',
+        paused: true,
+        on: {
+          mouseenter: () => gsap.to(link, { y: -2, scale: 1.1, duration: 0.4 }),
+          mouseleave: () => gsap.to(link, { y: 0, scale: 1, duration: 0.4 }),
+        },
+      });
+    });
+  }
 
   onToggle() {
     this.toggle.emit();
@@ -61,9 +76,5 @@ export class TeamModalComponent {
 
   onImageError(event: Event) {
     this.imageError.emit(event);
-  }
-
-  onLinkHover(linkType: 'facebook' | 'twitter' | 'linkedin', state: 'active' | 'inactive') {
-    this.hoverStates[linkType] = state;
   }
 }

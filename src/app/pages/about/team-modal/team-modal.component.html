@@ -1,78 +1,68 @@
-<div class="modal-backdrop fixed inset-0 flex items-center justify-center z-50 px-4" appFadeIn [@modalBackdrop]>
-  <div class="modal-overlay absolute inset-0 bg-dark/70" (click)="onToggle()"></div>
-  <div class="modal-content relative bg-light rounded-2xl shadow-xl max-w-4xl w-full overflow-hidden" [@modalContent]>
+<div class="fixed inset-0 flex items-center justify-center z-50 px-4 modal-backdrop animate-gsap">
+  <div class="absolute inset-0 bg-[rgba(0,0,0,0.7)]" (click)="onToggle()"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-4XL w-full overflow-hidden modal-content animate-gsap">
     <div class="flex justify-end p-4">
       <button
         (click)="onToggle()"
         aria-label="Close modal"
-        class="bg-transparent text-dark hover:text-accent p-2 rounded-full"
+        class="bg-transparent text-[var(--text)] hover:text-[var(--accent)] p-2 rounded-full"
       >
-        <i class="ri-close-line text-2xl"></i>
+        <i class="ti ti-x text-2xl"></i>
       </button>
     </div>
     <div class="p-6 sm:flex gap-8">
       <div class="flex-shrink-0 w-full sm:w-1/3 text-center">
         <img
-          *ngIf="selectedTeamMember && selectedTeamMember['image']; else noMemberImg"
-          [src]="selectedTeamMember!['image']"
-          [alt]="selectedTeamMember!['name']"
+          *ngIf="selectedTeamMember?.image; else noMemberImg"
+          [src]="selectedTeamMember?.image"
+          alt="{{ selectedTeamMember?.name }}"
           class="w-40 h-40 rounded-full object-cover mx-auto"
           loading="lazy"
           (error)="onImageError($event)"
-          [@modalElements]
         />
         <ng-template #noMemberImg>
-          <div class="w-40 h-40 rounded-full bg-accent-light/20 flex items-center justify-center text-dark" [@modalElements]>
+          <div class="w-40 h-40 rounded-full bg-gray-200 flex items-center justify-center text-gray-500">
             No image
           </div>
         </ng-template>
       </div>
       <div class="flex-1">
-        <h3 *ngIf="selectedTeamMember && selectedTeamMember['name']" class="text-2xl font-poppins font-bold text-dark mb-1" [@modalElements]>
-          {{ selectedTeamMember!['name'] }}
+        <h3 *ngIf="selectedTeamMember?.name" class="text-2xl font-bold text-[var(--text)] mb-1">
+          {{ selectedTeamMember?.name }}
         </h3>
-        <p *ngIf="selectedTeamMember && selectedTeamMember['designation']" class="text-accent font-medium mb-3" [@modalElements]>
-          {{ selectedTeamMember!['designation'] }}
+        <p *ngIf="selectedTeamMember?.designation" class="text-[var(--accent)] font-medium mb-3">
+          {{ selectedTeamMember?.designation }}
         </p>
-        <p *ngIf="selectedTeamMember && selectedTeamMember['description']" class="text-dark mb-5" [@modalElements]>
-          {{ selectedTeamMember!['description'] }}
+        <p *ngIf="selectedTeamMember?.description" class="text-[var(--text)] mb-5">
+          {{ selectedTeamMember?.description }}
         </p>
         <div class="flex gap-4">
           <a
-            *ngIf="selectedTeamMember && selectedTeamMember['facebook']"
-            [href]="selectedTeamMember!['facebook']"
+            *ngIf="selectedTeamMember?.facebook"
+            [href]="selectedTeamMember?.facebook"
             target="_blank"
             aria-label="Facebook"
-            class="text-white bg-accent p-3 rounded-full"
-            (mouseenter)="onLinkHover('facebook', 'active')"
-            (mouseleave)="onLinkHover('facebook', 'inactive')"
-            [href]="selectedTeamMember.facebook"
+            class="text-white bg-[var(--primary)] p-3 rounded-full"
           >
-            <i class="ri-facebook-circle-line"></i>
+            <i class="ti ti-brand-facebook"></i>
           </a>
           <a
-            *ngIf="selectedTeamMember && selectedTeamMember['twitter']"
-            [href]="selectedTeamMember!['twitter']"
+            *ngIf="selectedTeamMember?.twitter"
+            [href]="selectedTeamMember?.twitter"
             target="_blank"
             aria-label="Twitter"
-            class="text-white bg-accent p-3 rounded-full"
-            (mouseenter)="onLinkHover('twitter', 'active')"
-            (mouseleave)="onLinkHover('twitter', 'inactive')"
-            [href]="selectedTeamMember.twitter"
+            class="text-white bg-[var(--text)] p-3 rounded-full"
           >
-            <i class="ri-twitter-line"></i>
+            <i class="ti ti-brand-twitter"></i>
           </a>
           <a
-            *ngIf="selectedTeamMember && selectedTeamMember['linkedin']"
-            [href]="selectedTeamMember!['linkedin']"
+            *ngIf="selectedTeamMember?.linkedin"
+            [href]="selectedTeamMember?.linkedin"
             target="_blank"
             aria-label="LinkedIn"
-            class="text-white bg-accent p-3 rounded-full"
-            (mouseenter)="onLinkHover('linkedin', 'active')"
-            (mouseleave)="onLinkHover('linkedin', 'inactive')"
-            [href]="selectedTeamMember.linkedin"
+            class="text-white bg-blue-700 p-3 rounded-full"
           >
-            <i class="ri-linkedin-box-line"></i>
+            <i class="ti ti-brand-linkedin"></i>
           </a>
         </div>
       </div>

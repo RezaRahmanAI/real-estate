@@ -1,10 +1,19 @@
-.video-player {
-  background: var(--muted-bg);
-  padding: 2rem 1rem;
+:host {
+  display: block;
 }
 
-@media (min-width: 768px) {
-  .video-player {
-    padding: 3rem 1.25rem;
-  }
+.filter-sepia {
+  filter: sepia(0.3);
+}
+
+.filter-saturate {
+  filter: saturate(0.8);
+}
+
+.filter-hue-rotate {
+  filter: hue-rotate(-5deg);
+}
+
+.filter-contrast {
+  filter: contrast(1.1);
 }

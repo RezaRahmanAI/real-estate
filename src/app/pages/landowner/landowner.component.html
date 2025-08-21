@@ -1,23 +1,36 @@
 <app-landowner-hero></app-landowner-hero>
-    <section class="py-14 px-4">
-      <!-- Intro pitch could be inlined here or made its own component -->
-      <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-16">
-        <div>
-          <a routerLink="">
-            <img class="w-full rounded object-cover h-[450px]" src="/images/banner/banner-3.png" alt="Joint venture" />
-          </a>
-        </div>
-        <div class="sticky top-8">
-          <h1 class="text-4xl font-bold mb-4">Company is the perfect choice for your joint ventures</h1>
-          <p class="text-gray-700">
-            The decision to go for a joint venture on your land should be guided by several criteria to ensure maximum returns on your investment. At Sanmar, we consider landowners as our development partners and accordingly, we plan out a business strategy that compliments the land owner’s ROI aspirations. This is proven by our rich history of always meeting and exceeding landowners' expectations.
-          </p>
-        </div>
-      </div>
-    </section>
+<div class="py-14 px-4">
+  <!-- Intro pitch could be inlined here or made its own component -->
+  <div
+    class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-16"
+  >
+    <div>
+      <a routerLink="">
+        <img
+          class="w-full rounded object-cover h-[450px]"
+          src="/images/banner/banner-3.png"
+          alt="Joint venture"
+        />
+      </a>
+    </div>
+    <div class="sticky top-8">
+      <h1 class="text-4xl font-bold mb-4">
+        Company is the perfect choice for your joint ventures
+      </h1>
+      <p class="text-gray-700">
+        The decision to go for a joint venture on your land should be guided by
+        several criteria to ensure maximum returns on your investment. At
+        Sanmar, we consider landowners as our development partners and
+        accordingly, we plan out a business strategy that compliments the land
+        owner’s ROI aspirations. This is proven by our rich history of always
+        meeting and exceeding landowners' expectations.
+      </p>
+    </div>
+  </div>
+</div>
 
-    <app-landowner-benefits></app-landowner-benefits>
+<app-landowner-benefits></app-landowner-benefits>
 
-    <app-landowner-testimonial [testimonials]="testis"></app-landowner-testimonial>
+<app-landowner-testimonial [testimonials]="testis"></app-landowner-testimonial>
 
-    <app-landowner-form (submitted)="onFormSubmitted($event)"></app-landowner-form>
+<app-landowner-form (submitted)="onFormSubmitted($event)"></app-landowner-form>

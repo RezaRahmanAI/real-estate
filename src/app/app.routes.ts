@@ -14,6 +14,9 @@ import { ProjectEditComponent } from './features/projects/project-edit/project-e
 import { ProjectFeaturesComponent } from './features/projects/project-features/project-features.component';
 import { ProjectGalleryComponent } from './features/projects/project-gallery/project-gallery.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { LandownerComponent } from './pages/landowner/landowner.component';
+import { GalleryComponent } from './pages/gallery/gallery.component';
+import { TeamsIndexComponent } from './features/teams/teams-index/teams-index.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,8 +25,8 @@ export const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'projectdetails/:id', component: ProjectDetailsComponent },
   { path: 'contact', component: ContactComponent },
-  // { path: 'gallery', component: GalleryComponent },
-  // { path: 'landowner', component: LandownerComponent },
+  { path: 'gallery', component: GalleryComponent },
+  { path: 'landowner', component: LandownerComponent },
   // { path: 'blogs-events', component: BlogsEventsComponent },
   { path: 'blogs', component: BlogListComponent },
   { path: 'blogDetails/:id', component: BlogDetailsComponent },
@@ -34,7 +37,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardHomeComponent },
-      // { path: 'teams', component: TeamsIndexComponent },
+      { path: 'teams', component: TeamsIndexComponent },
       // { path: 'blogs', component: BlogsIndexComponent },
       // { path: 'testimonials', component: TestimonialsIndexComponent },
       // { path: 'offers', component: OffersIndexComponent },

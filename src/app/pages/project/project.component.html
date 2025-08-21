@@ -1,21 +1,14 @@
-<div class="relative overflow-hidden">
+<div class="relative">
   <!-- Hero Section -->
   <div
     class="relative bg-cover bg-center h-[320px] sm:h-[400px] lg:h-[500px] flex items-center justify-center"
     style="background-image: url('/images/banner/banner-3.png')"
   >
-    <div class="absolute inset-0 bg-black/30 backdrop-blur-md"></div>
-    <div
-      class="relative z-10 text-center px-5 py-28 sm:py-40 max-w-3xl"
-      appFadeIn
-    >
-      <div
-        class="inline-flex items-baseline gap-2 bg-black/30 backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg max-w-[90%] sm:max-w-2xl"
-      >
-        <span class="text-accent font-poppins text-lg select-none">/</span>
-        <h1
-          class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white font-poppins tracking-tight"
-        >
+    <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/20"></div>
+    <div class="relative z-10 text-center px-5 py-28 sm:py-40 max-w-4xl" appFadeIn>
+      <div class="inline-flex items-baseline gap-3 px-8 py-5">
+        <span class="text-accent font-poppins text-xl font-bold select-none">/</span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white font-poppins tracking-tighter">
           Projects
         </h1>
       </div>
@@ -23,17 +16,17 @@
   </div>
 
   <!-- Filter Bar -->
-  <div class=" bg-light p-5 border-b border-accent-light" appFadeIn>
+  <div class="p-6" appFadeIn>
     <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-end">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-end">
         <!-- Category -->
         <div>
-          <label for="category" class="block text-xs font-medium text-dark font-poppins mb-1">Project Category</label>
+          <label for="category" class="block text-sm font-semibold text-gray-800 font-poppins mb-2">Project Category</label>
           <select
             #categorySelect
             id="category"
             name="category"
-            class="w-full rounded-2xl border border-accent-light px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent text-dark bg-white"
+            class="w-full px-4 py-3 text-sm text-gray-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-accent"
           >
             <option value="all" selected>All Categories</option>
             <option value="Ongoing">Ongoing</option>
@@ -44,12 +37,12 @@
 
         <!-- Type -->
         <div>
-          <label for="type" class="block text-xs font-medium text-dark font-poppins mb-1">Project Type</label>
+          <label for="type" class="block text-sm font-semibold text-gray-800 font-poppins mb-2">Project Type</label>
           <select
             #typeSelect
             id="type"
             name="type"
-            class="w-full rounded-2xl border border-accent-light px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent text-dark bg-white"
+            class="w-full px-4 py-3 text-sm text-gray-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-accent"
           >
             <option value="all" selected>All Types</option>
             <option value="Residential">Residential</option>
@@ -58,11 +51,11 @@
         </div>
 
         <!-- Actions -->
-        <div class="flex gap-2">
+        <div class="flex gap-3">
           <button
             (click)="getProject()"
             aria-label="Apply filters"
-            class="btn-primary flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold bg-accent text-white rounded-2xl"
+            class="flex items-center justify-center gap-2 w-full py-3 text-sm font-bold bg-accent text-white transition-all duration-300 hover:bg-accent-dark"
           >
             <i class="ti ti-filter"></i>
             Filter
@@ -70,7 +63,7 @@
           <button
             (click)="resetFilters()"
             aria-label="Reset filters"
-            class="btn-secondary flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold border-2 border-accent-light text-dark rounded-2xl"
+            class="flex items-center justify-center gap-2 w-full py-3 text-sm font-bold text-gray-800 bg-transparent hover:text-accent transition-all duration-300"
           >
             <i class="ti ti-refresh"></i>
             Reset
@@ -81,69 +74,45 @@
   </div>
 
   <!-- Projects Grid -->
-  <section class="project_section py-12 bg-light" appFadeIn>
+  <div class="py-16">
     <div class="container mx-auto px-4">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
           *ngFor="let item of state.list"
-          class="project_card group relative overflow-hidden rounded-2xl shadow-lg bg-white flex flex-col"
+          class="group relative flex flex-col"
         >
-          <div class="absolute top-4 left-4 z-10">
-            <span
-              class="badge font-poppins"
-              [ngClass]="{
-                'bg-accent-light text-dark': item.category === 'Completed',
-                'bg-accent text-white': item.category === 'Ongoing',
-                'bg-accent-light/50 text-dark': item.category === 'Upcoming'
-              }"
-            >
-              {{ item.category || 'N/A' }}
-            </span>
-          </div>
           <a [routerLink]="['/projectdetails', item.id]" class="block flex flex-col flex-grow">
-            <div class="project_card_img overflow-hidden rounded-t-2xl relative">
+            <div class="relative overflow-hidden">
               <img
-                class="w-full h-[320px] object-cover transition-transform duration-500 group-hover:scale-105 group-hover:brightness-80"
+                class="w-full h-[320px] object-cover transition-transform duration-300 group-hover:scale-105"
                 [src]="baseUrl + '/api/attachment/get/' + item.thumbnail"
                 [attr.alt]="item.name || 'Project image'"
                 loading="lazy"
                 (error)="onImageError($event)"
               />
-              <div class="absolute bottom-4 right-4 bg-white/80 px-3 py-1 rounded-full text-xs font-medium flex items-center gap-2 shadow">
-                <span class="text-dark">{{ item.type || '—' }}</span>
-              </div>
+              <button
+                class="absolute inset-x-0 bottom-4 mx-auto px-6 py-3 text-sm font-bold bg-accent text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                [attr.aria-label]="'Visit project ' + item.name"
+              >
+                Visit
+              </button>
             </div>
-            <div class="project_card_details p-5 text-center flex flex-col flex-grow">
-              <h2 class="text-xl font-bold font-poppins mb-1 group-hover:text-accent transition">
+            <div class="p-6 text-center flex flex-col">
+              <h2 class="text-xl font-bold font-poppins mb-2 group-hover:text-accent transition-colors duration-200">
                 {{ item.name }}
               </h2>
-              <div class="text-sm text-accent-light flex justify-center items-center gap-2 mb-3">
+              <div class="text-sm text-gray-600 flex justify-center items-center gap-3 mb-4">
                 <span>{{ item.location || 'Unknown' }}</span>
-                <span class="w-2 h-2 bg-accent rounded-full"></span>
-                <span>{{ item.type }}</span>
-              </div>
-              <div class="mt-auto flex justify-center gap-3">
-                <button
-                  class="btn-primary text-sm px-6 py-2.5 rounded-full font-semibold bg-accent text-white"
-                  [attr.aria-label]="'View details of ' + item.name"
-                >
-                  View Details
-                </button>
-                <button
-                  *ngIf="item.canSchedule"
-                  class="btn-secondary text-sm px-6 py-2.5 rounded-full font-semibold border-2 border-accent-light text-dark"
-                  [attr.aria-label]="'Schedule visit for ' + item.name"
-                >
-                  Schedule Visit
-                </button>
+                <span class="w-2 h-2 bg-accent"></span>
+                <span>{{ item.type || '—' }}</span>
               </div>
             </div>
           </a>
         </div>
-        <div *ngIf="!state.list.length" class="col-span-full text-center py-16 text-dark font-poppins">
+        <div *ngIf="!state.list.length" class="col-span-full text-center py-16 text-gray-800 font-poppins text-lg">
           No projects match your filters. Try adjusting criteria.
         </div>
       </div>
     </div>
-  </section>
+  </div>
 </div>

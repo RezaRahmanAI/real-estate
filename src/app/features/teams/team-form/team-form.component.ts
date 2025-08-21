@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Team } from '../../../core/models/model';
-import { TeamService } from '../../../core/services/team.service';
+import { Team } from '../../../models/model';
+import { TeamService } from '../../../services/team.service';
 
 @Component({
   selector: 'app-team-form',

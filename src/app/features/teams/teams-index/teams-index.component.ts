@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamFormComponent } from '../team-form/team-form.component';
 import { CommonModule } from '@angular/common';
-import { Team } from '../../../core/models/model';
 import { environment } from '../../../environments/environment';
-import { TeamService } from '../../../core/services/team.service';
+import { Team } from '../../../models/model';
+import { TeamService } from '../../../services/team.service';
 
 
 @Component({
