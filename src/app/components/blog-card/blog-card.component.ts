@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
   standalone: true,
   imports: [CommonModule, RouterModule],
   templateUrl: './blog-card.component.html',
+  styleUrls: ['./blog-card.component.css'],
 })
 export class BlogCardComponent {
   @Input() item: any;

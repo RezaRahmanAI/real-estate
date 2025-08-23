@@ -4,11 +4,12 @@ import { ProjectExploreComponent } from "../../components/project-explore/projec
 import { VisionBannerComponent } from "../../components/vision-banner/vision-banner.component";
 import { TestimonialCarouselComponent } from "../../components/testimonial/testimonial.component";
 import { ProjectSlideComponent } from "../../components/project-slide/project-slide.component";
+import { FollowUpdateComponent } from "../../components/follow-update/follow-update.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeroComponent, ProjectExploreComponent, VisionBannerComponent, TestimonialCarouselComponent, ProjectSlideComponent],
+  imports: [HeroComponent, ProjectExploreComponent, VisionBannerComponent, TestimonialCarouselComponent, ProjectSlideComponent, FollowUpdateComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

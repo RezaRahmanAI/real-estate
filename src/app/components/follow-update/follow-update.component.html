@@ -1,0 +1,30 @@
+<div class="py-12 px-4 md:px-8 rounded-2xl">
+  <div class="mx-auto" style="width: 85%">
+    <!-- Header with h1 on left and nav buttons on right -->
+    <div class="flex justify-between items-center mb-10">
+      <h1 class="text-6xl text-dark font-semibold font-[var(--heading)]">
+        Follow Our Updates
+      </h1>
+      <div class="nav flex items-end gap-4">
+        <button
+          (click)="prev()"
+          class="w-12 h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
+        >
+          ←
+        </button>
+        <button
+          (click)="next()"
+          class="w-12 h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
+        >
+          →
+        </button>
+      </div>
+    </div>
+    
+  </div>
+
+  
+</div>
+
+<app-blog-list />
+

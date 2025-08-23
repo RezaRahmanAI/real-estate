@@ -17,6 +17,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { LandownerComponent } from './pages/landowner/landowner.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { TeamsIndexComponent } from './features/teams/teams-index/teams-index.component';
+import { BlogsIndexComponent } from './features/blogs/blogs-index/blogs-index.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +39,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'teams', component: TeamsIndexComponent },
-      // { path: 'blogs', component: BlogsIndexComponent },
+      { path: 'blogs', component: BlogsIndexComponent },
       // { path: 'testimonials', component: TestimonialsIndexComponent },
       // { path: 'offers', component: OffersIndexComponent },
       // { path: 'about-us', component: AboutUsIndexComponent },

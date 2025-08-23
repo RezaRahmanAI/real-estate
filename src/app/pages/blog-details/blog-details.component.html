@@ -3,7 +3,7 @@
     class="relative bg-cover bg-center h-[320px] sm:h-[400px] lg:h-[500px] flex items-center justify-center"
     style="background-image: url('/images/banner/banner-3.png')"
   >
-    <div class="absolute inset-0 mix-blend-normal"></div>
+    <!-- <div class="absolute inset-0 mix-blend-normal"></div>
     <div
       class="relative z-10 text-center px-5 py-28 sm:py-40 max-w-3xl animate-entrance"
     >
@@ -16,10 +16,10 @@
         <h1
           class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
         >
-          Projects
+          
         </h1>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <!-- Offer Countdown -->
@@ -42,85 +42,43 @@
   </div>
 
 <!-- Blog Content -->
-<div class="blog_details_section py-14 px-4 max-w-5xl mx-auto">
+<div class="blog_details_section py-14 px-4 max-w-5xl ">
   <div class="flex flex-col lg:flex-row gap-10 items-start" id="blogRow">
     
     <!-- Left Side: Title & Description -->
-    <div class="lg:w-1/2 sticky top-24 text-right">
-      <h2 class="text-4xl font-extrabold text-slate-900 mb-6">
+    <div class="lg:w-1/6 sticky top-24 text-right">
+      <!-- <h2 class="text-4xl font-extrabold text-slate-900 mb-6">
         {{ data()?.title }}
       </h2>
       <p class="text-slate-500 text-sm mb-8">
         {{ data()?.createdAt | date : "mediumDate" }}
+      </p> -->
+      
+    </div>
+
+    <!-- Right Side: Image -->
+    <div class="lg:w-5/6">
+      <h2 class="text-4xl font-extrabold text-slate-900 mb-6">
+        {{ data()?.title }}
+      </h2>
+      <p class="text-slate-500 text-sm mb-8">
+        Blogs / {{ data().createdAt  }}
       </p>
+      <img
+        *ngIf="data()?.image"
+        [src]="data()?.image"
+        alt="Blog Image"
+        id="blogImage"
+        class="w-full  shadow-lg transition-transform duration-300 transform"
+        loading="lazy"
+      />
       <div
         class="prose prose-lg max-w-none text-slate-800 leading-relaxed tracking-wide"
         [innerHTML]="data()?.description"
       ></div>
     </div>
 
-    <!-- Right Side: Image -->
-    <div class="lg:w-1/2">
-      <img
-        *ngIf="data()?.image"
-        [src]="data()?.image"
-        alt="Blog Image"
-        id="blogImage"
-        class="w-full rounded-xl shadow-lg transition-transform duration-300 transform hover:scale-105"
-        loading="lazy"
-      />
-    </div>
-
   </div>
 </div>
 
-  <!-- Other Blogs -->
-  <div
-    class="others_blog_list py-14 px-4 max-w-6xl mx-auto"
-    data-animate="otherBlogs"
-  >
-    <h2 class="text-2xl font-bold mb-6 text-slate-900">Other Blogs</h2>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div
-        *ngFor="let blog of list(); let i = index"
-        class="bg-white rounded shadow hover:shadow-lg transition p-4 flex flex-col"
-      >
-        <img
-          *ngIf="blog.image"
-          [src]="blog.image"
-          alt="{{ blog.title }}"
-          class="w-full h-48 object-cover rounded mb-4"
-        />
-        <h3 class="text-lg font-bold mb-2">{{ blog.title }}</h3>
-        <p class="text-slate-600 text-sm flex-grow">
-          {{ blog.shortDescription }}
-        </p>
-
-        <div
-          class="mt-4 text-sm text-slate-500"
-          *ngIf="countdowns()[i] && countdowns()[i] !== 'No Offer'"
-        >
-          <span
-            class="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-xs font-semibold"
-          >
-            {{ countdowns()[i] }}
-          </span>
-        </div>
-
-        <div
-          class="mt-4 text-sm text-red-500"
-          *ngIf="countdowns()[i] === 'Offer Expired'"
-        >
-          Offer Expired
-        </div>
-
-        <a
-          [routerLink]="['/blog', blog._id]"
-          class="mt-4 inline-block text-blue-600 hover:underline"
-        >
-          Read More →
-        </a>
-      </div>
-    </div>
-  </div>
 </div>
