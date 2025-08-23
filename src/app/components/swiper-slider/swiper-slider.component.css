@@ -1,9 +1,6 @@
 :host {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   width: 100%;
-  padding: 2rem;
   box-sizing: border-box;
 }
 
@@ -15,14 +12,21 @@
 .slides {
   display: flex;
   transition: transform 0.1s linear;
+  user-select: none; /* Prevent text selection during drag */
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 .slide {
   margin-right: 16px; /* gap-x-4 */
   border-radius: 12px;
   overflow: hidden;
-  cursor: pointer;
+  cursor: grab; /* Indicate draggability */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   flex-shrink: 0;
   transition: transform 0.3s;
+}
+
+.slide:active {
+  cursor: grabbing; /* Change cursor during drag */
 }
