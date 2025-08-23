@@ -1,57 +1,37 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { environment } from '../../environments/environment'; // Adjust path as needed
+import { ProjectService } from '../../services/project.service';
+import { Project } from '../../models/project.model';
 
 interface Slide {
+  id: string;
   image: string;
-  title: string;
-  liked: boolean;
+  name: string;
+  location: string;
+  type: string;
 }
 
 @Component({
   selector: 'app-swiper-slider',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './swiper-slider.component.html',
-  styleUrl: './swiper-slider.component.css',
+  styleUrls: ['./swiper-slider.component.css'],
 })
 export class SwiperSliderComponent implements OnInit, OnDestroy {
-  slides: Slide[] = [
-    {
-      image: 'https://images.unsplash.com/photo-1549414210-9114d5e1f0e8?w=1200',
-      title: 'Mountain Lake',
-      liked: false,
-    },
-    {
-      image:
-        'https://images.unsplash.com/photo-1508921912187-b64906f3b0e7?w=1200',
-      title: 'City Nightscape',
-      liked: false,
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1550856980-0a256a004457?w=1200',
-      title: 'Forest Pathway',
-      liked: false,
-    },
-    {
-      image:
-        'https://images.unsplash.com/photo-1501785885235-95a9478f7e96?w=1200',
-      title: 'Rocky Coast',
-      liked: false,
-    },
-    {
-      image:
-        'https://images.unsplash.com/photo-1470219556762-1771e7f9427d?w=1200',
-      title: 'Autumn Forest',
-      liked: false,
-    },
-  ];
-
+  slides: Slide[] = [];
+  baseUrl = environment.baseUrl;
   currentTranslate = 0;
-  slideWidth = 260; // 250px + 10px margin
+  slideWidth = 400 + 16; // 400px (max-w-[400px]) + 16px (gap-x-4)
   speed = 0.5; // pixels per frame
   animationFrameId!: number;
 
+  constructor(private projectService: ProjectService) {}
+
   ngOnInit() {
+    this.loadProjects();
     this.animateSlide();
   }
 
@@ -59,16 +39,39 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
     cancelAnimationFrame(this.animationFrameId);
   }
 
+  loadProjects() {
+    this.projectService.getProjects().subscribe({
+      next: (projects: Project[]) => {
+        this.slides = projects.map((project) => ({
+          id: project.id,
+          image: project.thumbnail
+            ? `${this.baseUrl}/api/attachment/get/${project.thumbnail}`
+            : 'https://via.placeholder.com/400x500', // Fallback image
+          name: project.name || 'Untitled Project',
+          location: project.address || 'Unknown',
+          type: project.type || '—',
+        }));
+        // Duplicate slides for endless loop
+        this.slides = [...this.slides, ...this.slides];
+      },
+      error: (err) => {
+        console.error('Error loading projects:', err);
+        this.projectService.showError('Failed to load projects');
+      },
+    });
+  }
+
   animateSlide() {
     this.currentTranslate -= this.speed;
     const totalWidth = this.slideWidth * this.slides.length;
-    if (Math.abs(this.currentTranslate) >= totalWidth) {
-      this.currentTranslate = 0;
+    if (Math.abs(this.currentTranslate) >= totalWidth / 2) {
+      this.currentTranslate = 0; // Reset to start for seamless loop
     }
     this.animationFrameId = requestAnimationFrame(() => this.animateSlide());
   }
 
-  toggleLike(slide: Slide) {
-    slide.liked = !slide.liked;
+  onImageError(event: Event) {
+    const img = event.target as HTMLImageElement;
+    img.src = 'https://via.placeholder.com/400x500'; // Fallback image on error
   }
 }
