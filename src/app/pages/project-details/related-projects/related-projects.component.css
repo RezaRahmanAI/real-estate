@@ -1,76 +1,11 @@
 :host {
   display: block;
-}
-
-.related_projects {
-  @apply py-14 bg-light;
-}
-
-.container {
-  @apply mx-auto px-4;
-}
-
-h1 {
-  @apply text-3xl md:text-4xl font-poppins font-bold text-dark mb-8 text-center;
-}
-
-.grid {
-  display: grid;
-  @apply grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .project_card {
-  @apply relative overflow-hidden rounded-2xl shadow-lg bg-white;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.project_card:hover {
-  @apply translate-y-[-4px];
-  box-shadow: 0 12px 30px -5px rgba(96, 153, 102, 0.3);
-}
-
-.project_card_img img {
-  @apply w-full h-80 object-cover rounded-t-2xl;
-  transition: transform 0.5s ease;
-}
-
-.project_card:hover .project_card_img img {
-  @apply scale-105;
-}
-
-.project_card_details {
-  @apply p-4 text-center;
-}
-
-.project_card_details h1 {
-  @apply text-xl font-poppins font-bold text-dark mb-2;
-  transition: color 0.3s ease;
-}
-
-.project_card:hover .project_card_details h1 {
-  @apply text-accent;
-}
-
-.project_card_details p {
-  @apply flex items-center justify-center gap-2 text-sm text-accent-light;
-}
-
-.project_card_details .dot {
-  @apply w-2 h-2 bg-accent rounded-full;
-}
-
-.adds {
-  @apply flex items-center justify-between w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-1/4 mx-auto mt-8 p-4 bg-accent rounded-full shadow-lg;
-}
-
-.adds i {
-  @apply text-xl md:text-2xl text-white;
-}
-
-.btn-primary {
-  @apply px-4 py-2 text-sm font-semibold bg-white text-accent rounded-full;
-}
-
-.btn-primary:hover {
-  @apply bg-accent-light;
+  border-radius: 0.5rem; /* rounded-2xl */
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* shadow-lg */
 }

@@ -1,24 +1,33 @@
 <div class="related_projects py-14 bg-light" id="relatedProjects" appFadeIn>
-  <div class="container mx-auto px-4">
+  <div class="w-[85%] mx-auto px-4">
     <h1 class="text-3xl md:text-4xl font-poppins font-bold text-dark mb-8 text-center">Related Projects</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div *ngFor="let item of projects" class="project_card group relative overflow-hidden rounded-2xl shadow-lg bg-white">
-        <a (click)="onProjectSelect(item.id)" class="block">
-          <div class="project_card_img">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8">
+      <div *ngFor="let card of cards" class="project_card group relative flex flex-col max-w-[400px] w-full">
+        <a (click)="onProjectSelect(card.id)" class="block flex flex-col flex-grow">
+          <div class="relative overflow-hidden">
             <img
-              class="w-full h-80 object-cover rounded-t-2xl transition-transform duration-300 group-hover:scale-105"
-              [src]="baseUrl + '/api/attachment/get/' + item.thumbnail"
-              alt="Project thumbnail"
+              class="w-full h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] object-cover transition-transform duration-300 group-hover:scale-105"
+              [src]="card.image"
+              [alt]="card.name || 'Project image'"
+              loading="lazy"
               (error)="onImageError($event)"
             />
+            <button
+              class="absolute inset-x-0 bottom-4 mx-auto px-6 py-3 text-sm font-bold bg-accent text-light opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              [attr.aria-label]="'Visit project ' + card.name"
+            >
+              Visit
+            </button>
           </div>
-          <div class="project_card_details p-4 text-center">
-            <h1 class="text-xl font-poppins font-bold text-dark mb-2 group-hover:text-accent transition">{{ item.name }}</h1>
-            <p class="flex items-center justify-center gap-2 text-sm text-accent-light">
-              <span>{{ item.category }}</span>
-              <span class="w-2 h-2 bg-accent rounded-full"></span>
-              <span>{{ item.type }}</span>
-            </p>
+          <div class="p-6 text-center flex flex-col">
+            <h2 class="text-xl font-bold font-poppins mb-2 group-hover:text-accent transition-colors duration-200">
+              {{ card.name }}
+            </h2>
+            <div class="text-sm text-dark flex justify-center items-center gap-3 mb-4">
+              <span>{{ card.location }}</span>
+              <span class="w-2 h-2 bg-accent"></span>
+              <span>{{ card.type }}</span>
+            </div>
           </div>
         </a>
       </div>
