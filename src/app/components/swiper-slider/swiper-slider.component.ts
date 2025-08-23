@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { environment } from '../../environments/environment'; 
+import { RouterModule, Router } from '@angular/router';
+import { environment } from '../../environments/environment'; // Adjust path as needed
 import { ProjectService } from '../../services/project.service';
 import { Project } from '../../models/project.model';
 
@@ -9,7 +9,8 @@ interface Slide {
   id: string;
   image: string;
   name: string;
-  location: string;
+  category: string;
+  address: string;
   type: string;
 }
 
@@ -31,8 +32,10 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
   startX = 0;
   startTranslate = 0;
   isPaused = false;
+  swipeDistance = 0;
+  swipeThreshold = 10; // Pixels to consider as a swipe
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private router: Router) {}
 
   ngOnInit() {
     this.loadProjects();
@@ -50,9 +53,10 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
           id: project.id,
           image: project.thumbnail
             ? `${this.baseUrl}/api/attachment/get/${project.thumbnail}`
-            : 'https://via.placeholder.com/400x500', // Fallback image
+            : 'https://via.placeholder.com/400x80',
           name: project.name || 'Untitled Project',
-          location: project.address || 'Unknown',
+          category: project.category || 'Unknown', 
+          address: project.address,
           type: project.type || '—',
         }));
         // Duplicate slides for endless loop
@@ -70,7 +74,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
       this.currentTranslate -= this.speed;
       const totalWidth = this.slideWidth * this.slides.length;
       if (Math.abs(this.currentTranslate) >= totalWidth / 2) {
-        this.currentTranslate = 0; // Reset to start for seamless loop
+        this.currentTranslate = 0;
       }
     }
     this.animationFrameId = requestAnimationFrame(() => this.animateSlide());
@@ -78,7 +82,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
 
   onImageError(event: Event) {
     const img = event.target as HTMLImageElement;
-    img.src = 'https://via.placeholder.com/400x500'; // Fallback image on error
+    img.src = 'https://via.placeholder.com/400x80'; // Match RelatedProjectsComponent fallback
   }
 
   prevSlide() {
@@ -99,9 +103,10 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
   onMouseDown(event: MouseEvent | TouchEvent) {
     event.preventDefault();
     this.isDragging = true;
-    this.isPaused = true; // Pause animation during drag
+    this.isPaused = true;
     this.startX = 'touches' in event ? event.touches[0].clientX : event.clientX;
     this.startTranslate = this.currentTranslate;
+    this.swipeDistance = 0;
     document.addEventListener('mousemove', this.onMouseMove.bind(this));
     document.addEventListener('touchmove', this.onMouseMove.bind(this));
     document.addEventListener('mouseup', this.onMouseUp.bind(this), {
@@ -116,9 +121,8 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
     if (!this.isDragging) return;
     const currentX =
       'touches' in event ? event.touches[0].clientX : event.clientX;
-    const diff = currentX - this.startX;
-    this.currentTranslate = this.startTranslate + diff;
-    // Ensure translate stays within bounds for smooth looping
+    this.swipeDistance = Math.abs(currentX - this.startX);
+    this.currentTranslate = this.startTranslate + (currentX - this.startX);
     const totalWidth = this.slideWidth * this.slides.length;
     if (Math.abs(this.currentTranslate) >= totalWidth / 2) {
       this.currentTranslate = 0;
@@ -129,7 +133,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
 
   onMouseUp() {
     this.isDragging = false;
-    this.isPaused = false; // Resume animation after drag
+    this.isPaused = false;
     document.removeEventListener('mousemove', this.onMouseMove.bind(this));
     document.removeEventListener('touchmove', this.onMouseMove.bind(this));
   }
@@ -140,5 +144,20 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
 
   onMouseLeave() {
     this.isPaused = false;
+  }
+
+  onProjectSelect(projectId: string, event: MouseEvent) {
+    if (this.swipeDistance > this.swipeThreshold) {
+      event.preventDefault();
+      return;
+    }
+    this.router
+      .navigate(['/projectdetails', projectId], {
+        onSameUrlNavigation: 'reload',
+      })
+      .then(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      })
+      .catch((err) => console.error('Navigation error:', err));
   }
 }

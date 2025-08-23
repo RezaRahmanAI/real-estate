@@ -15,7 +15,7 @@ export class HeroParallaxDirective implements OnInit {
 
   ngOnInit(): void {
     // Set initial position explicitly
-    this.el.nativeElement.style.backgroundPosition = 'center 0px';
+    this.el.nativeElement.style.backgroundPosition = 'center 100px';
 
     // Initialize parallax with scroll = 0
     this.updateParallax(0);

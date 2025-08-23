@@ -62,7 +62,7 @@
         {{ data()?.title }}
       </h2>
       <p class="text-slate-500 text-sm mb-8">
-        Blogs / {{ data().createdAt  }}
+        Blogs / {{ data().postedDate | date : 'MMM d, y' }}
       </p>
       <img
         *ngIf="data()?.image"
