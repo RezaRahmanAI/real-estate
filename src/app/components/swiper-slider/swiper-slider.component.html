@@ -1,0 +1,25 @@
+<div class="slider-wrapper">
+  <div class="slides" [style.transform]="'translateX(' + currentTranslate + 'px)'">
+    <!-- original slides -->
+    <div class="slide" *ngFor="let slide of slides">
+      <img [src]="slide.image" [alt]="slide.title" />
+      <div class="caption">
+        <h3>{{ slide.title }}</h3>
+        <button (click)="toggleLike(slide)">
+          <span [class.liked]="slide.liked">❤</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- duplicate slides for endless loop -->
+    <div class="slide" *ngFor="let slide of slides">
+      <img [src]="slide.image" [alt]="slide.title" />
+      <div class="caption">
+        <h3>{{ slide.title }}</h3>
+        <button (click)="toggleLike(slide)">
+          <span [class.liked]="slide.liked">❤</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
