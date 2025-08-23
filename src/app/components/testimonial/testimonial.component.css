@@ -24,12 +24,10 @@
 }
 
 .image-wrapper {
-  flex: 1 1 280px;
   @apply mt-20 md:mt-36;
 }
 
 .text-wrapper {
-  flex: 2 1 400px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -71,8 +69,6 @@
 .name {
   @apply font-bold text-dark;
 }
-
-
 
 .nav button {
   @apply bg-accent text-light px-4 py-2 rounded-full font-semibold hover:bg-accent-light transition duration-300;
