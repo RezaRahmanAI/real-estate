@@ -1,21 +1,35 @@
-
 import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LenisService } from '../../services/lenis.service';
 import { NavbarScrollDirective } from '../../directives/navbar-scroll.directive';
-import { SidePanelComponent } from "../side-panel/side-panel.component";
+import { SidePanelComponent } from '../side-panel/side-panel.component';
 import { SidePanelService } from '../../services/sidepanel.service';
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, NavbarScrollDirective, SidePanelComponent, RouterLink],
+  imports: [
+    CommonModule,
+    NavbarScrollDirective,
+    SidePanelComponent,
+    RouterLink,
+  ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  constructor(public sidePanel: SidePanelService, private lenisService: LenisService) {}
+  isTop: boolean = true;
+  constructor(
+    public sidePanel: SidePanelService,
+    private lenisService: LenisService,
+    public router: Router
+  ) {}
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isTop = window.scrollY === 0;
+  }
 
   @HostListener('document:click', ['$event'])
   handleClick(event: MouseEvent) {

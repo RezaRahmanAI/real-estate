@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -24,9 +24,10 @@ interface ProjectItem {
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css'],
 })
-export class ProjectsComponent implements  AfterViewInit {
+export class ProjectsComponent implements AfterViewInit {
   @ViewChild('categorySelect') categorySelect!: ElementRef<HTMLSelectElement>;
   @ViewChild('typeSelect') typeSelect!: ElementRef<HTMLSelectElement>;
+  scrollY = 0;
 
   baseUrl = environment.baseUrl;
   state = {
@@ -38,7 +39,6 @@ export class ProjectsComponent implements  AfterViewInit {
     private lenisService: LenisService,
     private toastr: ToastrService
   ) {}
-
 
   ngAfterViewInit(): void {
     this.getProject();
@@ -60,13 +60,19 @@ export class ProjectsComponent implements  AfterViewInit {
         next: (data) => {
           this.state.list = data;
           if (!data.length) {
-            this.toastr.info('No projects match your filters. Try adjusting criteria.', 'No Results');
+            this.toastr.info(
+              'No projects match your filters. Try adjusting criteria.',
+              'No Results'
+            );
           }
         },
         error: (err) => {
           console.error('Error fetching projects:', err);
           this.state.list = [];
-          this.toastr.error('Failed to load projects. Please try again.', 'Error');
+          this.toastr.error(
+            'Failed to load projects. Please try again.',
+            'Error'
+          );
         },
       });
   }
@@ -82,5 +88,10 @@ export class ProjectsComponent implements  AfterViewInit {
     if (img.src !== '/images/fallback.png') {
       img.src = '/images/fallback.png';
     }
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    this.scrollY = window.scrollY;
   }
 }
