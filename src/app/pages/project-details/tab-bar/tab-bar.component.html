@@ -1,28 +1,14 @@
-<div class="tab-bar sticky top-0 z-20 hidden lg:block">
-  <div class="container">
-    <div class="flex justify-between items-center p-3 bg-card-bg rounded-lg shadow-lg w-full">
-
-      <button (click)="scrollToSection('atGlance')" [class.active]="activeTab === 'atGlance'">
-        <span class="tab">At a Glance</span>
-      </button>
-      <button (click)="scrollToSection('featureAndAmenities')" [class.active]="activeTab === 'featureAndAmenities'">
-        <span class="tab">Features & Amenities</span>
-      </button>
-      <button (click)="scrollToSection('videoPlayer')" [class.active]="activeTab === 'videoPlayer'">
-        <span class="tab">Video</span>
-      </button>
-      <button (click)="scrollToSection('projectGallery')" [class.active]="activeTab === 'projectGallery'">
-        <span class="tab">Gallery</span>
-      </button>
-      <button (click)="scrollToSection('locationMap')" [class.active]="activeTab === 'locationMap'">
-        <span class="tab">Location Map</span>
-      </button>
-      <button (click)="scrollToSection('relatedProjects')" [class.active]="activeTab === 'relatedProjects'">
-        <span class="tab">Related Projects</span>
-      </button>
-      <button (click)="scrollToSection('contacting')" [class.active]="activeTab === 'contacting'">
-        <span class="tab">Contact</span>
-      </button>
-    </div>
-  </div>
+<div
+  class="fixed top-1/4 right-4 z-50 flex flex-col gap-3 transition-transform duration-500 ease-in-out"
+  [class.translate-x-full]="!showRight"
+>
+  <button
+    *ngFor="let section of sections"
+    (click)="scrollToSection(section.id)"
+    [class.bg-accent]="activeTab === section.id"
+    [class.text-light]="activeTab === section.id"
+    class="px-4 py-2 rounded-md font-semibold text-dark hover:bg-accent hover:text-light transition-colors duration-300 whitespace-nowrap"
+  >
+    {{ section.label }}
+  </button>
 </div>

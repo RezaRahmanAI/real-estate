@@ -37,7 +37,6 @@ interface TeamMember {
     MissionVisionComponent,
     TeamComponent,
     TeamModalComponent,
-    HeroComponent
 ],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],

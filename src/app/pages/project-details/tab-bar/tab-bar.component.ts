@@ -1,36 +1,47 @@
 import { Component, HostListener } from '@angular/core';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-tab-bar',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, TitleCasePipe],
   templateUrl: './tab-bar.component.html',
   styleUrls: ['./tab-bar.component.css'],
 })
 export class TabBarComponent {
   activeTab: string = '';
+  lastScrollTop = 0;
+  showRight = false;
+
+  sections = [
+    { id: 'atGlance', label: 'At a Glance' },
+    { id: 'featureAndAmenities', label: 'Feature & Amenities' },
+    { id: 'videoPlayer', label: 'Video' },
+    { id: 'projectGallery', label: 'Gallery' },
+    { id: 'locationMap', label: 'Location Map' },
+    { id: 'relatedProjects', label: 'More Projects' },
+    { id: 'contacting', label: 'Contact' },
+  ];
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const scrollPosition = window.scrollY + 100; // Offset for better detection
-    const sections = [
-      'atGlance',
-      'featureAndAmenities',
-      'videoPlayer',
-      'projectGallery',
-      'locationMap',
-      'relatedProjects',
-      'contacting',
-    ];
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-    for (const section of sections) {
-      const element = document.getElementById(section);
+    // Show only if scroll > 50px
+    this.showRight = scrollTop > 50;
+
+    this.lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+    // Highlight active tab
+    const offset = scrollTop + window.innerHeight / 3;
+    for (const section of this.sections) {
+      const el = document.getElementById(section.id);
       if (
-        element &&
-        element.offsetTop <= scrollPosition &&
-        element.offsetTop + element.offsetHeight > scrollPosition
+        el &&
+        el.offsetTop <= offset &&
+        el.offsetTop + el.offsetHeight > offset
       ) {
-        this.activeTab = section;
+        this.activeTab = section.id;
         break;
       }
     }
@@ -39,7 +50,7 @@ export class TabBarComponent {
   scrollToSection(sectionId: string) {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       this.activeTab = sectionId;
     }
   }
