@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,4 +9,11 @@ import { RouterModule } from '@angular/router';
   templateUrl: './contact-hero.component.html',
   styleUrl: './contact-hero.component.css',
 })
-export class ContactHeroComponent {}
+export class ContactHeroComponent {
+  scrollY = 0;
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll() {
+    this.scrollY = window.scrollY;
+  }
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterOutlet } from '@angular/router';
+import { FloatingSocialComponent } from "./components/floating-social/floating-social.component";
 
 
 @Component({
@@ -13,7 +14,7 @@ import { RouterOutlet } from '@angular/router';
     RouterOutlet,
     NavbarComponent,
     FooterComponent,
-   
+    FloatingSocialComponent
 ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],

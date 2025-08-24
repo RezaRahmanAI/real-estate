@@ -1,19 +1,28 @@
-<div class="relative bg-cover bg-center h-[320px] sm:h-[400px] lg:h-[500px] flex items-center justify-center" style="background-image:url('/images/banner/banner-3.png')">
-  <div class="absolute inset-0  mix-blend-normal"></div>
-  <div class="relative z-10 text-center px-5 py-28 sm:py-40 max-w-3xl animate-entrance">
-    <h1 class="font-extrabold text-white text-4xl sm:text-5xl md:text-6xl leading-tight">
-      Find Your Dream Property
-    </h1>
-    <p class="mt-4 text-white/90 text-base sm:text-lg">
-      We help you buy, sell, or rent with confidence — expert guidance, local knowledge, and a personal touch.
-    </p>
-    <div class="mt-8 flex flex-wrap justify-center gap-4">
-      <!-- <a routerLink="/project" class="btn-modern btn-primary  flex items-center gap-2">
-        Browse Projects <span class="underline-expand"></span> <span class="icon-arrow">→</span> 
-      </a> -->
-      <a routerLink="/project" class="btn-modern btn-secondary relative">
-        Browse Projects<span class="icon-arrow">→</span> <span class="underline-expand"></span>
-      </a>
+<div class="relative">
+  <!-- Quote on top -->
+<div class="w-[85%] mt-36 mx-auto my-5">
+  <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-accent tracking-tight drop-shadow-lg">
+    Trust Built, Promise Kept
+  </h2>
+</div>
+
+<!-- Hero Banner with fixed parallax -->
+<div class="relative h-[600px] w-full overflow-hidden">
+  <!-- Background Image -->
+  <div 
+    class="absolute top-0 left-0 w-full h-[120%] bg-cover bg-center transform-gpu will-change-transform"
+    style="background-image: url('/images/banner/banner-3.png');"
+    [ngStyle]="{'transform': 'translateY(' + (scrollY * 0.3 - 60) + 'px)'}">
+  </div>
+
+  <!-- Optional overlay -->
+  <div class="absolute inset-0 bg-black/40"></div>
+
+  <!-- Centered content -->
+  <div class="relative z-10 flex items-center justify-center h-full px-5">
+    <div class="inline-flex items-baseline gap-2 bg-[rgba(0,0,0,0.3)] backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg max-w-[85%]">
+      
     </div>
   </div>
+</div>
 </div>
