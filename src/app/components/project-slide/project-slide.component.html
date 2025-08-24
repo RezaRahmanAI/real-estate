@@ -1,12 +1,12 @@
 <div class="carousel">
   <div class="list">
-    <div class="item" *ngFor="let slide of slides; let i = index" [class.active]="i === currentSlideIndex">
+    <div class="item" *ngFor="let slide of slides; let i = index">
       <img [src]="slide.image" [alt]="slide.alt" loading="lazy">
       <div class="content">
-        <!-- <div class="author">{{ slide.author }}</div> -->
+        <div class="author">{{ slide.author }}</div>
         <div class="title">{{ slide.title }}</div>
         <div class="topic">{{ slide.topic }}</div>
-        <!-- <div class="des">{{ slide.description }}</div> -->
+        <div class="des">{{ slide.des }}</div>
         <div class="buttons">
           <button aria-label="See more">SEE MORE</button>
           <button aria-label="Subscribe">SUBSCRIBE</button>
@@ -24,8 +24,8 @@
     </div>
   </div>
   <div class="arrows">
-    <button id="prev" (click)="showSlider('prev')" aria-label="Previous slide">&lt;</button>
-    <button id="next" (click)="showSlider('next')" aria-label="Next slide">&gt;</button>
+    <button id="prev" aria-label="Previous slide">&lt;</button>
+    <button id="next" aria-label="Next slide">&gt;</button>
   </div>
   <div class="time"></div>
 </div>

@@ -5,32 +5,93 @@
 >
   <div class="w-[85%] mx-auto flex justify-between items-center py-4">
     <!-- LEFT NAV LINKS (hidden on mobile) -->
-    <div class="nav-left hidden md:flex items-center gap-8" 
-         [ngClass]="{'text-black': isTop && router.url !== '/home', 'text-light': !isTop || router.url === '/home'}">
-      <a routerLink="home" class="font-semibold hover:text-accent-light transition-colors duration-300">Home</a>
-      <a routerLink="about" class="font-semibold hover:text-accent-light transition-colors duration-300">About</a>
-      <a routerLink="projects" class="font-semibold hover:text-accent-light transition-colors duration-300">Properties</a>
+    <div
+      class="nav-left hidden md:flex items-center gap-8"
+      [ngClass]="{
+        'text-black': isTop && router.url !== '/' && router.url !== '/home',
+        'text-light': !isTop || router.url === '/' || router.url === '/home'
+      }"
+    >
+      <a
+        routerLink="home"
+        class="font-semibold hover:text-accent-light transition-colors duration-300"
+        >Home</a
+      >
+      <a
+        routerLink="about"
+        class="font-semibold hover:text-accent-light transition-colors duration-300"
+        >About</a
+      >
+      <a
+        routerLink="projects"
+        class="font-semibold hover:text-accent-light transition-colors duration-300"
+        >Properties</a
+      >
     </div>
 
     <!-- LOGO -->
-    <a routerLink="home" class="nav-center flex-1 flex justify-center md:justify-center">
-      <img src="images/Logo.png" class="max-h-16 md:max-h-20 object-contain" alt="Logo"/>
+    <a
+      routerLink="home"
+      class="nav-center flex-1 flex justify-center md:justify-center"
+    >
+      <img
+        src="images/Logo.png"
+        class="max-h-16 md:max-h-20 object-contain"
+        alt="Logo"
+      />
     </a>
 
     <!-- RIGHT SIDE -->
     <div class="nav-right flex items-center gap-6">
-      <a routerLink="contact" 
-         class="hidden md:block font-semibold hover:text-accent-light transition-colors duration-300"
-         [ngClass]="{'text-black': isTop && router.url !== '/home', 'text-light': !isTop || router.url === '/home'}">
+      <a
+        routerLink="contact"
+        class="hidden md:block font-semibold hover:text-accent-light transition-colors duration-300"
+        [ngClass]="{
+          'text-black': isTop && router.url !== '/' && router.url !== '/home',
+          'text-light': !isTop || router.url === '/' || router.url === '/home'
+        }"
+      >
         Contact
       </a>
 
-      <div class="menu-btn-wrapper flex items-center gap-2 border-2 px-3 py-2 rounded-lg cursor-pointer transition-all duration-300 z-[1100]" [ngClass]="{'border-black': isTop && router.url !== '/home', 'border-light': !isTop || router.url === '/home'}" (click)="sidePanel.toggle()">
-        <span class="menu-text hidden md:block" [ngClass]="{'text-black': isTop && router.url !== '/home', 'text-light': !isTop || router.url === '/home'}">Menu</span>
+      <div
+        class="menu-btn-wrapper flex items-center gap-2 border-2 px-3 py-2 rounded-lg cursor-pointer transition-all duration-300 z-[1100]"
+        [ngClass]="{
+          'border-black': isTop && router.url !== '/' && router.url !== '/home',
+          'border-light': !isTop || router.url === '/' || router.url === '/home'
+        }"
+        (click)="sidePanel.toggle()"
+      >
+        <span
+          class="menu-text hidden md:block"
+          [ngClass]="{
+            'text-black': isTop && router.url !== '/' && router.url !== '/home',
+            'text-light': !isTop || router.url === '/' || router.url === '/home'
+          }"
+          >Menu</span
+        >
         <div class="menu-btn flex flex-col justify-between w-6 h-[18px]">
-          <span class="block h-[3px] w-full rounded-sm transition-all duration-300" [ngClass]="{'bg-black': isTop && router.url !== '/home', 'bg-light': !isTop || router.url === '/home'}"></span>
-          <span class="block h-[3px] w-full rounded-sm transition-all duration-300" [ngClass]="{'bg-black': isTop && router.url !== '/home', 'bg-light': !isTop || router.url === '/home'}"></span>
-          <span class="block h-[3px] w-full rounded-sm transition-all duration-300" [ngClass]="{'bg-black': isTop && router.url !== '/home', 'bg-light': !isTop || router.url === '/home'}"></span>
+          <span
+            class="block h-[3px] w-full rounded-sm transition-all duration-300"
+            [ngClass]="{
+              'bg-black': isTop && router.url !== '/' && router.url !== '/home',
+              'bg-light': !isTop || router.url === '/' || router.url === '/home'
+            }"
+          ></span>
+          <span
+            class="block h-[3px] w-full rounded-sm transition-all duration-300"
+            [ngClass]="{
+              'bg-black': isTop && router.url !== '/' && router.url !== '/home',
+              'bg-light': !isTop || router.url === '/' || router.url === '/home'
+            }"
+          ></span>
+          <span
+            class="block h-[3px] w-full rounded-sm transition-all duration-300"
+            [ngClass]="{
+              'bg-black': isTop && router.url !== '/' && router.url !== '/home',
+              'bg-light': !isTop || router.url === '/' || router.url === '/home'
+            }"
+          ></span>
         </div>
       </div>
     </div>
