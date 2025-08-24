@@ -1,6 +1,12 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
+import {
+  Component,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  HostListener,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
@@ -27,9 +33,10 @@ interface ProjectItem {
 export class ProjectsComponent implements AfterViewInit {
   @ViewChild('categorySelect') categorySelect!: ElementRef<HTMLSelectElement>;
   @ViewChild('typeSelect') typeSelect!: ElementRef<HTMLSelectElement>;
-  scrollY = 0;
 
+  scrollY = 0;
   baseUrl = environment.baseUrl;
+
   state = {
     list: [] as ProjectItem[],
   };
@@ -37,11 +44,22 @@ export class ProjectsComponent implements AfterViewInit {
   constructor(
     private http: HttpClient,
     private lenisService: LenisService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {}
 
   ngAfterViewInit(): void {
-    this.getProject();
+    // Read category from query params (e.g., /projects?category=Ongoing)
+    this.route.queryParams.subscribe((params) => {
+      const category = params['category'] || 'all';
+
+      if (this.categorySelect) {
+        this.categorySelect.nativeElement.value = category;
+      }
+
+      // Fetch projects with the pre-set filter
+      this.getProject();
+    });
   }
 
   getProject(): void {

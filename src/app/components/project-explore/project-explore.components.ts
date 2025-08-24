@@ -23,29 +23,20 @@ export class ProjectExploreComponent {
     {
       id: 1,
       title: 'Ongoing Projects',
-      route: '/projectcategoryOngoing',
+      route: '/projects',
       image: 'images/banner/banner-3.png',
     },
     {
       id: 2,
       title: 'Upcoming Projects',
-      route: '/projectcategoryUpcoming',
+      route: '/projects',
       image: 'images/banner/banner_1.jpg',
     },
     {
       id: 3,
       title: 'Complete Projects',
-      route: '/projectcategoryCompleted',
+      route: '/projects',
       image: 'images/banner/banner-3.png',
     },
   ];
-
-  // constructor(private lenisService: LenisService) {}
-
-  // ngOnInit() {
-  //   this.lenisService.init();
-  //   this.lenisService.onScroll((scroll) => {
-  //     console.log('Scroll position:', scroll);
-  //   });
-  // }
 }
