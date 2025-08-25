@@ -8,13 +8,13 @@
         <div class="topic">{{ slide.topic }}</div>
         <div class="des">{{ slide.des }}</div>
         <div class="buttons">
-          <button aria-label="See more">SEE DETAILS</button>
+          <button [routerLink]="['/projectdetails', slide.id]">SEE DETAILS</button>
           
         </div>
       </div>
     </div>
   </div>
-  <div class="thumbnail">
+  <div style="display: none;" class="thumbnail">
     <div class="item" *ngFor="let slide of slides; let i = index" (click)="goToSlide(i)">
       <img [src]="slide.image" [alt]="slide.alt + ' thumbnail'" loading="lazy">
       <div class="content">

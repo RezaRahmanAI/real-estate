@@ -2,8 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../environments/environment'; // Adjust path as needed
 import { ProjectService } from '../../services/project.service';
+import { RouterLink } from '@angular/router';
 
 interface Slide {
+  id: number | string;
   image: string;
   alt: string;
   author: string;
@@ -17,7 +19,7 @@ interface Slide {
 @Component({
   selector: 'app-project-slide',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './project-slide.component.html',
   styleUrls: ['./project-slide.component.css'],
   providers: [ProjectService],
@@ -35,6 +37,7 @@ export class ProjectSlideComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.projectService.getProjects().subscribe((projects) => {
       this.slides = projects.map((project) => ({
+        id: project.id,
         image: project.thumbnail
           ? `${this.baseUrl}/api/attachment/get/${project.thumbnail}`
           : 'https://via.placeholder.com/1200x800',
