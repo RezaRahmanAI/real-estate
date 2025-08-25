@@ -37,3 +37,66 @@ a {
     font-size: 20px; 
   } 
 }
+
+/* Ensure the slide content is positioned relatively to contain the absolute overlay */
+.slide__content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Style the overlay container with glassmorphism effect */
+.slide__overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the overlay */
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for glass effect */
+  backdrop-filter: blur(8px); /* Frosted glass blur effect */
+  -webkit-backdrop-filter: blur(8px); /* For Safari compatibility */
+  border-radius: 10px; /* Rounded corners */
+  padding: 15px 20px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Optional border for glass effect */
+}
+
+/* Style the project name */
+.slide__name {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* Style the address */
+.slide__address {
+  margin: 8px 0 0;
+  font-size: 1rem;
+}
+
+/* Ensure images are responsive and cover the slide */
+.splide__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the slide without distortion */
+}
+
+/* Optional: Hover effect to enhance interactivity */
+.slide__content:hover .slide__overlay {
+  background: rgba(255, 255, 255, 0.2); /* Slightly more opaque on hover */
+  transition: background 0.3s ease;
+}
+
+/* Responsive adjustments for smaller screens */
+@media only screen and (max-width: 767px) {
+  .slide__name {
+    font-size: 1.2rem;
+  }
+  .slide__address {
+    font-size: 0.9rem;
+  }
+  .slide__overlay {
+    padding: 10px 15px;
+  }
+}

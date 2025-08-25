@@ -9,7 +9,13 @@
       <div class="splide__track" id="splide01-track">
         <div class="splide__list" id="splide01-list">
           <div *ngFor="let slide of slides" class="splide__slide" role="tabpanel">
-            <img [src]="slide.image" loading="lazy" [alt]="slide.name" class="splide__img">            
+            <div class="slide__content">
+              <img [src]="slide.image" loading="lazy" [alt]="slide.name" class="splide__img">
+              <div class="slide__overlay">
+                <h3 class="slide__name">{{ slide.name }}</h3>
+                <p class="slide__address">{{ slide.address }}</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -21,7 +27,7 @@
     </svg>
   </div>
   <div class="controls">
-    <a  class="control prev-splide">
+    <a class="control prev-splide">
       <div class="control__fill"></div>
       <div class="control__arrow">
         <svg viewBox="0 0 24 18">
@@ -29,7 +35,7 @@
         </svg>
       </div>
     </a>
-    <a  class="control next-splide">
+    <a class="control next-splide">
       <div class="control__fill"></div>
       <div class="control__arrow is--flipped">
         <svg viewBox="0 0 24 18">
