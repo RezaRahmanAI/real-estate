@@ -1,0 +1,103 @@
+import { Component, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import Splide from '@splidejs/splide';
+import { environment } from '../../environments/environment';
+import { ProjectService } from '../../services/project.service';
+import { Router } from '@angular/router';
+import { Project } from '../../models/project.model';
+import { Subscription } from 'rxjs';
+
+interface Slide {
+  id: string;
+  image: string;
+  name: string;
+  category: string;
+  address: string;
+  type: string;
+}
+
+@Component({
+  selector: 'app-slider',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './slider.component.html',
+  styleUrl: './slider.component.css',
+})
+export class SliderComponent implements OnInit, OnDestroy {
+  slides: Slide[] = [];
+  baseUrl = environment.baseUrl;
+  private subscription: Subscription = new Subscription();
+  private splideInstance: Splide | null = null;
+
+  constructor(private projectService: ProjectService, private router: Router) {}
+
+  ngOnInit() {
+    this.loadProjects();
+  }
+
+  loadProjects() {
+    this.subscription.add(
+      this.projectService.getProjects().subscribe({
+        next: (projects: Project[]) => {
+          this.slides = projects.map((project) => ({
+            id: project.id,
+            image: project.thumbnail
+              ? `${this.baseUrl}/api/attachment/get/${project.thumbnail}`
+              : 'https://via.placeholder.com/400x80',
+            name: project.name || 'Untitled Project',
+            category: project.category || 'Unknown',
+            address: project.address,
+            type: project.type || '—',
+          }));
+          this.initializeSplide();
+        },
+        error: (err) => {
+          console.error('Error loading projects:', err);
+          // Assuming this is a service method to show a toast or similar
+          this.projectService.showError('Failed to load projects');
+        },
+      })
+    );
+  }
+
+  initializeSplide(): void {
+    // Destroy existing instance to prevent duplicates if data reloads
+    if (this.splideInstance) {
+      this.splideInstance.destroy();
+    }
+
+    // Splide initialization must be inside a setTimeout to ensure the DOM is updated with *ngFor
+    setTimeout(() => {
+      this.splideInstance = new Splide('#splide01', {
+        perPage: 3,
+        perMove: 1,
+        type: 'loop',
+        focus: 'center',
+        breakpoints: {
+          767: {
+            perPage: 1,
+          },
+        },
+      });
+
+      this.splideInstance.mount();
+
+      // Event listeners for custom navigation controls
+      // Use the mounted instance to navigate
+      document.querySelector('.next-splide')?.addEventListener('click', () => {
+        this.splideInstance?.go('>');
+      });
+
+      document.querySelector('.prev-splide')?.addEventListener('click', () => {
+        this.splideInstance?.go('<');
+      });
+    }, 0); // Using setTimeout with 0ms ensures the code runs after the current change detection cycle
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+    if (this.splideInstance) {
+      this.splideInstance.destroy();
+    }
+  }
+}

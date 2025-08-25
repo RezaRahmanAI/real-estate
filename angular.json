@@ -22,7 +22,11 @@
               { "glob": "**/*", "input": "public", "output": "/" },
               { "glob": "**/*", "input": "public/images", "output": "images" }
             ],
-            "styles": ["src/styles.css"],
+            "styles": [
+              "https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.6/dist/css/splide.min.css",
+  "https://assets.website-files.com/6067559c86540cc17e19c4d5/css/tricks-menu-slider.24cda8f53.css",
+              "src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
