@@ -1,0 +1,39 @@
+@import url('https://assets.website-files.com/6067559c86540cc17e19c4d5/css/tricks-menu-slider.24cda8f53.css');
+
+.nav-link__contain, .sublink__contain { 
+  opacity: 0; 
+}
+
+.splide__track { 
+  overflow: visible !important; 
+}
+
+.splide__arrow, .splide__pagination { 
+  display: none; 
+}
+
+.splide *:focus { 
+  outline: none; 
+}
+
+.slider__wave, .trigger__circle { 
+  pointer-events: none; 
+}
+
+a { 
+  color: inherit; 
+}
+
+.slider__wave svg path { 
+  pointer-events: auto; 
+}
+
+.control { 
+  -webkit-mask-image: -webkit-radial-gradient(white, black); 
+}
+
+@media only screen and (min-width: 2000px) { 
+  body { 
+    font-size: 20px; 
+  } 
+}

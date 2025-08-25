@@ -1,6 +1,8 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+/* src/styles.css */
 
+@import '@splidejs/splide/dist/css/splide.min.css';
 
 @tailwind base;
 @tailwind components;
