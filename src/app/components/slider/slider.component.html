@@ -8,7 +8,10 @@
     <div class="splide" id="splide01" role="region" aria-roledescription="carousel">
       <div class="splide__track" id="splide01-track">
         <div class="splide__list" id="splide01-list">
-          <div *ngFor="let slide of slides" class="splide__slide" role="tabpanel">
+          <div *ngFor="let slide of slides" 
+               class="splide__slide" 
+               role="tabpanel"
+               > 
             <div class="slide__content">
               <img [src]="slide.image" loading="lazy" [alt]="slide.name" class="splide__img">
               <div class="slide__overlay">

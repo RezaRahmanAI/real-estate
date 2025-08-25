@@ -1,11 +1,13 @@
 @import url('https://assets.website-files.com/6067559c86540cc17e19c4d5/css/tricks-menu-slider.24cda8f53.css');
 
+/* General Splide Adjustments */
 .nav-link__contain, .sublink__contain { 
   opacity: 0; 
 }
 
 .splide__track { 
   overflow: visible !important; 
+  /* Allows side elements to be partially visible and transformed outside the track bounds */
 }
 
 .splide__arrow, .splide__pagination { 
@@ -22,6 +24,7 @@
 
 a { 
   color: inherit; 
+  text-decoration: none; /* Keep links clean */
 }
 
 .slider__wave svg path { 
@@ -38,65 +41,119 @@ a {
   } 
 }
 
-/* Ensure the slide content is positioned relatively to contain the absolute overlay */
+/* ------------------------------------- */
+/* Custom Styles for 3D Overlay Effect */
+/* ------------------------------------- */
+
+/* Each slide needs perspective for its children to transform in 3D */
+.splide__slide {
+  cursor: pointer;
+  position: relative; /* Crucial for positioning content and overlay */
+  transform-style: preserve-3d; /* Allows 3D transforms on children */
+  display: flex; /* Helps align content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Ensures content stays within slide bounds */
+}
+
+/* Container for image and overlay */
 .slide__content {
   position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 10px; /* Apply rounded corners to the visible content area */
+  overflow: hidden; /* Hide anything outside these rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  transform-style: preserve-3d; /* Important for children of slide__content */
+  /* Ensures that any child elements (like the overlay) respect the 3D space */
 }
 
-/* Style the overlay container with glassmorphism effect */
+/* Image styling */
+.splide__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+  backface-visibility: hidden; /* Helps prevent flickering on transforms */
+}
+
+/* Glassmorphism overlay */
 .slide__overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center the overlay */
+  transform: translate(-50%, -50%); /* Center the overlay horizontally and vertically */
   background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for glass effect */
   backdrop-filter: blur(8px); /* Frosted glass blur effect */
   -webkit-backdrop-filter: blur(8px); /* For Safari compatibility */
-  border-radius: 10px; /* Rounded corners */
-  padding: 15px 20px;
+  border-radius: 10px; /* Rounded corners for the entire overlay */
+  padding: 15px 10px;
   text-align: center;
   color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Optional border for glass effect */
+  transition: background 0.3s ease, opacity 0.3s ease;
+  z-index: 2; /* Ensure overlay is above the image */
+  transform: translate(-50%, -50%) translateZ(10px); /* Center and lift in 3D space */
+  pointer-events: none; /* Allow click to pass through to the slide itself */
+  opacity: 0.8; /* Default subtle opacity */
 }
 
-/* Style the project name */
+/* Text styles */
 .slide__name {
   margin: 0;
   font-size: 1.4rem;
   font-weight: bold;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Subtle text shadow for readability */
 }
 
-/* Style the address */
 .slide__address {
   margin: 8px 0 0;
   font-size: 1rem;
+  opacity: 0.9;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
 }
 
-/* Ensure images are responsive and cover the slide */
-.splide__img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Ensures the image covers the slide without distortion */
+/* Hover effects */
+.splide__slide:hover .splide__img {
+  transform: scale(1.05); /* Slight zoom on image hover */
 }
 
-/* Optional: Hover effect to enhance interactivity */
-.slide__content:hover .slide__overlay {
-  background: rgba(255, 255, 255, 0.2); /* Slightly more opaque on hover */
-  transition: background 0.3s ease;
+.splide__slide:hover .slide__overlay {
+  background: rgba(255, 255, 255, 0.15); /* Slightly more opaque on hover */
+  opacity: 1; /* Full opacity on hover */
+}
+
+/* Splide's active and inactive slide handling (critical for 3D effect) */
+/* The Splide library adds 'is-active' and 'is-prev/next' classes */
+/* Adjust overlay opacity for non-active slides */
+.splide__slide:not(.is-active) .slide__overlay {
+  opacity: 0.5; /* Reduce opacity for non-active slides */
+}
+
+.splide__slide.is-active .slide__overlay {
+  opacity: 1; /* Full opacity for the active slide */
+}
+
+.splide__slide:not(.is-active) .slide__content {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Less prominent shadow for non-active */
+}
+.splide__slide.is-active .slide__content {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* More prominent shadow for active */
 }
 
 /* Responsive adjustments for smaller screens */
 @media only screen and (max-width: 767px) {
+  .splide__slide {
+    padding: 0 5px; /* Add some horizontal padding for mobile slides */
+  }
   .slide__name {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
   .slide__address {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .slide__overlay {
-    padding: 10px 15px;
+    padding: 10px 10px;
   }
 }
