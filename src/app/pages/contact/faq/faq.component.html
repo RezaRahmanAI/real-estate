@@ -11,7 +11,7 @@
       <div *ngFor="let faq of faqs; let i = index" class="faq-item bg-white rounded-xl shadow-lg overflow-hidden animate-entrance">
         <button
           class="w-full flex justify-between items-center p-5 text-left"
-          (click)="toggleFaq(i)"
+          (click)="toggleFaq(faq)"
         >
           <span class="font-semibold text-primary text-lg">{{ faq.question }}</span>
           <i class="ri-arrow-down-s-line text-2xl text-primary transition-transform"

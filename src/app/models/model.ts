@@ -64,3 +64,9 @@ export interface ContactData {
   email: string;
   message?: string;
 }
+
+export interface Faq {
+  id: number;
+  question: string;
+  answer: string;
+}

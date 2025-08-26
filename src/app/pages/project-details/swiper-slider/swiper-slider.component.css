@@ -6,27 +6,24 @@
 
 .slider-wrapper {
   overflow: hidden;
-  border-radius: 12px;
 }
 
 .slides {
   display: flex;
   transition: transform 0.1s linear;
-  user-select: none; /* Prevent text selection during drag */
+  user-select: none; 
   -webkit-user-select: none;
   -ms-user-select: none;
 }
 
 .slide {
-  margin-right: 16px; /* gap-x-4 */
-  border-radius: 12px;
+  margin-right: 16px; 
   overflow: hidden;
-  cursor: grab; /* Indicate draggability */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  cursor: grab; 
   flex-shrink: 0;
   transition: transform 0.3s;
 }
 
 .slide:active {
-  cursor: grabbing; /* Change cursor during drag */
+  cursor: grabbing; 
 }
