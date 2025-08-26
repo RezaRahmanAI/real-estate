@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import Splide from '@splidejs/splide';
 import { environment } from '../../environments/environment';
 import { ProjectService } from '../../services/project.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Project } from '../../models/project.model';
 import { Subscription } from 'rxjs';
 
@@ -19,7 +19,7 @@ interface Slide {
 @Component({
   selector: 'app-slider',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './slider.component.html',
   styleUrl: './slider.component.css',
 })

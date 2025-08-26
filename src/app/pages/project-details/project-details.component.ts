@@ -19,6 +19,8 @@ import { RelatedProjectsComponent } from './related-projects/related-projects.co
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { environment } from '../../environments/environment';
 import { SafeUrlPipe } from '../../pipes/safe-url.pipe';
+import { ProjectSlideComponent } from '../../components/project-slide/project-slide.component';
+import { SwiperSliderComponent } from './swiper-slider/swiper-slider.component';
 
 interface Project {
   id: number | string;
@@ -79,6 +81,8 @@ interface RelatedProject {
     LocationMapComponent,
     RelatedProjectsComponent,
     ContactFormComponent,
+    ProjectSlideComponent,
+    SwiperSliderComponent,
   ],
   templateUrl: './project-details.component.html',
   styleUrls: ['./project-details.component.css'],
@@ -114,17 +118,19 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     // this.lenisService.onScroll((scroll) => {
     //   console.log('Scroll position:', scroll);
     // });
-    this.paramSubscription = this.route.paramMap.subscribe((params: ParamMap) => {
-      this.projectId = params.get('id');
-      if (this.projectId) {
-        this.getProject();
-        this.getFeatures();
-        this.getGallery();
-        this.getProjects();
-      } else {
-        this.toastr.error('Invalid project ID.', 'Error');
+    this.paramSubscription = this.route.paramMap.subscribe(
+      (params: ParamMap) => {
+        this.projectId = params.get('id');
+        if (this.projectId) {
+          this.getProject();
+          this.getFeatures();
+          this.getGallery();
+          this.getProjects();
+        } else {
+          this.toastr.error('Invalid project ID.', 'Error');
+        }
       }
-    });
+    );
   }
 
   ngOnDestroy(): void {
@@ -225,16 +231,25 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
           console.log('Gallery data:', data);
           this.state.gallery = data;
           if (!data.length) {
-            this.toastr.info('No gallery items available for this project.', 'Info');
+            this.toastr.info(
+              'No gallery items available for this project.',
+              'Info'
+            );
           } else {
             this.state.gallery.forEach((item) => {
-              console.log('Gallery item URL:', `${this.baseUrl}/api/attachment/get/${item.content}`);
+              console.log(
+                'Gallery item URL:',
+                `${this.baseUrl}/api/attachment/get/${item.content}`
+              );
             });
           }
         },
         error: (err) => {
           console.error('Error fetching gallery:', err);
-          this.toastr.error('Failed to load gallery. Please try again.', 'Error');
+          this.toastr.error(
+            'Failed to load gallery. Please try again.',
+            'Error'
+          );
         },
       });
   }

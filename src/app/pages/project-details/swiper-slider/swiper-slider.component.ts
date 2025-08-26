@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { environment } from '../../environments/environment'; // Adjust path as needed
-import { ProjectService } from '../../services/project.service';
-import { Project } from '../../models/project.model';
+import { environment } from '../../../environments/environment'; // Adjust path as needed
+import { ProjectService } from '../../../services/project.service';
+import { Project } from '../../../models/project.model';
 
 interface Slide {
   id: string;
@@ -55,7 +55,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
             ? `${this.baseUrl}/api/attachment/get/${project.thumbnail}`
             : 'https://via.placeholder.com/400x80',
           name: project.name || 'Untitled Project',
-          category: project.category || 'Unknown', 
+          category: project.category || 'Unknown',
           address: project.address,
           type: project.type || '—',
         }));

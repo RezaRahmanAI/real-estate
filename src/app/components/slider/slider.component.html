@@ -1,23 +1,39 @@
 <div class="section is--slider">
   <div class="slider__wave">
     <svg viewBox="0 0 804 50.167">
-      <path fill="#E9C6DD" d="M804,0v16.671c0,0-204.974,33.496-401.995,33.496C204.974,50.167,0,16.671,0,16.671V0H804z"></path>
+      <path
+        fill="#E9C6DD"
+        d="M804,0v16.671c0,0-204.974,33.496-401.995,33.496C204.974,50.167,0,16.671,0,16.671V0H804z"
+      ></path>
     </svg>
   </div>
   <div class="container is--slider">
-    <div class="splide" id="splide01" role="region" aria-roledescription="carousel">
+    <div
+      class="splide"
+      id="splide01"
+      role="region"
+      aria-roledescription="carousel"
+    >
       <div class="splide__track" id="splide01-track">
         <div class="splide__list" id="splide01-list">
-          <div *ngFor="let slide of slides" 
-               class="splide__slide" 
-               role="tabpanel"
-               > 
+          <div
+            *ngFor="let slide of slides"
+            class="splide__slide"
+            role="tabpanel"
+          >
             <div class="slide__content">
-              <img [src]="slide.image" loading="lazy" [alt]="slide.name" class="splide__img">
-              <div class="slide__overlay">
-                <h3 class="slide__name">{{ slide.name }}</h3>
-                <p class="slide__address">{{ slide.address }}</p>
-              </div>
+              <a [routerLink]="['/projectdetails', slide.id]">
+                <img
+                  [src]="slide.image"
+                  loading="lazy"
+                  [alt]="slide.name"
+                  class="splide__img"
+                />
+                <div class="slide__overlay">
+                  <h3 class="slide__name">{{ slide.name }}</h3>
+                  <p class="slide__address">{{ slide.address }}</p>
+                </div>
+              </a>
             </div>
           </div>
         </div>
@@ -26,7 +42,10 @@
   </div>
   <div class="slider__wave is--bottom">
     <svg viewBox="0 0 804 50.167">
-      <path fill="#E9C6DD" d="M804,0v16.671c0,0-204.974,33.496-401.995,33.496C204.974,50.167,0,16.671,0,16.671V0H804z"></path>
+      <path
+        fill="#E9C6DD"
+        d="M804,0v16.671c0,0-204.974,33.496-401.995,33.496C204.974,50.167,0,16.671,0,16.671V0H804z"
+      ></path>
     </svg>
   </div>
   <div class="controls">
@@ -34,7 +53,10 @@
       <div class="control__fill"></div>
       <div class="control__arrow">
         <svg viewBox="0 0 24 18">
-          <path fill="currentColor" d="M23.999,8H5.481c5.009-2.91,6.349-7.311,6.416-7.548L9.976-0.102C9.9,0.156,8.03,6.213-0.073,8.024L0.146,9l-0.218,0.976C8.03,11.787,9.9,17.844,9.976,18.101l1.922-0.554C11.83,17.31,10.49,12.91,5.481,10h18.518V8z"></path>
+          <path
+            fill="currentColor"
+            d="M23.999,8H5.481c5.009-2.91,6.349-7.311,6.416-7.548L9.976-0.102C9.9,0.156,8.03,6.213-0.073,8.024L0.146,9l-0.218,0.976C8.03,11.787,9.9,17.844,9.976,18.101l1.922-0.554C11.83,17.31,10.49,12.91,5.481,10h18.518V8z"
+          ></path>
         </svg>
       </div>
     </a>
@@ -42,7 +64,10 @@
       <div class="control__fill"></div>
       <div class="control__arrow is--flipped">
         <svg viewBox="0 0 24 18">
-          <path fill="currentColor" d="M23.999,8H5.481c5.009-2.91,6.349-7.311,6.416-7.548L9.976-0.102C9.9,0.156,8.03,6.213-0.073,8.024L0.146,9l-0.218,0.976C8.03,11.787,9.9,17.844,9.976,18.101l1.922-0.554C11.83,17.31,10.49,12.91,5.481,10h18.518V8z"></path>
+          <path
+            fill="currentColor"
+            d="M23.999,8H5.481c5.009-2.91,6.349-7.311,6.416-7.548L9.976-0.102C9.9,0.156,8.03,6.213-0.073,8.024L0.146,9l-0.218,0.976C8.03,11.787,9.9,17.844,9.976,18.101l1.922-0.554C11.83,17.31,10.49,12.91,5.481,10h18.518V8z"
+          ></path>
         </svg>
       </div>
     </a>
