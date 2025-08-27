@@ -1,102 +1,136 @@
-<!-- Contact Info + Map -->
-<div class="contact_page py-16">
-  <div class="max-w-6xl mx-auto px-4">
-    <!-- Grid layout: 2 cols on md+, stack on mobile -->
-    <div class="grid md:grid-cols-5 gap-10 items-start">
-      <!-- Info Panel (2/5 width on desktop) -->
-      <div class="md:col-span-2 animate-entrance">
-        <h2 class="section-title text-2xl font-bold text-primary">
-          Office & Support
-        </h2>
-        <p class="lead text-gray-600 mt-2">
-          Whether you're buying, selling, or scheduling a visit—our team is here
-          to help. Fill the form and we'll reach out within 2 business hours.
+<div
+  class="min-h-screen bg-color-1 py-8 flex items-center justify-center font-[Inter]"
+>
+  <div class="container mx-auto px-4 w-[85%]">
+    <div class="flex flex-col lg:flex-row gap-8 w-full mx-auto p-12">
+      <div class="flex-1 pt-20">
+        <p
+          class="text-green-500 font-semibold uppercase tracking-wider text-sm mb-2"
+        >
+          CONTACT
         </p>
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-8">
+          Contact Us
+        </h1>
 
-        <address class="mt-4 flex flex-col gap-4">
-          <div class="flex gap-3 items-start">
-            <i class="ri-map-pin-fill text-2xl text-primary"></i>
-            <div>
-              <p class="font-semibold">Corporate Office</p>
-              <p>Alokar More, Rajshahi, Bangladesh.</p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Name Input -->
+          <div class="relative">
+            <input
+              type="text"
+              id="name"
+              placeholder="Full Name"
+              required
+              class="peer block w-full border-b border-lightDark bg-transparent py-2 text-gray-900 placeholder-transparent focus:border-green-500 focus:outline-none"
+            />
+            <label
+              for="name"
+              class="absolute left-0 top-2 text-lightDark text-sm transition-all duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:opacity-100 opacity-0 -translate-y-5"
+            >
+              Full Name
+            </label>
           </div>
 
-          <div class="flex gap-3 items-start">
-            <i class="ri-mail-send-line text-2xl text-primary"></i>
-            <div>
-              <p class="font-semibold">Email</p>
-              <p>
-                <a
-                  href="mailto:triconproperties21@gmail.com"
-                  class="text-primary hover:underline"
-                  >triconproperties21&#64;gmail.com</a
-                >
-              </p>
-            </div>
+          <!-- Phone Input -->
+          <div class="relative">
+            <input
+              type="tel"
+              id="phone"
+              placeholder="Phone Number"
+              required
+              class="peer block w-full border-b border-lightDark bg-transparent py-2 text-gray-900 placeholder-transparent focus:border-green-500 focus:outline-none"
+            />
+            <label
+              for="phone"
+              class="absolute left-0 top-2 text-lightDark text-sm transition-all duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:opacity-100 opacity-0 -translate-y-5"
+            >
+              Phone Number
+            </label>
           </div>
 
-          <div class="flex gap-3 items-start">
-            <i class="ri-phone-fill text-2xl text-primary"></i>
-            <div>
-              <p class="font-semibold">Sales Enquiry</p>
-              <p>
-                <a href="tel:01329638961" class="text-primary hover:underline"
-                  >01329-638961</a
-                >
-              </p>
-            </div>
+          <!-- Email Input -->
+          <div class="relative">
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              required
+              class="peer block w-full border-b border-lightDark bg-transparent py-2 text-gray-900 placeholder-transparent focus:border-green-500 focus:outline-none"
+            />
+            <label
+              for="email"
+              class="absolute left-0 top-2 text-lightDark text-sm transition-all duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:opacity-100 opacity-0 -translate-y-5"
+            >
+              Email
+            </label>
           </div>
 
-          <div class="flex gap-3 items-start">
-            <i class="ri-phone-fill text-2xl text-primary"></i>
-            <div>
-              <p class="font-semibold">General Enquiry</p>
-              <p>
-                <a href="tel:01739703426" class="text-primary hover:underline"
-                  >01739-703426</a
-                >
-              </p>
-            </div>
+          <!-- Subject Input -->
+          <div class="relative">
+            <input
+              type="text"
+              id="subject"
+              placeholder="Subject"
+              required
+              class="peer block w-full border-b border-lightDark bg-transparent py-2 text-gray-900 placeholder-transparent focus:border-green-500 focus:outline-none"
+            />
+            <label
+              for="subject"
+              class="absolute left-0 top-2 text-lightDark text-sm transition-all duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:opacity-100 opacity-0 -translate-y-5"
+            >
+              Subject
+            </label>
           </div>
+        </div>
 
-          <div class="flex gap-3 items-start">
-            <i class="ri-whatsapp-fill text-2xl text-primary"></i>
-            <div>
-              <p class="font-semibold">WhatsApp</p>
-              <p>
-                <a
-                  href="https://wa.me/8801739703426"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-primary hover:underline"
-                  >01739-703426</a
-                >
-              </p>
-            </div>
-          </div>
-        </address>
+        <!-- Message Input -->
+        <div class="mt-4 relative">
+          <textarea
+            id="message"
+            placeholder="Message"
+            required
+            class="peer block w-full border-b border-lightDark bg-transparent py-2 text-gray-900 placeholder-transparent resize-none focus:border-green-500 focus:outline-none"
+          ></textarea>
+          <label
+            for="message"
+            class="absolute left-0 top-2 text-lightDark text-sm transition-all duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:opacity-100 opacity-0 -translate-y-5"
+          >
+            Message
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="mt-6">
+          <button
+            class="w-full md:w-auto px-9 py-5 bg-green-500 text-white font-bold rounded-lg shadow-md hover:bg-green-600 transition-colors duration-300"
+          >
+            Send Message
+          </button>
+        </div>
       </div>
 
-      <!-- Map (3/5 width on desktop) -->
-      <div
-        class="md:col-span-3 rounded-xl overflow-hidden shadow-lg relative min-h-[300px] h-full animate-entrance"
-      >
-        <!-- shimmer placeholder -->
-        <div
-          class="absolute inset-0 bg-gray-200 animate-pulse"
-          [class.hidden]="isMapLoaded"
-        ></div>
+      <!-- Map -->
+      <div class="flex-1 flex justify-center items-center">
+        <div class="bg-white p-2 rounded-xl">
+          <div
+            class="rounded-xl overflow-hidden shadow-lg relative w-[550px] h-[550px] animate-entrance"
+          >
+            <div
+              class="absolute inset-0 bg-gray-200 animate-pulse"
+              [class.hidden]="isMapLoaded"
+            ></div>
 
-        <iframe
-          title="Office location on map"
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19412.96407524426!2d90.36601795!3d23.7963304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1742033667355!5m2!1sen!2sbd"
-          class="absolute inset-0 w-full h-full border-0"
-          allowfullscreen
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          (load)="onMapLoad()"
-        ></iframe>
+            <iframe
+              title="Office location on map"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d19412.96407524426!2d90.36601795!3d23.7963304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sbd!4v1742033667355!5m2!1sen!2sbd"
+              class="absolute inset-0 w-full h-full border-0"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              (load)="onMapLoad()"
+            ></iframe>
+          </div>
+        </div>
       </div>
     </div>
   </div>

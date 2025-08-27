@@ -7,13 +7,14 @@ import { ContactInfoMapComponent } from "./contact-info-map/contact-info-map.com
 import { ContactFromComponent } from "./contact-from/contact-from.component";
 import { FadeInDirective } from '../../directives/fade-in.directive';
 import { FaqComponent } from "./faq/faq.component";
+import { GetInTouchComponent } from "./get-in-touch/get-in-touch.component";
 
 
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ContactHeroComponent, ContactInfoMapComponent, ContactFromComponent, FaqComponent],
+  imports: [CommonModule, ContactHeroComponent, ContactInfoMapComponent, ContactFromComponent, FaqComponent, GetInTouchComponent],
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

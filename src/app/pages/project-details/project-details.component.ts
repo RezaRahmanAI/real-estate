@@ -19,7 +19,7 @@ import { RelatedProjectsComponent } from './related-projects/related-projects.co
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { environment } from '../../environments/environment';
 import { SafeUrlPipe } from '../../pipes/safe-url.pipe';
-import { ProjectSlideComponent } from '../../components/project-slide/project-slide.component';
+import { ProjectSlideComponent } from '../../components/hero-slide/project-slide.component';
 import { SwiperSliderComponent } from './swiper-slider/swiper-slider.component';
 
 interface Project {

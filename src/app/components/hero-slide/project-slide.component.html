@@ -1,15 +1,18 @@
 <div class="carousel">
   <div class="list">
     <div class="item" *ngFor="let slide of slides; let i = index">
-      <img [src]="slide.image" [alt]="slide.alt" loading="lazy">
-      <div class="content">
-        <div class="author">{{ slide.author }}</div>
+      <!-- Image wrapper with overlay -->
+      <div class="relative w-full h-full">
+        <img [src]="slide.image" [alt]="slide.alt" loading="lazy" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div> <!-- Dark overlay -->
+      </div>
+      <div class="content mt-32">
+        <div class="author text-accent">{{ slide.author }}</div>
         <div class="title">{{ slide.title }}</div>
         <div class="topic">{{ slide.topic }}</div>
         <div class="des">{{ slide.des }}</div>
-        <div class="buttons">
-          <button [routerLink]="['/projectdetails', slide.id]">SEE DETAILS</button>
-          
+        <div class="buttons ">
+          <button class=" bg-green-500 text-white font-bold rounded-lg" [routerLink]="['/projectdetails', slide.id]">DETAILS</button>          
         </div>
       </div>
     </div>

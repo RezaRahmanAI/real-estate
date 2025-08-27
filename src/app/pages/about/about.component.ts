@@ -11,7 +11,6 @@ import { AboutUs, Team } from '../../models/model';
 import { TeamComponent } from './team/team.component';
 import { environment } from '../../environments/environment';
 import { AboutUsService } from '../../services/about-us.service';
-import { HeroComponent } from "../../components/hero/hero.component";
 
 
 interface TeamMember {

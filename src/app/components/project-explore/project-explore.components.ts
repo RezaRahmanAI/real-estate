@@ -24,19 +24,25 @@ export class ProjectExploreComponent {
       id: 1,
       title: 'Ongoing Projects',
       route: '/projects',
-      image: 'images/banner/banner-3.png',
+      image: 'images/icons/hook.png',
     },
     {
       id: 2,
       title: 'Upcoming Projects',
       route: '/projects',
-      image: 'images/banner/banner_1.jpg',
+      image: 'images/icons/coming-soon.png',
     },
     {
       id: 3,
       title: 'Complete Projects',
       route: '/projects',
-      image: 'images/banner/banner-3.png',
+      image: 'images/icons/architect.png',
+    },
+    {
+      id: 4,
+      title: 'All Projects',
+      route: '/projects',
+      image: 'images/icons/architect.png',
     },
   ];
 }

@@ -1,5 +1,5 @@
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
 /* src/styles.css */
 
 @import '@splidejs/splide/dist/css/splide.min.css';
@@ -9,13 +9,11 @@
 @tailwind utilities;
 
 :root {
-    --blue: #007bff;
     --green: #28a745;
     --teal: #20c997;
     --cyan: #17a2b8;
     --white: #fff;
     --gray: #6c757d;
-    --gray-dark: #343a40;
     --primary: #007bff;
     --secondary: #6c757d;
     --success: #28a745;
@@ -34,10 +32,24 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Rubik', sans-serif;
 }
+
+/* h1, h2, h3, h4, h5, h6 {
+    position: relative;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 400;
+    color: #2d2929;
+    margin: 0px;
+    transition: all 500ms ease; 
+}*/
 
 body {
-  @apply bg-light;
+  background-color: var(--white) !important;
 }
-
+.bg-color-1 {
+    background-color: #e5f8ed;
+}
+.bg-color-2{
+  background-color: #1b1d21;
+}

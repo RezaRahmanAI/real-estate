@@ -1,6 +1,6 @@
-<section appFadeIn class="testimonial_section py-12 px-4 md:px-8 rounded-2xl">
+<section appFadeIn class="testimonial_section mt-20 py-12 px-4 md:px-8">
   <div class="mx-auto" style="width: 85%">
-    <div class="content-card p-6 rounded-2xl shadow-[0_25px_60px_-10px_rgba(96,153,102,0.08)] flex flex-wrap gap-6 relative ">   
+    <div class="content-card p-6  shadow-[0_25px_60px_-10px_rgba(96,153,102,0.08)] flex flex-wrap gap-6 relative ">   
       <div class="absolute -left-1 top-0 flex flex-col gap-2 mb-10">
         <h1 class="text-6xl lg:text-6xl text-dark font-semibold mb-8 text-center md:text-left font-[var(--heading)]">
           <span class="mb-5">Real People</span><br /><span class="md:ms-16">Real Praises</span>
@@ -16,7 +16,7 @@
         />
       </div>
       <div class="text-wrapper w-[600px] flex flex-col gap-4 mt-20 md:mt-24">
-        <div class="box bg-light p-4 rounded-xl relative">
+        <div class="box p-4  relative">
           <svg class="quote-icon absolute -left-14 z-[1] opacity-90" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 100 100">
             <g id="Group_18200" data-name="Group 18200" transform="translate(-206.342 -4804)">
               <path id="Path_6993" data-name="Path 6993" d="M104.944,101a25.874,25.874,0,0,0,7.059-.948c11.307-3.2,12.525-19.838,2.28-25.909C103.11,67.524,97.273,57.157,97.273,45.517c0-12.581,6.786-30,26.258-44.517h0C91.079,22.29,75.738,44.226,75.738,66.162,75.738,87.774,90.49,101,104.944,101Z" transform="translate(182.811 4803)" fill="var(--dark)"></path>
@@ -24,7 +24,7 @@
             </g>
           </svg>
           <p class="desc text-dark mt-3 pl-10 pt-5 ">{{ testimonials[currentIndex].description }}</p>
-          <p class="name font-bold text-dark">{{ testimonials[currentIndex].name }}</p>
+          <p class="name font-bold text-dark pl-12"> - {{ testimonials[currentIndex].name }}</p>
         </div>
         <div class="nav flex items-center gap-4 mt-4 justify-center md:justify-start">
           <button

@@ -1,96 +1,84 @@
-<div class="py-14 bg-accent-light" id="contacting">
-  <div class="w-[75%] mx-auto">
-    <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1f2d46] mb-4">
-      Interested?
-    </h1>
-    <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-[#1f2d46] mb-12">
-      Get in Touch Today!
-    </h2>
+<div
+  class="min-h-screen bg-color-1 py-16 flex items-center justify-center font-[Inter]"
+>
+  <div class="container mx-auto px-4 w-[85%]">
+    <div
+      class="flex flex-col lg:flex-row gap-8 w-full mx-auto bg-white p-12 rounded-3xl shadow-lg"
+    >
+      <div class="flex-1">
+        <h1 class="text-2xl font-bold text-gray-800 mb-8">Schedule A Tour</h1>
 
-    <form class="w-full space-y-6" (ngSubmit)="onSubmit()">
-      <!-- First line: Full Name -->
-      <div class="relative">
-        <input
-          type="text"
-          id="name"
-          placeholder="Full Name"
-          required
-          class="peer block w-full border-b-2 border-accent bg-transparent py-2 text-gray-900 placeholder-transparent focus:border-accent-dark focus:outline-none"
-        />
-        <label
-          for="name"
-          class="absolute left-0 top-2 text-white text-sm transition-opacity duration-300
-                 peer-placeholder-shown:opacity-100 peer-placeholder-shown:block
-                 opacity-0"
-        >
-          Full Name
-        </label>
-      </div>
-
-      <!-- Second line: Phone & Email -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="relative">
-          <input
-            type="tel"
-            id="phone"
-            placeholder="Phone Number"
-            required
-            class="peer block w-full border-b-2 border-accent bg-transparent py-2 text-gray-900 placeholder-transparent focus:border-accent-dark focus:outline-none"
-          />
-          <label
-            for="phone"
-            class="absolute left-0 top-2 text-white text-sm transition-opacity duration-300
-                   peer-placeholder-shown:opacity-100 peer-placeholder-shown:block
-                   opacity-0"
-          >
-            Phone Number
-          </label>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <!-- Name Input -->
+          <div class="relative">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              class="peer block w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-green-500 placeholder-transparent"
+            />
+            <label
+              for="name"
+              class="absolute left-0 top-2 text-gray-700 text-base transition-all peer-placeholder-shown:opacity-100 peer-focus:opacity-0 opacity-100"
+              >Your Name</label
+            >
+          </div>
+          <!-- Email Input -->
+          <div class="relative">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              class="peer block w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-green-500 placeholder-transparent"
+            />
+            <label
+              for="email"
+              class="absolute left-0 top-2 text-gray-700 text-base transition-all peer-placeholder-shown:opacity-100 peer-focus:opacity-0 opacity-100"
+              >Your Email</label
+            >
+          </div>
+          <!-- Phone Input -->
+          <div class="relative">
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Your Phone"
+              class="peer block w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-green-500 placeholder-transparent"
+            />
+            <label
+              for="phone"
+              class="absolute left-0 top-2 text-gray-700 text-base transition-all peer-placeholder-shown:opacity-100 peer-focus:opacity-0 opacity-100"
+              >Your Phone</label
+            >
+          </div>
         </div>
-
-        <div class="relative">
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            required
-            class="peer block w-full border-b-2 border-accent bg-transparent py-2 text-gray-900 placeholder-transparent focus:border-accent-dark focus:outline-none"
-          />
+        <!-- Message Input -->
+        <div class="mt-4 relative">
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="Your message"
+            class="peer block w-full px-3 py-2 border-b border-gray-300 focus:outline-none focus:border-green-500 placeholder-transparent"
+          ></textarea>
           <label
-            for="email"
-            class="absolute left-0 top-2 text-white text-sm transition-opacity duration-300
-                   peer-placeholder-shown:opacity-100 peer-placeholder-shown:block
-                   opacity-0"
+            for="message"
+            class="absolute left-0 top-2 text-gray-700 text-base transition-all peer-placeholder-shown:opacity-100 peer-focus:opacity-0 opacity-100"
+            >Your message</label
           >
-            Email
-          </label>
+        </div>
+        <!-- Submit Button -->
+        <div class="mt-6">
+          <button
+            class="w-full md:w-auto px-9 py-5 bg-green-500 text-white font-bold rounded-lg shadow-md hover:bg-green-600 transition-colors duration-300"
+          >
+            Submit Now
+          </button>
         </div>
       </div>
-
-      <!-- Third line: Message -->
-      <div class="relative">
-        <textarea
-          id="message"
-          placeholder="Message"
-          required
-          class="peer block w-full border-b-2 border-accent bg-transparent py-2 text-gray-900 placeholder-transparent resize-none focus:border-accent-dark focus:outline-none"
-        ></textarea>
-        <label
-          for="message"
-          class="absolute left-0 top-2 text-white text-sm transition-opacity duration-300
-                 peer-placeholder-shown:opacity-100 peer-placeholder-shown:block
-                 opacity-0"
-        >
-          Message
-        </label>
-      </div>
-
-      <!-- Submit Button -->
-      <button
-        type="submit"
-        class="bg-accent hover:bg-accent-dark text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-      >
-        Submit
-      </button>
-    </form>
+    </div>
   </div>
 </div>

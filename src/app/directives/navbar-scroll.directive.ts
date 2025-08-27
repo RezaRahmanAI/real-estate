@@ -1,4 +1,3 @@
-
 import { Directive, ElementRef, OnInit } from '@angular/core';
 import { LenisService } from '../services/lenis.service';
 
