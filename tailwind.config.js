@@ -5,10 +5,10 @@ module.exports = {
     extend: {
       colors: {
         light: "#f8f9fa",
-        accentLight: "#17a2b8",
-        accent: "#20c997",
-        dark: "#343a40",
-        lightDark: "#6c757d",
+        accent: "#2dbe6c",
+        accentLight: "#e5f8ed",
+        dark: "#1b1d21",
+        lightDark: "#b2b2b2",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

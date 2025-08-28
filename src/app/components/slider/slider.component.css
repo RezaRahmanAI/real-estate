@@ -1,17 +1,24 @@
 @import url('https://assets.website-files.com/6067559c86540cc17e19c4d5/css/tricks-menu-slider.24cda8f53.css');
 
-/* General Splide Adjustments */
-.nav-link__contain, .sublink__contain { 
-  opacity: 0; 
+
+section{
+  background-image: url('/images/icons/shape-1.png');
 }
 
-.splide__track { 
-  overflow: visible !important; 
-  /* Allows side elements to be partially visible and transformed outside the track bounds */
+.control {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
 }
+/* Keep slides visible but stop page scroll */
+.splide__track {
+  overflow: visible !important;
+}
+
+
 
 .splide__arrow, .splide__pagination { 
-  display: none; 
+  display: none !important; 
+  
 }
 
 .splide *:focus { 
@@ -24,7 +31,7 @@
 
 a { 
   color: inherit; 
-  text-decoration: none; /* Keep links clean */
+  text-decoration: none; 
 }
 
 .slider__wave svg path { 
@@ -62,11 +69,10 @@ a {
   position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 10px; /* Apply rounded corners to the visible content area */
-  overflow: hidden; /* Hide anything outside these rounded corners */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-  transform-style: preserve-3d; /* Important for children of slide__content */
-  /* Ensures that any child elements (like the overlay) respect the 3D space */
+  border-radius: 10px;
+  overflow: hidden;
+  transform-style: preserve-3d; 
+  
 }
 
 /* Image styling */
@@ -75,17 +81,17 @@ a {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease-in-out; /* Smooth hover effect */
-  backface-visibility: hidden; /* Helps prevent flickering on transforms */
+  transition: transform 0.3s ease-in-out; 
+  backface-visibility: hidden; 
 }
 
-/* Glassmorphism overlay */
+
 .slide__overlay {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center the overlay horizontally and vertically */
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white for glass effect */
+  transform: translate(-50%, -50%); 
+  
   backdrop-filter: blur(8px); /* Frosted glass blur effect */
   -webkit-backdrop-filter: blur(8px); /* For Safari compatibility */
   border-radius: 10px; /* Rounded corners for the entire overlay */
@@ -104,48 +110,40 @@ a {
   margin: 0;
   font-size: 1.4rem;
   font-weight: bold;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Subtle text shadow for readability */
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5); 
 }
 
 .slide__address {
   margin: 8px 0 0;
   font-size: 1rem;
   opacity: 0.9;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  text-shadow: 0 1px 3px var(--lightDark);
 }
 
 /* Hover effects */
 .splide__slide:hover .splide__img {
-  transform: scale(1.05); /* Slight zoom on image hover */
+  transform: scale(1.05); 
 }
 
 .splide__slide:hover .slide__overlay {
-  background: rgba(255, 255, 255, 0.15); /* Slightly more opaque on hover */
-  opacity: 1; /* Full opacity on hover */
+  
+  opacity: 1; 
 }
 
-/* Splide's active and inactive slide handling (critical for 3D effect) */
-/* The Splide library adds 'is-active' and 'is-prev/next' classes */
-/* Adjust overlay opacity for non-active slides */
+
 .splide__slide:not(.is-active) .slide__overlay {
-  opacity: 0.5; /* Reduce opacity for non-active slides */
+  opacity: 0.5; 
 }
 
 .splide__slide.is-active .slide__overlay {
-  opacity: 1; /* Full opacity for the active slide */
+  opacity: 1; 
 }
 
-.splide__slide:not(.is-active) .slide__content {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Less prominent shadow for non-active */
-}
-.splide__slide.is-active .slide__content {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* More prominent shadow for active */
-}
 
-/* Responsive adjustments for smaller screens */
+
 @media only screen and (max-width: 767px) {
   .splide__slide {
-    padding: 0 5px; /* Add some horizontal padding for mobile slides */
+    padding: 0 5px;
   }
   .slide__name {
     font-size: 1.1rem;
@@ -157,3 +155,4 @@ a {
     padding: 10px 10px;
   }
 }
+

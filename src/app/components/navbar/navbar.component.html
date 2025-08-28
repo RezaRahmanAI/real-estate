@@ -1,10 +1,11 @@
 <nav
   appNavbarScroll
-  [ngClass]="{'transparent': isTop, 'glass': !isTop}"
+  [ngClass]="{ transparent: isTop || (router.url !== '/' && router.url !== '/home'),
+    'shadow-[0_1px_2px_-1px_var(--tw-shadow-color)] shadow-accent': 
+      router.url !== '/' && router.url !== '/home', glass: !isTop }"
   class="flex justify-between items-center fixed top-0 w-full z-[1000] px-0"
 >
   <div class="w-[85%] mx-auto flex justify-between items-center py-4">
-    <!-- LEFT NAV LINKS (hidden on mobile) -->
     <div
       class="nav-left hidden md:flex items-center gap-8"
       [ngClass]="{

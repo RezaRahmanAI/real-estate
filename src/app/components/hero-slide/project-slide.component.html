@@ -11,7 +11,7 @@
           <div class="content">
             <div class="author text-accent">{{ slide.author }}</div>
             <div class="title text-accent">{{ slide.title }}</div>
-            <div class="topic">{{ slide.topic }}</div>
+            <div class="topic text-lightDark">{{ slide.topic }}</div>
             <div class="des">{{ slide.des }}</div>
             <div class="buttons">
               <button class="bg-green-500 text-white font-bold rounded-lg" [routerLink]="['/projectdetails', slide.id]">DETAILS</button>
@@ -20,7 +20,7 @@
         </div>
       </div>
       <!-- Thumbnail and arrow sections (kept for reference, but hidden) -->
-      <div style="display: none;" class="thumbnail">
+      <div  class="thumbnail">
         <div class="item" *ngFor="let slide of slides; let i = index" (click)="goToSlide(i)">
           <img [src]="slide.image" [alt]="slide.alt + ' thumbnail'" loading="lazy">
           <div class="content">

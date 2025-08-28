@@ -9,6 +9,7 @@ nav.transparent {
 nav.glass {
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
+  background: var(--accent);
 }
 
 nav.hide {

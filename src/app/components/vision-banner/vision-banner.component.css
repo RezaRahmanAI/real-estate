@@ -4,16 +4,7 @@
   background-size: cover;
   background-position: center;
   position: relative;
-  margin-top: 20px;
-  margin-bottom: 20px;
   z-index: 1;
-}
-.vision_banner::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: -1;
 }
 
 @media (min-width: 768px) {

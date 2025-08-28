@@ -53,7 +53,7 @@ export class SliderComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           console.error('Error loading projects:', err);
-          // Assuming this is a service method to show a toast or similar
+          
           this.projectService.showError('Failed to load projects');
         },
       })
@@ -61,12 +61,12 @@ export class SliderComponent implements OnInit, OnDestroy {
   }
 
   initializeSplide(): void {
-    // Destroy existing instance to prevent duplicates if data reloads
+    
     if (this.splideInstance) {
       this.splideInstance.destroy();
     }
 
-    // Splide initialization must be inside a setTimeout to ensure the DOM is updated with *ngFor
+    
     setTimeout(() => {
       this.splideInstance = new Splide('#splide01', {
         perPage: 3,
@@ -82,8 +82,7 @@ export class SliderComponent implements OnInit, OnDestroy {
 
       this.splideInstance.mount();
 
-      // Event listeners for custom navigation controls
-      // Use the mounted instance to navigate
+     
       document.querySelector('.next-splide')?.addEventListener('click', () => {
         this.splideInstance?.go('>');
       });
@@ -91,7 +90,7 @@ export class SliderComponent implements OnInit, OnDestroy {
       document.querySelector('.prev-splide')?.addEventListener('click', () => {
         this.splideInstance?.go('<');
       });
-    }, 0); // Using setTimeout with 0ms ensures the code runs after the current change detection cycle
+    }, 0); 
   }
 
   ngOnDestroy() {

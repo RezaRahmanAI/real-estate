@@ -5,6 +5,7 @@ import { FadeInDirective } from '../../directives/fade-in.directive';
 export interface Testimonial {
   image?: string;
   name: string;
+  position?: string;
   description: string;
 }
 
@@ -28,6 +29,7 @@ export class TestimonialCarouselComponent implements OnInit {
         {
           image: 'https://randomuser.me/api/portraits/women/44.jpg',
           name: 'Emily Johnson',
+          position: 'CEOs',
           description:
             'The service was amazing! Everything went smoothly and I felt truly supported through the process.',
         },

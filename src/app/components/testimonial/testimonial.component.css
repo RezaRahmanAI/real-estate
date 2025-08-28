@@ -2,11 +2,6 @@
   display: block;
 }
 
-.testimonial_section {
-  @apply relative py-12 px-4 sm:px-6 lg:px-8   overflow-hidden;
-  
-}
-
-.font-heading {
-  font-family: var(--heading);
+section{
+  background-image: url('/images/icons/shape-1.png');
 }

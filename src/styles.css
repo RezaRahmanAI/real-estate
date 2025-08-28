@@ -10,16 +10,15 @@
 
 :root {
     --green: #28a745;
-    --teal: #20c997;
-    --cyan: #17a2b8;
     --white: #fff;
-    --gray: #6c757d;
-    --primary: #007bff;
     --secondary: #6c757d;
     --success: #28a745;
     --info: #17a2b8;
     --light: #f8f9fa;
-    --dark: #343a40;
+    --dark: #1b1d21;
+    --lightDark: #b2b2b2;
+    --accent: #2dbe6c;
+    --accentLight: #e5f8ed;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
@@ -35,21 +34,18 @@
   font-family: 'Rubik', sans-serif;
 }
 
-/* h1, h2, h3, h4, h5, h6 {
-    position: relative;
-    font-family: 'Rubik', sans-serif;
-    font-weight: 400;
-    color: #2d2929;
-    margin: 0px;
-    transition: all 500ms ease; 
-}*/
 
 body {
   background-color: var(--white) !important;
+  overflow-x: hidden;
 }
 .bg-color-1 {
     background-color: #e5f8ed;
 }
 .bg-color-2{
   background-color: #1b1d21;
+}
+
+.sec-pad {
+    padding: 114px 0px 120px 0px;
 }

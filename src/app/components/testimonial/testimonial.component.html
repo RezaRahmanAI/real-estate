@@ -1,7 +1,8 @@
-<section appFadeIn class="testimonial_section mt-20 py-12 px-4 md:px-8" style="background-image: url('/images/icons/shape-1.png')">
-  <div class="mx-auto" style="width: 85%">
+<section appFadeIn class="testimonial_section sec-pad bg-accentLight" >
+  <div class="mx-auto w-[85%]">
     <div class="content-card p-6  flex flex-wrap gap-6 relative ">   
       <div class="absolute -left-1 top-0 flex flex-col gap-2 mb-10">
+        <p class="text-accent">TESTIMONIALS</p>
         <h1 class="text-6xl lg:text-6xl text-dark font-semibold mb-8 text-center md:text-left font-[var(--heading)]">
           <span class="mb-5">Real People</span><br /><span class="md:ms-16">Real Praises</span>
         </h1>      
@@ -11,7 +12,7 @@
           *ngIf="testimonials[currentIndex].image"
           [src]="testimonials[currentIndex].image"
           [alt]="testimonials[currentIndex].name"
-          class="w-full rounded-2xl object-cover"
+          class="w-full object-cover"
           (error)="onImageError($event)"
         />
       </div>
@@ -23,8 +24,10 @@
               <path id="Path_6992" data-name="Path 6992" d="M104.944,101a25.874,25.874,0,0,0,7.059-.948c11.307-3.2,12.525-19.838,2.28-25.909C103.11,67.524,97.273,57.157,97.273,45.517c0-12.581,6.786-30,26.258-44.517h0C91.079,22.29,75.738,44.226,75.738,66.162,75.738,87.774,90.49,101,104.944,101Z" transform="translate(130.604 4803)" fill="var(--dark)"></path>
             </g>
           </svg>
+          
           <p class="desc text-dark mt-3 pl-10 pt-5 ">{{ testimonials[currentIndex].description }}</p>
-          <p class="name font-bold text-dark pl-12"> - {{ testimonials[currentIndex].name }}</p>
+          <p class="name font-bold text-accent pl-12"> - {{ testimonials[currentIndex].name }}</p>
+          <p class="name font-bold text-lightDark pl-14">  {{ testimonials[currentIndex].position }}</p>
         </div>
         <div class="nav flex items-center gap-4 mt-4 justify-center md:justify-start">
           <button
