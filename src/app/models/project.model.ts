@@ -20,4 +20,5 @@ export interface Project {
   sizeOfEachApartment: string;
   latitude: string;
   longitude: string;
+  pdfFileName: string;
 }

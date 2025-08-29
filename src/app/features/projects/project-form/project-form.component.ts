@@ -26,6 +26,7 @@ export class ProjectFormComponent {
   @Output() saved = new EventEmitter<void>();
   selectedThumbnail: File | null = null;
   selectedContent: File | null = null;
+  selectedPdf: File | null = null; // New field for PDF
   contentType: string = '';
 
   private defaultProject: Project = {
@@ -50,6 +51,7 @@ export class ProjectFormComponent {
     sizeOfEachApartment: '',
     latitude: '',
     longitude: '',
+    pdfFileName: '',
   };
 
   _project: Project = this.defaultProject;
@@ -67,6 +69,14 @@ export class ProjectFormComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedContent = input.files[0];
+    }
+  }
+
+  onPdfChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedPdf = input.files[0];
+      this._project.pdfFileName = this.selectedPdf.name; // Update pdfFileName
     }
   }
 
@@ -88,6 +98,9 @@ export class ProjectFormComponent {
     formData.append('landArea', this._project.landArea || '');
     formData.append('builtUpArea', this._project.builtUpArea || '');
     formData.append('height', this._project.height || '');
+    formData.append('latitude', this._project.latitude || '');
+    formData.append('longitude', this._project.longitude || '');
+    formData.append('pdfFileName', this._project.pdfFileName || '');
     formData.append(
       'numberOfApartments',
       this._project.numberOfApartments?.toString() || '0'
@@ -101,13 +114,14 @@ export class ProjectFormComponent {
       'sizeOfEachApartment',
       this._project.sizeOfEachApartment || ''
     );
-    formData.append('latitude', this._project.latitude || '');
-    formData.append('longitude', this._project.longitude || '');
     if (this.selectedThumbnail) {
       formData.append('thumbnail', this.selectedThumbnail);
     }
     if (this.selectedContent) {
       formData.append('content', this.selectedContent);
+    }
+    if (this.selectedPdf) {
+      formData.append('pdfFile', this.selectedPdf); // Add PDF to FormData
     }
     if (this.mode === 'edit') {
       formData.append('id', this._project.id || '');
