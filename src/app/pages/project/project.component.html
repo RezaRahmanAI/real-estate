@@ -1,44 +1,44 @@
 <div class="relative">
+  <!-- Hero Banner with fixed parallax -->
+  <div class="relative h-[600px] w-full overflow-hidden">
+    <!-- Background Image -->
+    <div
+      class="absolute top-0 left-0 w-full h-[120%] bg-cover bg-center transform-gpu will-change-transform"
+      style="background-image: url('/images/banner/banner-3.png')"
+      [ngStyle]="{ transform: 'translateY(' + (scrollY * 0.3 - 60) + 'px)' }"
+    ></div>
 
+    <!-- Optional overlay -->
+    <div class="absolute inset-0 bg-black/40"></div>
 
-<!-- Quote on top -->
-<div class="w-[85%] mt-36 mx-auto my-5">
-  <h2 class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-accent tracking-tight drop-shadow-lg">
-    Where luxury meets legacy.
-  </h2>
-</div>
-
-<!-- Hero Banner with fixed parallax -->
-<div class="relative h-[600px] w-full overflow-hidden">
-  <!-- Background Image -->
-  <div 
-    class="absolute top-0 left-0 w-full h-[120%] bg-cover bg-center transform-gpu will-change-transform"
-    style="background-image: url('/images/banner/banner-3.png');"
-    [ngStyle]="{'transform': 'translateY(' + (scrollY * 0.3 - 60) + 'px)'}">
-  </div>
-
-  <!-- Optional overlay -->
-    <!-- <div class="absolute inset-0 bg-black/40"></div> -->
-
-  <!-- Centered content -->
-  <div class="relative z-10 flex items-center justify-center h-full px-5">
-    <div class="inline-flex items-baseline gap-2 bg-[rgba(0,0,0,0.3)] backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg max-w-[85%]">
-      
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
-        Projects
-      </h1>
+    <!-- Centered content -->
+    <div
+      class="relative z-10 flex flex-col items-center justify-center h-full px-5 gap-2 "
+    >
+      <div
+        class="inline-flex items-baseline gap-2 backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg max-w-[85%]"
+      >
+        <h1
+          class="text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--light)]"
+        >
+          Projects
+        </h1>
+      </div>
+      <p class="text-lg sm:text-xl text-[var(--light)]">Home > Projects</p>
     </div>
   </div>
-</div>
-
 
   <!-- Filter Bar -->
   <div class="p-6">
-    <div class=" w-[85%] container mx-auto px-4">
+    <div class="w-[85%] container mx-auto px-4">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-end">
         <!-- Category -->
         <div>
-          <label for="category" class="block text-sm font-semibold text-gray-800 font-poppins mb-2">Project Category</label>
+          <label
+            for="category"
+            class="block text-sm font-semibold text-gray-800 font-poppins mb-2"
+            >Project Category</label
+          >
           <select
             #categorySelect
             id="category"
@@ -54,12 +54,16 @@
 
         <!-- Type -->
         <div>
-          <label for="type" class="block text-sm font-semibold text-gray-800 font-poppins mb-2">Project Type</label>
+          <label
+            for="type"
+            class="block text-sm font-semibold text-gray-800 font-poppins mb-2"
+            >Project Type</label
+          >
           <select
             #typeSelect
             id="type"
             name="type"
-            class="w-full px-4 py-3 text-sm text-gray-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-accent"
+            class="w-full px-4 py-3 border-accent text-sm text-gray-800 bg-transparent focus:outline-none focus:ring-2 focus:ring-accent"
           >
             <option value="all" selected>All Types</option>
             <option value="Residential">Residential</option>
@@ -72,17 +76,17 @@
           <button
             (click)="getProject()"
             aria-label="Apply filters"
-            class="flex items-center justify-center gap-2 w-full py-3 text-sm font-bold bg-accent text-white transition-all duration-300 hover:bg-accent-dark"
+            class="flex items-center justify-center gap-2 w-full py-3 text-sm font-bold bg-accent text-white transition-all duration-300 hover:bg-accent-dark rounded-lg"
           >
-            <i class="ti ti-filter"></i>
+            <i class="ri-filter-line"></i>
             Filter
           </button>
           <button
             (click)="resetFilters()"
             aria-label="Reset filters"
-            class="flex items-center justify-center gap-2 w-full py-3 text-sm font-bold text-gray-800 bg-transparent hover:text-accent transition-all duration-300"
+            class="flex items-center justify-center gap-2 w-full py-3 text-sm font-bold text-gray-800 bg-transparent border-2 border-accent hover:text-accent hover:bg-accent/10 transition-all duration-300 rounded-lg"
           >
-            <i class="ti ti-refresh"></i>
+            <i class="ri-restart-line"></i>
             Reset
           </button>
         </div>
@@ -93,13 +97,17 @@
   <!-- Projects Grid -->
   <div class="py-16">
     <div class="container w-[85%] mx-auto px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-4">
-
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-4"
+      >
         <div
           *ngFor="let item of state.list"
           class="group relative flex flex-col max-w-[400px] w-full"
         >
-          <a [routerLink]="['/projectdetails', item.id]" class="block flex flex-col flex-grow">
+          <a
+            [routerLink]="['/projectdetails', item.id]"
+            class="block flex flex-col flex-grow"
+          >
             <div class="relative overflow-hidden">
               <img
                 class="w-full h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] object-cover transition-transform duration-300 group-hover:scale-105"
@@ -108,26 +116,27 @@
                 loading="lazy"
                 (error)="onImageError($event)"
               />
-              <button
-                class="absolute inset-x-0 bottom-4 mx-auto px-6 py-3 text-sm font-bold bg-accent text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                [attr.aria-label]="'Visit project ' + item.name"
-              >
-                Visit
-              </button>
             </div>
             <div class="p-6 text-center flex flex-col">
-              <h2 class="text-xl font-bold font-poppins mb-2 group-hover:text-accent transition-colors duration-200">
+              <h2
+                class="text-xl font-bold font-poppins mb-2 group-hover:text-accent transition-colors duration-200"
+              >
                 {{ item.name }}
               </h2>
-              <div class="text-sm text-gray-600 flex justify-center items-center gap-3 mb-4">
-                <span>{{ item.location || 'Unknown' }}</span>
+              <div
+                class="text-sm text-gray-600 flex justify-center items-center gap-3 mb-4"
+              >
+                <span>{{ item.location || "Unknown" }}</span>
                 <span class="w-2 h-2 bg-accent"></span>
-                <span>{{ item.type || '—' }}</span>
+                <span>{{ item.type || "—" }}</span>
               </div>
             </div>
           </a>
         </div>
-        <div *ngIf="!state.list.length" class="col-span-full text-center py-16 text-gray-800 font-poppins text-lg">
+        <div
+          *ngIf="!state.list.length"
+          class="col-span-full text-center py-16 text-gray-800 font-poppins text-lg"
+        >
           No projects match your filters. Try adjusting criteria.
         </div>
       </div>

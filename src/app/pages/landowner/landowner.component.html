@@ -1,8 +1,7 @@
 <app-landowner-hero></app-landowner-hero>
 <div class="py-14 px-4">
-  <!-- Intro pitch could be inlined here or made its own component -->
   <div
-    class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-16"
+    class="w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 xl:gap-16"
   >
     <div>
       <a routerLink="">
@@ -13,7 +12,7 @@
         />
       </a>
     </div>
-    <div class="sticky top-8">
+    <div class="sticky top-8 fade-up">
       <h1 class="text-4xl font-bold mb-4">
         Company is the perfect choice for your joint ventures
       </h1>
@@ -30,7 +29,8 @@
 </div>
 
 <app-landowner-benefits></app-landowner-benefits>
+<app-testimonial />
 
-<app-landowner-testimonial [testimonials]="testis"></app-landowner-testimonial>
+<!-- <app-landowner-testimonial [testimonials]="testis"></app-landowner-testimonial> -->
 
 <app-landowner-form (submitted)="onFormSubmitted($event)"></app-landowner-form>

@@ -4,6 +4,8 @@ import {
   ViewChild,
   ElementRef,
   CUSTOM_ELEMENTS_SCHEMA,
+  AfterViewInit,
+  HostListener,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +16,8 @@ import { LandownerHeroComponent } from './landowner-hero/landowner-hero.componen
 import { LandownerBenefitsComponent } from './landowner-benefits/landowner-benefits.component';
 import { LandownerFormComponent } from './landowner-form/landowner-form.component';
 import { LandownerTestimonialComponent } from './landowner-testimonial/landowner-testimonial.component';
+import { AnimationService } from '../../services/animation.service';
+import { TestimonialCarouselComponent } from "../../components/testimonial/testimonial.component";
 
 @Component({
   selector: 'app-landowner',
@@ -26,12 +30,23 @@ import { LandownerTestimonialComponent } from './landowner-testimonial/landowner
     LandownerBenefitsComponent,
     LandownerFormComponent,
     LandownerTestimonialComponent,
-  ],
+    TestimonialCarouselComponent
+],
   templateUrl: './landowner.component.html',
   styleUrls: ['./landowner.component.css'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class LandownerComponent {
+export class LandownerComponent implements AfterViewInit {
+  
+  constructor(private anim: AnimationService) {}
+
+  ngAfterViewInit() {
+    this.anim.animateOnScroll('.fade-up');
+    this.anim.animateOnScroll('.zoom-in');
+  }
+
+  
+
   testis: Testimonial[] = [
     {
       name: 'Harsh P.',

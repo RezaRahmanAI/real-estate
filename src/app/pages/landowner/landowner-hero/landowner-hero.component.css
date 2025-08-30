@@ -1,7 +1,0 @@
-.headering {
-  position: relative;
-  background: linear-gradient(135deg, rgba(46,139,87,0.85), rgba(46,139,87,0.6)),
-              url('/images/banner/banner-3.png') center/cover no-repeat;
-  overflow: hidden;
-}
-.hero-content { position: relative;}

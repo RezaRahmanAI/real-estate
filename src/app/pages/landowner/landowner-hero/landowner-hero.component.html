@@ -1,24 +1,28 @@
-<div
-  class="relative bg-cover bg-center h-[320px] sm:h-[400px] lg:h-[500px] flex items-center justify-center"
-  style="background-image: url('/images/banner/banner-3.png')"
->
-  <div class="absolute inset-0 mix-blend-normal"></div>
-  <div
-    class="relative z-10 text-center px-5 py-28 sm:py-40 max-w-3xl animate-entrance"
-  >
+ <!-- Hero Banner with fixed parallax -->
+  <div class="relative h-[600px] w-full overflow-hidden">
+    <!-- Background Image -->
     <div
-      class="inline-flex items-baseline gap-2 bg-[rgba(0,0,0,0.3)] backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg max-w-[90%] sm:max-w-2xl"
+      class="absolute top-0 left-0 w-full h-[120%] bg-cover bg-center transform-gpu will-change-transform"
+      style="background-image: url('/images/banner/banner-3.png')"
+      [ngStyle]="{ transform: 'translateY(' + (scrollY * 0.3 - 60) + 'px)' }"
+    ></div>
+
+    <!-- Optional overlay -->
+    <div class="absolute inset-0 bg-black/40"></div>
+
+    <!-- Centered content -->
+    <div
+      class="relative z-10 flex flex-col items-center justify-center h-full px-5 gap-2 "
     >
-      <span class="text-[var(--accent)] font-mono text-lg select-none">/</span>
-      <h1
-        class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight"
+      <div
+        class="inline-flex items-baseline gap-2 backdrop-blur-md rounded-2xl px-6 py-4 shadow-lg max-w-[85%]"
       >
-        Landowner
-      </h1>
+        <h1
+          class="text-4xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[var(--light)]"
+        >
+          Landowner
+        </h1>
+      </div>
+      <p class="text-lg sm:text-xl text-[var(--light)]">Home > Landowner</p>
     </div>
-    <p class="mt-4 text-white/90 text-base sm:text-lg">
-      Partner with us to maximize your land’s value through trusted joint
-      ventures.
-    </p>
   </div>
-</div>

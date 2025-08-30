@@ -1,3 +1,4 @@
+
 nav {
   transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
@@ -7,9 +8,8 @@ nav.transparent {
 }
 
 nav.glass {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  background: var(--accent);
+      background-color: rgba(81, 221, 142, 0.8);
+    box-shadow: rgba(0, 0, 0, 0.6) 0px -7px 27px 3px;
 }
 
 nav.hide {

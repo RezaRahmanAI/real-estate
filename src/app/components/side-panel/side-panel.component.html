@@ -1,14 +1,14 @@
-<div class="side-panel fixed top-0 right-[-300px] w-[300px] h-full bg-accent text-light z-[1200] flex flex-col transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)]" [class.open]="sidePanel.open$()">
+<div class="side-panel fixed top-0 bg-accentLight right-[-300px] w-[300px] h-full text-dark z-[1200] flex flex-col transition-all duration-500 ease-[cubic-bezier(0.77,0,0.175,1)]" [class.open]="sidePanel.open$()">
   <div class="side-panel-header flex justify-end p-4">
-    <button (click)="sidePanel.close()" id="close-panel" class="bg-none border-none text-3xl text-light cursor-pointer">&times;</button>
+    <button (click)="sidePanel.close()" id="close-panel" class="bg-none border-none text-3xl text-dark cursor-pointer">&times;</button>
   </div>
   <ul class="side-panel-links list-none p-8 flex flex-col gap-6">
-    <li><a routerLink="home" class="text-light text-lg hover:text-accent-light transition-colors duration-300">Home</a></li>
-    <li><a routerLink="about" class="text-light text-lg hover:text-accent-light transition-colors duration-300">About</a></li>
-    <li><a routerLink="projects" class="text-light text-lg hover:text-accent-light transition-colors duration-300">Properties</a></li>
-    <li><a routerLink="landowner" class="text-light text-lg hover:text-accent-light transition-colors duration-300">Landowner</a></li>
-    <li><a routerLink="blogs" class="text-light text-lg hover:text-accent-light transition-colors duration-300">Blogs</a></li>
-    <li><a routerLink="gallery" class="text-light text-lg hover:text-accent-light transition-colors duration-300">Gallery</a></li>
-    <li><a routerLink="contact" class="text-light text-lg hover:text-accent-light transition-colors duration-300">Contact</a></li>
+    <li><a routerLink="home" class="text-dark text-lg hover:text-accent transition-colors duration-300">Home</a></li>
+    <li><a routerLink="about" class="text-dark text-lg hover:text-accent transition-colors duration-300">About</a></li>
+    <li><a routerLink="projects" class="text-dark text-lg hover:text-accen transition-colors duration-300">Properties</a></li>
+    <li><a routerLink="landowner" class="text-dark text-lg hover:text-accent transition-colors duration-300">Landowner</a></li>
+    <li><a routerLink="blogs" class="text-dark text-lg hover:text-accent transition-colors duration-300">Blogs</a></li>
+    <li><a routerLink="gallery" class="text-dark text-lg hover:text-accent transition-colors duration-300">Gallery</a></li>
+    <li><a routerLink="contact" class="text-dark text-lg hover:text-accent transition-colors duration-300">Contact</a></li>
   </ul>
 </div>

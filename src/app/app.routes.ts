@@ -17,11 +17,13 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { LandownerComponent } from './pages/landowner/landowner.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { TeamsIndexComponent } from './features/teams/teams-index/teams-index.component';
-import { BlogsIndexComponent } from './features/blogs/blogs-index/blogs-index.component';
 import { TestimonialsIndexComponent } from './features/testimonials/testimonials-index/testimonials-index.component';
 import { OffersIndexComponent } from './features/offers/offers-index/offers-index.component';
 import { AboutUsIndexComponent } from './features/about-us/about-us-index/about-us-index.component';
 import { FaqComponent } from './features/faq/faq.component';
+import { BlogComponent } from './pages/blog/blog.component';
+
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -43,11 +45,11 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'teams', component: TeamsIndexComponent },
-      { path: 'blogs', component: BlogsIndexComponent },
+      { path: 'blogs', component: BlogComponent },
       { path: 'testimonials', component: TestimonialsIndexComponent },
       { path: 'offers', component: OffersIndexComponent },
       { path: 'about-us', component: AboutUsIndexComponent },
-      { path: 'faq', component: FaqComponent},
+      { path: 'faq', component: FaqComponent },
       {
         path: 'projects',
         children: [

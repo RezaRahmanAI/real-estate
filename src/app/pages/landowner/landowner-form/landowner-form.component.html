@@ -1,14 +1,14 @@
 <div class="connect_form py-14 px-4">
-  <div class="container mx-auto max-w-2xl">
-    <h2 class="text-4xl font-bold text-slate-800 mb-4">Want to Form a Great Partnership?</h2>
-    <p class="text-gray-600 mb-6">Fill in your details and we'll reach out to you soon. No obligation.</p>
+  <div class="w-[85%] mx-auto max-w-2xl">
+    <h2 class="text-4xl font-bold text-slate-800 mb-4 fade-up">Want to Form a Great Partnership?</h2>
+    <p class="text-gray-600 mb-6 fade-up">Fill in your details and we'll reach out to you soon. No obligation.</p>
 
     <!-- Success message -->
-    <div *ngIf="!submitting && landownerData.name === '' && lastSubmitted" class="feedback success mb-4" role="status">
+    <div *ngIf="!submitting && landownerData.name === '' && lastSubmitted" class="feedback success mb-4 fade-up" role="status">
       Thank you! Your request has been received.
     </div>
 
-    <form #f="ngForm" (ngSubmit)="createData()" novalidate class="grid gap-6" aria-label="Landowner partnership form">
+    <form #f="ngForm" (ngSubmit)="createData()" novalidate class="grid gap-6 fade-up" aria-label="Landowner partnership form">
       <!-- Row 1: Name / Phone -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="field">

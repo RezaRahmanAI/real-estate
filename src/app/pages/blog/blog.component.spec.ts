@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OwnerSpeechComponent } from './owner-speech.component';
+import { BlogComponent } from './blog.component';
 
-describe('OwnerSpeechComponent', () => {
-  let component: OwnerSpeechComponent;
-  let fixture: ComponentFixture<OwnerSpeechComponent>;
+describe('BlogComponent', () => {
+  let component: BlogComponent;
+  let fixture: ComponentFixture<BlogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OwnerSpeechComponent]
+      imports: [BlogComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OwnerSpeechComponent);
+    fixture = TestBed.createComponent(BlogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
