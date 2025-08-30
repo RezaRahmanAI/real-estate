@@ -1,12 +1,11 @@
 import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { trigger, state, style, transition, animate } from '@angular/animations';
-import { FadeInDirective } from '../../../directives/fade-in.directive';
 
 @Component({
   selector: 'app-mission-vision',
   standalone: true,
-  imports: [CommonModule, FadeInDirective],
+  imports: [CommonModule, ],
   templateUrl: './mission-vision.component.html',
   styleUrls: ['./mission-vision.component.css'],
   animations: [

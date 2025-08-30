@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
@@ -11,6 +11,7 @@ import { AboutUs, Team } from '../../models/model';
 import { TeamComponent } from './team/team.component';
 import { environment } from '../../environments/environment';
 import { AboutUsService } from '../../services/about-us.service';
+import { AnimationService } from '../../services/animation.service';
 
 
 interface TeamMember {
@@ -36,12 +37,12 @@ interface TeamMember {
     MissionVisionComponent,
     TeamComponent,
     TeamModalComponent,
-],
+  ],
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css'],
 })
-export class AboutComponent implements OnInit {
-  baseUrl = environment.baseUrl; 
+export class AboutComponent implements OnInit, AfterViewInit {
+  baseUrl = environment.baseUrl;
 
   state: {
     about: {
@@ -84,8 +85,15 @@ export class AboutComponent implements OnInit {
 
   constructor(
     private aboutUsService: AboutUsService,
-    private teamService: TeamService
+    private teamService: TeamService,
+    private anim: AnimationService
   ) {}
+
+
+  ngAfterViewInit() {
+    this.anim.animateOnScroll('.fade-up');
+    this.anim.animateOnScroll('.zoom-in');
+  }
 
   ngOnInit(): void {
     this.fetchAboutData();
@@ -95,7 +103,7 @@ export class AboutComponent implements OnInit {
   fetchAboutData(): void {
     this.aboutUsService.getAboutUs().subscribe({
       next: (data: AboutUs[]) => {
-        const about = data[0] || this.state.about; 
+        const about = data[0] || this.state.about;
         this.state.about = {
           history: about.history || '',
           ownerName: about.ownerName || '',

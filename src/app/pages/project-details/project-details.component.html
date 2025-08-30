@@ -4,28 +4,29 @@
     [project]="state.data"
     [baseUrl]="baseUrl"
     (imageError)="onImageError($event)"
-    appFadeIn
+    
   ></app-project-header>
   <app-offer-timer
     [timer]="state.timer"
     [offerActive]="state.offerActive"
-    appFadeIn
+    
   ></app-offer-timer>
-  <!-- <app-marquee [offerTitle]="state.data?.offerTitle" appFadeIn></app-marquee> -->
-  <app-tab-bar appFadeIn></app-tab-bar>
+  <!-- <app-marquee [offerTitle]="state.data?.offerTitle" ></app-marquee> -->
+  <app-tab-bar></app-tab-bar>
   <app-at-glance
-    id="atGlance"
-    [project]="state.data"
-    [baseUrl]="baseUrl"
-    (imageError)="onImageError($event)"
-    appFadeIn
-  ></app-at-glance>
+  id="atGlance"
+  [project]="state.data"
+  [baseUrl]="baseUrl"
+  (imageError)="onImageError($event)"
+></app-at-glance>
+
+
   <app-feature-amenities
     id="featureAndAmenities"
     [features]="state.list"
     [baseUrl]="baseUrl"
     (imageError)="onImageError($event)"
-    appFadeIn
+    
   ></app-feature-amenities>
   <app-video-player
     youtubeUrl="https://www.youtube.com/watch?v=8gU3scoIEs0"
@@ -35,19 +36,18 @@
     [gallery]="state.gallery"
     [baseUrl]="baseUrl"
     (imageError)="onImageError($event)"
-    appFadeIn
+    
   ></app-project-gallery>
   <app-location-map
-    id="locationMap"
-    [latitude]="state.data?.latitude"
-    [longitude]="state.data?.longitude"
-    appFadeIn
-  ></app-location-map>
+  id="locationMap"
+  [mapIframe]="state.data?.mapLink"
+  
+></app-location-map>
   <app-contact-form
     id="contacting"
     (formSubmit)="onFormSubmit()"
-    appFadeIn
+    
   ></app-contact-form>
   <app-swiper-slider />
-  <!-- <app-related-projects id="relatedProjects" [projects]="state.projects" [baseUrl]="baseUrl" (imageError)="onImageError($event)" appFadeIn></app-related-projects> -->
+  <!-- <app-related-projects id="relatedProjects" [projects]="state.projects" [baseUrl]="baseUrl" (imageError)="onImageError($event)" ></app-related-projects> -->
 </div>

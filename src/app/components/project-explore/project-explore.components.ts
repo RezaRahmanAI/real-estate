@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { FadeInDirective } from '../../directives/fade-in.directive';
 import { LenisService } from '../../services/lenis.service';
 
 export interface ExploreItem {
@@ -14,7 +13,7 @@ export interface ExploreItem {
 @Component({
   selector: 'app-project-explore',
   standalone: true,
-  imports: [CommonModule, RouterModule, FadeInDirective],
+  imports: [CommonModule, RouterModule],
   templateUrl: './project-explore.component.html',
   styleUrl: './project-explore.component.css',
 })

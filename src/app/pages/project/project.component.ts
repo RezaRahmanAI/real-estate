@@ -10,7 +10,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { ToastrService } from 'ngx-toastr';
-import { FadeInDirective } from '../../directives/fade-in.directive';
 import { LenisService } from '../../services/lenis.service';
 
 interface ProjectItem {
@@ -26,7 +25,7 @@ interface ProjectItem {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, RouterModule, FadeInDirective],
+  imports: [CommonModule, RouterModule],
   templateUrl: './project.component.html',
   styleUrls: ['./project.component.css'],
 })

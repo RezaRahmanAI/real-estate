@@ -72,13 +72,13 @@
           <input id="sizeOfEachApartment" [(ngModel)]="_project.sizeOfEachApartment" name="sizeOfEachApartment" type="text" class="block w-full p-2 sm:p-3 text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition-all duration-200" placeholder="Enter size of each apartment" />
         </div>
         <div>
-          <label for="latitude" class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">Latitude</label>
-          <input id="latitude" [(ngModel)]="_project.latitude" name="latitude" type="text" class="block w-full p-2 sm:p-3 text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition-all duration-200" placeholder="Enter map latitude" />
+          <label for="mapLink" class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">Map Link</label>
+          <input id="mapLink" [(ngModel)]="_project.mapLink" name="mapLink" type="text" class="block w-full p-2 sm:p-3 text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition-all duration-200" placeholder="Enter map mapLink" />
         </div>
-        <div>
+        <!-- <div>
           <label for="longitude" class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">Longitude</label>
           <input id="longitude" [(ngModel)]="_project.longitude" name="longitude" type="text" class="block w-full p-2 sm:p-3 text-sm text-gray-900 bg-gray-100 rounded-lg border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-indigo-500 dark:focus:border-indigo-500 transition-all duration-200" placeholder="Enter map longitude" />
-        </div>
+        </div> -->
         <div>
           <label for="pdfFile" class="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-200">PDF File</label>
           <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-100 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400 focus:outline-none dark:placeholder-gray-400 transition-all duration-200" id="pdfFile" name="pdfFile" type="file" accept=".pdf" (change)="onPdfChange($event)" />

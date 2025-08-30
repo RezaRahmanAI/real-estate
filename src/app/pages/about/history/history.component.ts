@@ -8,12 +8,11 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { FadeInDirective } from '../../../directives/fade-in.directive';
 
 @Component({
   selector: 'app-history',
   standalone: true,
-  imports: [CommonModule, FadeInDirective],
+  imports: [CommonModule, ],
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css'],
   animations: [

@@ -18,7 +18,7 @@ export interface Project {
   numberOfParking: number;
   unitPerFloors: string;
   sizeOfEachApartment: string;
-  latitude: string;
-  longitude: string;
-  pdfFileName: string;
+  mapLink: string;
+  // longitude: string;
+  pdfFile: string;
 }

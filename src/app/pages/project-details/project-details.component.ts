@@ -1,11 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { LenisService } from '../../services/lenis.service';
-import { FadeInDirective } from '../../directives/fade-in.directive';
 import { ProjectHeaderComponent } from './project-header/project-header.component';
 import { OfferTimerComponent } from './offer-timer/offer-timer.component';
 import { MarqueeComponent } from './marquee/marquee.component';
@@ -38,8 +37,8 @@ interface Project {
   youtube?: string;
   offerTitle?: string;
   offerDateTime?: string;
-  latitude?: string;
-  longitude?: string;
+  mapLink?: string;
+  pdfFile?: string;
 }
 
 interface Feature {
@@ -67,9 +66,7 @@ interface RelatedProject {
   imports: [
     CommonModule,
     RouterModule,
-    HttpClientModule,
     SafeUrlPipe,
-    FadeInDirective,
     ProjectHeaderComponent,
     OfferTimerComponent,
     MarqueeComponent,
@@ -79,9 +76,7 @@ interface RelatedProject {
     VideoPlayerComponent,
     ProjectGalleryComponent,
     LocationMapComponent,
-    RelatedProjectsComponent,
     ContactFormComponent,
-    ProjectSlideComponent,
     SwiperSliderComponent,
   ],
   templateUrl: './project-details.component.html',
@@ -183,6 +178,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     updateTimer();
     this.timerInterval = setInterval(updateTimer, 1000);
   }
+  
 
   getProject(): void {
     if (!this.projectId) {

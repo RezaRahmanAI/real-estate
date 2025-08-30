@@ -49,9 +49,9 @@ export class ProjectFormComponent {
     numberOfParking: 0,
     unitPerFloors: '',
     sizeOfEachApartment: '',
-    latitude: '',
-    longitude: '',
-    pdfFileName: '',
+    mapLink: '',
+    // longitude: '',
+    pdfFile: '',
   };
 
   _project: Project = this.defaultProject;
@@ -76,7 +76,7 @@ export class ProjectFormComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedPdf = input.files[0];
-      this._project.pdfFileName = this.selectedPdf.name; // Update pdfFileName
+      this._project.pdfFile = this.selectedPdf.name; // Update pdfFileName
     }
   }
 
@@ -98,9 +98,9 @@ export class ProjectFormComponent {
     formData.append('landArea', this._project.landArea || '');
     formData.append('builtUpArea', this._project.builtUpArea || '');
     formData.append('height', this._project.height || '');
-    formData.append('latitude', this._project.latitude || '');
-    formData.append('longitude', this._project.longitude || '');
-    formData.append('pdfFileName', this._project.pdfFileName || '');
+    formData.append('mapLink', this._project.mapLink || '');
+    // formData.append('longitude', this._project.longitude || '');
+    formData.append('pdfFile', this._project.pdfFile || '');
     formData.append(
       'numberOfApartments',
       this._project.numberOfApartments?.toString() || '0'

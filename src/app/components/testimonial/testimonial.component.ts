@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FadeInDirective } from '../../directives/fade-in.directive';
 
 export interface Testimonial {
   image?: string;
@@ -12,7 +11,7 @@ export interface Testimonial {
 @Component({
   selector: 'app-testimonial',
   standalone: true,
-  imports: [CommonModule, FadeInDirective],
+  imports: [CommonModule],
   templateUrl: './testimonial.component.html',
   styleUrls: ['./testimonial.component.css'],
 })

@@ -1,11 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FadeInDirective } from '../../../directives/fade-in.directive';
 
 @Component({
   selector: 'app-project-gallery',
   standalone: true,
-  imports: [CommonModule, FadeInDirective],
+  imports: [CommonModule],
   templateUrl: './project-gallery.component.html',
   styleUrls: ['./project-gallery.component.css'],
 })
