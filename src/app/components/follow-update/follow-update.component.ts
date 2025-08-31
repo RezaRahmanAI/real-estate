@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { BlogCardComponent } from "../blog-card/blog-card.component";
-import { BlogListComponent } from "../../pages/blog-list/blog-list.component";
+import { BlogListComponent } from '../../pages/blog/blog-list/blog-list.component';
 
 @Component({
   selector: 'app-follow-update',

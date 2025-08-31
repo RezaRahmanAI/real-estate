@@ -39,6 +39,7 @@ interface Project {
   offerDateTime?: string;
   mapLink?: string;
   pdfFile?: string;
+  videoLink?: string;
 }
 
 interface Feature {

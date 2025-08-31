@@ -21,4 +21,5 @@ export interface Project {
   mapLink: string;
   // longitude: string;
   pdfFile: string;
+  videoLink: string;
 }

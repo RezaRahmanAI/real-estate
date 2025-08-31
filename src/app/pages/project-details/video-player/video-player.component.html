@@ -1,16 +1,14 @@
-<!-- video-player.component.html -->
 <div class="w-[85%] mx-auto py-20 font-montserrat">
-  <!-- Title -->
   <h2 class="text-center font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1f2d46] mb-16">
     Project Roundup
   </h2>
 
-  <!-- Video Player Container -->
   <div id="videoPlayer" class="relative h-[60vh] rounded-xl shadow-lg overflow-visible">
-    <!-- Background Image Overlay (YouTube Thumbnail) -->
+    <!-- Dynamic Thumbnail -->
     <div
-      class="absolute inset-0 bg-cover bg-center filter-sepia filter-saturate filter-hue-rotate filter-contrast opacity-80 rounded-xl z-0"
-      style="background-image: url('https://img.youtube.com/vi/8gU3scoIEs0/maxresdefault.jpg'); filter: sepia(0.3) saturate(0.8) hue-rotate(-5deg) contrast(1.1);"
+      class="absolute inset-0 bg-cover bg-center rounded-xl z-0 opacity-80"
+      *ngIf="thumbnailUrl"
+      [style.background-image]="'url(' + thumbnailUrl + ')'"
     ></div>
 
     <!-- Play Button -->
@@ -37,18 +35,16 @@
             allowfullscreen
             title="Project Video"
           ></iframe>
-          <div *ngIf="!safeYoutubeUrl" class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-200">
-            <p class="text-gray-600 text-lg font-montserrat">Unable to load video. Please check the URL or video availability.</p>
-          </div>
         </div>
       </div>
+
       <!-- Close Button -->
       <button
         class="absolute top-[calc(50%-18rem-0.5rem)] right-6 text-[#f7f3f1] hover:text-white"
         (click)="toggleModal()"
         aria-label="Close video"
       >
-        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>

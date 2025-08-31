@@ -28,9 +28,10 @@
     (imageError)="onImageError($event)"
     
   ></app-feature-amenities>
-  <app-video-player
-    youtubeUrl="https://www.youtube.com/watch?v=8gU3scoIEs0"
-  ></app-video-player>
+<app-video-player
+  [youtubeUrl]="state.data?.videoLink"
+></app-video-player>
+
   <app-project-gallery
     id="projectGallery"
     [gallery]="state.gallery"

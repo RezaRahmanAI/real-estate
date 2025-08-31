@@ -52,6 +52,7 @@ export class ProjectFormComponent {
     mapLink: '',
     // longitude: '',
     pdfFile: '',
+    videoLink: '',
   };
 
   _project: Project = this.defaultProject;
@@ -101,6 +102,7 @@ export class ProjectFormComponent {
     formData.append('mapLink', this._project.mapLink || '');
     // formData.append('longitude', this._project.longitude || '');
     formData.append('pdfFile', this._project.pdfFile || '');
+    formData.append('videoLink', this._project.videoLink || '');
     formData.append(
       'numberOfApartments',
       this._project.numberOfApartments?.toString() || '0'

@@ -12,6 +12,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 export class VideoPlayerComponent implements OnChanges {
   @Input() youtubeUrl: string | undefined;
   safeYoutubeUrl: SafeResourceUrl | null = null;
+  thumbnailUrl: string | null = null;
   showModal: boolean = false;
 
   constructor(private sanitizer: DomSanitizer) {}
@@ -20,16 +21,20 @@ export class VideoPlayerComponent implements OnChanges {
     if (changes['youtubeUrl'] && this.youtubeUrl) {
       const videoId = this.extractVideoId(this.youtubeUrl);
       if (videoId) {
-        // Initial URL without autoplay
+        // video embed url
         this.safeYoutubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
           `https://www.youtube.com/embed/${videoId}?rel=0`
         );
+        // dynamic thumbnail
+        this.thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
       } else {
         console.error('Invalid YouTube URL:', this.youtubeUrl);
         this.safeYoutubeUrl = null;
+        this.thumbnailUrl = null;
       }
     } else {
       this.safeYoutubeUrl = null;
+      this.thumbnailUrl = null;
     }
   }
 
@@ -45,7 +50,6 @@ export class VideoPlayerComponent implements OnChanges {
     if (this.showModal && this.youtubeUrl) {
       const videoId = this.extractVideoId(this.youtubeUrl);
       if (videoId) {
-        // Set URL with autoplay when modal opens
         this.safeYoutubeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
           `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`
         );

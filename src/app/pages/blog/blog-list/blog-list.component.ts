@@ -2,8 +2,8 @@ import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { environment } from '../../environments/environment';
-import { BlogCardComponent } from '../../components/blog-card/blog-card.component';
+import { BlogCardComponent } from '../../../components/blog-card/blog-card.component';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-blog-list',

@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
-import { BlogListComponent } from './pages/blog-list/blog-list.component';
 import { BlogDetailsComponent } from './pages/blog-details/blog-details.component';
 import { ProjectsComponent } from './pages/project/project.component';
 import { ProjectDetailsComponent } from './pages/project-details/project-details.component';
@@ -35,7 +34,7 @@ export const routes: Routes = [
   { path: 'gallery', component: GalleryComponent },
   { path: 'landowner', component: LandownerComponent },
   // { path: 'blogs-events', component: BlogsEventsComponent },
-  { path: 'blogs', component: BlogListComponent },
+  { path: 'blogs', component: BlogComponent },
   { path: 'blogDetails/:id', component: BlogDetailsComponent },
   { path: 'login', component: LoginComponent },
   {
