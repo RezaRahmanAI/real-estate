@@ -1,5 +1,22 @@
-.bg-img{
+/* project-details.component.css */
+.bg-img {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
+  position: relative;
+}
+
+.bg-img::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* Black overlay with 40% opacity */
+  z-index: 1;
+}
+.text-container {
+  width: 85%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 10;
 }

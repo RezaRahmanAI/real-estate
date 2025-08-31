@@ -58,11 +58,14 @@ export interface AboutUs {
   ownerImage: string;
 }
 
-export interface ContactData {
+export interface Contactus {
+  id?: string;
   name: string;
-  phone: string;
   email: string;
-  message?: string;
+  phone?: string;
+  subject: string;
+  message: string;
+  date?: Date;
 }
 
 export interface Faq {

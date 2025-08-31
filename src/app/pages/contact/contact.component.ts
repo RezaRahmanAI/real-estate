@@ -1,10 +1,7 @@
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, NgForm } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { ContactHeroComponent } from "./contact-hero/contact-hero.component";
 import { ContactInfoMapComponent } from "./contact-info-map/contact-info-map.component";
-import { ContactFromComponent } from "./contact-from/contact-from.component";
 import { FaqComponent } from "./faq/faq.component";
 import { GetInTouchComponent } from "./get-in-touch/get-in-touch.component";
 import { AnimationService } from '../../services/animation.service';

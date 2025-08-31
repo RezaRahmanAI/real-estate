@@ -1,51 +1,57 @@
-<div id="videoPlayer" class="relative w-[85%] mx-auto h-[60vh] rounded-xl shadow-lg overflow-visible font-montserrat">
-  <!-- Top Text -->
-  <div class="absolute -top-6 left-[-40px] transform -translate-y-1/2 z-10">
-    <span class="text-2xl font-bold uppercase text-[#554433] tracking-wider">No 14 By Sanmar</span>
-  </div>
+<!-- video-player.component.html -->
+<div class="w-[85%] mx-auto py-20 font-montserrat">
+  <!-- Title -->
+  <h2 class="text-center font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-[#1f2d46] mb-16">
+    Project Roundup
+  </h2>
 
-  <!-- Background Image Overlay (YouTube Thumbnail) -->
-  <div class="absolute inset-0 bg-cover bg-center filter-sepia filter-saturate filter-hue-rotate filter-contrast opacity-80 rounded-xl"
-       style="background-image: url('https://img.youtube.com/vi/8gU3scoIEs0/maxresdefault.jpg'); filter: sepia(0.3) saturate(0.8) hue-rotate(-5deg) contrast(1.1);"></div>
+  <!-- Video Player Container -->
+  <div id="videoPlayer" class="relative h-[60vh] rounded-xl shadow-lg overflow-visible">
+    <!-- Background Image Overlay (YouTube Thumbnail) -->
+    <div
+      class="absolute inset-0 bg-cover bg-center filter-sepia filter-saturate filter-hue-rotate filter-contrast opacity-80 rounded-xl z-0"
+      style="background-image: url('https://img.youtube.com/vi/8gU3scoIEs0/maxresdefault.jpg'); filter: sepia(0.3) saturate(0.8) hue-rotate(-5deg) contrast(1.1);"
+    ></div>
 
-  <!-- Play Button -->
-  <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20">
-    <button
-      class="w-24 h-24 border border-[#554433] rounded-full flex items-center justify-center cursor-pointer bg-[#554433]/30 hover:bg-[#554433]/50 transition-all duration-200"
-      (click)="toggleModal()"
-      aria-label="Play video"
-    >
-      <div class="w-0 h-0 border-t-[12px] border-b-[12px] border-l-[18px] border-transparent border-l-[#f7f3f1] translate-x-[2px]"></div>
-    </button>
-  </div>
+    <!-- Play Button -->
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 z-20">
+      <button
+        class="w-24 h-24 border border-[#554433] rounded-full flex items-center justify-center cursor-pointer bg-[#554433]/30 hover:bg-[#554433]/50 transition-all duration-200"
+        (click)="toggleModal()"
+        aria-label="Play video"
+      >
+        <div class="w-0 h-0 border-t-[12px] border-b-[12px] border-l-[18px] border-transparent border-l-[#f7f3f1] translate-x-[2px]"></div>
+      </button>
+    </div>
 
-  <!-- Modal -->
-  <div *ngIf="showModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-    <div class="relative bg-white rounded-lg p-4 w-full max-w-4xl mx-4">
-      <div class="relative w-full max-w-4xl mx-auto" style="padding-bottom: 56.25%;">
-        <iframe
-          *ngIf="safeYoutubeUrl"
-          [src]="safeYoutubeUrl"
-          class="absolute top-0 left-0 w-full h-full"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-          title="Project Video"
-        ></iframe>
-        <div *ngIf="!safeYoutubeUrl" class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-200">
-          <p class="text-gray-600 text-lg font-montserrat">Unable to load video. Please check the URL or video availability.</p>
+    <!-- Modal -->
+    <div *ngIf="showModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+      <div class="relative bg-white rounded-lg p-4 w-full max-w-4xl mx-4">
+        <div class="relative w-full max-w-4xl mx-auto" style="padding-bottom: 56.25%;">
+          <iframe
+            *ngIf="safeYoutubeUrl"
+            [src]="safeYoutubeUrl"
+            class="absolute top-0 left-0 w-full h-full"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            title="Project Video"
+          ></iframe>
+          <div *ngIf="!safeYoutubeUrl" class="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-200">
+            <p class="text-gray-600 text-lg font-montserrat">Unable to load video. Please check the URL or video availability.</p>
+          </div>
         </div>
       </div>
+      <!-- Close Button -->
+      <button
+        class="absolute top-[calc(50%-18rem-0.5rem)] right-6 text-[#f7f3f1] hover:text-white"
+        (click)="toggleModal()"
+        aria-label="Close video"
+      >
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
-    <!-- Close Button -->
-    <button
-      class="absolute top-[calc(50%-18rem-0.5rem)] right-6 text-[#f7f3f1] hover:text-white"
-      (click)="toggleModal()"
-      aria-label="Close video"
-    >
-      <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
   </div>
 </div>
