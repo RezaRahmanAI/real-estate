@@ -21,6 +21,7 @@ import { OffersIndexComponent } from './features/offers/offers-index/offers-inde
 import { AboutUsIndexComponent } from './features/about-us/about-us-index/about-us-index.component';
 import { FaqComponent } from './features/faq/faq.component';
 import { BlogComponent } from './pages/blog/blog.component';
+import { ProjectCreateComponent } from './features/projects/project-create/project-create.component';
 
 
 
@@ -53,6 +54,7 @@ export const routes: Routes = [
         path: 'projects',
         children: [
           { path: '', component: ProjectsIndexComponent },
+          { path: 'create', component: ProjectCreateComponent },
           { path: ':id/edit', component: ProjectEditComponent },
           { path: ':id/features', component: ProjectFeaturesComponent },
           { path: ':id/gallery', component: ProjectGalleryComponent },

@@ -2,32 +2,13 @@
   <!-- Header -->
   <div class="flex items-center mb-6 fade-up animate">
     <h6 class="text-lg font-bold text-dark grow">List of Projects</h6>
-    <button
-      type="button"
-      (click)="openCreateModal()"
+    <a
+      [routerLink]="['create']"
       class="px-5 py-2 text-white bg-accent border border-accent/80 hover:bg-accent/80 focus:ring-2 focus:ring-accent/50 rounded-lg transition duration-300"
     >
       <span class="align-middle">Create Project</span>
-    </button>
+    </a>
   </div>
-
-  <!-- Create Modal -->
-  <app-project-form
-    *ngIf="showCreateModal"
-    [project]="null"
-    mode="create"
-    (close)="closeModal()"
-    (saved)="onProjectSaved()"
-  ></app-project-form>
-
-  <!-- Edit Modal -->
-  <app-project-form
-    *ngIf="showEditModal"
-    [project]="selectedProject"
-    mode="edit"
-    (close)="closeModal()"
-    (saved)="onProjectSaved()"
-  ></app-project-form>
 
   <!-- Projects Table -->
   <div class="relative overflow-x-auto bg-white rounded-lg shadow-md fade-up animate">
@@ -78,12 +59,12 @@
             </span>
           </td>
           <td class="px-6 py-4 text-right space-x-2">
-            <button (click)="openEditModal(item)" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Edit</button>
+            <a [routerLink]="[item.id, 'edit']" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Edit</a>
             <button *ngIf="item.isActive" (click)="toggleProjectActive(item.id, false)" class="text-red-500 hover:text-red-600 font-medium text-sm px-3 py-1">Deactivate</button>
             <button *ngIf="!item.isActive" (click)="toggleProjectActive(item.id, true)" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Activate</button>
             <button (click)="deleteProject(item.id)" class="text-red-500 hover:text-red-600 font-medium text-sm px-3 py-1">Delete</button>
-            <a [routerLink]="[ item.id, 'gallery']" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Gallery</a>
-            <a [routerLink]="[ item.id, 'features']" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Features</a>
+            <a [routerLink]="[item.id, 'gallery']" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Gallery</a>
+            <a [routerLink]="[item.id, 'features']" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Features</a>
           </td>
         </tr>
       </tbody>

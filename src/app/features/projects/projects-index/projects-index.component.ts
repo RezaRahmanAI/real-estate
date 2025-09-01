@@ -1,26 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectFormComponent } from '../project-form/project-form.component';
-import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../models/model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-projects-index',
   standalone: true,
-  imports: [ProjectFormComponent, CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './projects-index.component.html',
   styleUrls: ['./projects-index.component.css'],
 })
 export class ProjectsIndexComponent implements OnInit {
   projects: Project[] = [];
-  showCreateModal = false;
-  showEditModal = false;
-  selectedProject: Project | null = null;
   apiBaseUrl = environment.baseUrl;
 
-  constructor(private projectService: ProjectService) {}
+  constructor(private projectService: ProjectService, private router: Router) {}
 
   ngOnInit() {
     this.fetchProjects();
@@ -38,27 +34,6 @@ export class ProjectsIndexComponent implements OnInit {
         console.error(error);
       },
     });
-  }
-
-  openCreateModal() {
-    this.selectedProject = null;
-    this.showCreateModal = true;
-  }
-
-  openEditModal(project: Project) {
-    this.selectedProject = { ...project };
-    this.showEditModal = true;
-  }
-
-  closeModal() {
-    this.showCreateModal = false;
-    this.showEditModal = false;
-    this.selectedProject = null;
-  }
-
-  onProjectSaved() {
-    this.fetchProjects();
-    this.closeModal();
   }
 
   deleteProject(id: string) {
