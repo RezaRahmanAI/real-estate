@@ -4,7 +4,7 @@ import Splide from '@splidejs/splide';
 import { environment } from '../../environments/environment';
 import { ProjectService } from '../../services/project.service';
 import { Router, RouterLink } from '@angular/router';
-import { Project } from '../../models/project.model';
+import { Project } from '../../models/model';
 import { Subscription } from 'rxjs';
 
 interface Slide {

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProjectFormComponent } from '../project-form/project-form.component';
 import { CommonModule } from '@angular/common';
-import { Project } from '../../../models/project.model';
 import { ProjectService } from '../../../services/project.service';
+import { Project } from '../../../models/model';
 
 @Component({
   selector: 'app-project-edit',

@@ -5,8 +5,8 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
-import { ProjectGallery } from '../../../models/project-gallery.model';
 import { ProjectService } from '../../../services/project.service';
+import { ProjectGallery } from '../../../models/model';
 
 @Component({
   selector: 'app-project-gallery',

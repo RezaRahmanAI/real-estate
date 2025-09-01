@@ -73,3 +73,50 @@ export interface Faq {
   question: string;
   answer: string;
 }
+
+
+export interface Project {
+  id: string;
+  name: string;
+  description: string;
+  address: string;
+  thumbnail: string;
+  category: string;
+  type: string;
+  content: string;
+  contentType: string;
+  offerTitle: string;
+  offerDateTime: string;
+  isActive: boolean;
+  landArea: string;
+  builtUpArea: string;
+  height: string;
+  numberOfApartments: number;
+  numberOfParking: number;
+  unitPerFloors: string;
+  sizeOfEachApartment: string;
+  mapLink: string;
+  // longitude: string;
+  pdfFile: string;
+  videoLink: string;
+}
+
+
+export interface ProjectFeature {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  order: number;
+  projectId: string;
+  isActive?: boolean;
+}
+
+export interface ProjectGallery {
+  id: string;
+  contentType: string;
+  content: string;
+  order: number;
+  projectId: string;
+  isActive: boolean;
+}

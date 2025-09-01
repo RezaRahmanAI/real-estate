@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { environment } from '../../../environments/environment'; // Adjust path as needed
 import { ProjectService } from '../../../services/project.service';
-import { Project } from '../../../models/project.model';
+import { Project } from '../../../models/model';
 
 interface Slide {
   id: string;

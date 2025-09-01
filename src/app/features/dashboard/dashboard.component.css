@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-content {
+  flex: 1 1 auto;
+  height: calc(100vh - 4rem);
+  overflow-y: scroll;
+  background-color: var(--light);
+  position: relative;
+  z-index: 0;
+  overscroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  scroll-behavior: smooth;
+  isolation: isolate;
+}
+
+/* Ensure no parent conflicts */
+:host {
+  display: block;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Custom scrollbar styling */
+.main-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.main-content::-webkit-scrollbar-track {
+  background: var(--light);
+}
+
+.main-content::-webkit-scrollbar-thumb {
+  background: var(--lightDark);
+  border-radius: 4px;
+}
+
+.main-content::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}

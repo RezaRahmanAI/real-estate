@@ -4,7 +4,7 @@ import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { ProjectService } from '../../../services/project.service';
-import { Project } from '../../../models/project.model';
+import { Project } from '../../../models/model';
 
 @Component({
   selector: 'app-projects-index',

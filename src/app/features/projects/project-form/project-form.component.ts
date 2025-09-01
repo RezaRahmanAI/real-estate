@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Project } from '../../../models/project.model';
 import { ProjectService } from '../../../services/project.service';
+import { Project } from '../../../models/model';
 
 @Component({
   selector: 'app-project-form',

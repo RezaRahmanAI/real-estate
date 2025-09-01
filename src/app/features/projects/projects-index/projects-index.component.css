@@ -1,42 +1,19 @@
-
-/* Ensure table container doesn't overflow the parent */
-:host {
-  display: block;
-}
-
-/* Custom scrollbar for table */
-.overflow-x-auto {
-  scrollbar-width: thin;
-  scrollbar-color: #0891b2 #e5e7eb;
-}
-
-.overflow-x-auto::-webkit-scrollbar {
-  height: 8px;
-}
-
-.overflow-x-auto::-webkit-scrollbar-track {
-  background: #e5e7eb;
-  border-radius: 4px;
-}
-
-.overflow-x-auto::-webkit-scrollbar-thumb {
-  background: #0891b2;
-  border-radius: 4px;
-}
-
-.overflow-x-auto::-webkit-scrollbar-thumb:hover {
-  background: #0e7490;
-}
-
-/* Adjust table for responsiveness */
 table {
-  min-width: 800px; /* Reduced minimum width for compact layout */
+  width: 100%;
+  border-collapse: collapse;
 }
 
-/* Ensure content fits within dashboard */
-@media (min-width: 1024px) {
-  .container {
-    max-width: calc(100vw - 256px); /* Adjust for sidebar width */
-    margin-left: 256px; /* Align content with sidebar */
-  }
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  background-color: var(--accentLight);
+  color: var(--dark);
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: var(--light);
 }

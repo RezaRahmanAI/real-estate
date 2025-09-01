@@ -1,51 +1,63 @@
-<div class="p-4 bg-gray-100 dark:bg-gray-900 min-h-screen overflow-y-scroll">
-  <div class="flex items-center mb-4">
-    <h6 class="text-lg font-bold text-gray-900 dark:text-white flex-grow">List of Projects</h6>
-    <div class="flex-shrink-0">
-      <button (click)="openCreateModal()" class="px-5 py-1 text-white bg-cyan-600 border border-cyan-500 hover:bg-cyan-700 hover:border-cyan-600 focus:ring-2 focus:ring-cyan-200 dark:focus:ring-cyan-400/20 rounded-lg text-sm font-medium transition-all duration-200">
-        <span class="align-middle">Create Project</span>
-      </button>
-    </div>
+<div class="container mx-auto p-6">
+  <!-- Header -->
+  <div class="flex items-center mb-6 fade-up animate">
+    <h6 class="text-lg font-bold text-dark grow">List of Projects</h6>
+    <button
+      type="button"
+      (click)="openCreateModal()"
+      class="px-5 py-2 text-white bg-accent border border-accent/80 hover:bg-accent/80 focus:ring-2 focus:ring-accent/50 rounded-lg transition duration-300"
+    >
+      <span class="align-middle">Create Project</span>
+    </button>
   </div>
 
   <!-- Create Modal -->
-  <div *ngIf="showCreateModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 transition-opacity duration-300">
-    <app-project-form [project]="null" mode="create" (close)="closeModal()" (saved)="onProjectSaved()"></app-project-form>
-  </div>
+  <app-project-form
+    *ngIf="showCreateModal"
+    [project]="null"
+    mode="create"
+    (close)="closeModal()"
+    (saved)="onProjectSaved()"
+  ></app-project-form>
 
   <!-- Edit Modal -->
-  <div *ngIf="showEditModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 transition-opacity duration-300">
-    <app-project-form [project]="selectedProject" mode="edit" (close)="closeModal()" (saved)="onProjectSaved()"></app-project-form>
-  </div>
+  <app-project-form
+    *ngIf="showEditModal"
+    [project]="selectedProject"
+    mode="edit"
+    (close)="closeModal()"
+    (saved)="onProjectSaved()"
+  ></app-project-form>
 
-  <div class="relative overflow-x-auto shadow-md bg-white dark:bg-gray-800 rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  <!-- Projects Table -->
+  <div class="relative overflow-x-auto bg-white rounded-lg shadow-md fade-up animate">
+    <table class="min-w-full divide-y divide-lightDark">
+      <thead class="bg-accentLight">
         <tr>
-          <th scope="col" class="px-4 py-3 min-w-[120px]">Name</th>
-          <th scope="col" class="px-4 py-3 min-w-[150px] hidden md:table-cell">Description</th>
-          <th scope="col" class="px-4 py-3 min-w-[150px] hidden lg:table-cell">Address</th>
-          <th scope="col" class="px-4 py-3 min-w-[80px]">Thumbnail</th>
-          <th scope="col" class="px-4 py-3 min-w-[80px] hidden sm:table-cell">Category</th>
-          <th scope="col" class="px-4 py-3 min-w-[80px] hidden sm:table-cell">Type</th>
-          <th scope="col" class="px-4 py-3 min-w-[80px] hidden md:table-cell">Content</th>
-          <th scope="col" class="px-4 py-3 min-w-[120px] hidden lg:table-cell">Offer Title</th>
-          <th scope="col" class="px-4 py-3 min-w-[100px] hidden md:table-cell">Offer Date</th>
-          <th scope="col" class="px-4 py-3 min-w-[80px]">Status</th>
-          <th scope="col" class="px-4 py-3 min-w-[220px]">Actions</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Name</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Description</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Address</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Thumbnail</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Category</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Type</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Content</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Offer Title</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Offer Date</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Status</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Actions</th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let item of projects; let i = index" class="border-b dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors duration-200" [ngClass]="{'bg-white dark:bg-gray-800': i % 2 === 0, 'bg-gray-50 dark:bg-gray-700': i % 2 !== 0}">
-          <th scope="row" class="px-4 py-3 font-medium text-gray-900 dark:text-white max-w-[120px] truncate">{{ item.name }}</th>
-          <td class="px-4 py-3 max-w-[150px] truncate hidden md:table-cell">{{ item.description }}</td>
-          <td class="px-4 py-3 max-w-[150px] truncate hidden lg:table-cell">{{ item.address }}</td>
-          <td class="px-4 py-3">
+      <tbody class="bg-white divide-y divide-lightDark">
+        <tr *ngFor="let item of projects" class="hover:bg-light transition duration-200 fade-up animate">
+          <td class="px-6 py-4 font-medium text-dark whitespace-nowrap">{{ item.name }}</td>
+          <td class="px-6 py-4 text-sm text-dark">{{ item.description | slice:0:100 }}{{ item.description.length > 100 ? '...' : '' }}</td>
+          <td class="px-6 py-4 text-sm text-dark">{{ item.address }}</td>
+          <td class="px-6 py-4">
             <img class="w-10 h-10 object-cover rounded" [src]="apiBaseUrl + '/api/attachment/get/' + item.thumbnail" alt="Thumbnail" />
           </td>
-          <td class="px-4 py-3 hidden sm:table-cell">{{ item.category }}</td>
-          <td class="px-4 py-3 hidden sm:table-cell">{{ item.type }}</td>
-          <td class="px-4 py-3 hidden md:table-cell">
+          <td class="px-6 py-4 text-sm text-dark">{{ item.category }}</td>
+          <td class="px-6 py-4 text-sm text-dark">{{ item.type }}</td>
+          <td class="px-6 py-4">
             <ng-container *ngIf="item.contentType === 'Image'">
               <img class="w-10 h-10 object-cover rounded" [src]="apiBaseUrl + '/api/attachment/get/' + item.content" alt="Content" />
             </ng-container>
@@ -55,23 +67,23 @@
               </video>
             </ng-container>
           </td>
-          <td class="px-4 py-3 max-w-[120px] truncate hidden lg:table-cell">{{ item.offerTitle }}</td>
-          <td class="px-4 py-3 hidden md:table-cell">{{ item.offerDateTime | date:'short' }}</td>
-          <td class="px-4 py-3">
-            <span *ngIf="item.isActive" class="px-2 py-0.5 text-xs font-medium rounded bg-green-100 text-green-500 dark:bg-green-500/20 inline-flex items-center">
-              <i class="fas fa-check-circle mr-1"></i> Active
+          <td class="px-6 py-4 text-sm text-dark">{{ item.offerTitle }}</td>
+          <td class="px-6 py-4 text-sm text-dark">{{ item.offerDateTime | date:'short' }}</td>
+          <td class="px-6 py-4">
+            <span *ngIf="item.isActive" class="px-2.5 py-0.5 text-xs font-medium rounded bg-accent/20 text-accent inline-flex items-center">
+              <i class="fas fa-check-circle mr-1.5"></i> Active
             </span>
-            <span *ngIf="!item.isActive" class="px-2 py-0.5 text-xs font-medium rounded bg-red-100 text-red-500 dark:bg-red-500/20 inline-flex items-center">
-              <i class="fas fa-times-circle mr-1"></i> Inactive
+            <span *ngIf="!item.isActive" class="px-2.5 py-0.5 text-xs font-medium rounded bg-red-500/20 text-red-500 inline-flex items-center">
+              <i class="fas fa-times-circle mr-1.5"></i> Inactive
             </span>
           </td>
-          <td class="px-4 py-3 text-right space-x-2">
-            <button (click)="openEditModal(item)" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-3 py-1 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 transition-all duration-200">Edit</button>
-            <button *ngIf="item.isActive" (click)="toggleProjectActive(item.id, false)" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-3 py-1 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 transition-all duration-200">Deactivate</button>
-            <button *ngIf="!item.isActive" (click)="toggleProjectActive(item.id, true)" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-2 focus:outline-none focus:ring-green-300 rounded-lg text-sm px-3 py-1 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 transition-all duration-200">Activate</button>
-            <button (click)="deleteProject(item.id)" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-3 py-1 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 transition-all duration-200">Delete</button>
-            <a [routerLink]="[ item.id, 'gallery']" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-3 py-1 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 transition-all duration-200">Gallery</a>
-            <a [routerLink]="[ item.id, 'features']" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-2 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-3 py-1 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-500 transition-all duration-200">Features</a>
+          <td class="px-6 py-4 text-right space-x-2">
+            <button (click)="openEditModal(item)" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Edit</button>
+            <button *ngIf="item.isActive" (click)="toggleProjectActive(item.id, false)" class="text-red-500 hover:text-red-600 font-medium text-sm px-3 py-1">Deactivate</button>
+            <button *ngIf="!item.isActive" (click)="toggleProjectActive(item.id, true)" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Activate</button>
+            <button (click)="deleteProject(item.id)" class="text-red-500 hover:text-red-600 font-medium text-sm px-3 py-1">Delete</button>
+            <a [routerLink]="[ item.id, 'gallery']" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Gallery</a>
+            <a [routerLink]="[ item.id, 'features']" class="text-accent hover:text-accent/80 font-medium text-sm px-3 py-1">Features</a>
           </td>
         </tr>
       </tbody>

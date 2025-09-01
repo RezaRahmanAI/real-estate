@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -9,5 +9,12 @@ import { RouterModule } from '@angular/router';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent {
-  
+  @ViewChild('mainContent') mainContent!: ElementRef;
+
+  onWheel(event: WheelEvent): void {
+    //console.log('Wheel event triggered:', event);
+    // Manually trigger scroll to ensure wheel event works
+    const element = this.mainContent.nativeElement;
+    element.scrollTop += event.deltaY;
+  }
 }

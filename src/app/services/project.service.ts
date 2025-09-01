@@ -3,9 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { environment } from '../environments/environment';
-import { Project } from '../models/project.model';
-import { ProjectFeature } from '../models/project-feature.model';
-import { ProjectGallery } from '../models/project-gallery.model';
+import { Project, ProjectFeature, ProjectGallery } from '../models/model';
+
 
 @Injectable({
   providedIn: 'root',

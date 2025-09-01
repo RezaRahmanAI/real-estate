@@ -4,8 +4,8 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
-import { ProjectFeature } from '../../../models/project-feature.model';
 import { ProjectService } from '../../../services/project.service';
+import { ProjectFeature } from '../../../models/model';
 
 @Component({
   selector: 'app-project-features',

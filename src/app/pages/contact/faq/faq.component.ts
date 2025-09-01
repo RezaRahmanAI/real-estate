@@ -8,8 +8,7 @@ import {
   trigger,
 } from '@angular/animations';
 import { Faq } from '../../../models/model';
-import { FaqService } from '../../../models/faq.services';
-
+import { FaqService } from '../../../services/faq.services';
 
 @Component({
   selector: 'app-faq',

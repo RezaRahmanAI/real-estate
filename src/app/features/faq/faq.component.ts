@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Faq } from '../../models/model';
-import { FaqService } from '../../models/faq.services';
+import { FaqService } from '../../services/faq.services';
 
 @Component({
   selector: 'app-faq',

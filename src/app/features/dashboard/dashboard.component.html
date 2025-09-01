@@ -1,95 +1,134 @@
-<div class="flex h-screen bg-gray-50">
+<div class="flex h-screen bg-light text-dark">
   <!-- Sidebar -->
-  <div class="hidden md:flex md:flex-col md:w-64 bg-indigo-900 text-white">
-    <div class="flex items-center justify-center h-16 bg-indigo-950">
-      <h1 class="text-2xl font-bold">Real Estate Dashboard</h1>
+  <aside class="hidden md:flex md:flex-col md:w-64 bg-dark text-white shadow-lg">
+    <!-- Logo/Header -->
+    <div class="flex items-center justify-center h-16 bg-accent shadow-md">
+      <h1 class="text-2xl font-bold tracking-wide">Real Estate</h1>
     </div>
+
+    <!-- Navigation -->
     <nav class="flex-1 p-4">
-      <ul>
-        <li class="mb-2">
-          <a href="#" class="flex items-center p-2 rounded hover:bg-indigo-800"
-            ><i class="fas fa-home mr-2"></i> Dashboard</a
-          >
-        </li>
-        <li class="mb-2">
-        <a routerLink="projects" class="flex items-center p-2 rounded hover:bg-indigo-800">
-          <i class="fas fa-building mr-2"></i> Projects
-        </a>
-      </li>
-        <li class="mb-2">
-          <a href="#" class="flex items-center p-2 rounded hover:bg-indigo-800"
-            ><i class="fas fa-chart-line mr-2"></i> Sales Analytics</a
-          >
-        </li>
-        <li class="mb-2">
-          <a href="#" class="flex items-center p-2 rounded hover:bg-indigo-800"
-            ><i class="fas fa-users mr-2"></i> Clients</a
-          >
-        </li>
-        <li class="mb-2">
+      <ul class="space-y-2">
+        <li>
           <a
-            routerLink="teams"
-            class="flex items-center p-2 rounded hover:bg-indigo-800"
-            ><i class="fas fa-users mr-2"></i> Teams</a
+            routerLink="/dashboard"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
           >
-        </li>
-        <li class="mb-2">
-          <a
-            routerLink="blogs"
-            class="flex items-center p-2 rounded hover:bg-indigo-800"
-          >
-            <i class="fas fa-blog mr-2"></i> Blogs
+            <i class="fas fa-home mr-3 w-5 text-accent"></i>
+            <span>Dashboard</span>
           </a>
         </li>
-        <li class="mb-2">
+        <li>
           <a
-            routerLink="testimonials"
-            class="flex items-center p-2 rounded hover:bg-indigo-800"
+            routerLink="/dashboard/projects"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
           >
-            <i class="fas fa-quote-left mr-2"></i> Testimonials
+            <i class="fas fa-building mr-3 w-5 text-accent"></i>
+            <span>Projects</span>
           </a>
         </li>
-        <li class="mb-2">
+        <li>
+          <a
+            routerLink="/dashboard/analytics"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
+          >
+            <i class="fas fa-chart-line mr-3 w-5 text-accent"></i>
+            <span>Sales Analytics</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/dashboard/clients"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
+          >
+            <i class="fas fa-users mr-3 w-5 text-accent"></i>
+            <span>Clients</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/dashboard/teams"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
+          >
+            <i class="fas fa-user-friends mr-3 w-5 text-accent"></i>
+            <span>Teams</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/dashboard/blogs"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
+          >
+            <i class="fas fa-blog mr-3 w-5 text-accent"></i>
+            <span>Blogs</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/dashboard/testimonials"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
+          >
+            <i class="fas fa-quote-left mr-3 w-5 text-accent"></i>
+            <span>Testimonials</span>
+          </a>
+        </li>
+        <li>
           <a
             routerLink="/dashboard/offers"
-            class="flex items-center p-2 rounded hover:bg-indigo-800"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
           >
-            <i class="fas fa-tag mr-2"></i> Offers
+            <i class="fas fa-tag mr-3 w-5 text-accent"></i>
+            <span>Offers</span>
           </a>
         </li>
-        <li class="mb-2">
-        <a routerLink="/dashboard/about-us" class="flex items-center p-2 rounded hover:bg-indigo-800">
-          <i class="fas fa-info-circle mr-2"></i> About Us
-        </a>
-      </li>
-        <li class="mb-2">
-          <a routerLink="/dashboard/faq" class="flex items-center p-2 rounded hover:bg-indigo-800"
-            ><i class="fas fa-cog mr-2"></i> FAQ</a
+        <li>
+          <a
+            routerLink="/dashboard/about-us"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
           >
+            <i class="fas fa-info-circle mr-3 w-5 text-accent"></i>
+            <span>About Us</span>
+          </a>
+        </li>
+        <li>
+          <a
+            routerLink="/dashboard/faq"
+            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
+          >
+            <i class="fas fa-cog mr-3 w-5 text-accent"></i>
+            <span>FAQ</span>
+          </a>
         </li>
       </ul>
     </nav>
-  </div>
+  </aside>
 
   <!-- Main Content -->
   <div class="flex-1 flex flex-col">
     <!-- Header -->
-    <header class="bg-white shadow p-4 flex justify-between items-center">
+    <header class="bg-white shadow-sm p-4 flex justify-between items-center h-16 border-b border-lightDark/30">
       <h2 class="text-xl font-semibold">Welcome, Agent!</h2>
+
       <div class="flex items-center space-x-4">
-        <input
-          type="text"
-          placeholder="Search properties..."
-          class="p-2 border rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        />
+        <!-- Search -->
         <div class="relative">
-          <i class="fas fa-bell text-gray-600 cursor-pointer"></i>
-          <span
-            class="absolute top-0 right-0 h-2 w-2 bg-red-500 rounded-full"
-          ></span>
+          <input
+            type="text"
+            placeholder="Search properties..."
+            class="p-2 pl-10 w-64 border rounded-lg border-lightDark bg-light focus:outline-none focus:ring-2 focus:ring-accent transition duration-200"
+          />
+          <i class="fas fa-search absolute top-3 left-3 text-lightDark"></i>
         </div>
+
+        <!-- Notifications -->
+        <div class="relative cursor-pointer">
+          <i class="fas fa-bell text-lightDark text-lg"></i>
+          <span class="absolute -top-1 -right-1 h-2.5 w-2.5 bg-red-500 rounded-full"></span>
+        </div>
+
+        <!-- Profile -->
         <div
-          class="h-8 w-8 rounded-full bg-indigo-500 flex items-center justify-center text-white"
+          class="h-9 w-9 rounded-full bg-accent flex items-center justify-center text-white font-bold cursor-pointer"
         >
           A
         </div>
@@ -97,7 +136,7 @@
     </header>
 
     <!-- Dashboard Content -->
-    <main class="flex-1 p-6 overflow-y-scroll">
+    <main class="main-content flex-1 overflow-y-auto p-6" #mainContent (wheel)="onWheel($event)">
       <router-outlet></router-outlet>
     </main>
   </div>
