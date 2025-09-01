@@ -27,7 +27,7 @@ export class ProjectFormComponent {
   @Output() saved = new EventEmitter<void>();
   selectedThumbnail: File | null = null;
   selectedContent: File | null = null;
-  selectedPdf: File | null = null; // New field for PDF
+  selectedPdf: File | null = null;
   contentType: string = '';
 
   private defaultProject: Project = {
@@ -51,7 +51,6 @@ export class ProjectFormComponent {
     unitPerFloors: '',
     sizeOfEachApartment: '',
     mapLink: '',
-    // longitude: '',
     pdfFile: '',
     videoLink: '',
   };
@@ -78,7 +77,7 @@ export class ProjectFormComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedPdf = input.files[0];
-      this._project.pdfFile = this.selectedPdf.name; // Update pdfFileName
+      this._project.pdfFile = this.selectedPdf.name;
     }
   }
 
@@ -101,7 +100,6 @@ export class ProjectFormComponent {
     formData.append('builtUpArea', this._project.builtUpArea || '');
     formData.append('height', this._project.height || '');
     formData.append('mapLink', this._project.mapLink || '');
-    // formData.append('longitude', this._project.longitude || '');
     formData.append('pdfFile', this._project.pdfFile || '');
     formData.append('videoLink', this._project.videoLink || '');
     formData.append(
@@ -124,7 +122,7 @@ export class ProjectFormComponent {
       formData.append('content', this.selectedContent);
     }
     if (this.selectedPdf) {
-      formData.append('pdfFile', this.selectedPdf); // Add PDF to FormData
+      formData.append('pdfFile', this.selectedPdf);
     }
     if (this.mode === 'edit') {
       formData.append('id', this._project.id || '');

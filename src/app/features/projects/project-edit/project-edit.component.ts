@@ -14,6 +14,7 @@ import { Project } from '../../../models/model';
 })
 export class ProjectEditComponent implements OnInit {
   project: Project | null = null;
+  errorMessage: string | null = null;
 
   constructor(
     private projectService: ProjectService,
@@ -29,14 +30,19 @@ export class ProjectEditComponent implements OnInit {
           this.project = data;
         },
         error: (error) => {
-          this.projectService.showError(
-            `Failed to fetch Project: ${error.message || 'Unknown error'}`
-          );
-          console.error(error);
-          this.router.navigate(['/dashboard/projects']);
+          this.errorMessage = `Failed to fetch project: ${
+            error.message || 'Unknown error'
+          }`;
+          this.projectService.showError(this.errorMessage);
+          console.error('Error fetching project:', error);
+          setTimeout(() => {
+            this.router.navigate(['/dashboard/projects']);
+          }, 3000);
         },
       });
     } else {
+      this.errorMessage = 'No project ID provided';
+      this.projectService.showError(this.errorMessage);
       this.router.navigate(['/dashboard/projects']);
     }
   }

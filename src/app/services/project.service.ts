@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { environment } from '../environments/environment';
 import { Project, ProjectFeature, ProjectGallery } from '../models/model';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -20,9 +19,7 @@ export class ProjectService {
   }
 
   getProject(id: string): Observable<Project> {
-    return this.http.get<Project>(
-      `${this.apiBaseUrl}/api/project/getproject?projectId=${id}`
-    );
+    return this.http.get<Project>(`${this.apiBaseUrl}/api/project/${id}`);
   }
 
   createProject(formData: FormData): Observable<string> {
