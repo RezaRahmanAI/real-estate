@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { firstValueFrom } from 'rxjs';
 import { environment } from '../environments/environment';
 
-interface GalleryItem {
+export interface GalleryItem {
   id: string;
   title: string;
   description: string;

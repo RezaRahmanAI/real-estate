@@ -22,6 +22,7 @@ import { FaqComponent } from './features/faq/faq.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { ProjectCreateComponent } from './features/projects/project-create/project-create.component';
 import { GalleryComponent } from './features/gallery/gallery.component';
+import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
 
 
 
@@ -30,6 +31,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'gallery', component: GalleryPageComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'projectdetails/:id', component: ProjectDetailsComponent },
   { path: 'contact', component: ContactComponent },
