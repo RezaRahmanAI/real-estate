@@ -19,10 +19,11 @@ import { TestimonialsIndexComponent } from './features/testimonials/testimonials
 import { OffersIndexComponent } from './features/offers/offers-index/offers-index.component';
 import { AboutUsIndexComponent } from './features/about-us/about-us-index/about-us-index.component';
 import { FaqComponent } from './features/faq/faq.component';
-import { BlogComponent } from './pages/blog/blog.component';
+//import { BlogComponent } from './pages/blog/blog.component';
 import { ProjectCreateComponent } from './features/projects/project-create/project-create.component';
 import { GalleryComponent } from './features/gallery/gallery.component';
 import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
+import { BlogsIndexComponent } from './features/blogs/blogs-index/blogs-index.component';
 
 
 
@@ -36,7 +37,7 @@ export const routes: Routes = [
   { path: 'projectdetails/:id', component: ProjectDetailsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'landowner', component: LandownerComponent },  
-  { path: 'blogs', component: BlogComponent },
+  //{ path: 'blogs', component: BlogComponent },
   { path: 'blogDetails/:id', component: BlogDetailsComponent },
   { path: 'login', component: LoginComponent },
   {
@@ -46,7 +47,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'teams', component: TeamsIndexComponent },
-      { path: 'blogs', component: BlogComponent },
+      { path: 'blogs', component: BlogsIndexComponent },
       { path: 'testimonials', component: TestimonialsIndexComponent },
       { path: 'offers', component: OffersIndexComponent },
       { path: 'about-us', component: AboutUsIndexComponent },

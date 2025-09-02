@@ -127,12 +127,29 @@
           <span class="absolute -top-1 -right-1 h-2.5 w-2.5 bg-red-500 rounded-full"></span>
         </div>
 
-        <!-- Profile -->
-        <div
-          class="h-9 w-9 rounded-full bg-accent flex items-center justify-center text-white font-bold cursor-pointer"
-        >
-          A
-        </div>
+        <!-- Profile with Dropdown -->
+<div class="relative" (clickOutside)="closeProfileDropdown()">
+  <div
+    class="h-9 w-9 rounded-full bg-accent flex items-center justify-center text-white font-bold cursor-pointer select-none"
+    (click)="toggleProfileDropdown()"
+  >
+    A
+  </div>
+
+  <!-- Dropdown -->
+  <div
+    *ngIf="showProfileDropdown"
+    class="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+  >
+    <button
+      (click)="logout()"
+      class="w-full text-left px-4 py-2 text-sm text-dark hover:bg-gray-100 rounded-lg transition-colors duration-200"
+    >
+      Logout
+    </button>
+  </div>
+</div>
+
       </div>
     </header>
 

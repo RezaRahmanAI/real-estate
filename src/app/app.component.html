@@ -1,5 +1,7 @@
+<!-- Show only if not login or dashboard -->
+<app-navbar *ngIf="!hideLayout()"></app-navbar>
+<app-floating-social *ngIf="!hideLayout()"></app-floating-social>
 
-  <app-navbar *ngIf="!isDashboardRoute()"></app-navbar>
-  <app-floating-social />
-  <router-outlet />
-  <app-footer *ngIf="!isDashboardRoute()"></app-footer>
+<router-outlet></router-outlet>
+
+<app-footer *ngIf="!hideLayout()"></app-footer>
