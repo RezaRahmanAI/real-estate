@@ -1,14 +1,20 @@
-<div class="p-4 sm:p-6">
+<div class="p-4 sm:p-6 bg-light rounded-lg shadow-md">
   <form (ngSubmit)="saveProject()" enctype="multipart/form-data" class="p-4 sm:p-6">
     <div class="grid gap-4 sm:gap-6 sm:grid-cols-2">
+      <!-- Name -->
       <div class="sm:col-span-2">
         <label for="name" class="block mb-2 text-sm font-semibold text-dark">Name</label>
-        <input id="name" [(ngModel)]="_project.name" name="name" type="text" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter Name" required />
+        <input id="name" [(ngModel)]="_project.name" name="name" type="text"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter Name" required />
         <input *ngIf="mode === 'edit'" id="id" [(ngModel)]="_project.id" name="id" type="text" class="hidden" />
       </div>
+
+      <!-- Category -->
       <div>
         <label for="category" class="block mb-2 text-sm font-semibold text-dark">Category</label>
-        <select id="category" [(ngModel)]="_project.category" name="category" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200">
+        <select id="category" [(ngModel)]="_project.category" name="category"
+                class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200">
           <option value="">Select category</option>
           <option value="Ongoing">Ongoing</option>
           <option value="Upcoming">Upcoming</option>
@@ -16,99 +22,173 @@
           <option value="Handover">Handover</option>
         </select>
       </div>
+
+      <!-- Type -->
       <div>
         <label for="type" class="block mb-2 text-sm font-semibold text-dark">Type</label>
-        <select id="type" [(ngModel)]="_project.type" name="type" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200">
+        <select id="type" [(ngModel)]="_project.type" name="type"
+                class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200">
           <option value="">Select type</option>
           <option value="Residential">Residential</option>
           <option value="Commercial">Commercial</option>
           <option value="Land">Land</option>
         </select>
       </div>
+
+      <!-- Description -->
       <div class="sm:col-span-2">
         <label for="description" class="block mb-2 text-sm font-semibold text-dark">Description</label>
-        <textarea id="description" [(ngModel)]="_project.description" name="description" rows="3" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Write description here"></textarea>
+        <textarea id="description" [(ngModel)]="_project.description" name="description" rows="3"
+                  class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+                  placeholder="Write description here"></textarea>
       </div>
+
+      <!-- Address -->
       <div class="sm:col-span-2">
         <label for="address" class="block mb-2 text-sm font-semibold text-dark">Address</label>
-        <textarea id="address" [(ngModel)]="_project.address" name="address" rows="3" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Write address here"></textarea>
+        <textarea id="address" [(ngModel)]="_project.address" name="address" rows="3"
+                  class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+                  placeholder="Write address here"></textarea>
       </div>
+
+      <!-- Land Area -->
       <div>
         <label for="landArea" class="block mb-2 text-sm font-semibold text-dark">Land Area</label>
-        <input id="landArea" [(ngModel)]="_project.landArea" name="landArea" type="text" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter land area" />
+        <input id="landArea" [(ngModel)]="_project.landArea" name="landArea" type="text"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter land area" />
       </div>
+
+      <!-- Built Up Area -->
       <div>
         <label for="builtUpArea" class="block mb-2 text-sm font-semibold text-dark">Built Up Area</label>
-        <input id="builtUpArea" [(ngModel)]="_project.builtUpArea" name="builtUpArea" type="text" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter built up area" />
+        <input id="builtUpArea" [(ngModel)]="_project.builtUpArea" name="builtUpArea" type="text"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter built up area" />
       </div>
+
+      <!-- Height -->
       <div>
         <label for="height" class="block mb-2 text-sm font-semibold text-dark">Height</label>
-        <input id="height" [(ngModel)]="_project.height" name="height" type="text" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter height" />
+        <input id="height" [(ngModel)]="_project.height" name="height" type="text"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter height" />
       </div>
+
+      <!-- Number of Apartments -->
       <div>
         <label for="numberOfApartments" class="block mb-2 text-sm font-semibold text-dark">Number of Apartments</label>
-        <input id="numberOfApartments" [(ngModel)]="_project.numberOfApartments" name="numberOfApartments" type="number" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter number of apartments" />
+        <input id="numberOfApartments" [(ngModel)]="_project.numberOfApartments" name="numberOfApartments" type="number"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter number of apartments" />
       </div>
+
+      <!-- Number of Parking -->
       <div>
         <label for="numberOfParking" class="block mb-2 text-sm font-semibold text-dark">Number of Parkings</label>
-        <input id="numberOfParking" [(ngModel)]="_project.numberOfParking" name="numberOfParking" type="number" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter number of parking" />
+        <input id="numberOfParking" [(ngModel)]="_project.numberOfParking" name="numberOfParking" type="number"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter number of parking" />
       </div>
+
+      <!-- Unit Per Floors -->
       <div>
         <label for="unitPerFloors" class="block mb-2 text-sm font-semibold text-dark">Unit Per Floors</label>
-        <input id="unitPerFloors" [(ngModel)]="_project.unitPerFloors" name="unitPerFloors" type="text" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter unit per floors" />
+        <input id="unitPerFloors" [(ngModel)]="_project.unitPerFloors" name="unitPerFloors" type="text"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter unit per floors" />
       </div>
+
+      <!-- Size of Each Apartment -->
       <div>
         <label for="sizeOfEachApartment" class="block mb-2 text-sm font-semibold text-dark">Size of Each Apartment</label>
-        <input id="sizeOfEachApartment" [(ngModel)]="_project.sizeOfEachApartment" name="sizeOfEachApartment" type="text" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter size of each apartment" />
+        <input id="sizeOfEachApartment" [(ngModel)]="_project.sizeOfEachApartment" name="sizeOfEachApartment" type="text"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter size of each apartment" />
       </div>
+
+      <!-- Map Link -->
       <div>
         <label for="mapLink" class="block mb-2 text-sm font-semibold text-dark">Map Link</label>
-        <input id="mapLink" [(ngModel)]="_project.mapLink" name="mapLink" type="text" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter map link" />
+        <input id="mapLink" [(ngModel)]="_project.mapLink" name="mapLink" type="text"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter map link" />
       </div>
+
+      <!-- Video Link -->
       <div>
         <label for="videoLink" class="block mb-2 text-sm font-semibold text-dark">Video Link</label>
-        <input id="videoLink" [(ngModel)]="_project.videoLink" name="videoLink" type="text" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Enter video link" />
+        <input id="videoLink" [(ngModel)]="_project.videoLink" name="videoLink" type="text"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               placeholder="Enter video link" />
       </div>
+
+      <!-- PDF -->
       <div>
         <label for="pdfFile" class="block mb-2 text-sm font-semibold text-dark">PDF File</label>
-        <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400 focus:outline-none dark:placeholder-gray-400 transition-all duration-200" id="pdfFile" name="pdfFile" type="file" accept=".pdf" (change)="onPdfChange($event)" />
-        <p class="mt-1 text-xs sm:text-sm text-gray-500 dark:text-gray-300">PDF (MAX. 5MB).</p>
+        <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white focus:outline-none transition-all duration-200"
+               id="pdfFile" name="pdfFile" type="file" accept=".pdf" (change)="onPdfChange($event)" />
+        <p class="mt-1 text-xs sm:text-sm text-gray-500">PDF (MAX. 5MB).</p>
       </div>
+
+      <!-- Thumbnail -->
       <div>
         <label for="thumbnail" class="block mb-2 text-sm font-semibold text-dark">Thumbnail</label>
-        <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400 focus:outline-none dark:placeholder-gray-400 transition-all duration-200" id="thumbnail" name="thumbnail" type="file" (change)="onThumbnailChange($event)" />
-        <p class="mt-1 text-xs sm:text-sm text-gray-500 dark:text-gray-300">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+        <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white focus:outline-none transition-all duration-200"
+               id="thumbnail" name="thumbnail" type="file" (change)="onThumbnailChange($event)" />
+        <p class="mt-1 text-xs sm:text-sm text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
       </div>
+
+      <!-- Content Type -->
       <div>
         <label for="contentType" class="block mb-2 text-sm font-semibold text-dark">Content Type</label>
-        <select id="contentType" [(ngModel)]="contentType" name="contentType" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200">
+        <select id="contentType" [(ngModel)]="contentType" name="contentType"
+                class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200">
           <option value="">Select content type</option>
           <option value="Image">Image</option>
           <option value="Video">Video</option>
         </select>
       </div>
+
+      <!-- Content -->
       <div>
         <label for="content" class="block mb-2 text-sm font-semibold text-dark">{{ contentType === 'Video' ? 'Content (Video max 15MB)' : 'Content' }}</label>
-        <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-gray-400 focus:outline-none dark:placeholder-gray-400 transition-all duration-200" id="content" name="content" type="file" (change)="onContentChange($event)" />
+        <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white focus:outline-none transition-all duration-200"
+               id="content" name="content" type="file" (change)="onContentChange($event)" />
       </div>
+
+      <!-- Offer Title -->
       <div class="sm:col-span-2">
         <label for="offerTitle" class="block mb-2 text-sm font-semibold text-dark">Offer Title</label>
-        <textarea id="offerTitle" [(ngModel)]="_project.offerTitle" name="offerTitle" rows="3" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" placeholder="Write offer title here"></textarea>
+        <textarea id="offerTitle" [(ngModel)]="_project.offerTitle" name="offerTitle" rows="3"
+                  class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+                  placeholder="Write offer title here"></textarea>
       </div>
+
+      <!-- Offer DateTime -->
       <div class="sm:col-span-2">
         <label for="offerDateTime" class="block mb-2 text-sm font-semibold text-dark">Offer Date Time</label>
-        <input id="offerDateTime" [(ngModel)]="_project.offerDateTime" name="offerDateTime" type="datetime-local" class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-accent dark:focus:border-accent transition-all duration-200" required />
+        <input id="offerDateTime" [(ngModel)]="_project.offerDateTime" name="offerDateTime" type="datetime-local"
+               class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+               required />
       </div>
     </div>
+
+    <!-- Buttons -->
     <div class="mt-4 sm:mt-6 flex justify-end space-x-4">
-      <a [routerLink]="['/dashboard/projects']" class="px-6 py-2 text-white bg-gray-500 border border-gray-600 hover:bg-gray-600 focus:ring-2 focus:ring-gray-400 rounded-lg transition duration-300">
+      <a [routerLink]="['/dashboard/projects']"
+         class="px-6 py-2 text-white bg-dark hover:bg-black transition-all duration-300 rounded-lg">
         Cancel
       </a>
-      <button type="submit" class="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 text-white bg-accent border border-accent/80 hover:bg-accent/80 focus:ring-2 focus:ring-accent/50 rounded-lg transition duration-300">
-        <svg class="mr-2 -ml-1 w-4 sm:w-5 h-4 sm:h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-        </svg>
-        {{ mode === 'create' ? 'Save' : 'Update' }}
+      <button type="submit"
+              class="relative overflow-hidden px-6 py-2 text-white bg-accent border border-accent rounded-lg group">
+        <span class="absolute inset-0 bg-black left-[-100%] group-hover:left-0 transition-all duration-500 z-0"></span>
+        <span class="relative z-10 flex items-center">
+          <svg class="mr-2 -ml-1 w-4 sm:w-5 h-4 sm:h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
+          </svg>
+          {{ mode === 'create' ? 'Save' : 'Update' }}
+        </span>
       </button>
     </div>
   </form>

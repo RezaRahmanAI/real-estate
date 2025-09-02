@@ -40,7 +40,7 @@
           <td class="px-6 py-4 text-sm text-dark">{{ item.type }}</td>
           <td class="px-6 py-4">
             <ng-container *ngIf="item.contentType === 'Image'">
-              <img class="w-10 h-10 object-cover rounded" [src]="apiBaseUrl + '/api/attachment/get/' + item.content" alt="Content" />
+              <img class="w-10 h-10 object-cover rounded" [src]="apiBaseUrl + '/api/attachment/get/' + item.thumbnail" alt="Content" />
             </ng-container>
             <ng-container *ngIf="item.contentType === 'Video'">
               <video class="w-10 h-10 object-cover rounded" controls>

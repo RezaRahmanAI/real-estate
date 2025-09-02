@@ -1,10 +1,10 @@
 import { Component, OnInit, CUSTOM_ELEMENTS_SCHEMA, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContactHeroComponent } from "../gallery-page/gallery-hero/gallery-hero.component";
 import { ContactInfoMapComponent } from "./contact-info-map/contact-info-map.component";
 import { FaqComponent } from "./faq/faq.component";
 import { GetInTouchComponent } from "./get-in-touch/get-in-touch.component";
 import { AnimationService } from '../../services/animation.service';
+import { ContactHeroComponent } from './contact-hero/contact-hero.component';
 
 
 
@@ -13,8 +13,8 @@ import { AnimationService } from '../../services/animation.service';
   standalone: true,
   imports: [
     CommonModule,
-    ContactHeroComponent,
     ContactInfoMapComponent,
+    ContactHeroComponent,
     FaqComponent,
     GetInTouchComponent,
   ],
