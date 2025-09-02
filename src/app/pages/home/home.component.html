@@ -4,3 +4,13 @@
 <app-vision-banner />
 <app-testimonial />
 <app-follow-update />
+
+
+<app-modal
+  *ngIf="currentOffer"
+  [offer]="currentOffer"
+  [isVisible]="isModalVisible"
+  (mouseenter)="onHover(true)"
+  (mouseleave)="onHover(false)"
+  (close)="closeModal()"
+></app-modal>

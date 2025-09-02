@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Offer } from '../models/offer.model';
-import { OfferService } from '../services/offer.service';
+import { OfferService } from '../../../services/offer.service';
+import { Offer } from '../../../models/model';
 
 @Component({
   selector: 'app-offer-form',

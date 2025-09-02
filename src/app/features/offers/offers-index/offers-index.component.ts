@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Offer } from '../models/offer.model';
-import { OfferService } from '../services/offer.service';
+import { OfferService } from '../../../services/offer.service';
 import { OfferFormComponent } from '../offer-form/offer-form.component';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
+import { Offer } from '../../../models/model';
 
 @Component({
   selector: 'app-offers-index',

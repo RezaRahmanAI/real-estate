@@ -1,85 +1,77 @@
-<div class="p-4 sm:p-6 bg-gray-100 min-h-screen">
-  <div class="flex items-center mb-4 sm:mb-6">
-    <h6 class="text-xl sm:text-2xl font-bold text-indigo-600 dark:text-indigo-400 flex-grow">About Us</h6>
+<div>
+  <!-- Header & Create Button -->
+  <div class="flex items-center mb-4">
+    <h6 class="text-lg font-bold flex-grow text-dark">About Us List</h6>
     <div class="flex-shrink-0">
-      <button *ngIf="!aboutUsList || aboutUsList.length === 0" (click)="openCreateModal()" class="px-4 sm:px-6 py-2 text-white bg-gradient-to-r from-indigo-600 to-cyan-500 hover:from-indigo-700 hover:to-cyan-600 focus:ring-4 focus:outline-none focus:ring-indigo-300 rounded-lg text-sm font-medium transition-all duration-200">
-        <svg class="inline-block w-4 h-4 mr-2 -mt-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-        </svg>
+      <button
+        (click)="openCreateModal()"
+        class="px-5 py-2 text-white bg-accent border border-accent rounded-lg hover:bg-accent-dark hover:border-accent-dark focus:ring focus:ring-accent/30 transition-all duration-200"
+      >
         Create About Us
       </button>
     </div>
   </div>
 
   <!-- Create Modal -->
-  <div *ngIf="showCreateModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 transition-opacity duration-300">
+  <div *ngIf="showCreateModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 overflow-y-auto">
     <app-about-us-form [aboutUs]="null" mode="create" (close)="closeModal()" (saved)="onAboutUsSaved()"></app-about-us-form>
   </div>
 
   <!-- Edit Modal -->
-  <div *ngIf="showEditModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 transition-opacity duration-300">
+  <div *ngIf="showEditModal" class="fixed inset-0 z-50 flex justify-center items-center bg-black bg-opacity-60 overflow-y-auto">
     <app-about-us-form [aboutUs]="selectedAboutUs" mode="edit" (close)="closeModal()" (saved)="onAboutUsSaved()"></app-about-us-form>
   </div>
 
-  <!-- Card Layout -->
-  <div class="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <div *ngFor="let item of aboutUsList; let i = index" class="bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-none overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
-      <div class="p-4 sm:p-5">
-        <div class="flex items-center justify-between mb-3">
-          <h3 class="text-lg font-semibold text-gray-800 dark:text-gray-200">About Us Entry {{ i + 1 }}</h3>
-          <div class="flex space-x-2">
-            <button (click)="openEditModal(item)" class="p-2 text-blue-600 hover:text-white bg-blue-100 hover:bg-blue-600 rounded-lg transition-colors duration-200" title="Edit">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"></path>
-                <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"></path>
-              </svg>
+  <!-- About Us Table -->
+  <div class="relative overflow-x-auto shadow-lg rounded-lg">
+    <table class="w-full text-sm text-left text-dark">
+      <thead class="text-xs text-dark uppercase bg-accentLight border-b">
+        <tr>
+          <th class="px-6 py-3">History</th>
+          <th class="px-6 py-3">Vision</th>
+          <th class="px-6 py-3">Vision Image</th>
+          <th class="px-6 py-3">Mission</th>
+          <th class="px-6 py-3">Mission Image</th>
+          <th class="px-6 py-3">Owner</th>
+          <th class="px-6 py-3">Designation</th>
+          <th class="px-6 py-3">Speech</th>
+          <th class="px-6 py-3">Owner Image</th>
+          <th class="px-6 py-3 text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of aboutUsList" class="bg-white border-b hover:bg-gray-50 transition-colors duration-150">
+          <td class="px-6 py-4 truncate max-w-[150px]" title="{{ item.history }}">{{ item.history }}</td>
+          <td class="px-6 py-4 truncate max-w-[150px]" title="{{ item.vision }}">{{ item.vision }}</td>
+          <td class="px-6 py-4">
+            <img class="w-12 h-12 rounded object-cover" [src]="apiBaseUrl + '/api/attachment/get/' + item.visionImage" alt="Vision Image" />
+          </td>
+          <td class="px-6 py-4 truncate max-w-[150px]" title="{{ item.mission }}">{{ item.mission }}</td>
+          <td class="px-6 py-4">
+            <img class="w-12 h-12 rounded object-cover" [src]="apiBaseUrl + '/api/attachment/get/' + item.missionImage" alt="Mission Image" />
+          </td>
+          <td class="px-6 py-4">{{ item.ownerName }}</td>
+          <td class="px-6 py-4">{{ item.ownerDesignation }}</td>
+          <td class="px-6 py-4 truncate max-w-[150px]" title="{{ item.ownerSpeech }}">{{ item.ownerSpeech }}</td>
+          <td class="px-6 py-4">
+            <img class="w-12 h-12 rounded object-cover" [src]="apiBaseUrl + '/api/attachment/get/' + item.ownerImage" alt="Owner Image" />
+          </td>
+          <td class="px-6 py-4 text-right space-x-2">
+            <button
+              (click)="openEditModal(item)"
+              class="text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white rounded-lg px-3 py-1 text-sm transition-all duration-200"
+            >
+              Edit
             </button>
-            <button (click)="deleteAboutUs(item.id)" class="p-2 text-red-600 hover:text-white bg-red-100 hover:bg-red-600 rounded-lg transition-colors duration-200" title="Delete">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
-              </svg>
+            <button
+              (click)="deleteAboutUs(item.id)"
+              class="text-red-700 border border-red-700 hover:bg-red-700 hover:text-white rounded-lg px-3 py-1 text-sm transition-all duration-200"
+            >
+              Delete
             </button>
-          </div>
-        </div>
-        <div class="grid gap-3">
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">History:</span>
-            <span class="text-sm text-gray-800 dark:text-gray-200 truncate max-w-[200px] sm:max-w-[300px]" title="{{ item.history }}">{{ item.history }}</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Vision:</span>
-            <span class="text-sm text-gray-800 dark:text-gray-200 truncate max-w-[200px] sm:max-w-[300px]" title="{{ item.vision }}">{{ item.vision }}</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Vision Image:</span>
-            <img class="w-16 h-10 object-cover rounded-md shadow-sm" [src]="apiBaseUrl + '/api/attachment/get/' + item.visionImage" alt="Vision Image" loading="lazy" />
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Mission:</span>
-            <span class="text-sm text-gray-800 dark:text-gray-200 truncate max-w-[200px] sm:max-w-[300px]" title="{{ item.mission }}">{{ item.mission }}</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Mission Image:</span>
-            <img class="w-16 h-10 object-cover rounded-md shadow-sm" [src]="apiBaseUrl + '/api/attachment/get/' + item.missionImage" alt="Mission Image" loading="lazy" />
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Owner:</span>
-            <span class="text-sm text-gray-800 dark:text-gray-200">{{ item.ownerName }}</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Designation:</span>
-            <span class="text-sm text-gray-800 dark:text-gray-200">{{ item.ownerDesignation }}</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Speech:</span>
-            <span class="text-sm text-gray-800 dark:text-gray-200 truncate max-w-[200px] sm:max-w-[300px]" title="{{ item.ownerSpeech }}">{{ item.ownerSpeech }}</span>
-          </div>
-          <div class="flex items-center space-x-3">
-            <span class="text-sm font-medium text-gray-600 dark:text-gray-400">Owner Image:</span>
-            <img class="w-16 h-10 object-cover rounded-md shadow-sm" [src]="apiBaseUrl + '/api/attachment/get/' + item.ownerImage" alt="Owner Image" loading="lazy" />
-          </div>
-        </div>
-      </div>
-    </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
