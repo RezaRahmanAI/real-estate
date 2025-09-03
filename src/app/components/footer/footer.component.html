@@ -1,160 +1,124 @@
-<footer class="footer bg-dark text-lightDark font-poppins">
-  <div class="w-[85%] mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <!-- Brand & Subscription -->
-    <div class="brand-trust space-y-4 p-5">
-      <div class="flex items-center gap-3">
-        <img
-          src="images/Logo.png"          
-          sizes="(max-width: 768px) 64px, 80px"
-          class="max-h-16 md:max-h-20 object-contain"
-          alt="Real Estate Ltd. Logo"
-          width="160"
-          height="80"
-        />
-        <div>
-          <h2 class="text-xl font-semibold">Real Estate Ltd.</h2>
-          <p class="text-sm text-accent-light">Local experts in Rajshahi. Trusted since 2015.</p>
+<footer class="">
+  <div class="footer_top bg-dark sm:py-10 py-5">
+    <div class="sm:container sm:mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <div class="col-span-1 p-5 md:border-x md:border-slate-500">
+          <h1 class="text-slate-100 text-xl font-semibold">
+            Navigation
+            <i class="ri-arrow-right-line ms-5"></i>
+          </h1>
+          <div class="mt-5">
+            <ul>
+              <li class="py-2 cursor-pointer hover:translate-x-2 duration-500">
+                <a routerLink="/" class="text-slate-100">Home</a>
+              </li>
+              <li class="py-2 cursor-pointer hover:translate-x-2 duration-500">
+                <a routerLink="/About" class="text-slate-100">About Us</a>
+              </li>
+              <li class="py-2 cursor-pointer hover:translate-x-2 duration-500">
+                <a routerLink="/Projects" class="text-slate-100">Projects</a>
+              </li>
+              <li class="py-2 cursor-pointer hover:translate-x-2 duration-500">
+                <a routerLink="/Contact" class="text-slate-100">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-span-1 p-5 md:border-e md:border-slate-500">
+          <h1 class="text-slate-100 text-xl font-semibold">
+            Social Media
+            <i class="ri-arrow-right-line ms-5"></i>
+          </h1>
+          <div class="mt-5">
+            <ul>
+              <li class="py-2 cursor-pointer hover:translate-x-2 duration-500">
+                <a
+                  href="https://www.facebook.com/share/19SHqBnNcY/?mibextid=qi2Omg"
+                  class="text-slate-100"
+                  target="_blank"
+                >
+                  <i class="ri-facebook-circle-line me-2"></i>
+                  Facebook
+                </a>
+              </li>
+              <li class="py-2 cursor-pointer hover:translate-x-2 duration-500">
+                <a
+                  href="https://www.instagram.com/triconproperties?igsh=MWF5ZWVrdWU3c2k4dw=="
+                  class="text-slate-100"
+                  target="_blank"
+                >
+                  <i class="ri-instagram-line me-2"></i>
+                  Instagram
+                </a>
+              </li>
+              <li class="py-2 cursor-pointer hover:translate-x-2 duration-500">
+                <a
+                  href="https://bd.linkedin.com/company/triconproperties"
+                  class="text-slate-100"
+                  target="_blank"
+                >
+                  <i class="ri-linkedin-box-fill me-2"></i>
+                  LinkedIn
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="col-span-1 p-5 md:border-s lg:border-s-0 md:border-e md:border-slate-500"
+        >
+          <h1 class="text-slate-100 text-xl font-semibold">
+            Contact
+            <i class="ri-arrow-right-line ms-5"></i>
+          </h1>
+          <div class="mt-5">
+            <ul>
+              <li class="py-2 flex items-center gap-3">
+                <div><i class="ri-phone-line text-slate-100"></i></div>
+                <div
+                  class="text-slate-100 cursor-pointer hover:translate-x-2 duration-500"
+                >
+                  01329-638961
+                </div>
+              </li>
+              <li class="py-2 flex items-center gap-3">
+                <div><i class="ri-smartphone-line text-slate-100"></i></div>
+                <div
+                  class="text-slate-100 cursor-pointer hover:translate-x-2 duration-500"
+                >
+                  01739-703426
+                </div>
+              </li>
+              <li class="py-2 flex lg:block xl:flex items-center gap-3">
+                <div><i class="ri-mail-send-line text-slate-100"></i></div>
+                <div
+                  class="text-slate-100 cursor-pointer hover:translate-x-2 duration-500"
+                >
+                  triconproperties21&#64;gmail.com
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-span-1 p-5 md:border-e md:border-slate-500">
+          <h1 class="text-slate-100 text-xl font-semibold">
+            Address
+            <i class="ri-arrow-right-line ms-5"></i>
+          </h1>
+          <div class="mt-5 flex items-baseline gap-3">
+            <p class="text-slate-100">
+              <i class="ri-map-pin-line"></i>
+            </p>
+            <p class="w-52 text-slate-100">
+              Alokar more, Rajshahi, Bangladesh.
+            </p>
+          </div>
         </div>
       </div>
-      
-      <!-- <div class="mt-4">
-        <h3 class="font-semibold mb-2 text-light">Subscribe for Market Updates</h3>
-        <div class="flex flex-col sm:flex-row gap-3" aria-label="Newsletter subscription">
-          <input
-            type="email"
-            placeholder="Your email"
-            aria-label="Email for newsletter"
-            class="flex-1 px-4 py-2 rounded-2xl border border-transparent focus:outline-none focus:ring-2 focus:ring-accent text-dark bg-white/80"
-          />
-          <button
-            type="button"
-            class="bg-accent hover:bg-accent-light rounded-2xl px-5 py-2 font-semibold text-white transition-colors duration-300"
-          >
-            Subscribe
-          </button>
-        </div>
-        <p class="text-xs text-accent-light mt-2">
-          We respect your privacy. Unsubscribe anytime.
-        </p>
-      </div> -->
-    </div>
-
-    <!-- Navigation -->
-    <div class="p-5">
-      <h1 class="text-xl font-semibold flex items-center gap-2 text-light">
-        Navigation
-        <i class="ri-arrow-right-line"></i>
-      </h1>
-      <ul class="mt-5 space-y-2 text-sm">
-        <li class="py-2 hover:translate-x-2 transition-transform duration-500">
-          <a routerLink="/" class="text-accent-light hover:text-light transition-colors">Home</a>
-        </li>
-        <li class="py-2 hover:translate-x-2 transition-transform duration-500">
-          <a routerLink="/about" class="text-accent-light hover:text-light transition-colors">About Us</a>
-        </li>
-        <li class="py-2 hover:translate-x-2 transition-transform duration-500">
-          <a routerLink="/projects" class="text-accent-light hover:text-light transition-colors">Projects</a>
-        </li>
-        <li class="py-2 hover:translate-x-2 transition-transform duration-500">
-          <a routerLink="/contact" class="text-accent-light hover:text-light transition-colors">Contact</a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Social Media -->
-    <div class="p-5">
-      <h1 class="text-xl font-semibold flex items-center gap-2 text-light">
-        Social Media
-        <i class="ri-arrow-right-line"></i>
-      </h1>
-      <ul class="mt-5 space-y-2 text-sm">
-        <li class="py-2 hover:translate-x-2 transition-transform duration-500">
-          <a
-            href="https://www.facebook.com/share/19SHqBnNcY/?mibextid=qi2Omg"
-            target="_blank"
-            aria-label="Facebook"
-            class="text-accent-light hover:text-light transition-colors flex items-center gap-2"
-          >
-            <i class="ri-facebook-circle-line"></i>
-            Facebook
-          </a>
-        </li>
-        <li class="py-2 hover:translate-x-2 transition-transform duration-500">
-          <a
-            href="https://www.instagram.com/triconproperties?igsh=MWF5ZWVrdWU3c2k4dw=="
-            target="_blank"
-            aria-label="Instagram"
-            class="text-accent-light hover:text-light transition-colors flex items-center gap-2"
-          >
-            <i class="ri-instagram-line"></i>
-            Instagram
-          </a>
-        </li>
-        <li class="py-2 hover:translate-x-2 transition-transform duration-500">
-          <a
-            href="https://bd.linkedin.com/company/triconproperties"
-            target="_blank"
-            aria-label="LinkedIn"
-            class="text-accent-light hover:text-light transition-colors flex items-center gap-2"
-          >
-            <i class="ri-linkedin-box-fill"></i>
-            LinkedIn
-          </a>
-        </li>
-        <li class="py-2 hover:translate-x-2 transition-transform duration-500">
-          <a
-            href="https://wa.me/8801739703426"
-            target="_blank"
-            aria-label="WhatsApp"
-            class="text-accent-light hover:text-light transition-colors flex items-center gap-2"
-          >
-            <i class="ri-whatsapp-fill"></i>
-            WhatsApp
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Contact & Address -->
-    <div class="p-5">
-      <h1 class="text-xl font-semibold flex items-center gap-2 text-light">
-        Contact
-        <i class="ri-arrow-right-line"></i>
-      </h1>
-      <ul class="mt-5 space-y-2 text-sm">
-        <li class="py-2 flex items-center gap-3 hover:translate-x-2 transition-transform duration-500">
-          <i class="ri-phone-line text-accent"></i>
-          <a href="tel:01329638961" class="text-accent-light hover:text-light transition-colors">01329-638961</a>
-        </li>
-        <li class="py-2 flex items-center gap-3 hover:translate-x-2 transition-transform duration-500">
-          <i class="ri-smartphone-line text-accent"></i>
-          <a href="tel:01739703426" class="text-accent-light hover:text-light transition-colors">01739-703426</a>
-        </li>
-        <li class="py-2 flex items-center gap-3 hover:translate-x-2 transition-transform duration-500">
-          <i class="ri-mail-send-line text-accent"></i>
-          <a href="mailto:triconproperties21@gmail.com" class="text-accent-light hover:text-light transition-colors">triconproperties21&#64;gmail.com</a>
-        </li>
-        <li class="py-2 flex items-baseline gap-3 hover:translate-x-2 transition-transform duration-500">
-          <i class="ri-map-pin-line text-accent"></i>
-          <p class="text-accent-light">Alokar More, Rajshahi, Bangladesh.</p>
-        </li>
-      </ul>
     </div>
   </div>
-
-  <!-- Bottom Bar -->
-  <div class="border-t border-accent-light mt-8">
-    <div class="w-[85%] mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center text-sm gap-4">
-      <div class="flex flex-col sm:flex-row items-center gap-3">
-        <p class="text-accent-light">&copy; 2025 Real Estate Ltd. All rights reserved.</p>
-        <span class="text-accent-light">|</span>
-        <a href="#" class="text-accent-light hover:text-light transition-colors">Privacy Policy</a>
-        <span class="text-accent-light">|</span>
-        <a href="#" class="text-accent-light hover:text-light transition-colors">Terms of Service</a>
-      </div>
-      <div class="flex gap-4">
-        <div class="text-accent-light text-xs">Powered by YourBrand</div>
-      </div>
-    </div>
+  <div class="footer_bootom bg-white py-5">
+    <p class="text-center">&copy;2025 All Right Reserved Real Estate Ltd.</p>
   </div>
 </footer>

@@ -2,8 +2,17 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { Router, RouterOutlet } from '@angular/router';
+import {
+  Router,
+  RouterOutlet,
+  NavigationStart,
+  NavigationEnd,
+  NavigationCancel,
+  NavigationError,
+} from '@angular/router';
 import { FloatingSocialComponent } from './components/floating-social/floating-social.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -14,17 +23,27 @@ import { FloatingSocialComponent } from './components/floating-social/floating-s
     NavbarComponent,
     FooterComponent,
     FloatingSocialComponent,
+    LoadingComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'real-estate';
-
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loadingService: LoadingService) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        this.loadingService.show();
+      } else if (
+        event instanceof NavigationEnd ||
+        event instanceof NavigationCancel ||
+        event instanceof NavigationError
+      ) {
+        this.loadingService.hide();
+      }
+    });
+  }
 
   hideLayout(): boolean {
-    // Hide navbar/footer on login and dashboard routes
     return (
       this.router.url.startsWith('/dashboard') ||
       this.router.url.startsWith('/login')
