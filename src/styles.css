@@ -9,22 +9,12 @@
 @tailwind utilities;
 
 :root {
-    --green: #28a745;
-    --white: #fff;
-    --secondary: #6c757d;
-    --success: #28a745;
-    --info: #17a2b8;
     --light: #f8f9fa;
     --dark: #1b1d21;
     --lightDark: #b2b2b2;
     --accent: #2dbe6c;
     --accentLight: #e5f8ed;
-    --breakpoint-sm: 576px;
-    --breakpoint-md: 768px;
-    --breakpoint-lg: 992px;
-    --breakpoint-xl: 1200px;
-    --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    
 }
 
 * {

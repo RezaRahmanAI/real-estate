@@ -24,6 +24,7 @@ import { ProjectCreateComponent } from './features/projects/project-create/proje
 import { GalleryComponent } from './features/gallery/gallery.component';
 import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
 import { BlogsIndexComponent } from './features/blogs/blogs-index/blogs-index.component';
+import { BlogComponent } from './pages/blog/blog.component';
 
 
 
@@ -37,7 +38,7 @@ export const routes: Routes = [
   { path: 'projectdetails/:id', component: ProjectDetailsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'landowner', component: LandownerComponent },  
-  //{ path: 'blogs', component: BlogComponent },
+  { path: 'blogs', component: BlogComponent },
   { path: 'blogDetails/:id', component: BlogDetailsComponent },
   { path: 'login', component: LoginComponent },
   {

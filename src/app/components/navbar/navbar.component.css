@@ -1,4 +1,3 @@
-
 nav {
   transition: all 0.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
@@ -8,11 +7,78 @@ nav.transparent {
 }
 
 nav.glass {
-      background-color: rgba(81, 221, 142, 0.8);
-    box-shadow: rgba(0, 0, 0, 0.6) 0px -7px 27px 3px;
+  background-color: rgba(220, 220, 220, 0.8);
+  box-shadow: rgba(0, 0, 0, 0.6) 0px -7px 27px 3px;
 }
 
 nav.hide {
   transform: translateY(-100%);
   opacity: 0;
+}
+
+/* Default text color when transparent */
+nav.transparent .nav-left a,
+nav.transparent .nav-right a,
+nav.transparent .menu-btn-wrapper,
+nav.transparent .menu-btn span {
+  color: var(--light);
+  border-color: var(--light);
+}
+
+/* When nav is glass → use accent color */
+nav.glass .nav-left a,
+nav.glass .nav-right a,
+nav.glass .menu-btn-wrapper,
+nav.glass .menu-btn span {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+nav.glass .menu-btn-wrapper {
+  border-color: var(--accent);
+}
+
+nav.glass .menu-btn span {
+  background-color: var(--accent);
+}
+
+/* Links default */
+nav .nav-left a,
+nav .nav-right a {
+  position: relative;
+  color: var(--light);
+  transition: color 0.3s ease-in-out;
+}
+
+/* Glowing underline effect */
+nav .nav-left a::after,
+nav .nav-right a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent), 0 0 12px var(--accent);
+  transition: width 0.3s ease-in-out;
+}
+
+/* Expand underline on hover */
+nav .nav-left a:hover::after,
+nav .nav-right a:hover::after {
+  width: 100%;
+}
+
+
+/* Menu button */
+.menu-btn-wrapper {
+  border: 2px solid var(--light);
+  transition: all 0.3s ease-in-out;
+}
+
+/* Glow on hover */
+.menu-btn-wrapper:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
 }
