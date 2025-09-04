@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Testimonial } from '../models/testimonial.model';
-import { TestimonialService } from '../services/testimonial.service';
 import { CommonModule } from '@angular/common';
+import { Testimonial } from '../../../models/model';
+import { TestimonialService } from '../../../services/testimonial.service';
 
 @Component({
   selector: 'app-testimonial-form',

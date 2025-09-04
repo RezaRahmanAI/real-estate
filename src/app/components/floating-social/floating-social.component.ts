@@ -10,8 +10,13 @@ import { CommonModule } from '@angular/common';
 })
 export class FloatingSocialComponent {
   isOpen = false;
+  isSpinning = false;
 
   toggleSocialIcons(): void {
-    this.isOpen = !this.isOpen;
+    this.isSpinning = true;
+    setTimeout(() => {
+      this.isOpen = !this.isOpen;
+      this.isSpinning = false;
+    }, 300); // wait for spin before toggling
   }
 }

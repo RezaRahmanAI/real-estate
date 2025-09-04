@@ -46,22 +46,6 @@ export class LandownerComponent implements AfterViewInit {
   }
 
   
-
-  testis: Testimonial[] = [
-    {
-      name: 'Harsh P.',
-      description:
-        "As a busy professional, I don't have a lot of time to manage my investments, but this has made it possible for me to stay on top of my portfolio.",
-      image: '/images/banner/banner-3.png',
-    },
-    {
-      name: 'Sarah K.',
-      description:
-        "This has revolutionized how I handle my investments. It's easy to use and provides real-time insights.",
-      image: '/images/banner/banner-3.png',
-    },
-  ];
-
   onFormSubmitted(data: LandownerData) {
     console.log('Partnership submission:', data);
     // handle backend call / toast

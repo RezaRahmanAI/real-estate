@@ -1,4 +1,4 @@
-<app-loading></app-loading>
+<app-loading *ngIf="!hideLayout()"></app-loading>
 
 <app-navbar *ngIf="!hideLayout()"></app-navbar>
 <app-floating-social *ngIf="!hideLayout()"></app-floating-social>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Testimonial } from '../models/testimonial.model';
-import { TestimonialService } from '../services/testimonial.service';
 import { TestimonialFormComponent } from '../testimonial-form/testimonial-form.component';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
+import { Testimonial } from '../../../models/model';
+import { TestimonialService } from '../../../services/testimonial.service';
 
 @Component({
   selector: 'app-testimonials-index',

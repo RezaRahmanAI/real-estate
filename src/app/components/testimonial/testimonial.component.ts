@@ -1,12 +1,9 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-export interface Testimonial {
-  image?: string;
-  name: string;
-  position?: string;
-  description: string;
-}
+import { TestimonialService } from '../../services/testimonial.service';
+import { Testimonial } from '../../models/model';
+import { environment } from '../../environments/environment';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-testimonial',
@@ -15,60 +12,66 @@ export interface Testimonial {
   templateUrl: './testimonial.component.html',
   styleUrls: ['./testimonial.component.css'],
 })
-export class TestimonialCarouselComponent implements OnInit {
-  @Input() testimonials: Testimonial[] = [];
+export class TestimonialCarouselComponent implements OnInit, OnDestroy {
+  testimonials: Testimonial[] = [];
+  baseURL = environment.baseUrl;
   currentIndex = 0;
+  private subscription: Subscription = new Subscription();
 
-  defaultImage = 'https://via.placeholder.com/400x300?text=Testimonial+Image';
+  constructor(private testimonialService: TestimonialService) {}
 
-  ngOnInit() {
-    // Provide dummy testimonials if none are passed via @Input
-    if (this.testimonials.length === 0) {
-      this.testimonials = [
-        {
-          image: 'https://randomuser.me/api/portraits/women/44.jpg',
-          name: 'Emily Johnson',
-          position: 'CEOs',
-          description:
-            'The service was amazing! Everything went smoothly and I felt truly supported through the process.',
+  ngOnInit(): void {
+    this.loadTestimonials();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  loadTestimonials(): void {
+    this.subscription.add(
+      this.testimonialService.getTestimonials().subscribe({
+        next: (res: Testimonial[]) => {
+          this.testimonials = res.filter((testimonial) => testimonial.isActive); // Filter active testimonials
+          if (this.testimonials.length === 0) {
+            this.testimonialService.showError('No active testimonials found.');
+          } else {
+            this.currentIndex = 0; // Reset index
+            this.testimonialService.showSuccess(
+              'Testimonials loaded successfully!'
+            );
+          }
         },
-        {
-          image: 'https://randomuser.me/api/portraits/men/36.jpg',
-          name: 'Michael Smith',
-          description:
-            'Very professional and reliable. I am extremely satisfied with my experience and would recommend it to anyone.',
+        error: (err) => {
+          console.error('Failed to load testimonials:', err);
+          this.testimonialService.showError('Failed to load testimonials.');
         },
-        {
-          image: 'https://randomuser.me/api/portraits/women/65.jpg',
-          name: 'Sophia Williams',
-          description:
-            'I love how easy everything was. The team really listened to my needs and delivered beyond expectations.',
-        },
-      ];
+      })
+    );
+  }
+
+  get currentTestimonial(): Testimonial | null {
+    return this.testimonials.length > 0
+      ? this.testimonials[this.currentIndex]
+      : null;
+  }
+
+  next(): void {
+    if (this.testimonials.length > 0) {
+      this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
     }
-
-    
   }
 
-
-  prev() {
-    this.currentIndex =
-      this.currentIndex > 0
-        ? this.currentIndex - 1
-        : this.testimonials.length - 1;
+  prev(): void {
+    if (this.testimonials.length > 0) {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.testimonials.length) %
+        this.testimonials.length;
+    }
   }
 
-  next() {
-    this.currentIndex =
-      this.currentIndex < this.testimonials.length - 1
-        ? this.currentIndex + 1
-        : 0;
-  }
-
-  onImageError(event: Event) {
+  onImageError(event: Event): void {
     const imgElement = event.target as HTMLImageElement;
-    if (imgElement.src !== this.defaultImage) {
-      imgElement.src = this.defaultImage;
-    }
+    imgElement.src = `${this.baseURL}/api/attachment/get/placeholder.png`; // Fallback image
   }
 }

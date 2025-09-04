@@ -26,7 +26,7 @@ export class LoginComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.lenisService.init();
     this.lenisService.onScroll((scroll) => {
-      console.log('Scroll position:', scroll);
+      //console.log('Scroll position:', scroll);
     });
   }
 

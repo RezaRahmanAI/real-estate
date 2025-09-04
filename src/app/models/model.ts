@@ -1,7 +1,12 @@
 export interface Testimonial {
+  id: string;
   name: string;
   description: string;
-  image?: string;
+  image: string;
+  contentType: 'Image' | 'Video' | '';
+  content: string;
+  order: number;
+  isActive: boolean;
 }
 
 export interface LandownerData {
@@ -37,7 +42,6 @@ export interface Offer {
   isActive: boolean;
 }
 
-
 export interface Team {
   id: string;
   name: string;
@@ -50,7 +54,6 @@ export interface Team {
   isActive: boolean;
   order: number;
 }
-
 
 export interface AboutUs {
   id: string;
@@ -81,7 +84,6 @@ export interface Faq {
   answer: string;
 }
 
-
 export interface Project {
   id: string;
   name: string;
@@ -107,7 +109,6 @@ export interface Project {
   pdfFile: string;
   videoLink: string;
 }
-
 
 export interface ProjectFeature {
   id: string;
