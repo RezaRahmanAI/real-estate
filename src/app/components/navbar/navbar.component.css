@@ -77,8 +77,8 @@ nav.hide-navbar .nav-right .hide
 /* Menu button remains visible */
 nav.hide-navbar .nav-right .show-always {
   border-color: var(--accent);
-  background-color: var(--accent);
   box-shadow: 0 0 8px var(--accent);
+  color: var(--accent);
   justify-content: flex-end;
 }
 
