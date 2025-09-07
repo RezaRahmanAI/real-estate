@@ -25,9 +25,7 @@ import { GalleryComponent } from './features/gallery/gallery.component';
 import { GalleryPageComponent } from './pages/gallery-page/gallery-page.component';
 import { BlogsIndexComponent } from './features/blogs/blogs-index/blogs-index.component';
 import { BlogComponent } from './pages/blog/blog.component';
-
-
-
+import { ClientComponent } from './features/client/client.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -37,7 +35,7 @@ export const routes: Routes = [
   { path: 'projects', component: ProjectsComponent },
   { path: 'projectdetails/:id', component: ProjectDetailsComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'landowner', component: LandownerComponent },  
+  { path: 'landowner', component: LandownerComponent },
   { path: 'blogs', component: BlogComponent },
   { path: 'blogDetails/:id', component: BlogDetailsComponent },
   { path: 'login', component: LoginComponent },
@@ -48,6 +46,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'teams', component: TeamsIndexComponent },
+      { path: 'clients', component: ClientComponent },
       { path: 'blogs', component: BlogsIndexComponent },
       { path: 'testimonials', component: TestimonialsIndexComponent },
       { path: 'offers', component: OffersIndexComponent },

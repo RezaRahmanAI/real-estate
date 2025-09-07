@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 export class DashboardComponent {
   @ViewChild('mainContent') mainContent!: ElementRef;
   showProfileDropdown = false;
+  showSidebar = false;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -24,14 +25,26 @@ export class DashboardComponent {
     this.showProfileDropdown = false;
   }
 
+  toggleSidebar() {
+    this.showSidebar = !this.showSidebar;
+  }
+
+  closeSidebar(event?: MouseEvent) {
+    if (event) {
+      const target = event.target as HTMLElement;
+      if (target.closest('aside') || target.closest('.fa-bars')) {
+        return;
+      }
+    }
+    this.showSidebar = false;
+  }
+
   logout() {
     this.authService.logout();
-    this.router.navigate(['/']); // redirect to home page
+    this.router.navigate(['/']);
   }
 
   onWheel(event: WheelEvent): void {
-    //console.log('Wheel event triggered:', event);
-    // Manually trigger scroll to ensure wheel event works
     const element = this.mainContent.nativeElement;
     element.scrollTop += event.deltaY;
   }

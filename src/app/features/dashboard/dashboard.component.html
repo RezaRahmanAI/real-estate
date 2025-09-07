@@ -1,101 +1,68 @@
-<div class="flex h-screen bg-light text-dark">
-  <!-- Sidebar -->
+<div class="flex h-screen bg-light text-dark" (click)="closeSidebar($event)">
+  <!-- Sidebar (Desktop) -->
   <aside class="hidden md:flex md:flex-col md:w-64 bg-dark text-white shadow-lg">
-    <!-- Logo/Header -->
     <div class="flex items-center justify-center h-16 bg-accent shadow-md">
       <h1 class="text-2xl font-bold tracking-wide">Real Estate</h1>
     </div>
 
-    <!-- Navigation -->
     <nav class="flex-1 p-4">
       <ul class="space-y-2">
         <li>
-          <a
-            routerLink="/dashboard"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-home mr-3 w-5 text-accent"></i>
             <span>Dashboard</span>
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dashboard/projects"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/projects" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-building mr-3 w-5 text-accent"></i>
             <span>Projects</span>
           </a>
         </li>
-        
         <li>
-          <a
-            routerLink="/dashboard/clients"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/clients" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-users mr-3 w-5 text-accent"></i>
             <span>Clients</span>
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dashboard/teams"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/teams" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-user-friends mr-3 w-5 text-accent"></i>
             <span>Teams</span>
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dashboard/blogs"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/blogs" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-blog mr-3 w-5 text-accent"></i>
             <span>Blogs</span>
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dashboard/testimonials"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/testimonials" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-quote-left mr-3 w-5 text-accent"></i>
             <span>Testimonials</span>
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dashboard/offers"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/offers" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-tag mr-3 w-5 text-accent"></i>
             <span>Offers</span>
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dashboard/about-us"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/about-us" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-info-circle mr-3 w-5 text-accent"></i>
             <span>About Us</span>
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dashboard/gallery"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/gallery" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-cog mr-3 w-5 text-accent"></i>
             <span>Gallery</span>
           </a>
         </li>
         <li>
-          <a
-            routerLink="/dashboard/faq"
-            class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark"
-          >
+          <a routerLink="/dashboard/faq" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
             <i class="fas fa-cog mr-3 w-5 text-accent"></i>
             <span>FAQ</span>
           </a>
@@ -104,15 +71,102 @@
     </nav>
   </aside>
 
+  <!-- Mobile Sidebar (Overlay) -->
+  <aside
+    class="fixed inset-0 z-50 bg-black/50 md:hidden transition-opacity duration-300"
+    *ngIf="showSidebar"
+  >
+    <div
+      class="absolute top-0 left-0 w-64 h-full bg-dark text-white shadow-lg transform transition-transform duration-300"
+      [ngClass]="{ 'translate-x-0': showSidebar, '-translate-x-full': !showSidebar }"
+    >
+      <!-- Logo/Header -->
+      <div class="flex items-center justify-center h-16 bg-accent shadow-md">
+        <h1 class="text-2xl font-bold tracking-wide">Real Estate</h1>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="flex-1 p-4">
+        <ul class="space-y-2">
+          <li>
+            <a routerLink="/dashboard" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+              <i class="fas fa-home mr-3 w-5 text-accent"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+          <a routerLink="/dashboard/projects" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-building mr-3 w-5 text-accent"></i>
+            <span>Projects</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/clients" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-users mr-3 w-5 text-accent"></i>
+            <span>Clients</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/teams" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-user-friends mr-3 w-5 text-accent"></i>
+            <span>Teams</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/blogs" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-blog mr-3 w-5 text-accent"></i>
+            <span>Blogs</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/testimonials" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-quote-left mr-3 w-5 text-accent"></i>
+            <span>Testimonials</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/offers" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-tag mr-3 w-5 text-accent"></i>
+            <span>Offers</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/about-us" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-info-circle mr-3 w-5 text-accent"></i>
+            <span>About Us</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/gallery" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-cog mr-3 w-5 text-accent"></i>
+            <span>Gallery</span>
+          </a>
+        </li>
+        <li>
+          <a routerLink="/dashboard/faq" (click)="closeSidebar()" class="flex items-center p-3 rounded-lg transition-all duration-300 hover:bg-accentLight hover:text-dark">
+            <i class="fas fa-cog mr-3 w-5 text-accent"></i>
+            <span>FAQ</span>
+          </a>
+        </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+
   <!-- Main Content -->
   <div class="flex-1 flex flex-col">
     <!-- Header -->
     <header class="bg-white shadow-sm p-4 flex justify-between items-center h-16 border-b border-lightDark/30">
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-dark text-2xl" (click)="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+      </button>
+
       <h2 class="text-xl font-semibold">Welcome, Agent!</h2>
 
       <div class="flex items-center space-x-4">
         <!-- Search -->
-        <div class="relative">
+        <div class="relative hidden sm:block">
           <input
             type="text"
             placeholder="Search properties..."
@@ -127,29 +181,27 @@
           <span class="absolute -top-1 -right-1 h-2.5 w-2.5 bg-red-500 rounded-full"></span>
         </div>
 
-        <!-- Profile with Dropdown -->
-<div class="relative" (clickOutside)="closeProfileDropdown()">
-  <div
-    class="h-9 w-9 rounded-full bg-accent flex items-center justify-center text-white font-bold cursor-pointer select-none"
-    (click)="toggleProfileDropdown()"
-  >
-    A
-  </div>
+        <!-- Profile -->
+        <div class="relative" (clickOutside)="closeProfileDropdown()">
+          <div
+            class="h-9 w-9 rounded-full bg-accent flex items-center justify-center text-white font-bold cursor-pointer select-none"
+            (click)="toggleProfileDropdown()"
+          >
+            A
+          </div>
 
-  <!-- Dropdown -->
-  <div
-    *ngIf="showProfileDropdown"
-    class="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
-  >
-    <button
-      (click)="logout()"
-      class="w-full text-left px-4 py-2 text-sm text-dark hover:bg-gray-100 rounded-lg transition-colors duration-200"
-    >
-      Logout
-    </button>
-  </div>
-</div>
-
+          <div
+            *ngIf="showProfileDropdown"
+            class="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-gray-200 z-50"
+          >
+            <button
+              (click)="logout()"
+              class="w-full text-left px-4 py-2 text-sm text-dark hover:bg-gray-100 rounded-lg transition-colors duration-200"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
       </div>
     </header>
 

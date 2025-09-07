@@ -14,7 +14,8 @@
       "default",
       {
         "ignore": [
-          "-webkit-mask-image"
+          "-webkit-mask-image",
+          "user-select"
         ]
       }
     ],

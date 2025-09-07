@@ -1,60 +1,65 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { LandownerData } from '../../../models/model';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Contactus, LandownerData } from '../../../models/model';
+import { ContactusService } from '../../../services/contactus.service';
 
 @Component({
   selector: 'app-landowner-form',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule],
   templateUrl: './landowner-form.component.html',
   styleUrls: ['./landowner-form.component.css'],
 })
-export class LandownerFormComponent {
-  landownerData: LandownerData = {
-    name: '',
-    phone: '',
-    email: '',
-    locality: '',
-    landCategory: '',
-    frontRoadWidth: '',
-    facing: '',
-    address: '',
-    message: '',
-  };
+export class LandownerFormComponent implements OnInit {
+  contactForm: FormGroup;
 
-  @Output() submitted = new EventEmitter<LandownerData>();
-  submitting = false;
-  lastSubmitted = false;
+  submitMessage: string | null = null;
+  isSubmitting = false;
 
-  createData(): void {
-    if (this.submitting) return;
-    this.submitting = true;
-    this.lastSubmitted = false;
+  constructor(
+    private fb: FormBuilder,
+    private contactusService: ContactusService
+  ) {
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: [''],
+      subject: ['', [Validators.required, Validators.minLength(3)]],
+      message: ['', [Validators.required, Validators.minLength(10)]],
+    });
+  }
 
-    // simulate submission
-    setTimeout(() => {
-      this.submitted.emit(this.landownerData);
-      this.submitting = false;
-      this.lastSubmitted = true;
+  ngOnInit(): void {}
 
-      // reset form data
-      this.landownerData = {
-        name: '',
-        phone: '',
-        email: '',
-        locality: '',
-        landCategory: '',
-        frontRoadWidth: '',
-        facing: '',
-        address: '',
-        message: '',
-      };
+  onSubmit(): void {
+    if (this.contactForm.invalid) {
+      this.contactForm.markAllAsTouched();
+      return;
+    }
 
-      // auto-hide success after 4s
-      setTimeout(() => {
-        this.lastSubmitted = false;
-      }, 4000);
-    }, 1000);
+    this.isSubmitting = true;
+    this.submitMessage = null;
+
+    const contact: Contactus = this.contactForm.value;
+
+    this.contactusService.create(contact).subscribe({
+      next: (response) => {
+        this.isSubmitting = false;
+        this.submitMessage = response; // e.g., "Form Successfully Submitted"
+        this.contactForm.reset();
+        console.log('Form submitted successfully:', response);
+      },
+      error: (err) => {
+        this.isSubmitting = false;
+        this.submitMessage = 'Error submitting form. Please try again.';
+        console.error('Submission error:', err);
+      },
+    });
+  }
+
+  isFieldInvalid(field: string): boolean {
+    const control = this.contactForm.get(field);
+    return !!control && control.invalid && (control.touched || control.dirty);
   }
 }

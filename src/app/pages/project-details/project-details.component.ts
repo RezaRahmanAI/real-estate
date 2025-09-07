@@ -67,10 +67,8 @@ interface RelatedProject {
   imports: [
     CommonModule,
     RouterModule,
-    SafeUrlPipe,
     ProjectHeaderComponent,
     OfferTimerComponent,
-    MarqueeComponent,
     TabBarComponent,
     AtGlanceComponent,
     FeatureAmenitiesComponent,

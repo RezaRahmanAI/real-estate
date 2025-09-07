@@ -4,51 +4,41 @@
     [project]="state.data"
     [baseUrl]="baseUrl"
     (imageError)="onImageError($event)"
-    
   ></app-project-header>
   <app-offer-timer
     [timer]="state.timer"
     [offerActive]="state.offerActive"
-    
   ></app-offer-timer>
   <!-- <app-marquee [offerTitle]="state.data?.offerTitle" ></app-marquee> -->
   <app-tab-bar></app-tab-bar>
   <app-at-glance
-  id="atGlance"
-  [project]="state.data"
-  [baseUrl]="baseUrl"
-  (imageError)="onImageError($event)"
-></app-at-glance>
-
+    id="atGlance"
+    [project]="state.data"
+    [baseUrl]="baseUrl"
+    (imageError)="onImageError($event)"
+  ></app-at-glance>
 
   <app-feature-amenities
     id="featureAndAmenities"
     [features]="state.list"
     [baseUrl]="baseUrl"
     (imageError)="onImageError($event)"
-    
   ></app-feature-amenities>
-<app-video-player
-  [youtubeUrl]="state.data?.videoLink"
-></app-video-player>
+  <app-video-player [youtubeUrl]="state.data?.videoLink"></app-video-player>
 
   <app-project-gallery
     id="projectGallery"
     [gallery]="state.gallery"
     [baseUrl]="baseUrl"
     (imageError)="onImageError($event)"
-    
   ></app-project-gallery>
   <app-location-map
-  id="locationMap"
-  [mapIframe]="state.data?.mapLink"
-  
-></app-location-map>
+    id="locationMap"
+    [mapIframe]="state.data?.mapLink"
+  ></app-location-map>
   <app-contact-form
     id="contacting"
     (formSubmit)="onFormSubmit()"
-    
   ></app-contact-form>
   <app-swiper-slider />
-  <!-- <app-related-projects id="relatedProjects" [projects]="state.projects" [baseUrl]="baseUrl" (imageError)="onImageError($event)" ></app-related-projects> -->
 </div>

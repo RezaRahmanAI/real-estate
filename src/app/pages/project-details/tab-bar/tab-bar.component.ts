@@ -19,8 +19,8 @@ export class TabBarComponent {
     { id: 'videoPlayer', label: 'Video' },
     { id: 'projectGallery', label: 'Gallery' },
     { id: 'locationMap', label: 'Location Map' },
-    { id: 'relatedProjects', label: 'More Projects' },
     { id: 'contacting', label: 'Contact' },
+    { id: 'relatedProjects', label: 'More Projects' },
   ];
 
   @HostListener('window:scroll', [])
