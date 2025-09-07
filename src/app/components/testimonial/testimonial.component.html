@@ -1,41 +1,75 @@
-<section  class="testimonial_section sec-pad bg-accentLight" >
+<section class="testimonial_section sec-pad bg-accentLight">
   <div class="mx-auto w-[85%]">
-    <div class="content-card p-6  flex flex-wrap gap-6 relative ">   
-      <div class="absolute -left-1 top-0 flex flex-col gap-2 mb-10 ">
-        <p class="text-accent">TESTIMONIALS</p>
-        <h1 class="text-6xl lg:text-6xl text-dark font-semibold fade-up mb-8 text-center md:text-left font-[var(--heading)]">
-          <span class="mb-5">Real People</span><br /><span class="md:ms-16">Real Praises</span>
-        </h1>      
+    <div class="">
+        <p class="text-accent text-2xl lg:text-2xl text-center md:text-left">
+          TESTIMONIALS
+        </p>
+        <h1
+          class="text-2xl lg:text-6xl text-dark font-semibold fade-up mb-2 text-center md:text-left"
+        >
+          <span class="mb-5">Real People</span
+          ><br /><span class="md:ms-16">Real Praises</span>
+        </h1>
       </div>
-      <div class="image-wrapper w-[400px] h-[500px] mt-20 md:mt-36 ml-10">
-  <img
-    *ngIf="currentTestimonial?.image; else placeholderImage"
-    [src]="baseURL + '/api/attachment/get/' + currentTestimonial?.image"
-    [alt]="currentTestimonial?.name"
-    class="w-[400px] h-[500px] object-cover"
-    (error)="onImageError($event)"
-  />
-  <ng-template #placeholderImage>
-    <img
-      [src]="baseURL + '/api/attachment/get/placeholder.png'"
-      alt="Placeholder image"
-      class="w-[400px] h-[500px] object-cover"
-    />
-  </ng-template>
-</div>
-      <div class="text-wrapper w-[600px] flex flex-col gap-4 mt-20 md:mt-24">
+    <div class="content-card p-6 flex flex-wrap gap-6 relative">
+      
+      <div class="image-wrapper w-[400px] h-[500px] mt-4 md:mt-8 ml-10">
+        <img
+          *ngIf="currentTestimonial?.image; else placeholderImage"
+          [src]="baseURL + '/api/attachment/get/' + currentTestimonial?.image"
+          [alt]="currentTestimonial?.name"
+          class="w-[400px] h-[500px] object-cover"
+          (error)="onImageError($event)"
+        />
+        <ng-template #placeholderImage>
+          <img
+            [src]="baseURL + '/api/attachment/get/placeholder.png'"
+            alt="Placeholder image"
+            class="w-[400px] h-[500px] object-cover"
+          />
+        </ng-template>
+      </div>
+      <div class="text-wrapper w-[600px] flex flex-col gap-4 mt-4 md:mt-8">
         <div class="box p-4 fade-up relative">
-          <svg class="quote-icon absolute -left-14 z-[1] opacity-90" xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 100 100">
-            <g id="Group_18200" data-name="Group 18200" transform="translate(-206.342 -4804)">
-              <path id="Path_6993" data-name="Path 6993" d="M104.944,101a25.874,25.874,0,0,0,7.059-.948c11.307-3.2,12.525-19.838,2.28-25.909C103.11,67.524,97.273,57.157,97.273,45.517c0-12.581,6.786-30,26.258-44.517h0C91.079,22.29,75.738,44.226,75.738,66.162,75.738,87.774,90.49,101,104.944,101Z" transform="translate(182.811 4803)" fill="var(--dark)"></path>
-              <path id="Path_6992" data-name="Path 6992" d="M104.944,101a25.874,25.874,0,0,0,7.059-.948c11.307-3.2,12.525-19.838,2.28-25.909C103.11,67.524,97.273,57.157,97.273,45.517c0-12.581,6.786-30,26.258-44.517h0C91.079,22.29,75.738,44.226,75.738,66.162,75.738,87.774,90.49,101,104.944,101Z" transform="translate(130.604 4803)" fill="var(--dark)"></path>
+          <svg
+            class="quote-icon absolute -left-14 z-[1] opacity-90"
+            xmlns="http://www.w3.org/2000/svg"
+            width="120"
+            height="120"
+            viewBox="0 0 100 100"
+          >
+            <g
+              id="Group_18200"
+              data-name="Group 18200"
+              transform="translate(-206.342 -4804)"
+            >
+              <path
+                id="Path_6993"
+                data-name="Path 6993"
+                d="M104.944,101a25.874,25.874,0,0,0,7.059-.948c11.307-3.2,12.525-19.838,2.28-25.909C103.11,67.524,97.273,57.157,97.273,45.517c0-12.581,6.786-30,26.258-44.517h0C91.079,22.29,75.738,44.226,75.738,66.162,75.738,87.774,90.49,101,104.944,101Z"
+                transform="translate(182.811 4803)"
+                fill="var(--dark)"
+              ></path>
+              <path
+                id="Path_6992"
+                data-name="Path 6992"
+                d="M104.944,101a25.874,25.874,0,0,0,7.059-.948c11.307-3.2,12.525-19.838,2.28-25.909C103.11,67.524,97.273,57.157,97.273,45.517c0-12.581,6.786-30,26.258-44.517h0C91.079,22.29,75.738,44.226,75.738,66.162,75.738,87.774,90.49,101,104.944,101Z"
+                transform="translate(130.604 4803)"
+                fill="var(--dark)"
+              ></path>
             </g>
           </svg>
-          
-          <p class="desc text-dark mt-3 pl-10 pt-5 ">{{ currentTestimonial?.description }}</p>
-          <p class="name font-bold text-accent pl-12"> - {{ currentTestimonial?.name }}</p>
+
+          <p class="desc text-dark mt-3 pl-10 pt-5 text-2xl ">
+            {{ currentTestimonial?.description }}
+          </p>
+          <p class="name font-bold text-accent pl-12 text-2xl ">
+            - {{ currentTestimonial?.name }}
+          </p>
         </div>
-        <div class="nav flex items-center gap-4 mt-4 justify-center md:justify-start">
+        <div
+          class="nav flex items-center gap-4 mt-4 justify-center md:justify-start"
+        >
           <button
             (click)="prev()"
             class="w-12 h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
