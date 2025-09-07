@@ -28,6 +28,7 @@ export class SliderComponent implements OnInit, OnDestroy {
   baseUrl = environment.baseUrl;
   private subscription: Subscription = new Subscription();
   private splideInstance: Splide | null = null;
+  private autoClickInterval: any = null; // To store the interval ID
 
   constructor(private projectService: ProjectService, private router: Router) {}
 
@@ -53,7 +54,6 @@ export class SliderComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           console.error('Error loading projects:', err);
-          
           this.projectService.showError('Failed to load projects');
         },
       })
@@ -61,12 +61,10 @@ export class SliderComponent implements OnInit, OnDestroy {
   }
 
   initializeSplide(): void {
-    
     if (this.splideInstance) {
       this.splideInstance.destroy();
     }
 
-    
     setTimeout(() => {
       this.splideInstance = new Splide('#splide01', {
         perPage: 3,
@@ -82,21 +80,46 @@ export class SliderComponent implements OnInit, OnDestroy {
 
       this.splideInstance.mount();
 
-     
-      document.querySelector('.next-splide')?.addEventListener('click', () => {
+      // Add event listeners for manual navigation
+      const nextButton = document.querySelector('.next-splide');
+      const prevButton = document.querySelector('.prev-splide');
+
+      nextButton?.addEventListener('click', () => {
         this.splideInstance?.go('>');
       });
 
-      document.querySelector('.prev-splide')?.addEventListener('click', () => {
+      prevButton?.addEventListener('click', () => {
         this.splideInstance?.go('<');
       });
-    }, 0); 
+
+      // Start auto-clicking the next button every 3 seconds
+      this.startAutoClick();
+    }, 0);
+  }
+
+  startAutoClick(): void {
+    // Clear any existing interval to prevent duplicates
+    if (this.autoClickInterval) {
+      clearInterval(this.autoClickInterval);
+    }
+
+    // Set interval to click the next button every 3 seconds
+    this.autoClickInterval = setInterval(() => {
+      const nextButton = document.querySelector('.next-splide');
+      if (nextButton) {
+        (nextButton as HTMLElement).click();
+      }
+    }, 3000);
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
     if (this.splideInstance) {
       this.splideInstance.destroy();
+    }
+    // Clear the auto-click interval
+    if (this.autoClickInterval) {
+      clearInterval(this.autoClickInterval);
     }
   }
 }

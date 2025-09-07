@@ -1,4 +1,292 @@
-@import url('https://assets.website-files.com/6067559c86540cc17e19c4d5/css/tricks-menu-slider.24cda8f53.css');
+/* @import url('https://assets.website-files.com/6067559c86540cc17e19c4d5/css/tricks-menu-slider.24cda8f53.css'); */
+
+
+
+
+.container {
+  width: 100%;
+  max-width: 2000px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 4.06em;
+}
+
+
+
+.container.is--slider {
+  padding-top: 0em;
+  padding-bottom: 0em;
+}
+
+
+
+
+.section.is--slider {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 5em;
+}
+
+
+.section.is--nav {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  z-index: 900;
+}
+
+
+
+.overflow {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.controls {
+  position: absolute;
+  left: 0%;
+  top: auto;
+  right: 0%;
+  bottom: 0%;
+  z-index: 4;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 13em;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.control {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  width: 3.33em;
+  height: 3.33em;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #0d0628;
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform 200ms ease;
+  transition: -webkit-transform 200ms ease;
+  transition: transform 200ms ease;
+  transition: transform 200ms ease, -webkit-transform 200ms ease;
+  color: #0d0628;
+}
+
+.control:active {
+  -webkit-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+.control__arrow {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 1.5em;
+  height: 1.3em;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  opacity: 1;
+}
+
+.control__arrow.is--flipped {
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+
+.splide__list {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.splide__slide {
+  width: 33.333333333333336%;
+  height: 40vw;
+  min-height: 41.88em;
+  padding-right: 0.52em;
+  padding-left: 0.52em;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.splide__img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.control__fill {
+  position: absolute;
+  left: auto;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  margin-top: -100%;
+  margin-right: -100%;
+  border-radius: 50%;
+  background-color: #0d0628;
+}
+
+.slider__wave {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  right: 0%;
+  bottom: auto;
+  z-index: 2;
+  margin-top: -0.6vw;
+}
+
+.slider__wave.is--bottom {
+  left: 0%;
+  top: auto;
+  right: 0%;
+  bottom: 0%;
+  margin-bottom: -0.6vw;
+  -webkit-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
+
+
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+@media screen and (max-width: 991px) {
+  .container {
+    padding-right: 3em;
+    padding-left: 3em;
+  }
+
+  .hero__p {
+    font-size: 12px;
+  }
+
+  .overflow {
+    min-height: 100vh;
+  }
+
+  .cursor {
+    display: none;
+  }
+
+  .menu {
+    height: 100vh;
+  }
+
+  .background__lottie {
+    position: relative;
+    z-index: 2;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+  }
+
+  .background__fill {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 7em;
+  }
+
+  .container {
+    padding-right: 4.9em;
+    padding-left: 4.9em;
+  }
+
+
+  .section.is--slider {
+    margin-bottom: 9.9em;
+  }
+
+
+
+  .controls {
+    margin-bottom: -3em;
+    font-size: 2em;
+  }
+
+
+
+  .trigger {
+    font-size: 8px;
+  }
+
+  .splide__slide {
+    width: 100%;
+    min-height: 89em;
+    padding-right: 0.92em;
+    padding-left: 0.92em;
+  }
+
+}
+
+@media screen and (max-width: 479px) {
+
+  .controls {
+    margin-bottom: -47px;
+    font-size: 10px;
+  }
+
+}
 
 
 .bg-img{
@@ -48,15 +336,11 @@ a {
   } 
 }
 
-/* ------------------------------------- */
-/* Custom Styles for 3D Overlay Effect */
-/* ------------------------------------- */
 
-/* Each slide needs perspective for its children to transform in 3D */
 .splide__slide {
   cursor: pointer;
-  position: relative; /* Crucial for positioning content and overlay */
-  transform-style: preserve-3d; /* Allows 3D transforms on children */
+  position: relative;
+  transform-style: preserve-3d; /* Allows 3D
   display: flex; /* Helps align content */
   flex-direction: column;
   justify-content: center;
