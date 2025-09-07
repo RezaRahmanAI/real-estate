@@ -88,6 +88,7 @@ export interface Project {
   id: string;
   name: string;
   description: string;
+  createDate: string;
   address: string;
   thumbnail: string;
   category: string;
@@ -105,7 +106,6 @@ export interface Project {
   unitPerFloors: string;
   sizeOfEachApartment: string;
   mapLink: string;
-  // longitude: string;
   pdfFile: string;
   videoLink: string;
 }

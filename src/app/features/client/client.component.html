@@ -26,7 +26,7 @@
           <td class="p-3">{{ contact.phone || 'N/A' }}</td>
           <td class="p-3">{{ contact.subject }}</td>
           <td class="p-3">{{ contact.message }}</td>
-          <td class="p-3">{{ contact.date }}</td>
+          <td class="p-3">{{ contact.date | date:'yyyy-MM-dd'}}</td>
         </tr>
         <tr *ngIf="contacts.length === 0 && !errorMessage" class="text-center">
           <td colspan="7" class="p-3">No submissions found.</td>

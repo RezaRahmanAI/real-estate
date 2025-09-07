@@ -1,12 +1,24 @@
 <div
-  class="relative h-[100vh] bg-img bg-no-repeat bg-center bg-cover bg-fixed py-20 md:py-28 lg:py-36 xl:py-[270px] px-4 md:px-2 lg:px-5"
-  [style.backgroundImage]="project?.content ? 'url(' + baseUrl + '/api/attachment/get/' + project.content + ')' : 'url(/images/fallback.png)'"(error)="onImageError($event)">
-  <div class="relative z-10 text-container">
-    <h1 class="text-4xl md:text-5xl lg:text-6xl text-white font-serif font-bold mb-2">
-      {{ project?.name || 'Project Details' }}
-    </h1>
-    <p class="text-lg md:text-xl text-accentLight">
-      {{ project?.address || 'No address available' }}
-    </p>
+  class="relative h-[50vh] md:h-[100vh]"
+>
+  <div
+    class="h-[100%] bg-img"
+    [style.backgroundImage]="
+      project?.content
+        ? 'url(' + baseUrl + '/api/attachment/get/' + project.content + ')'
+        : 'url(/images/fallback.png)'
+    "
+    (error)="onImageError($event)"
+  >
+    <div class="relative z-10 text-container">
+      <h1
+        class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-serif font-bold mb-2"
+      >
+        {{ project?.name || "Project Details" }}
+      </h1>
+      <p class="text-base md:text-lg lg:text-xl text-lightDark">
+        {{ project?.address || "No address available" }}
+      </p>
+    </div>
   </div>
 </div>

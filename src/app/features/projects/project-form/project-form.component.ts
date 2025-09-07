@@ -34,6 +34,7 @@ export class ProjectFormComponent {
     id: '',
     name: '',
     description: '',
+    createDate: '',
     address: '',
     thumbnail: '',
     category: '',

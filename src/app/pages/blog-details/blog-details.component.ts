@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { AnimationService } from '../../services/animation.service';
 
 
 
@@ -33,7 +34,8 @@ export class BlogDetailsComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private el: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private anim: AnimationService
   ) {}
 
   ngOnInit() {
@@ -42,9 +44,12 @@ export class BlogDetailsComponent implements OnInit {
     this.getBlogs();
   }
 
+
   ngAfterViewInit() {
     //this.animateOnScroll();
 
+    this.anim.animateOnScroll('.fade-up');
+    this.anim.animateOnScroll('.zoom-in');
     const blogRow = this.el.nativeElement.querySelector('#blogRow');
     const image = this.el.nativeElement.querySelector('#blogImage');
 
@@ -64,7 +69,6 @@ export class BlogDetailsComponent implements OnInit {
       window.addEventListener('resize', updateHeight);
     }
   }
-
 
   getBlog() {
     this.http
@@ -169,6 +173,4 @@ export class BlogDetailsComponent implements OnInit {
       img.src = fallback;
     }
   }
-
-  
 }

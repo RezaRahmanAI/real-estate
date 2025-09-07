@@ -1,7 +1,4 @@
-.carousel {
-      height: 100vh;
-      /* margin-top: -50px; */
-      width: 100vw;
+.carousel {      
       overflow: hidden;
       position: relative;
     }
