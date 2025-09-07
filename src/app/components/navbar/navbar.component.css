@@ -12,7 +12,7 @@ nav.hide {
   opacity: 0;
 }
 
-/* Default text color when transparent */
+
 nav.transparent .nav-left a,
 nav.transparent .nav-right a,
 nav.transparent .menu-btn-wrapper,
@@ -22,7 +22,7 @@ nav.transparent .menu-btn span {
 }
 
 
-/* Links default */
+
 nav .nav-left a,
 nav .nav-right a {
   position: relative;
@@ -30,7 +30,7 @@ nav .nav-right a {
   transition: color 0.3s ease-in-out;
 }
 
-/* Glowing underline effect */
+
 nav .nav-left a::after,
 nav .nav-right a::after {
   content: '';
@@ -44,26 +44,23 @@ nav .nav-right a::after {
   transition: width 0.3s ease-in-out;
 }
 
-/* Expand underline on hover */
 nav .nav-left a:hover::after,
 nav .nav-right a:hover::after {
   width: 100%;
 }
 
-
-/* Menu button */
 .menu-btn-wrapper {
   border: 2px solid var(--light);
   transition: all 0.3s ease-in-out;
 }
 
-/* Glow on hover */
+
 .menu-btn-wrapper:hover {
   border-color: var(--accent);
   box-shadow: 0 0 8px var(--accent);
 }
 
-/* Hide navbar content except menu button */
+
 nav.hide-navbar .nav-left,
 nav.hide-navbar .nav-center,
 nav.hide-navbar .nav-right .hide
@@ -74,7 +71,7 @@ nav.hide-navbar .nav-right .hide
   transition: all 0.5s ease;
 }
 
-/* Menu button remains visible */
+
 nav.hide-navbar .nav-right .show-always {
   border-color: var(--accent);
   box-shadow: 0 0 8px var(--accent);
@@ -82,7 +79,6 @@ nav.hide-navbar .nav-right .show-always {
   justify-content: flex-end;
 }
 
-/* Optional: shrink nav height when scrolled */
 nav.hide-navbar {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;

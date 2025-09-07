@@ -28,7 +28,7 @@ export class NavbarComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isTop = window.scrollY === 0;
+    this.isTop = window.scrollY <= 20; 
   }
 
   @HostListener('document:click', ['$event'])
