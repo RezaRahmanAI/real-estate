@@ -4,11 +4,16 @@ import { CommonModule } from '@angular/common';
 import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../models/model';
 import { RouterLink } from '@angular/router';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ImageCropperComponent } from 'ngx-image-cropper';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { HttpClient } from '@angular/common/http'; // Add HttpClient for fetching images
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-project-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink],
+  imports: [FormsModule, CommonModule, RouterLink,  ImageCropperComponent],
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.css'],
 })
@@ -21,6 +26,21 @@ export class ProjectFormComponent {
         this._project.offerDateTime
       );
     }
+    // Initialize previews for existing images
+    if (this._project.thumbnail) {
+      this.thumbnailPreview = this.sanitizer.bypassSecurityTrustUrl(
+        `${this.apiBaseUrl}/api/attachment/get/${this._project.thumbnail}`
+      );
+    }
+    if (this._project.content && this._project.contentType === 'Image') {
+      this.contentPreview = this.sanitizer.bypassSecurityTrustUrl(
+        `${this.apiBaseUrl}/api/attachment/get/${this._project.content}`
+      );
+    } else if (this._project.content && this._project.contentType === 'Video') {
+      this.contentPreview = this.sanitizer.bypassSecurityTrustUrl(
+        `${this.apiBaseUrl}/api/attachment/get/${this._project.content}`
+      );
+    }
   }
   @Input() mode: 'create' | 'edit' = 'create';
   @Output() close = new EventEmitter<void>();
@@ -29,6 +49,15 @@ export class ProjectFormComponent {
   selectedContent: File | null = null;
   selectedPdf: File | null = null;
   contentType: string = '';
+  thumbnailPreview: SafeUrl | null = null;
+  contentPreview: SafeUrl | null = null;
+  imageToCrop: string | undefined = undefined;
+  croppedImage: File | null = null;
+  showCropper: boolean = false;
+  cropperType: 'thumbnail' | 'content' | null = null;
+
+  // Add apiBaseUrl (replace with your actual base URL or inject via service)
+  private apiBaseUrl = environment.baseUrl; // Replace with your API base URL
 
   private defaultProject: Project = {
     id: '',
@@ -58,12 +87,18 @@ export class ProjectFormComponent {
 
   _project: Project = this.defaultProject;
 
-  constructor(private projectService: ProjectService) {}
+  constructor(
+    private projectService: ProjectService,
+    private sanitizer: DomSanitizer,
+    private http: HttpClient // Add HttpClient
+  ) {}
 
   onThumbnailChange(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedThumbnail = input.files[0];
+      this._project.thumbnail = this.selectedThumbnail.name; // Update project thumbnail name
+      this.generatePreview(this.selectedThumbnail, 'thumbnail');
     }
   }
 
@@ -71,6 +106,8 @@ export class ProjectFormComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedContent = input.files[0];
+      this._project.content = this.selectedContent.name; // Update project content name
+      this.generatePreview(this.selectedContent, 'content');
     }
   }
 
@@ -80,6 +117,87 @@ export class ProjectFormComponent {
       this.selectedPdf = input.files[0];
       this._project.pdfFile = this.selectedPdf.name;
     }
+  }
+
+  generatePreview(file: File, type: 'thumbnail' | 'content') {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const url = this.sanitizer.bypassSecurityTrustUrl(
+        reader.result as string
+      );
+      if (type === 'thumbnail') {
+        this.thumbnailPreview = url;
+      } else {
+        this.contentPreview = url;
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  startCropping(file: File | string, type: 'thumbnail' | 'content') {
+    if (typeof file === 'string') {
+      // Fetch existing image as base64 for cropping
+      this.http
+        .get(`${this.apiBaseUrl}/api/attachment/get/${file}`, {
+          responseType: 'blob',
+        })
+        .subscribe({
+          next: (blob) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+              this.imageToCrop = reader.result as string;
+              this.showCropper = true;
+              this.cropperType = type;
+            };
+            reader.readAsDataURL(blob);
+          },
+          error: (error) => {
+            console.error('Failed to fetch image for cropping:', error);
+            this.projectService.showError('Failed to load image for editing');
+          },
+        });
+    } else {
+      // Handle newly uploaded file
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageToCrop = reader.result as string;
+        this.showCropper = true;
+        this.cropperType = type;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  imageCropped(event: ImageCroppedEvent) {
+    if (event.blob) {
+      const fileName =
+        this.cropperType === 'thumbnail' ? 'thumbnail.jpg' : 'content.jpg';
+      this.croppedImage = new File([event.blob], fileName, {
+        type: 'image/jpeg',
+      });
+      const reader = new FileReader();
+      reader.onload = () => {
+        const url = this.sanitizer.bypassSecurityTrustUrl(
+          reader.result as string
+        );
+        if (this.cropperType === 'thumbnail') {
+          this.thumbnailPreview = url;
+          this.selectedThumbnail = this.croppedImage;
+          this._project.thumbnail = fileName; // Update project thumbnail name
+        } else {
+          this.contentPreview = url;
+          this.selectedContent = this.croppedImage;
+          this._project.content = fileName; // Update project content name
+        }
+      };
+      reader.readAsDataURL(event.blob);
+    }
+  }
+
+  closeCropper() {
+    this.showCropper = false;
+    this.imageToCrop = undefined;
+    this.cropperType = null;
   }
 
   formatDateForInput(date: string): string {

@@ -129,14 +129,24 @@
         <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white focus:outline-none transition-all duration-200"
                id="pdfFile" name="pdfFile" type="file" accept=".pdf" (change)="onPdfChange($event)" />
         <p class="mt-1 text-xs sm:text-sm text-gray-500">PDF (MAX. 5MB).</p>
+        <p *ngIf="selectedPdf || _project.pdfFile" class="mt-2 text-sm text-dark">
+          Selected: {{ selectedPdf?.name || _project.pdfFile }}
+        </p>
       </div>
 
       <!-- Thumbnail -->
       <div>
         <label for="thumbnail" class="block mb-2 text-sm font-semibold text-dark">Thumbnail</label>
         <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white focus:outline-none transition-all duration-200"
-               id="thumbnail" name="thumbnail" type="file" (change)="onThumbnailChange($event)" />
+               id="thumbnail" name="thumbnail" type="file" accept="image/*" (change)="onThumbnailChange($event)" />
         <p class="mt-1 text-xs sm:text-sm text-gray-500">SVG, PNG, JPG or GIF (MAX. 800x400px).</p>
+        <div *ngIf="thumbnailPreview" class="mt-2">
+          <img [src]="thumbnailPreview" alt="Thumbnail Preview" class="max-w-full h-auto rounded-lg" style="max-height: 200px;" />
+          <button *ngIf="mode === 'edit' && _project.thumbnail && !selectedThumbnail" type="button" (click)="startCropping(_project.thumbnail, 'thumbnail')"
+                  class="mt-2 px-4 py-1 text-white bg-accent rounded-lg">Edit Existing Image</button>
+          <button *ngIf="selectedThumbnail" type="button" (click)="startCropping(selectedThumbnail, 'thumbnail')"
+                  class="mt-2 px-4 py-1 text-white bg-accent rounded-lg">Edit Image</button>
+        </div>
       </div>
 
       <!-- Content Type -->
@@ -154,7 +164,15 @@
       <div>
         <label for="content" class="block mb-2 text-sm font-semibold text-dark">{{ contentType === 'Video' ? 'Content (Video max 15MB)' : 'Content' }}</label>
         <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white focus:outline-none transition-all duration-200"
-               id="content" name="content" type="file" (change)="onContentChange($event)" />
+               id="content" name="content" type="file" [accept]="contentType === 'Video' ? 'video/*' : 'image/*'" (change)="onContentChange($event)" />
+        <div *ngIf="contentPreview" class="mt-2">
+          <img *ngIf="contentType === 'Image'" [src]="contentPreview" alt="Content Preview" class="max-w-full h-auto rounded-lg" style="max-height: 200px;" />
+          <button *ngIf="contentType === 'Image' && mode === 'edit' && _project.content && !selectedContent" type="button" (click)="startCropping(_project.content, 'content')"
+                  class="mt-2 px-4 py-1 text-white bg-accent rounded-lg">Edit Existing Image</button>
+          <button *ngIf="contentType === 'Image' && selectedContent" type="button" (click)="startCropping(selectedContent, 'content')"
+                  class="mt-2 px-4 py-1 text-white bg-accent rounded-lg">Edit Image</button>
+          <video *ngIf="contentType === 'Video'" [src]="contentPreview" controls class="max-w-full h-auto rounded-lg" style="max-height: 200px;"></video>
+        </div>
       </div>
 
       <!-- Offer Title -->
@@ -171,6 +189,26 @@
         <input id="offerDateTime" [(ngModel)]="_project.offerDateTime" name="offerDateTime" type="datetime-local"
                class="block w-full p-2 sm:p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
                required />
+      </div>
+    </div>
+
+    <!-- Image Cropper Modal -->
+    <div *ngIf="showCropper" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div class="bg-white p-4 rounded-lg max-w-lg w-full">
+        <h3 class="text-lg font-semibold mb-4">Edit {{ cropperType === 'thumbnail' ? 'Thumbnail' : 'Content' }} Image</h3>
+        <image-cropper
+          [imageBase64]="imageToCrop"
+          [maintainAspectRatio]="true"
+          [aspectRatio]="cropperType === 'thumbnail' ? 2 / 1 : 4 / 3"
+          format="jpeg"
+          (imageCropped)="imageCropped($event)"
+          [resizeToWidth]="cropperType === 'thumbnail' ? 800 : 1200"
+          [resizeToHeight]="cropperType === 'thumbnail' ? 400 : 900"
+        ></image-cropper>
+        <div class="mt-4 flex justify-end space-x-2">
+          <button type="button" (click)="closeCropper()" class="px-4 py-2 text-white bg-dark rounded-lg">Cancel</button>
+          <button type="button" (click)="closeCropper()" class="px-4 py-2 text-white bg-accent rounded-lg">Save</button>
+        </div>
       </div>
     </div>
 
