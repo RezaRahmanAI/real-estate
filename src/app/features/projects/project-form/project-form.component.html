@@ -175,6 +175,13 @@
         </div>
       </div>
 
+      <div class="sm:col-span-2">
+              <label for="order" class="block mb-2 text-sm font-semibold text-dark">Order</label>
+              <input id="order" [(ngModel)]="_project.order" name="order" type="number"
+                     class="block w-full p-3 text-sm text-dark bg-white rounded-lg border border-lightDark focus:ring-accent focus:border-accent transition-all duration-200"
+                     placeholder="Enter order" />
+            </div>
+
       <!-- Offer Title -->
       <div class="sm:col-span-2">
         <label for="offerTitle" class="block mb-2 text-sm font-semibold text-dark">Offer Title</label>

@@ -30,6 +30,7 @@ export class TestimonialFormComponent {
     content: '',
     order: 0,
     isActive: true,
+    customerType: '',
   };
 
   _testimonial: Testimonial = this.defaultTestimonial;
@@ -56,6 +57,7 @@ export class TestimonialFormComponent {
     formData.append('description', this._testimonial.description || '');
     formData.append('contentType', this._testimonial.contentType || '');
     formData.append('order', this._testimonial.order.toString() || '0');
+    formData.append('customerType', this._testimonial.customerType || '');
     if (this.selectedImage) {
       formData.append('image', this.selectedImage);
     }

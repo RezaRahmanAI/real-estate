@@ -83,6 +83,7 @@ export class ProjectFormComponent {
     mapLink: '',
     pdfFile: '',
     videoLink: '',
+    order: 0
   };
 
   _project: Project = this.defaultProject;
@@ -221,6 +222,7 @@ export class ProjectFormComponent {
     formData.append('mapLink', this._project.mapLink || '');
     formData.append('pdfFile', this._project.pdfFile || '');
     formData.append('videoLink', this._project.videoLink || '');
+    formData.append('order', this._project.order?.toString() || '0');
     formData.append(
       'numberOfApartments',
       this._project.numberOfApartments?.toString() || '0'

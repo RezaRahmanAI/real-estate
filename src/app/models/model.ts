@@ -7,6 +7,7 @@ export interface Testimonial {
   content: string;
   order: number;
   isActive: boolean;
+  customerType: 'Customer' | 'Land Owner' | '';
 }
 
 export interface LandownerData {
@@ -108,6 +109,7 @@ export interface Project {
   mapLink: string;
   pdfFile: string;
   videoLink: string;
+  order: number;
 }
 
 export interface ProjectFeature {

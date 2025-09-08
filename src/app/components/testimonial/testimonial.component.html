@@ -13,19 +13,19 @@
       </div>
     <div class="content-card p-6 flex flex-wrap gap-6 relative">
       
-      <div class="image-wrapper w-[400px] h-[500px] mt-4 md:mt-8 ml-10">
+      <div class="image-wrapper w-[300px] h-[300px] md:w-[400px] md:h-[500px] mt-4 md:mt-8 ml-10">
         <img
           *ngIf="currentTestimonial?.image; else placeholderImage"
           [src]="baseURL + '/api/attachment/get/' + currentTestimonial?.image"
           [alt]="currentTestimonial?.name"
-          class="w-[400px] h-[500px] object-cover"
+          class="w-[300px] h-[300px] md:w-[400px] md:h-[500px] object-cover"
           (error)="onImageError($event)"
         />
         <ng-template #placeholderImage>
           <img
             [src]="baseURL + '/api/attachment/get/placeholder.png'"
             alt="Placeholder image"
-            class="w-[400px] h-[500px] object-cover"
+            class="w-[300px] h-[300px] md:w-[400px] md:h-[500px] object-cover"
           />
         </ng-template>
       </div>
@@ -64,22 +64,23 @@
             {{ currentTestimonial?.description }}
           </p>
           <p class="name font-bold text-accent pl-12 text-2xl ">
-            - {{ currentTestimonial?.name }}
+            - {{ currentTestimonial?.name }} ({{ currentTestimonial?.customerType }})
           </p>
+          
         </div>
         <div
           class="nav flex items-center gap-4 mt-4 justify-center md:justify-start"
         >
           <button
             (click)="prev()"
-            class="w-12 h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
+            class="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
           >
             ←
           </button>
           <span class="text-dark">{{ currentIndex + 1 }} of {{ testimonials.length }}</span>
           <button
             (click)="next()"
-            class="w-12 h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
+            class="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
           >
             →
           </button>
