@@ -1,28 +1,29 @@
 import { Component, HostListener } from '@angular/core';
-import { BlogCardComponent } from "../blog-card/blog-card.component";
-import { BlogListComponent } from '../../pages/blog/blog-list/blog-list.component';
+import { BlogSlideComponent } from "../blog-slide/blog-slide.component";
 
 @Component({
   selector: 'app-follow-update',
   standalone: true,
-  imports: [BlogCardComponent, BlogListComponent],
+  imports: [BlogSlideComponent],
   templateUrl: './follow-update.component.html',
   styleUrl: './follow-update.component.css',
 })
 export class FollowUpdateComponent {
-  
-  currentIndex = 0;
-  slideDirection: 'next' | 'prev' | '' = '';
+  scrollAmount = 0;
+  scrollStep = 300; // Adjust based on card width
   private scrollTimeout: any;
+  scrollContainer: HTMLElement | null = null;
+  private isDragging = false;
+  private startX = 0;
+  private initialScroll = 0;
 
   @HostListener('wheel', ['$event'])
   onWheel(event: WheelEvent) {
-    // Debounce scroll events
     if (this.scrollTimeout) return;
 
     this.scrollTimeout = setTimeout(() => {
       this.scrollTimeout = null;
-    }, 500); // 500ms debounce
+    }, 500);
 
     if (event.deltaY > 0) {
       this.next();
@@ -31,19 +32,26 @@ export class FollowUpdateComponent {
     }
   }
 
+  
+
   prev() {
-    this.slideDirection = 'prev';
-    
-      
-    setTimeout(() => (this.slideDirection = ''), 500);
+    if (this.scrollContainer) {
+      this.scrollAmount = Math.max(this.scrollAmount - this.scrollStep, 0);
+      this.scrollContainer.scrollTo({
+        left: this.scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   }
 
   next() {
-    this.slideDirection = 'next';
-
-    setTimeout(() => (this.slideDirection = ''), 500);
+    if (this.scrollContainer) {
+      const maxScroll = this.scrollContainer.scrollWidth - this.scrollContainer.clientWidth;
+      this.scrollAmount = Math.min(this.scrollAmount + this.scrollStep, maxScroll);
+      this.scrollContainer.scrollTo({
+        left: this.scrollAmount,
+        behavior: 'smooth',
+      });
+    }
   }
-
-
-  
 }

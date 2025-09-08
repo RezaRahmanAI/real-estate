@@ -1,64 +1,88 @@
 <article
-  class="card__article relative overflow-hidden w-full max-w-[400px] h-auto cursor-pointer"
+  class="card__article relative overflow-hidden w-full max-w-[400px] h-auto cursor-pointer group"
   [routerLink]="['/blogDetails', item.id]"
   data-animate
 >
-  <div class="card__labels absolute top-3 left-0 right-0 flex justify-between px-3">
+  <!-- Labels -->
+  <div
+    class="card__labels absolute top-3 left-0 right-0 flex justify-between px-3 z-10"
+  >
     <div
-      class="bg-accentLight text-gray-800 text-sm font-semibold px-3 py-1 rounded-md shadow"
+      class="bg-black/60 text-white text-xs md:text-sm font-semibold px-2 md:px-3 py-1 rounded-md shadow"
     >
       {{ item.postedDate | date : 'MMM d, y' }}
     </div>
 
     <div
-      class="bg-blue-600 text-white text-sm font-semibold px-3 py-1 rounded-md shadow"
+      class="bg-black/60 text-white text-xs md:text-sm font-semibold px-2 md:px-3 py-1 rounded-md shadow"
     >
       Event
     </div>
   </div>
 
+  <!-- Image -->
   <img
-    class="card__img w-full h-[300px] md:h-[550px] object-cover rounded-b-xl"
+    class="card__img w-full h-[240px] md:h-[420px] object-cover rounded-b-xl transition-transform duration-500 group-hover:scale-105"
     [src]="baseURL + '/api/attachment/get/' + item.image"
     alt=""
   />
 
+  <!-- Bottom Info -->
   <div
-    class="card__data w-full max-w-[400px] bg-accentLight p-6 rounded-b-xl shadow-[0_8px_24px_hsla(0,0%,0%,0.15)] absolute bottom-[-9rem] left-0 right-0 mx-auto opacity-0 transition-opacity duration-1000 delay-1000"
+    class="absolute bottom-0 left-0 right-0 bg-black/60  p-4 md:p-6 transition-all duration-500 group-hover:translate-y-full group-hover:opacity-0"
   >
-    <h2 class="card__title text-xl font-medium text-gray-800 mb-3">
+    <h2 class="text-lg md:text-xl font-medium text-white truncate">
       {{ item.title }}
     </h2>
-    <span class="card__description block text-sm text-gray-600 mb-1">
-      {{ item.description.slice(0,30) + '...' || item.title.slice(0, 50) + '...' }}
+    <p class="text-xs md:text-sm text-white">
+      Offer Date:
+      <span class="font-semibold text-white">{{
+        item.offerDate | date : 'MMM d, y'
+      }}</span>
+    </p>
+  </div>
+
+  <!-- Hover Description -->
+  <div
+    class="absolute bottom-0 left-0 right-0 bg-black/60 p-4 md:p-6 rounded-b-xl shadow transition-all duration-500 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100"
+  >
+    <h2 class="text-lg md:text-xl font-medium text-white mb-2">
+      {{ item.title }}
+    </h2>
+    <span class="block text-sm text-white mb-3">
+      {{ item.description.slice(0, 60) + '...' }}
     </span>
 
     <div class="flex items-center justify-between">
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2">
         <img
           *ngIf="item.picture"
-          class="w-10 h-10 rounded-full object-cover"
+          class="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover"
           [src]="baseURL + '/api/attachment/get/' + item.picture"
           alt=""
         />
         <div>
-          <h4 class="font-semibold text-base" *ngIf="item.name">
+          <h4 class="font-semibold text-sm md:text-base" *ngIf="item.name">
             {{ item.name }}
           </h4>
-          <span class="text-xs text-gray-500">{{
+          <span class="text-xs text-white">{{
             item.postedDate | date : 'MMMM d, y'
           }}</span>
         </div>
       </div>
 
       <div *ngIf="item.offerDate">
-        <h3 class="font-semibold text-blue-500 text-sm">Offer Time:</h3>
-        <span class="text-lg text-red-500">{{ countdown || 'Loading...' }}</span>
+        <h3 class="font-semibold text-blue-500 text-xs md:text-sm">
+          Offer Time:
+        </h3>
+        <span class="text-sm md:text-lg text-red-500">{{
+          countdown || 'Loading...'
+        }}</span>
       </div>
     </div>
 
     <a
-      class="card__button text-sm font-medium text-[hsl(82,60%,28%)] hover:underline"
+      class="mt-3 inline-block text-sm font-medium text-white hover:underline"
       [routerLink]="['/blogDetails', item.id]"
       >Read More</a
     >

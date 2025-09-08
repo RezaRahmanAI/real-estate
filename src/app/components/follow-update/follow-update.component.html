@@ -12,7 +12,7 @@
         >
       </h1>
 
-      <div class="nav flex items-center gap-4 fade-up">
+      <div class="nav flex items-center gap-4 fade-up md:mr-10 md:pr-10">
         <button
           (click)="prev()"
           class="w-12 h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
@@ -29,5 +29,6 @@
     </div>
   </div>
 
-  <app-blog-list />
+  <app-blog-slide (scrollContainer)="scrollContainer = $event" />
+
 </div>
