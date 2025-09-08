@@ -20,6 +20,7 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class NavbarComponent {
   isTop: boolean = true;
+
   constructor(
     public sidePanel: SidePanelService,
     private lenisService: LenisService,
@@ -28,7 +29,7 @@ export class NavbarComponent {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    this.isTop = window.scrollY <= 20; 
+    this.isTop = window.scrollY <= 20;
   }
 
   @HostListener('document:click', ['$event'])
@@ -36,7 +37,13 @@ export class NavbarComponent {
     const target = event.target as HTMLElement;
     if (
       !target.closest('.side-panel') &&
-      !target.closest('.menu-btn-wrapper')
+      !target.closest('.menu-btn-wrapper') &&
+      !target.closest('.carousel') && // ProjectSlideComponent
+      !target.closest('#splide01') && // SliderComponent
+      !target.closest('.next-splide') &&
+      !target.closest('.prev-splide') &&
+      !target.closest('#next') &&
+      !target.closest('#prev')
     ) {
       this.sidePanel.close();
     }

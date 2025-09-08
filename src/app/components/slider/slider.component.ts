@@ -1,3 +1,4 @@
+// slider.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import Splide from '@splidejs/splide';
@@ -28,7 +29,6 @@ export class SliderComponent implements OnInit, OnDestroy {
   baseUrl = environment.baseUrl;
   private subscription: Subscription = new Subscription();
   private splideInstance: Splide | null = null;
-  private autoClickInterval: any = null; // To store the interval ID
 
   constructor(private projectService: ProjectService, private router: Router) {}
 
@@ -71,6 +71,8 @@ export class SliderComponent implements OnInit, OnDestroy {
         perMove: 1,
         type: 'loop',
         focus: 'center',
+        autoplay: true, // Enable Splide's built-in autoplay
+        interval: 3000, // 3 seconds
         breakpoints: {
           767: {
             perPage: 1,
@@ -80,7 +82,6 @@ export class SliderComponent implements OnInit, OnDestroy {
 
       this.splideInstance.mount();
 
-      // Add event listeners for manual navigation
       const nextButton = document.querySelector('.next-splide');
       const prevButton = document.querySelector('.prev-splide');
 
@@ -91,35 +92,13 @@ export class SliderComponent implements OnInit, OnDestroy {
       prevButton?.addEventListener('click', () => {
         this.splideInstance?.go('<');
       });
-
-      // Start auto-clicking the next button every 3 seconds
-      this.startAutoClick();
     }, 0);
-  }
-
-  startAutoClick(): void {
-    // Clear any existing interval to prevent duplicates
-    if (this.autoClickInterval) {
-      clearInterval(this.autoClickInterval);
-    }
-
-    // Set interval to click the next button every 3 seconds
-    this.autoClickInterval = setInterval(() => {
-      const nextButton = document.querySelector('.next-splide');
-      if (nextButton) {
-        (nextButton as HTMLElement).click();
-      }
-    }, 3000);
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
     if (this.splideInstance) {
       this.splideInstance.destroy();
-    }
-    // Clear the auto-click interval
-    if (this.autoClickInterval) {
-      clearInterval(this.autoClickInterval);
     }
   }
 }

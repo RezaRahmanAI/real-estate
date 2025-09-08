@@ -1,6 +1,7 @@
+// project-slide.component.ts
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { environment } from '../../environments/environment'; // Adjust path as needed
+import { environment } from '../../environments/environment';
 import { ProjectService } from '../../services/project.service';
 import { RouterLink } from '@angular/router';
 
@@ -47,14 +48,13 @@ export class ProjectSlideComponent implements OnInit, OnDestroy {
         topic: project.type || 'Project Type',
         des: `Explore our ${project.name || 'latest project'} in ${
           project.category || 'various'
-        } settings.`, // Placeholder
+        } settings.`,
         thumbnailTitle: project.name || 'Untitled',
         thumbnailDescription: project.category || 'Category',
       }));
       this.startAutoSlide();
     });
 
-    // Set up event listeners for buttons
     const nextDom = document.getElementById('next');
     const prevDom = document.getElementById('prev');
     if (nextDom) {
@@ -130,13 +130,11 @@ export class ProjectSlideComponent implements OnInit, OnDestroy {
 
     this.clearTimers();
 
-    // Determine direction based on current slide
     const currentIndex = Array.from(sliderItemsDom).findIndex((item) =>
       item.classList.contains('active')
     );
     const direction = index > currentIndex ? 'next' : 'prev';
 
-    // Reorder slides to make the selected index the first
     while (Array.from(sliderItemsDom)[0] !== sliderItemsDom[index]) {
       if (direction === 'next') {
         sliderDom.appendChild(sliderItemsDom[0]);
@@ -160,8 +158,7 @@ export class ProjectSlideComponent implements OnInit, OnDestroy {
   private startAutoSlide(): void {
     this.clearTimers();
     this.runNextAuto = setTimeout(() => {
-      const nextDom = document.getElementById('next');
-      if (nextDom) nextDom.click();
+      this.showSlider('next'); // Call directly instead of clicking #next
     }, this.timeAutoNext);
   }
 
