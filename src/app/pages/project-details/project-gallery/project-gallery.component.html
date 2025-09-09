@@ -38,7 +38,7 @@
 
 <!-- Lightbox Modal -->
 <div *ngIf="lightboxOpen" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
-  <button class="absolute top-4 right-6 text-white text-3xl" (click)="closeLightbox()">✖</button>
+  <!-- <button class="absolute top-4 right-6 text-white text-3xl" (click)="closeLightbox()">✖</button> -->
 
   <!-- Prev button -->
   <button class="absolute left-20 text-white text-4xl" (click)="prevItem()">❮</button>
@@ -56,6 +56,15 @@
              autoplay
              class="max-h-[80vh] object-contain rounded-lg"></video>
     </ng-container>
+
+    <!-- Close button inside media -->
+    <button
+      class="absolute top-2 right-2 sm:top-3 sm:right-3 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 sm:p-3 transition"
+      (click)="closeLightbox()"
+      aria-label="Close lightbox"
+    >
+      ✖
+    </button>
   </div>
 
   <!-- Next button -->

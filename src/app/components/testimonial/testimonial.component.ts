@@ -30,7 +30,7 @@ export class TestimonialCarouselComponent implements OnInit, OnDestroy {
 
   loadTestimonials(): void {
     this.subscription.add(
-      this.testimonialService.getTestimonials().subscribe({
+      this.testimonialService.getActiveTestimonials().subscribe({
         next: (res: Testimonial[]) => {
           this.testimonials = res.filter((testimonial) => testimonial.isActive); // Filter active testimonials
           if (this.testimonials.length === 0) {

@@ -10,15 +10,19 @@
     "
     (error)="onImageError($event)"
   >
-    <div class="relative z-10 text-container">
-      <h1
-        class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-serif font-bold mb-2"
-      >
-        {{ project?.name || "Project Details" }}
-      </h1>
-      <p class="text-base md:text-lg lg:text-xl text-lightDark">
-        {{ project?.address || "No address available" }}
-      </p>
-    </div>
+
+  <!-- Dark overlay -->
+      <div class="absolute inset-0 bg-black/40"></div>
+    <div class="relative z-10 h-full flex flex-col justify-center w-[85%] max-w-[85vw] pl-6 md:pl-16 lg:pl-24">
+  <h1
+    class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-white font-serif font-bold mb-2"
+  >
+    {{ project?.name || "Project Details" }}
+  </h1>
+  <p class="text-base md:text-lg lg:text-xl text-accentLight">
+    {{ project?.address || "No address available" }}
+  </p>
+</div>
+
   </div>
 </div>

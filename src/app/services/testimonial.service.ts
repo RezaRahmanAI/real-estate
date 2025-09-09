@@ -17,6 +17,10 @@ export class TestimonialService {
     return this.http.get<Testimonial[]>(`${this.apiBaseUrl}/api/testimonial`);
   }
 
+  getActiveTestimonials(): Observable<Testimonial[]> {
+    return this.http.get<Testimonial[]>(`${this.apiBaseUrl}/api/testimonial/active`);
+  }
+
   createTestimonial(formData: FormData): Observable<string> {
     return this.http.post(
       `${this.apiBaseUrl}/api/testimonial/create`,
