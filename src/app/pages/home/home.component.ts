@@ -48,7 +48,7 @@ export class HomeComponent implements AfterViewInit {
   }
 
   loadOffers() {
-    this.offerService.getOffers().subscribe((res) => {
+    this.offerService.getActiveOffers().subscribe((res) => {
       const today = new Date();
       this.offers = res.filter(
         (o) =>

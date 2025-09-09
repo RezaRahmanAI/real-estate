@@ -1,8 +1,15 @@
-import { Component, OnInit, EventEmitter, Output, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  AfterViewInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GalleryItem, GalleryService } from '../../services/gallery.service';
 import { environment } from '../../environments/environment';
-import { ContactHeroComponent } from "./gallery-hero/gallery-hero.component";
+import { ContactHeroComponent } from './gallery-hero/gallery-hero.component';
 import { AnimationService } from '../../services/animation.service';
 
 @Component({
@@ -22,7 +29,8 @@ export class GalleryPageComponent implements OnInit, AfterViewInit {
 
   constructor(
     private galleryService: GalleryService,
-    private anim: AnimationService
+    private anim: AnimationService,
+    private cdr: ChangeDetectorRef // Add ChangeDetectorRef for manual change detection
   ) {}
 
   ngAfterViewInit() {
@@ -40,6 +48,7 @@ export class GalleryPageComponent implements OnInit, AfterViewInit {
       this.galleryItems = items
         .filter((item) => item.isActive)
         .sort((a, b) => a.order - b.order);
+      this.cdr.detectChanges(); // Ensure UI updates after loading items
     } catch (error) {
       console.error('Failed to load gallery items:', error);
     }
@@ -56,23 +65,33 @@ export class GalleryPageComponent implements OnInit, AfterViewInit {
   openLightbox(index: number): void {
     this.currentIndex = index;
     this.lightboxOpen = true;
+    this.cdr.detectChanges(); // Ensure modal updates
+    console.log('Lightbox opened at index:', index);
   }
 
   closeLightbox(): void {
     this.lightboxOpen = false;
+    this.cdr.detectChanges(); // Ensure modal closes properly
+    console.log('Lightbox closed');
   }
 
-  nextItem(): void {
+  nextItem(event?: Event): void {
+    if (event) event.stopPropagation(); // Prevent event bubbling
     if (this.galleryItems.length) {
       this.currentIndex = (this.currentIndex + 1) % this.galleryItems.length;
+      this.cdr.detectChanges(); // Trigger change detection
+      console.log('Next item:', this.currentIndex, this.currentItem);
     }
   }
 
-  prevItem(): void {
+  prevItem(event?: Event): void {
+    if (event) event.stopPropagation(); // Prevent event bubbling
     if (this.galleryItems.length) {
       this.currentIndex =
         (this.currentIndex - 1 + this.galleryItems.length) %
         this.galleryItems.length;
+      this.cdr.detectChanges(); // Trigger change detection
+      console.log('Previous item:', this.currentIndex, this.currentItem);
     }
   }
 }

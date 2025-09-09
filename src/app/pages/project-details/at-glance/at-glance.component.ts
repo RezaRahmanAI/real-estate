@@ -15,11 +15,15 @@ export class AtGlanceComponent {
   @Input() project: any = null;
   @Input() baseUrl: string = '';
   @Output() imageError = new EventEmitter<Event>();
+  @Output() registerNowClicked = new EventEmitter<void>();
 
   constructor(private http: HttpClient, private toastr: ToastrService) {}
 
   onImageError(event: Event): void {
     this.imageError.emit(event);
+  }
+  onRegisterNowClick() {
+    this.registerNowClicked.emit(); // Emit event when button is clicked
   }
 
   downloadPdf(fileName: string): void {

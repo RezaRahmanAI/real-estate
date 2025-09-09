@@ -1,7 +1,7 @@
 <div
   class="min-h-screen bg-color-1 py-16 flex items-center justify-center font-[Inter]"
 >
-  <div class="container mx-auto px-4 w-[85%]">
+  <div class="container mx-auto px-4 w-[90%] md:w-[65%]">
     <div
       class="flex flex-col lg:flex-row gap-8 w-full mx-auto bg-white p-12 rounded-3xl shadow-lg"
     >
@@ -125,5 +125,32 @@
         </form>
       </div>
     </div>
+  </div>
+</div>
+
+
+<!-- Success Popup -->
+<div
+  *ngIf="showPopup"
+  class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+>
+  <div class="bg-white rounded-2xl shadow-lg p-8 max-w-sm w-[90%] text-center relative">
+    <!-- Close Button -->
+    <button
+      class="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-xl"
+      (click)="closePopup()"
+    >
+      ✖
+    </button>
+
+    <h3 class="text-2xl font-bold text-green-600 mb-4">🎉 Form Submitted!</h3>
+    <p class="text-gray-700">Thank you! We’ll reach out to you soon.</p>
+
+    <button
+      (click)="closePopup()"
+      class="mt-6 px-6 py-3 bg-green-500 text-white rounded-lg shadow hover:bg-green-600 transition"
+    >
+      Close
+    </button>
   </div>
 </div>

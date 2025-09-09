@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -12,6 +12,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class LocationMapComponent {
   @Input() mapIframe?: string;
+  @Output() registerNowClicked = new EventEmitter<void>();
   safeMapIframe?: SafeHtml;
 
   constructor(private sanitizer: DomSanitizer) {}
@@ -22,5 +23,9 @@ export class LocationMapComponent {
         this.mapIframe
       );
     }
+  }
+
+  onRegisterNowClick() {
+    this.registerNowClicked.emit(); // Emit event when button is clicked
   }
 }

@@ -29,3 +29,4 @@
 .download-button:disabled::before {
   width: 0; /* No animation when disabled */
 }
+

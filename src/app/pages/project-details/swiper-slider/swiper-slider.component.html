@@ -8,14 +8,14 @@
       <div class="nav flex items-end gap-4">
         <button
           (click)="prevSlide()"
-          class="w-12 h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
+          class="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
           aria-label="Previous slide"
         >
           ←
         </button>
         <button
           (click)="nextSlide()"
-          class="w-12 h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
+          class="w-8 h-8 md:w-12 md:h-12 flex items-center justify-center bg-accent text-light rounded-full ring-offset-2 ring ring-accent hover:bg-accent-light transition duration-500 ease-in-out text-lg font-semibold"
           aria-label="Next slide"
         >
           →
@@ -33,7 +33,11 @@
         (mouseleave)="onMouseLeave()"
       >
         <div *ngFor="let slide of slides" class="slide group relative flex flex-col max-w-[400px] w-full">
-          <a (click)="onProjectSelect(slide.id, $event)" class="block flex flex-col flex-grow">
+          <a
+            (click)="onProjectSelect(slide.id, $event)"
+            (touchend)="onProjectSelect(slide.id, $event)"
+            class="block flex flex-col flex-grow"
+          >
             <div class="relative overflow-hidden">
               <img
                 class="w-full h-[320px] sm:h-[400px] md:h-[450px] lg:h-[500px] object-cover transition-transform duration-300 group-hover:scale-105"

@@ -1,7 +1,13 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Contactus, LandownerData } from '../../../models/model';
+import {
+  FormBuilder,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { Contactus } from '../../../models/model';
 import { ContactusService } from '../../../services/contactus.service';
 
 @Component({
@@ -13,9 +19,9 @@ import { ContactusService } from '../../../services/contactus.service';
 })
 export class LandownerFormComponent implements OnInit {
   contactForm: FormGroup;
-
   submitMessage: string | null = null;
   isSubmitting = false;
+  showPopup = false; // 👈 added
 
   constructor(
     private fb: FormBuilder,
@@ -46,9 +52,9 @@ export class LandownerFormComponent implements OnInit {
     this.contactusService.create(contact).subscribe({
       next: (response) => {
         this.isSubmitting = false;
-        this.submitMessage = response; // e.g., "Form Successfully Submitted"
+        this.submitMessage = response;
+        this.showPopup = true; // 👈 show popup on success
         this.contactForm.reset();
-        console.log('Form submitted successfully:', response);
       },
       error: (err) => {
         this.isSubmitting = false;
@@ -61,5 +67,9 @@ export class LandownerFormComponent implements OnInit {
   isFieldInvalid(field: string): boolean {
     const control = this.contactForm.get(field);
     return !!control && control.invalid && (control.touched || control.dirty);
+  }
+
+  closePopup(): void {
+    this.showPopup = false;
   }
 }

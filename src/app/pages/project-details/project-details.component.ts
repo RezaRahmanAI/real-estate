@@ -108,7 +108,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    
     this.paramSubscription = this.route.paramMap.subscribe(
       (params: ParamMap) => {
         this.projectId = params.get('id');
@@ -174,7 +173,6 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     updateTimer();
     this.timerInterval = setInterval(updateTimer, 1000);
   }
-  
 
   getProject(): void {
     if (!this.projectId) {
@@ -295,6 +293,13 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
     if (img.src !== '/images/fallback.png') {
       img.src = '/images/fallback.png';
       console.log('Image error, using fallback:', img.src);
+    }
+  }
+
+  scrollToContactForm() {
+    const contactForm = document.getElementById('contacting');
+    if (contactForm) {
+      contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 }

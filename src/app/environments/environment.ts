@@ -1,4 +1,4 @@
 export const environment = {
-  //baseUrl: 'https://cemobile.octimsbd.com',
-  baseUrl: 'https://localhost:7208',
+  baseUrl: 'http://demo1.triconproperty.com',
+  //baseUrl: 'https://localhost:7208',
 };

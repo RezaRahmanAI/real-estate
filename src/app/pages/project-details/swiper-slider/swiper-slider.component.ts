@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
-import { environment } from '../../../environments/environment'; // Adjust path as needed
+import { environment } from '../../../environments/environment';
 import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../models/model';
 
@@ -33,7 +33,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
   startTranslate = 0;
   isPaused = false;
   swipeDistance = 0;
-  swipeThreshold = 10; // Pixels to consider as a swipe
+  swipeThreshold = 50; // Increased threshold for mobile
 
   constructor(private projectService: ProjectService, private router: Router) {}
 
@@ -59,8 +59,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
           address: project.address,
           type: project.type || '—',
         }));
-        // Duplicate slides for endless loop
-        this.slides = [...this.slides, ...this.slides];
+        this.slides = [...this.slides, ...this.slides]; // Duplicate for endless loop
       },
       error: (err) => {
         console.error('Error loading projects:', err);
@@ -82,7 +81,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
 
   onImageError(event: Event) {
     const img = event.target as HTMLImageElement;
-    img.src = 'https://via.placeholder.com/400x80'; // Match RelatedProjectsComponent fallback
+    img.src = 'https://via.placeholder.com/400x80';
   }
 
   prevSlide() {
@@ -106,7 +105,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
     this.isPaused = true;
     this.startX = 'touches' in event ? event.touches[0].clientX : event.clientX;
     this.startTranslate = this.currentTranslate;
-    this.swipeDistance = 0;
+    this.swipeDistance = 0; // Reset swipe distance
     document.addEventListener('mousemove', this.onMouseMove.bind(this));
     document.addEventListener('touchmove', this.onMouseMove.bind(this));
     document.addEventListener('mouseup', this.onMouseUp.bind(this), {
@@ -134,6 +133,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
   onMouseUp() {
     this.isDragging = false;
     this.isPaused = false;
+    this.swipeDistance = 0; // Reset swipe distance on touch end
     document.removeEventListener('mousemove', this.onMouseMove.bind(this));
     document.removeEventListener('touchmove', this.onMouseMove.bind(this));
   }
@@ -146,7 +146,7 @@ export class SwiperSliderComponent implements OnInit, OnDestroy {
     this.isPaused = false;
   }
 
-  onProjectSelect(projectId: string, event: MouseEvent) {
+  onProjectSelect(projectId: string, event: MouseEvent | TouchEvent) {
     if (this.swipeDistance > this.swipeThreshold) {
       event.preventDefault();
       return;

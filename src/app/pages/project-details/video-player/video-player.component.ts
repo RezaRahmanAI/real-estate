@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -11,6 +11,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 })
 export class VideoPlayerComponent implements OnChanges {
   @Input() youtubeUrl: string | undefined;
+  @Output() registerNowClicked = new EventEmitter<void>();
   safeYoutubeUrl: SafeResourceUrl | null = null;
   thumbnailUrl: string | null = null;
   showModal: boolean = false;
@@ -36,6 +37,9 @@ export class VideoPlayerComponent implements OnChanges {
       this.safeYoutubeUrl = null;
       this.thumbnailUrl = null;
     }
+  }
+  onRegisterNowClick() {
+    this.registerNowClicked.emit(); // Emit event when button is clicked
   }
 
   extractVideoId(url: string): string | null {

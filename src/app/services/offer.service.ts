@@ -16,6 +16,7 @@ export class OfferService {
   getOffers(): Observable<Offer[]> {
     return this.http.get<Offer[]>(`${this.apiBaseUrl}/api/offer`);
   }
+  
 
   createOffer(formData: FormData): Observable<string> {
     return this.http.post(`${this.apiBaseUrl}/api/offer/create`, formData, {

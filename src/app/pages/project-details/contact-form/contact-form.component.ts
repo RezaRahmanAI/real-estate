@@ -17,6 +17,7 @@ export class ContactFormComponent implements OnInit {
   isMapLoaded = false;
   submitMessage: string | null = null;
   isSubmitting = false;
+  showPopup = false;
 
   constructor(
     private fb: FormBuilder,
@@ -53,6 +54,7 @@ export class ContactFormComponent implements OnInit {
         this.isSubmitting = false;
         this.submitMessage = response; // e.g., "Form Successfully Submitted"
         this.contactForm.reset();
+        this.showPopup = true;
         console.log('Form submitted successfully:', response);
       },
       error: (err) => {
@@ -66,5 +68,9 @@ export class ContactFormComponent implements OnInit {
   isFieldInvalid(field: string): boolean {
     const control = this.contactForm.get(field);
     return !!control && control.invalid && (control.touched || control.dirty);
+  }
+
+  closePopup(): void {
+    this.showPopup = false;
   }
 }

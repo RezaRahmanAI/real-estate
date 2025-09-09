@@ -15,6 +15,7 @@
     id="atGlance"
     [project]="state.data"
     [baseUrl]="baseUrl"
+    (registerNowClicked)="scrollToContactForm()"
     (imageError)="onImageError($event)"
   ></app-at-glance>
 
@@ -24,7 +25,10 @@
     [baseUrl]="baseUrl"
     (imageError)="onImageError($event)"
   ></app-feature-amenities>
-  <app-video-player [youtubeUrl]="state.data?.videoLink"></app-video-player>
+  <app-video-player
+    [youtubeUrl]="state.data?.videoLink"
+    (registerNowClicked)="scrollToContactForm()"
+  ></app-video-player>
 
   <app-project-gallery
     id="projectGallery"
@@ -34,6 +38,7 @@
   ></app-project-gallery>
   <app-location-map
     id="locationMap"
+    (registerNowClicked)="scrollToContactForm()"
     [mapIframe]="state.data?.mapLink"
   ></app-location-map>
   <app-contact-form
