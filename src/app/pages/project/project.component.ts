@@ -57,11 +57,11 @@ export class ProjectsComponent implements AfterViewInit {
       }
 
       // Fetch projects with the pre-set filter
-      this.getProject();
+      this.getActiveProjects();
     });
   }
 
-  getProject(): void {
+  getActiveProjects(): void {
     const category = this.categorySelect?.nativeElement.value || 'all';
     const type = this.typeSelect?.nativeElement.value || 'all';
 
@@ -97,7 +97,7 @@ export class ProjectsComponent implements AfterViewInit {
   resetFilters(): void {
     if (this.categorySelect) this.categorySelect.nativeElement.value = 'all';
     if (this.typeSelect) this.typeSelect.nativeElement.value = 'all';
-    this.getProject();
+    this.getActiveProjects();
   }
 
   onImageError(event: Event): void {

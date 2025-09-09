@@ -18,6 +18,10 @@ export class TeamService {
     return this.http.get<Team[]>(`${this.apiBaseUrl}/api/team`);
   }
 
+  getActiveTeams(): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.apiBaseUrl}/api/team/active`);
+  }
+
   createTeam(formData: FormData): Observable<string> {
     return this.http.post(`${this.apiBaseUrl}/api/team/create`, formData, {
       responseType: 'text',

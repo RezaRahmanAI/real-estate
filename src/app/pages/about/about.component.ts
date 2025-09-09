@@ -132,7 +132,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
   fetchTeamMembers(): void {
-    this.teamService.getTeams().subscribe({
+    this.teamService.getActiveTeams().subscribe({
       next: (data: Team[]) => {
         this.state.team = data.map((member) => ({
           id: Number(member.id),

@@ -38,7 +38,7 @@ export class SliderComponent implements OnInit, OnDestroy {
 
   loadProjects() {
     this.subscription.add(
-      this.projectService.getProjects().subscribe({
+      this.projectService.getActiveProjects().subscribe({
         next: (projects: Project[]) => {
           this.slides = projects.map((project) => ({
             id: project.id,

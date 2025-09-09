@@ -36,7 +36,7 @@ export class ProjectSlideComponent implements OnInit, OnDestroy {
   constructor(private projectService: ProjectService) {}
 
   ngOnInit(): void {
-    this.projectService.getProjects().subscribe((projects) => {
+    this.projectService.getActiveProjects().subscribe((projects) => {
       this.slides = projects.map((project) => ({
         id: project.id,
         image: project.thumbnail
