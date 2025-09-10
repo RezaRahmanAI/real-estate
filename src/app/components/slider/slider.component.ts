@@ -44,7 +44,7 @@ export class SliderComponent implements OnInit, OnDestroy {
             id: project.id,
             image: project.thumbnail
               ? `${this.baseUrl}/api/attachment/get/${project.thumbnail}`
-              : 'https://via.placeholder.com/400x80',
+              : 'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
             name: project.name || 'Untitled Project',
             category: project.category || 'Unknown',
             address: project.address,

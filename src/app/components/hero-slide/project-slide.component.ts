@@ -41,7 +41,7 @@ export class ProjectSlideComponent implements OnInit, OnDestroy {
         id: project.id,
         image: project.thumbnail
           ? `${this.baseUrl}/api/attachment/get/${project.thumbnail}`
-          : 'https://via.placeholder.com/1200x800',
+          : 'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
         alt: project.name || 'Project image',
         author: project.category || 'Unknown Category',
         title: project.name || 'Untitled Project',

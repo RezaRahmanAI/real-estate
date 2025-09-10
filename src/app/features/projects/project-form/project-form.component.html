@@ -124,15 +124,22 @@
       </div>
 
       <!-- PDF -->
-      <div>
-        <label for="pdfFile" class="block mb-2 text-sm font-semibold text-dark">PDF File</label>
-        <input class="block w-full text-sm text-dark border border-lightDark rounded-lg cursor-pointer bg-white focus:outline-none transition-all duration-200"
-               id="pdfFile" name="pdfFile" type="file" accept=".pdf" (change)="onPdfChange($event)" />
-        <p class="mt-1 text-xs sm:text-sm text-gray-500">PDF (MAX. 5MB).</p>
-        <p *ngIf="selectedPdf || _project.pdfFile" class="mt-2 text-sm text-dark">
-          Selected: {{ selectedPdf?.name || _project.pdfFile }}
-        </p>
-      </div>
+      <div class="mb-4">
+  <label for="pdfUpload" class="block font-medium">Upload PDF</label>
+  <input
+    id="pdfUpload"
+    type="file"
+    accept="application/pdf"
+    (change)="onPdfChange($event)"
+    class="border rounded p-2 w-full"
+  />
+
+  <!-- Error message -->
+  <p *ngIf="pdfError" class="text-red-600 text-sm mt-1">
+    {{ pdfError }}
+  </p>
+</div>
+
 
       <!-- Thumbnail -->
       <div>

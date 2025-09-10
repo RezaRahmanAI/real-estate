@@ -25,7 +25,10 @@ export class ProjectsIndexComponent implements OnInit {
   fetchProjects() {
     this.projectService.getProjects().subscribe({
       next: (data) => {
-        this.projects = data;
+        this.projects = data.map((project) => ({
+          ...project,
+          description: project.description || '', // Default to empty string if null/undefined
+        }));
       },
       error: (error) => {
         this.projectService.showError(

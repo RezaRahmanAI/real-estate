@@ -39,7 +39,7 @@ export class RelatedProjectsComponent implements OnChanges {
         id: project.id,
         image: project.thumbnail
           ? `${this.baseUrl}/api/attachment/get/${project.thumbnail}`
-          : 'https://via.placeholder.com/400x500',
+          : 'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg',
         name: project.name || 'Untitled Project',
         location: project.location || 'Unknown', // Use location instead of category
         type: project.type || '—',
@@ -50,7 +50,8 @@ export class RelatedProjectsComponent implements OnChanges {
   onImageError(event: Event): void {
     this.imageError.emit(event);
     const img = event.target as HTMLImageElement;
-    img.src = 'https://via.placeholder.com/400x500'; // Match SwiperSliderComponent fallback
+    img.src =
+      'https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg'; // Match SwiperSliderComponent fallback
   }
 
   onProjectSelect(projectId: number): void {

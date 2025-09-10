@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-project-form',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterLink,  ImageCropperComponent],
+  imports: [FormsModule, CommonModule, RouterLink, ImageCropperComponent],
   templateUrl: './project-form.component.html',
   styleUrls: ['./project-form.component.css'],
 })
@@ -55,9 +55,8 @@ export class ProjectFormComponent {
   croppedImage: File | null = null;
   showCropper: boolean = false;
   cropperType: 'thumbnail' | 'content' | null = null;
-
-  // Add apiBaseUrl (replace with your actual base URL or inject via service)
-  private apiBaseUrl = environment.baseUrl; // Replace with your API base URL
+  pdfError: string | null = null;
+  private apiBaseUrl = environment.baseUrl; 
 
   private defaultProject: Project = {
     id: '',
@@ -83,7 +82,7 @@ export class ProjectFormComponent {
     mapLink: '',
     pdfFile: '',
     videoLink: '',
-    order: 0
+    order: 0,
   };
 
   _project: Project = this.defaultProject;
@@ -115,8 +114,20 @@ export class ProjectFormComponent {
   onPdfChange(event: Event) {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
-      this.selectedPdf = input.files[0];
-      this._project.pdfFile = this.selectedPdf.name;
+      const file = input.files[0];
+
+      // 5MB = 5 * 1024 * 1024 bytes
+      if (file.size > 5 * 1024 * 1024) {
+        this.pdfError = 'PDF size must not exceed 5MB';
+        input.value = ''; // Reset input
+        this.selectedPdf = null;
+        this._project.pdfFile = '';
+        return;
+      }
+
+      this.pdfError = null; // clear error if valid
+      this.selectedPdf = file;
+      this._project.pdfFile = file.name;
     }
   }
 

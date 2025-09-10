@@ -72,6 +72,6 @@ export class TestimonialCarouselComponent implements OnInit, OnDestroy {
 
   onImageError(event: Event): void {
     const imgElement = event.target as HTMLImageElement;
-    imgElement.src = `${this.baseURL}/api/attachment/get/placeholder.png`; // Fallback image
+    imgElement.src = `https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg`; // Fallback image
   }
 }
