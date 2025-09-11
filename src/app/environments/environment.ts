@@ -1,4 +1,4 @@
 export const environment = {
-  //baseUrl: 'http://demo1.triconproperty.com',
-  baseUrl: 'https://localhost:7208',
+  baseUrl: 'https://demo1.triconproperty.com',
+  //baseUrl: 'https://localhost:7208',
 };
